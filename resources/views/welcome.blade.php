@@ -65,15 +65,18 @@
     </div>
   </div>
 </section>
-<section class="features-section bg-light">
+<section class="container">
+<div class="card text-center">
+  <div class="card-header">
+    <h4> Our Services </h4>
+  </div>
+  <div class="card-body">
+  <section class="features-section bg-light">
   <div class="container">
     <div class="row justify-content-center">
+    
       <div>
         <!--Features title Start!-->
-        <div class="section-title">
-          
-          <h2 class="title" style="font-size:30px;">Our Services </h2>
-        </div>
       </div>
     </div>
     <div class="row">
@@ -106,6 +109,13 @@
     </div>
   </div>
 </section>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+</section>
+
 
 
 
@@ -121,18 +131,21 @@
 <h2 class="title text-center">Available for Swap</h2>
 <div class="row">
         @foreach ($posts as $post) 
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+
+       
+        
                     <div class="product-image-wrapper">
                       <div class="single-products">
                           <div class="productinfo text-center">
                                                   
-                          <a href="{{route('login')}}"><img src="/storage/{{$post->image}}" alt="" /></a>
+                         <img src="/storage/{{$post->image}}" class="mt-3" style=" height: 10rem; width: 10rem;
+                              object-fit: cover;" alt="" />
                             <div class="product-details">
-                                
-                            <div class="product-price">{{$post->product_name}}</div>
-                                <p>{{$post->description}}</p>
+                                <p>{{$post->product_name}}</p>
+                                <p>{{$post->created_at}}</p>
                                 <div class="product-bottom-details">
-                                  <div class="product-price">{{$post->delivery_method}}</div>
+                                  <div class="product-price" style="font-size:1rem;">₱{{$post->price}}</div>
                                   <div class="product-links">
                                    
                                     <a href="{{route('login')}}"><i class="fa fa-sync"></i></a>
@@ -148,9 +161,14 @@
                   @endforeach
          </div>
 </div>
-<div class="container">{{$posts->links()}}</div>
+</div>
+
   </section>
+
+
+
+
+
   
-  <!--ContactSection Start!-->
 
 @endsection

@@ -46,7 +46,7 @@
         <section>
     <nav class="navbar navbar-expand-md navbar-dark">
 		<div class="container" style="margin-top: 15px;padding-bottom: 5px;">
-			<a href="index.php" class="navbar-brand logo-nav"><img src="image/swappee_logo.png" style="width:200px;height: 50px;margin-bottom: 5px;" alt=""></a>
+			<a href="index.php" class="navbar-brand logo-nav"><img src="image/swappee_logo.png" style="width:150px;height: 50px;margin-bottom: 5px;" alt=""></a>
 			
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
 				<span class="menu-icon-bar"></span>
@@ -56,8 +56,8 @@
 			
 			<div id="main-nav" class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
-					<li><a href="index.php"  class="nav-item nav-link active navfonts" style="font-size: 18px;">Home</a></li>
-					<li><a href="about.php" class="nav-item nav-link  navfonts" style="font-size: 18px;">About Us</a></li>
+					<li><a href="index.php"  class="nav-item nav-link active navfonts" style="font-size: 1rem;">Home</a></li>
+					<li><a href="about.php" class="nav-item nav-link  navfonts" style="font-size: 1rem;">About Us</a></li>
 					<li class="dropdown">
 						<!-- <a href="auction.php" class="nav-item nav-link  navfonts"  data-toggle="dropdown"style="font-size: 18px;">Auction</a> -->
 						<!-- <div class="dropdown-menu">
@@ -67,7 +67,7 @@
 						</div> -->
 					</li>
 					<li class="dropdown">
-						<a href="{{ route('contact') }}" class="nav-item nav-link  navfonts"style="font-size: 18px;">Contact Us</a>
+						<a href="{{ route('contact') }}" class="nav-item nav-link  navfonts"style="font-size: 1rem;">Contact Us</a>
 						<div class="dropdown-menu">
 							<!-- <a href="#" class="dropdown-item">Dropdown Item 1</a>
 							<a href="#" class="dropdown-item">Dropdown Item 2</a>
@@ -80,12 +80,12 @@
                     @if (Route::has('login'))
                 <!-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> -->
                     @auth
-                        <a href="{{ url('/home') }}"  class="nav-item nav-link navfonts" style="font-size: 18px;"><i class="fas fa-home"></i> Home</a>
+                        <a href="{{ url('/home') }}"  class="nav-item nav-link navfonts" style="font-size:1rem;"><i class="fas fa-home"></i> Home</a>
                     @else
-					  <a href="{{ route('login') }}" class="nav-item nav-link navfonts" style="font-size: 18px;">  Login </a>
+					  <a href="{{ route('login') }}" class="nav-item nav-link navfonts" style="font-size: 1rem;">  Login </a>
 
                         @if (Route::has('register'))
-						<a href="{{ route('register') }}" class="nav-item nav-link navfonts"style="font-size: 18px;"> Register</a>
+						<a href="{{ route('register') }}" class="nav-item nav-link navfonts"style="font-size: 1rem;"> Register</a>
                         @endif
                     @endauth
                 <!-- </div> -->
@@ -108,7 +108,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">    
-            <img class="carousel-image" src="{{asset('image/swap-c.jpg')}}" alt="First slide">
+            <img class="carousel-image"  style="height:500px; width:100%; " src="{{asset('image/swap-c.jpg')}}" alt="First slide">
             <div class="carousel-caption d-md-block">
             <h1 style="font-family:Copperplate; font-size: 40px;">
                 <span>Swappee</span>
@@ -120,7 +120,7 @@
       </div>
     </div>
     <div class="carousel-item ">
-      <img class="carousel-image" src="{{asset('image/delivery-c.jpg')}} " alt="Second slide">
+      <img class="carousel-image" style="height:500px; width:100%;"  src="{{asset('image/delivery-c.jpg')}} " alt="Second slide">
       <div class="carousel-caption d-md-block">
             <h1 style="font-family:Copperplate; font-size: 40px;">
                 <span>Deliver</span>
@@ -133,7 +133,7 @@
     
     </div>
     <div class="carousel-item ">
-      <img class="carousel-image" src="{{asset('image/bidding.jpg')}}" alt="Third slide">
+      <img class="carousel-image"  style="height:500px; width:100%;" src="{{asset('image/bidding.jpg')}}" alt="Third slide">
       <div class="carousel-caption d-md-block">
             <h1 style="font-family:Copperplate; font-size: 40px;">
                 <span>Auction</span>

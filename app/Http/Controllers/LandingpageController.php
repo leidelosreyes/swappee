@@ -9,7 +9,7 @@ class LandingpageController extends Controller
 {
     public function landingpage()
     {
-        $posts = Post::Paginate(1);
+        $posts = Post::all();
         return view('welcome', compact('posts'));
     }
 }

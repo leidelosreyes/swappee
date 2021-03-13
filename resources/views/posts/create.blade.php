@@ -106,6 +106,22 @@
                                     @enderror
 
                         </div>
+                        <div class="form-group row">
+                                    <label>Price</label>
+                                    <input type="number" 
+                                    id="price"
+                                    name="price"
+                                    class="form-control @error('price') is-invalid @enderror"
+                                    value="{{old('price')}}"
+                                    autocomplete="price" autofocus
+                                    >
+                                    @error('price')
+                                        <span class="invalid-feedback" role="alert ">
+                                            <strong style="color:red;">{{$message}}</strong>
+                                        </span>
+                                    @enderror
+
+                        </div>
 						<div class="form-group row">
                                     <label>Wish To Swap</label>
                                     <input type="text" 
