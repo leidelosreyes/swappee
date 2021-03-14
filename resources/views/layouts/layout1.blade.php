@@ -18,8 +18,10 @@
 						
 						<span class="">
 					
-					
-						<!-- <span class="">
+            <span class="">
+					<a style="color:white;"> Swappee@gmail.com</a>
+					</span>
+						 <!-- <span class="">
 						<i class="fab fa-twitter" style="color: #55ACEE;"></i>
 						</span>
 						
@@ -108,7 +110,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">    
-            <img class="carousel-image"  style="height:500px; width:100%; " src="{{asset('image/swap-c.jpg')}}" alt="First slide">
+            <img class="carousel-image"  style="height:500px; width:100%; " src="{{asset('image/delivery-c-new.jpg')}}" alt="First slide">
             <div class="carousel-caption d-md-block">
             <h1 style="font-family:Copperplate; font-size: 40px;">
                 <span>Swappee</span>
@@ -120,7 +122,7 @@
       </div>
     </div>
     <div class="carousel-item ">
-      <img class="carousel-image" style="height:500px; width:100%;"  src="{{asset('image/delivery-c.jpg')}} " alt="Second slide">
+      <img class="carousel-image" style="height:500px; width:100%;"  src="{{asset('image/new-swap-c.jpg')}}" alt="Second slide">
       <div class="carousel-caption d-md-block">
             <h1 style="font-family:Copperplate; font-size: 40px;">
                 <span>Deliver</span>
@@ -133,7 +135,7 @@
     
     </div>
     <div class="carousel-item ">
-      <img class="carousel-image"  style="height:500px; width:100%;" src="{{asset('image/bidding.jpg')}}" alt="Third slide">
+      <img class="carousel-image"  style="height:500px; width:100%;" src="{{asset('image/bidding new.jpg')}}" alt="Third slide">
       <div class="carousel-caption d-md-block">
             <h1 style="font-family:Copperplate; font-size: 40px;">
                 <span>Auction</span>

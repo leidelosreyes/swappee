@@ -1,223 +1,164 @@
-    @extends('layouts.userbase1')
-    @section('content')
+@extends('layouts.layout2')
+ @section('content')
 
-    <section>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<h2>Menu</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<!-- <div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Categories
-										</a>
-									</h4>
-								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="">Nike </a></li>
-											<li><a href="">Under Armour </a></li>
-											<li><a href="">Adidas </a></li>
-											<li><a href="">Puma</a></li>
-											<li><a href="">ASICS </a></li>
-										</ul>
-									</div>
-								</div>
-							</div> -->
-						
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="{{route('posts.create')}}"><i class="fas fa-plus-circle"></i> Add Items</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#"><i class="fas fa-gavel"></i> Auction</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#"><i class="fas fa-user-edit"></i> Edit Profile</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#"><i class="fas fa-key"></i> Change Password</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#"><i class="fas fa-archive"></i> My Items</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#"><i class="fas fa-comments"></i> Messages</a></h4>
-								</div>
-							</div>
-						
-						</div><!--/category-products-->
-					
-					
-						
-					
-						
-					</div>
-				</div>
-				
-<div class="col-sm-9 padding-right">
-    <h2 class="title text-center">Post Item</h2>
-    <div class="category-tab shop-details-tab"><!--category-tab-->
-						<div class="col-sm-12">
-							
-						</div>
-						<div class="tab-content">
-							
-							
-							
-							<div class="tab-pane fade active in" id="reviews" >
-								<div class="col-sm-12">
-									
-									
-                                <form action="/posts" method ="post" enctype="multipart/form-data">
-            @csrf
-         <div class="col-8 offset-2">
-                    <div class="row">
-                       
-                    </div>
-                        <div class="form-group row">
-                                    <label>Item Name</label>
-                                    <input type="text" 
-                                    id="product_name"
-                                    name="product_name"
-                                    class="form-control @error('product_name') is-invalid @enderror"
-                                    value="{{old('product_name')}}"
-                                    autocomplete="product_name" autofocus
-                                    >
-                                    @error('product_name')
-                                        <span class="invalid-feedback" role="alert ">
-                                            <strong style="color:red;">{{$message}}</strong>
-                                        </span>
-                                    @enderror
-
-                        </div>
-                        <div class="form-group row">
-                                    <label>Price</label>
-                                    <input type="number" 
-                                    id="price"
-                                    name="price"
-                                    class="form-control @error('price') is-invalid @enderror"
-                                    value="{{old('price')}}"
-                                    autocomplete="price" autofocus
-                                    >
-                                    @error('price')
-                                        <span class="invalid-feedback" role="alert ">
-                                            <strong style="color:red;">{{$message}}</strong>
-                                        </span>
-                                    @enderror
-
-                        </div>
-						<div class="form-group row">
-                                    <label>Wish To Swap</label>
-                                    <input type="text" 
-                                    id="wishitem"
-                                    name="wishitem"
-                                    class="form-control @error('wishitem') is-invalid @enderror"
-                                    value="{{old('wishitem')}}"
-                                    autocomplete="wishitem" autofocus
-                                    >
-                                    @error('wishitem')
-                                        <span class="invalid-feedback" role="alert ">
-                                            <strong style="color:red;">{{$message}}</strong>
-                                        </span>
-                                    @enderror
-
-                        </div>
-						<div class="form-group row">
-                                    <label>Delivery Method</label>
-                                    <select type="text" 
-                                    id="delivery_method"
-                                    name="delivery_method"
-                                    class="form-control  @error('delivery method') is-invalid @enderror"
-                                    value="{{old('delivery_method')}}"
-                                    autocomplete="delivery_method" autofocus
-                                    >
-									<option>Meet Up</option>
-									<option>Delivery</option>
-									
-									</select>
-                                    @error('delivery_method')
-                                        <span class="invalid-feedback" role="alert ">
-                                            <strong style="color:red;">{{$message}}</strong>
-                                        </span>
-                                    @enderror
-
-                        </div>
-                        <div class="row">
-                                    <label>Location</label>
-                                    <input type="text" 
-                                    id="location"
-                                    name="location"
-                                    class="form-control @error('location') is-invalid @enderror"
-                                    value="{{old('location')}}"
-                                    autocomplete="location" autofocus
-                                    >
-                                    @error('location')
-                                        <span class="invalid-feedback" role="alert ">
-                                            <strong style="color:red;" >{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                        </div>
-                <div class="row">
-                                    <label>Description</label>
-                                    <textarea type="text" 
-                                    id="description"
-                                    name="description"
-									rows="3"
-                                    class="@error('description') is-invalid @enderror"
-                                    value="{{old('description')}}"
-                                    autocomplete="description" autofocus
-                                    >
-                                    </textarea>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert ">
-                                            <strong style="color:red;">{{$message}}</strong>
-                                        </span>
-                                    @enderror
-                </div>
-
+   <div class="container mt-4">
+                
+       <div class="row">
+           <div class="col-sm-4">
+                 <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title mt-0">Menu</h4>
+                        <hr>
                         
-                        <div class="row">
+                        <div class="text-left">
+                          <a href=""><p class="">Electronic Devices</p></a>
+                          <a href=""><p class="font-15">Appliances </p></a>
+                          <a href=""><p class="font-15">Home & living </p></a>
+                          <a href=""><p class="font-15">Fashion </p></a>
+                          <a href=""><p class="font-15">Sports & lifestyle </p></a>
+                          <a href=""><p class="font-15">Toys </p></a>
+                          <a href=""><p class="font-15">Antiques </p></a>
+                          <a href=""><p class="font-15">Others </p></a>
+                          
+                        </div>
+                        <ul class="social-links list-inline mt-4 mb-0">
+                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                   </div>    
+                 </div>
+           </div>
+           <div class="col mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                         <form action="/posts" method ="post" enctype="multipart/form-data">
+                          @csrf
+                            <div class="form-group row">
+                                            <label style="margin-bottom:0;">Item Name <label style="color:red;">*</label></label>
+                                            <input type="text"
+                                            placeholder="Enter Item Name" 
+                                            id="product_name"
+                                            name="product_name"
+                                            class="form-control @error('product_name') is-invalid @enderror"
+                                            value="{{old('product_name')}}"
+                                            autocomplete="product_name" autofocus
+                                            >
+                                            @error('product_name')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror
 
-                                <label for="image">Post Image</label>
-                                <input type="file" name="image" id="image" class="form-control-file">
-                            </div>
-                                @error('image')
-                                    <strong style="color:red;">{{$message}}</strong>
-                                @enderror
-                                <div class="row pt-4 p">
-                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
-                 </form>
-								</div>
-							</div>
-							
-						</div>
-					</div><!--/category-tab-->					
-</div>
- </section>
+                                <div class="form-group row">
+                                            <label style="margin-bottom:0;">Price <label style="color:red;">*</label></label>
+                                            <input type="number"
+                                            placeholder="0.00" 
+                                            id="price"
+                                            name="price"
+                                            class="form-control @error('price') is-invalid @enderror"
+                                            value="{{old('price')}}"
+                                            autocomplete="price" autofocus
+                                            >
+                                            @error('price')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror
 
+                                </div>
+                                <div class="form-group row">
+                                            <label style="margin-bottom:0;">Wish To Swap <label style="color:red;">*</label></label>
+                                            <input type="text" 
+                                            id="wishitem"
+                                            placeholder="Enter Wish to swap"
+                                            name="wishitem"
+                                            class="form-control @error('wishitem') is-invalid @enderror"
+                                            value="{{old('wishitem')}}"
+                                            autocomplete="wishitem" autofocus
+                                            >
+                                            @error('wishitem')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror
 
+                                </div>
+                                <div class="form-group row">
+                                            <label style="margin-bottom:0;">Delivery Method <label style="color:red;">*</label></label>
+                                            <select type="text" 
+                                            id="delivery_method"
+                                            name="delivery_method"
+                                            class="form-control  @error('delivery method') is-invalid @enderror"
+                                            value="{{old('delivery_method')}}"
+                                            autocomplete="delivery_method" autofocus
+                                            >
+                                            <option>Meet Up</option>
+                                            <option>Delivery</option>
+                                            
+                                            </select>
+                                            @error('delivery_method')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror
 
+                                </div>
+                                <div class="row">
+                                            <label style="margin-bottom:0;">Location <label style="color:red;">*</label></label>
+                                            <input type="text" 
+                                            id="location"
+                                            name="location"
+                                            class="form-control @error('location') is-invalid @enderror"
+                                            value="{{old('location')}}"
+                                            autocomplete="location" autofocus
+                                            >
+                                            @error('location')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;" >{{$message}}</strong>
+                                                </span>
+                                            @enderror
+                                </div>
+                        <div class="row mt-4">
+                            <div class="form-group">
+                                            <label style="margin-bottom:0;">Description <label style="color:red;">*</label></label>
+                                            <textarea 
+                                            id="description"
+                                            name="description"
+                                            rows="5"
+                                            cols="100"
+                                            class="form-control @error('description') is-invalid @enderror"
+                                            value="{{old('description')}}"
+                                            autocomplete="description" autofocus
+                                            >
+                                            </textarea>
+                                            @error('description')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror
+                            </div>
+                        </div>
+                                
+                                <div class="row">
 
-
-
-    
-    
+                                        <label class="mt-4" for="image" style="margin-bottom:0;">Post Image <label style="color:red;">*</label></label>
+                                        <input type="file" name="image" id="image" class="form-control-file">
+                                    </div>
+                                        @error('image')
+                                            <strong style="color:red;">{{$message}}</strong>
+                                        @enderror
+                                        <div class="row pt-4 p">
+                                            <button type="submit" class="btn btn-primary">Create</button>
+                                        </div>
+                            </div>
+                        </div>
+               </form>   
+            </div>
+           </div>
+       </div>
+   </div>
 
 @endsection

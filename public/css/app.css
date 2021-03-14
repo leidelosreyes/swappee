@@ -109,7 +109,7 @@ h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+ 
 }
 
 abbr[title],
@@ -4990,6 +4990,7 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
+  
 }
 
 .card-title {
@@ -13711,3 +13712,6 @@ a#scrollUp {
   -webkit-animation: bounce 2s ease infinite;
   animation: bounce 2s ease infinite;
 }
+
+
+/* view product  */
