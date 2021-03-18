@@ -66,8 +66,6 @@
   </div>
 </section>
 <section class="container">
-<div class="card text-center">
-  <div class="card-header">
     <h4> Our Services </h4>
   </div>
   <div class="card-body">
@@ -105,14 +103,8 @@
             <p>Our auction is fair and competitive</p>
           </div>
         </div>
-        <!--end!-->
-    </div>
-  </div>
+        <!--end!--> 
 </section>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
 </div>
 </section>
 
@@ -139,16 +131,22 @@
                       <div class="single-products">
                           <div class="productinfo text-center">
                                                   
-                         <img src="/storage/{{$post->image}}" class="mt-3" style=" height: 10rem; width: 10rem;
-                              object-fit: cover;" alt="" />
+                          <a href="{{route('login')}}">  <img src="/storage/{{$post->image}}" style="width:100%; height:15rem;
+                              object-fit: cover;" alt="" /></a>
+                            
+                              <img src="{{$post->user->avatar}}" class="card-avatar"/>
+                             
+                               
                             <div class="product-details">
+                           
+
                                 <p>{{$post->product_name}}</p>
                                 <p>{{$post->created_at}}</p>
                                 <div class="product-bottom-details">
                                   <div class="product-price" style="font-size:1rem;">₱{{$post->price}}</div>
                                   <div class="product-links">
                                    
-                                    <a href="{{route('login')}}"><i class="fa fa-sync"></i></a>
+                                   <i class="fa fa-sync"></i>
                                   </div>
                                 </div>
                               </div>                    

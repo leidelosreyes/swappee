@@ -12141,11 +12141,7 @@ box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 .single-products {
 position: relative;
 }
-.productinfo img {
-width: 100%;
-height: 200px;
-/* height: 220px; */
-}
+
 
 img {
 vertical-align: middle;
@@ -12498,11 +12494,6 @@ box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 .single-products {
   position: relative;
-}
-.productinfo img {
-  width: 100%;
-  height: 300px;
-  /* height: 220px; */
 }
 
 img {
@@ -13715,3 +13706,17 @@ a#scrollUp {
 
 
 /* view product  */
+.card-avatar{
+  border-radius: 100%;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -50px;
+
+
+ 
+}

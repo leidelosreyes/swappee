@@ -8,9 +8,9 @@
                 <!-- meta -->
                 <div class="profile-user-box card-box bg-custom">
                     <div class="row">
-                        <div class="col-sm-6"><span class="float-left mr-3"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="thumb-lg rounded-circle"></span>
+                        <div class="col-sm-6"><span class="float-left mr-3"><img src="{{Auth::user()->avatar}}" alt="" class="thumb-lg rounded-circle"></span>
                             <div class="media-body text-white">
-                                <h4 class="mt-1 mb-1 font-18">Michael A. Franklin</h4>
+                                <h4 class="mt-1 mb-1 font-18">{{Auth::user()->name}}</h4>
                                 <p class="font-13 text-light">User Experience Specialist</p>
                                 <p class="text-light mb-0">California, United States</p>
                             </div>
@@ -28,14 +28,35 @@
         <!-- end row -->
         <div class="row">
             <div class="col-xl-4">
+
                 <!-- Personal-Information -->
                 <div class="card-box">
                     <h4 class="header-title mt-0">Personal Information</h4>
+                    
                     <div class="panel-body">
-                        <p class="text-muted font-13">Hye, I’m Johnathan Doe residing in this beautiful world. I create websites and mobile apps with great UX and UI design. I have done work with big companies like Nokia, Google and Yahoo. Meet me or Contact me for any queries. One Extra line for filling space. Fill as many you want.</p>
+            
                         <hr>
                         <div class="text-left">
-                            <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">Johnathan Deo</span></p>
+        <ul  style="list-style-type:none;">      
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Add Items  <i class="fas fa-chevron-right" style="float:right"></i></a> 
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <div class="pl-2">
+                        <li>
+                            <a href="{{route('posts.create')}}"><i class="fa fa-sync"></i> Swap</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-gavel"></i> Auction</a>
+                        </li>
+                    </div>
+                    <hr>
+                   
+                </ul>
+               <li> 
+                <a href="#homeSubmenu">Edit Profile</a> 
+               
+                </li>
+       </ul> 
+                            <a class="text-muted font-13"><strong>Edit Profile</strong></a>
                             <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">(+12) 123 1234 567</span></p>
                             <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">coderthemes@gmail.com</span></p>
                             <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">USA</span></p>

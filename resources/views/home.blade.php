@@ -61,6 +61,7 @@
                                                   
                          <img src="/storage/{{$post->image}}" class="mt-3" style=" height: 10rem; width: 10rem;
                               object-fit: cover;" alt="" />
+                              <img src="{{$post->user->avatar}}" class="card-avatar"/>
                             <div class="product-details">
                                 <p style="font-weight:700;">{{$post->product_name}}</p>
                                 <p style="font-size:.70rem;">{{$post->created_at}}</p>

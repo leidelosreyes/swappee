@@ -26,10 +26,11 @@
 
 		<div class="col mt-4 mb-4">
             <div class="card">
+			<img src="{{$post->user->avatar}}" class="card-avatar" style="margin-top:-30px;"/>
 				<div class="card-body">
                     
                             
-								<h4 style=" text-align: center;  background:whitesmoke;">{{$post->product_name}}</h4><br>
+								<h4>{{$post->product_name}}</h4><br>
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999;"> Posted by:</b> {{$post->user->name}}</p>
 								<hr>
 								
