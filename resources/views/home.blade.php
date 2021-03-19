@@ -59,9 +59,8 @@
 				   @empty
            <img src="{{asset('/image/x-error.jpg')}}" style=" height: 300px; width:300px;" class="center-img" id="show-img" > 
             <h3 style="text-align:center;"><i class="fas fa-exclamation-triangle"></i> No Matched Found</h3>
-           
            @endforelse  
-             
+         
                  	
 <div class="container ">
   <div class="row">

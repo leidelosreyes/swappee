@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts =Post::paginate(10);
+        $posts = Post::paginate(10);
         return view('home', compact('posts'));
          
     }
@@ -36,16 +36,22 @@ class HomeController extends Controller
         $search = request()->query('search');
        
         
-        if($search)
+        if($search!="")
+        {   $posts = post::where(function ($query) use ($search){
+            $query->where('product_name', 'like', '%'.$search.'%')
+                  ->orWhere('id', 'like', '%'.$search.'%');
+        })
+        ->paginate(4);
+        $posts->appends(['search' => $search]);
+           
+        }
+        else
         {
-            $posts = Post::where('product_name','LIKE',"%{$search}%")->paginate(3);
-            
-            
-    
+            $posts = post::paginate(10);
         }
     
-       
-        return view('home', compact('posts'));
+        return view('home',compact('posts'));
+        
     }
   
 

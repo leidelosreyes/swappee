@@ -69,4 +69,4 @@ Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'in
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 
 //-------------------------------- User ---------------------------------
-Route::get('/User/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
+Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');

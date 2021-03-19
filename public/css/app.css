@@ -13729,3 +13729,9 @@ a#scrollUp {
   margin-right: auto;
  margin-top:50px;
 }
+
+.a-color
+{
+  color: #57585a;
+  text-transform: uppercase;
+}
