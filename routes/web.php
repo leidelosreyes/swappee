@@ -30,9 +30,6 @@ Route::get('/about', function () {
 Route::get('/user/index', function () {
   return view('user.index');
 });
-Route::get('/user/profile', function () {
-  return view('user.profile');
-});
 
 
 
@@ -70,3 +67,6 @@ Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'c
 Route::post('/auctions',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions');
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
+
+//-------------------------------- User ---------------------------------
+Route::get('/User/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');

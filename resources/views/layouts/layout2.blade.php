@@ -63,7 +63,7 @@
                     <li class="dropdown">
 						<a href="" class="nav-item nav-link  navfonts" data-toggle="dropdown" style="font-size: 1rem;" > {{ Auth::user()->name }}</a>
 						<div class="dropdown-menu">
-							<a href="{{url('user/profile')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+							<a href="{{route('user.profile')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
 							<a class="dropdown-item navfonts" href="{{ route('index') }}" style="font-size: .80rem;"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">

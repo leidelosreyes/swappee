@@ -10607,7 +10607,8 @@ button.bg-dark:focus {
   text-decoration: none;
 }
 .text-left p{
-  color:gray ;
+  color: #57585a;
+  text-transform: uppercase;
 }
 .text-right {
   text-align: right !important;
@@ -11982,6 +11983,7 @@ padding: 120px 0;
 
 .products-section{
 background-color: white;
+box-shadow: 0 3px 10px 0 rgb(44 44 45 / 7%), inset 0 0 0 1px rgb(44 44 45 / 7%);
 }
 .products-section .products-item{
 box-shadow: 0 0 10px #dddde3;
@@ -13720,3 +13722,5 @@ a#scrollUp {
 
  
 }
+
+

@@ -69,7 +69,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('facebook')->stateless()->user();
         $this->_registerOrLoginUser($user);
-        return redirect()->route('home');
+        return redirect()->route('user.profile');
 
 
         // $user->token;
@@ -88,7 +88,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
         $this->_registerOrLoginUser($user);
-        return redirect()->route('home');
+        return redirect()->route('user.profile');
 
 
         // $user->token;
