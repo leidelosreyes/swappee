@@ -26,7 +26,7 @@
 							<img src="/storage/{{$post->image}}" class="w-100" id="show-img" > 
 						</div>					
 					</div>
-					<button type="submit" style="background-color:#FFB52E;;border:none;" class="btn btn-primary mt-2 block">Make Offer</button>
+					<button type="submit" style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</button>
 				</div> 
 				
 			</div>

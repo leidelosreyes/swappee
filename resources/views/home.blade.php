@@ -55,9 +55,17 @@
 </div>
 
 <section class="products-section col-xl-9 mb-4">
-
+        @forelse($posts as $post)
+				   @empty
+           <img src="{{asset('/image/x-error.jpg')}}" style=" height: 300px; width:300px;" class="center-img" id="show-img" > 
+            <h3 style="text-align:center;"><i class="fas fa-exclamation-triangle"></i> No Matched Found</h3>
+           
+           @endforelse  
+             
+                 	
 <div class="container ">
-<div class="row">
+  <div class="row">
+
         @foreach ($posts as $post) 
         <div class="col-sm-3 mt-4">
 
@@ -93,28 +101,6 @@
 <div class="container">{{$posts->links()}}</div>
 </section>
 
-<div class="container">
-   
-      
-	   @forelse($posts as $post)
-				   @empty
-				   <div class="step-one">
-				<h2 class="heading">Result</h2>
-			</div>
-			<div class="checkout-options">
-				
-				<strong>No matched Found</strong>
-				
-				<a href="{{ url('/home') }}" style="font-size:15px; color: #696763;" class="text-sm text-gray-700 underline"><i class="fas fa-home"></i> Back to Home</a>
-				
-			</div>
-			<div class="register-req">
-				<p>Please make sure your spelling is correct</p>
-			</div>
-		@endforelse
-      
-    
-</div>
 </div>
 </div>
 @endsection

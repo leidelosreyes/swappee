@@ -3153,14 +3153,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning {
-  color: #ffed4a;
-  border-color: #ffed4a;
+  color:#FFB52E;
+  border-color: #FFB52E;
 }
 
 .btn-outline-warning:hover {
   color: #212529;
-  background-color: #ffed4a;
-  border-color: #ffed4a;
+  background-color: #FFB52E;
+  border-color: #FFB52E;
 }
 
 .btn-outline-warning:focus,
@@ -13723,4 +13723,9 @@ a#scrollUp {
  
 }
 
-
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ margin-top:50px;
+}
