@@ -182,7 +182,7 @@
                                     
                                     <td style="width:120px;">
                                     <div class="d-flex">
-                                    <a href="/posts/{{$posts->id}}"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
+                                    <a href="{{route('auth-posts.show',$posts->id)}}"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
                                     <a href="{{route('posts.edit',$posts->id)}}" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
                                     {!! Form::open(['route' => ['posts.delete', $posts->id], 'method' => 'delete']) !!}
                                             <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">

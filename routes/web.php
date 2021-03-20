@@ -61,7 +61,7 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 Route::get('/posts/create',[App\Http\Controllers\PostsController::class, 'create'])->name('posts.create');
 Route::post('/posts',[App\Http\Controllers\PostsController::class, 'store'])->name('posts');
 Route::get('/posts/{post}',[App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
-Route::get('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'show_auth_user_post']);
+Route::get('/authPosts/{post}',[App\Http\Controllers\ProfileController::class,'auth_item_show'])->name('auth-posts.show');
 Route::get('/posts/{post}/edit_user_post',[App\Http\Controllers\ProfileController::class,'edit_auth_user_post'])->name('posts.edit');
 Route::put('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'update_auth_user_post'])->name('posts.update');
 Route::delete('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');

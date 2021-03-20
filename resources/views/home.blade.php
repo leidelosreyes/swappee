@@ -56,7 +56,12 @@
 
 <section class="products-section col-xl-9 mb-4">
                                @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
+                                <div class="alert alert-success mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
+                                @if ($message = Session::get('error'))
+                                <div class="alert alert-danger mt-4">
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif

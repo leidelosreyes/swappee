@@ -18,11 +18,15 @@ class ProfileController extends Controller
     $posts = post::where('user_id',auth()->id())->get();
     return view('user.profile', compact('posts'));
    }
-   public function show_auth_user_post(post $posts)
-   {
+   // public function show_auth_user_post(posts $posts)
+   // {
       
-      return view('posts.view',compact('posts'));
+   //    return view('posts.auth_view',compact('posts'));
 
+   // }
+   public function auth_item_show(post $post)
+   {
+       return view('posts.auth_view',compact('post'));
    }
    public function edit_auth_user_post($posts)
    {

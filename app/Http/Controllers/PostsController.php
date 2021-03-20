@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Auth;
 
 
 class PostsController extends Controller
@@ -54,20 +55,21 @@ class PostsController extends Controller
     }
     public function show(post $post)
     {
+       
+           if($post->user_id == Auth::id())
+           {
+            return redirect()->route('home')
+              ->with('error','You are not able to Swap on your own item');
+           }
+       
         
-        return view('posts.view',compact('post'));
+            return view('posts.view',compact('post'));
+        
     }
 
 
-    public function auth_item_show()
-    {
+  
 
-    }
-
-    public function destroy()
-    {
-
-
-    }
+    
     
 }
