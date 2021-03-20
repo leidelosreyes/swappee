@@ -182,11 +182,10 @@
                                     
                                     <td style="width:120px;">
                                     <div class="d-flex">
-                                    <a href="/posts/{{$posts->id}}"><i class="far fa-eye" style="color: #57585a;"></i>
-                                    <a href="{{route('posts.edit',$posts->id)}}"><i class="fas fa-edit"></i></a>
-                                    {!!  ::open(['route' => ['posts.delete', $posts->id], 'method' => 'delete']) !!}
-                                            <button style="border: none;
-                                                       background: none;">
+                                    <a href="/posts/{{$posts->id}}"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
+                                    <a href="{{route('posts.edit',$posts->id)}}" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
+                                    {!! Form::open(['route' => ['posts.delete', $posts->id], 'method' => 'delete']) !!}
+                                            <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">
                                                 <i class="fas fa-trash-alt" style="color:red;"></i>
                                             </button>
                                     {!!Form::close() !!}
