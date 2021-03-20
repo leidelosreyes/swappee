@@ -55,10 +55,15 @@
 </div>
 
 <section class="products-section col-xl-9 mb-4">
+                               @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
         @forelse($posts as $post)
 				   @empty
-           <img src="{{asset('/image/x-error.jpg')}}" style=" height: 300px; width:300px;" class="center-img" id="show-img" > 
-            <h3 style="text-align:center;"><i class="fas fa-exclamation-triangle"></i> No Matched Found</h3>
+           <img src="{{asset('/image/x-error-removebg-preview.png')}}" style=" height: 150px; width:150px; margin-top:100px;" class="center-img" id="show-img" > 
+            <h3 style="text-align:center;"><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Matched Found</h3>
            @endforelse  
          
                  	

@@ -153,7 +153,11 @@
                     <!-- end col -->
                 </div>
                 <!-- end row -->
-                
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{$message}}</p>
+                    </div>
+                    @endif
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
                     <h4 class="header-title mb-3">My Product</h4>
                     <div class="table-responsive">
@@ -176,7 +180,18 @@
                                     <td>{{$posts->wishitem}}</td>
                                     <td>{{$posts->delivery_method}}</td>
                                     
-                                    <td><a href=""><i class="fas fa-edit"></i></a> <a href="" style="color:red;"><i class="fas fa-trash-alt"></a></i></td>
+                                    <td style="width:120px;">
+                                    <div class="d-flex">
+                                    <a href="/posts/{{$posts->id}}"><i class="far fa-eye" style="color: #57585a;"></i>
+                                    <a href="{{route('posts.edit',$posts->id)}}"><i class="fas fa-edit"></i></a>
+                                    {!!  ::open(['route' => ['posts.delete', $posts->id], 'method' => 'delete']) !!}
+                                            <button style="border: none;
+                                                       background: none;">
+                                                <i class="fas fa-trash-alt" style="color:red;"></i>
+                                            </button>
+                                    {!!Form::close() !!}
+                                    </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -48,7 +48,7 @@ class PostsController extends Controller
 
         ]);
 
-        return redirect('home');
+        return redirect('home')->with('success','Product Post successfully');
         
           
     }
@@ -56,6 +56,18 @@ class PostsController extends Controller
     {
         
         return view('posts.view',compact('post'));
+    }
+
+
+    public function auth_item_show()
+    {
+
+    }
+
+    public function destroy()
+    {
+
+
     }
     
 }

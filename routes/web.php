@@ -61,12 +61,16 @@ Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController:
 Route::get('/posts/create',[App\Http\Controllers\PostsController::class, 'create'])->name('posts.create');
 Route::post('/posts',[App\Http\Controllers\PostsController::class, 'store'])->name('posts');
 Route::get('/posts/{post}',[App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
-
+Route::get('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'show_auth_user_post']);
+Route::get('/posts/{post}/edit_user_post',[App\Http\Controllers\ProfileController::class,'edit_auth_user_post'])->name('posts.edit');
+Route::put('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'update_auth_user_post'])->name('posts.update');
+Route::delete('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');
 //--------------------------------auction item---------------------------------
 Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'create'])->name('auctions.create');
 Route::post('/auctions',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions');
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
+
 
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
