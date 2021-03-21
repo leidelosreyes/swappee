@@ -78,20 +78,25 @@
         @foreach ($posts as $post) 
         <div class="col-sm-3 mt-4">
 
-       
-        
+                  <div class="d-flex product-details ">
+                    <img src="{{$post->user->avatar}}" class="card-avatar"/>
+                      <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+                  </div> 
                     <div class="product-image-wrapper">
+
                       <div class="single-products">
-                          <div class="productinfo text-center">
-                                                  
+                          <div class="productinfo">
+                                    
                          <img src="/storage/{{$post->image}}"  style=" height: 10rem; width: 100%;
                               object-fit: cover;" alt="" />
-                              <img src="{{$post->user->avatar}}" class="card-avatar"/>
+                              
                             <div class="product-details">
-                                <p style="font-weight:700;">{{$post->product_name}}</p>
-                                <p style="font-size:.70rem;"><i class="far fa-clock"></i> {{$post->created_at}}</p>
+                              <div  style="height:20px; overflow:hidden;">
+                                  <p style="font-size: 16px;font-weight: 500;">{{$post->product_name}}</p>
+                              </div>  
+                                <p style="font-size:.70rem;"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
                                 <div class="product-bottom-details">
-                                  <div class="product-price" style="font-size:.90rem;">₱{{$post->price}}</div>
+                                  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{$post->price}}</div>
                                   <div class="product-links">
                                    
                                     <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>

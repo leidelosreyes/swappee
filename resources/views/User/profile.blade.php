@@ -175,7 +175,7 @@
                             <tbody>
                             @foreach($posts as $posts)
                                 <tr>
-                                    <td>{{$posts->product_name}}</td>
+                                    <td style="max-width:120px;height:20px;"><div style="height:20px; overflow:hidden">{{$posts->product_name}}</div></td>
                                     <td>₱ {{$posts->price}}</td>
                                     <td>{{$posts->wishitem}}</td>
                                     <td>{{$posts->delivery_method}}</td>

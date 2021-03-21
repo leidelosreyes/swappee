@@ -13208,6 +13208,7 @@ margin-left: 40px;
 
 .product-details {
   padding: 5px;
+  max-height: 120px;
 }
 
 .product-catagory {
@@ -13243,7 +13244,7 @@ margin-left: 40px;
 .product-bottom-details {
   overflow: hidden;
   border-top: 1px solid #eee;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .product-bottom-details div {
@@ -13710,14 +13711,29 @@ a#scrollUp {
 /* view product  */
 .card-avatar{
   border-radius: 100%;
+  /* z-index: 1; */
+  width: 40px;
+  height: 40px;
+  /* position: relative; */
+  /* display: block; */
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* margin-top: -40px; */
+
+
+ 
+}
+.card-avatar-view{
+  border-radius: 100%;
   z-index: 1;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -50px;
+  margin-top: -40px;
+
 
 
  
@@ -13734,4 +13750,11 @@ a#scrollUp {
 {
   color: #57585a;
   text-transform: uppercase;
+}
+
+.overflow {
+  
+  white-space: nowrap;
+  
+  
 }

@@ -34,7 +34,7 @@
 
 		<div class="col-sm-6 mt-4 mb-4 products-section">
             <div class="card">
-			<img src="{{$post->user->avatar}}" class="card-avatar" style="margin-top:-30px;"/>
+			<img src="{{$post->user->avatar}}" class="card-avatar-view" style="margin-top:-30px;"/>
 				<div class="card-body">
                     
                             
@@ -46,7 +46,7 @@
                                 <p><i class="fas fa-tags" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Item Description:</b> {{$post->description}}</p>								
                                 <p><i class="fas fa-sync-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Wish to Swap:</b> {{$post->wishitem}}</p>								
 								<p><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
-								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> {{$post->created_at}}</p>
+								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> {{$post->created_at->diffForHumans()}}</p>
 								<hr>
 							
                                 <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$post->delivery_method}}</p>
