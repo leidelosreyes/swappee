@@ -26,8 +26,10 @@
 							<img src="/storage/{{$post->image}}" class="w-100" id="show-img" > 
 						</div>					
 					</div>
-					<button type="submit" style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</button>
+					<a href="{{route('offers.create',$post->user_id)}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>
 				</div> 
+
+	
 				
 			</div>
 		</div>
@@ -37,7 +39,7 @@
 			<img src="{{$post->user->avatar}}" class="card-avatar-view" style="margin-top:-30px;"/>
 				<div class="card-body">
                     
-                            
+                              
 								<h4>{{$post->product_name}}</h4><br>
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p>
 								<hr>
