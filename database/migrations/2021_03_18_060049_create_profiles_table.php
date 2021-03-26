@@ -15,10 +15,11 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('cellphone_no');
             $table->string('address');
             $table->string('birthday');
-            $table->unsignedBigInteger('user_id');
-            $table->index('user_id');
             $table->timestamps();
         });
     }
