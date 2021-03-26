@@ -71,8 +71,10 @@ Route::post('/auctions',[App\Http\Controllers\AuctionController::class, 'store']
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 //------------------------------------offer----------------------------------------
-Route::get('/offers/create/{posts}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
+Route::get('/offers/create/{post}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
-
+Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_offers'])->name('show.offers');
+Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 'show_notifications'])->name('show.notifications');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
+Route::get('/search', [App\Http\Controllers\ProfileController::class, 'search'])->name('search');

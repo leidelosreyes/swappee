@@ -40,7 +40,7 @@
                                       id="receiver_id"
                                       name="receiver_id"
                                       class="form-control @error('receiver_id') is-invalid @enderror"
-                                      value="{{$posts->user_id}}"
+                                      value="{{$post}}"
                                       autocomplete="receiver_id" autofocus
                                       >
                                       @error('receiver_id')

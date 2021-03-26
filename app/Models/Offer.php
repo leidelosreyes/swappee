@@ -10,13 +10,14 @@ class Offer extends Model
     use HasFactory;
 
     protected $guarded = [];
+    public function receiver()
+    {
+           return $this->belongsTo(user::class,'receiver_id');
+    }
+
     public function sender()
     {
             return $this->belongsTo(user::class,'sender_id');
     }
-    public function reciever()
-    {
-           return $this->belongsTo(user::class,'reciever_id');
-    }
-
+   
 }

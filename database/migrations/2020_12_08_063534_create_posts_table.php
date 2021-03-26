@@ -15,10 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('product_name');
-            $table->string('description');
+            $table->text('description');
             $table->string('location');
             $table->string('wishitem');
             $table->decimal('price');

@@ -27,6 +27,7 @@
 						</div>					
 					</div>
 					<a href="{{route('offers.create',$post->user_id)}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>
+					
 				</div> 
 
 	

@@ -10,21 +10,43 @@ use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
 {
-
+    
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
    public function index()
    {
     //    query builder
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
-    $posts = post::where('user_id',auth()->id())->get();
+    $posts = post::where('user_id',Auth::id())->paginate(10);
     return view('user.profile', compact('posts'));
    }
-   // public function show_auth_user_post(posts $posts)
-   // {
-      
-   //    return view('posts.auth_view',compact('posts'));
+  
+   public function search()
+    {
 
-   // }
+        $search = request()->query('search');
+       
+        
+        if($search!="")
+        {   $posts = post::where(function ($query) use ($search){
+            $query->where('product_name','like', '%'.$search.'%')
+                  ->orWhere('id', 'like', '%'.$search.'%');
+        })
+        ->paginate(10);
+        $posts->appends(['search' => $search]);
+           
+        }
+        else
+        {
+            $posts = post::paginate(10);
+        }
+    
+        return view('user.profile',compact('posts'));
+        
+    }
    public function auth_item_show(post $post)
    {
        return view('posts.auth_view',compact('post'));
