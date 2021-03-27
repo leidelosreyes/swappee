@@ -95,13 +95,11 @@
                                             @enderror
                                 </div>
                         <div class="row mt-4">
-                            <div class="form-group">
+
                                             <label style="margin-bottom:0;">Description <label style="color:red;">*</label></label>
                                             <textarea 
                                             id="description"
                                             name="description"
-                                            rows="5"
-                                            cols="100"
                                             class="form-control @error('description') is-invalid @enderror"
                                             value=""
                                             autocomplete="description" autofocus
@@ -113,7 +111,7 @@
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
                                             @enderror
-                            </div>
+
                         </div>
                                 
                                 <!-- <div class="row">

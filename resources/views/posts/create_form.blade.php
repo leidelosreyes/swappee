@@ -92,13 +92,11 @@
                                             @enderror
                                 </div>
                         <div class="row mt-4">
-                            <div class="form-group">
+
                                             <label style="margin-bottom:0;">Description <label style="color:red;">*</label></label>
                                             <textarea 
                                             id="description"
                                             name="description"
-                                            rows="5"
-                                            cols="100"
                                             class="form-control @error('description') is-invalid @enderror"
                                             value="{{old('description')}}"
                                             autocomplete="description" autofocus
@@ -109,7 +107,7 @@
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
                                             @enderror
-                            </div>
+                            
                         </div>
                                 
                                 <div class="row">
@@ -118,7 +116,9 @@
                                         <input type="file" name="image" id="image" class="form-control-file">
                                     </div>
                                         @error('image')
-                                            <strong style="color:red;">{{$message}}</strong>
+                                            
+                                                    <p style="color:red;">{{$message}}</p>
+                                               
                                         @enderror
                                         <div class="row pt-4 p">
                                             <button type="submit" class="btn btn-primary">Create</button>
@@ -129,3 +129,4 @@
             </div>
            </div>
        </div>
+

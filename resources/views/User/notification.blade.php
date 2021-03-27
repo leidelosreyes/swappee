@@ -111,10 +111,14 @@
                 </div>
             </div>
             <div class="col-xl-8" >
-                <div class="row">
-                
-                    <!-- end col -->
-                </div>
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('user.profile')}}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Notifications</li>            
+                <li class="breadcrumb-item"><a href="{{route('show.offers')}}">offers</a></li>
+               
+            </ol>
+            </nav>
                 <!-- end row -->
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
@@ -138,8 +142,8 @@
                                     <td><div div class="mt-3">{{$notification->sender->name}}</div></td>
                                      <td> 
                                         <div class="d-flex mt-2">
-                                          <button class="btn btn-success mr-2">Accept</button>
-                                          <button class="btn btn-danger">Decline</button>
+                                          <button class="btn btn-outline-success mr-2">Accept</button>
+                                          <button class="btn btn-outline-danger">Decline</button>
                                         </div>
 
                                      </td>

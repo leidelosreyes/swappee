@@ -89,7 +89,7 @@
 
 	</section>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -162,7 +162,7 @@
 
 <footer class="footer-distributed">
 
-<div class="footer-left">
+<div class="footer-left container">
 
   <h3>Swappee<span style="color: #FFB52E;">.com</span></h3>
 
@@ -236,6 +236,22 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- <script src="{{asset('js/index.js')}}"></script> -->
-  
+
+ <!-- textarea api -->
+ <script src="https://cdn.tiny.cloud/1/d5z57kxjuvf3qb1pxqwp575nkn5dp86srz52ip6w742ozfjo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+      tinymce.init({
+        selector:'#description',
+         plugins: 'lists',
+         toolbar: 'numlist bullist',
+         height: 400,
+         width: "100%"
+        
+      })
+      
+</script>
+   
+
 </body>
 </html>

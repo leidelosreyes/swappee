@@ -110,10 +110,14 @@
                 </div>
             </div>
             <div class="col-xl-8" >
-                <div class="row">
-                
-                    <!-- end col -->
-                </div>
+            <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item"><a href="{{route('show.notifications')}}">Notifications</a></li>            
+                <li class="breadcrumb-item"><a href="{{route('show.offers')}}">Offers</a></li>
+               
+            </ol>
+            </nav>
                 <!-- end row -->
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
