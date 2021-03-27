@@ -30,68 +30,9 @@
         <div class="row">
             <div class="col-xl-4">
 
-                <!-- Personal-Information -->
-                <div class="card-box">
-                    <h4 class="header-title mt-0">Menu </h4>
-                    
-                    
-                    <div class="panel-body">
-            
-                        <hr>
-                        <div class="text-left">
-        <ul  style="list-style-type:none;">      
-            <a href="#homeSubmenu" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="far fa-plus-square"style="margin-right:3px;"></i> Add Items<i class="fas fa-chevron-right" style="float:right"></i></a> 
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <div class="pl-2">
-                        <li>
-                            <a href="{{route('posts.create')}}"class="a-color"><i class="fa fa-sync"></i> Swap</a>
-                        </li>
-                        <li>
-                            <a href="#"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
-                        </li>
-                    </div>
-                    <hr>
-                   
-                </ul>
-         <li>    
-            <a href="#homeSubmenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> My Items<i class="fas fa-chevron-right" style="float:right"></i></a> 
-                <ul class="collapse list-unstyled" id="homeSubmenu1">
-                    <div class="pl-2">
-                        <li>
-                            <a href="#"class="a-color"><i class="fa fa-sync"></i> Swap</a>
-                        </li>
-                        <li>
-                            <a href="#"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
-                        </li>
-                    </div>
-                    <hr>
-                   
-                </ul>   
-         </li>    
-                    <li> 
-                       <a href="#homeSubmenu"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
-                      
-                    </li>
-                <li>
-                    <a href="{{route('show.notifications')}}"class="a-color badge1" data-badge="2"><i class="far fa-bell"></i> Notifications</a> 
-                </li>
-                <li>
-                    <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered</a> 
-                </li>
-                
-              
-       </ul> 
-                            <!-- <a class="text-muted font-13"><strong>Edit Profile</strong></a>
-                            <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">(+12) 123 1234 567</span></p>
-                            <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">coderthemes@gmail.com</span></p>
-                            <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">USA</span></p>
-                            <p class="text-muted font-13"><strong>Languages :</strong> <span class="m-l-5"><span class="flag-icon flag-icon-us m-r-5 m-t-0" title="us"></span> <span>English</span> </span><span class="m-l-5"><span class="flag-icon flag-icon-de m-r-5" title="de"></span> <span>German</span> </span><span class="m-l-5"><span class="flag-icon flag-icon-es m-r-5" title="es"></span> <span>Spanish</span> </span><span class="m-l-5"><span class="flag-icon flag-icon-fr m-r-5" title="fr"></span> <span>French</span></span>
-                            </p> -->
-                        </div>
-                        
-                    </div>
-                </div>
-                <!-- Personal-Information -->
+                <!-- side menu -->
+                @include('user.sidemenu')
+                <!--  end side menu -->
                 <div class="card-box ribbon-box">
                     <div class="ribbon ribbon-primary">Messages</div>
                     <div class="clearfix"></div>
