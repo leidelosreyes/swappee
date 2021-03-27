@@ -48,7 +48,7 @@
       <div class="col-lg-6 order-first order-lg-last">
         <div class="section-title">
           <!--About title Start!-->
-          <h2 class="title">About Swappee</h2>
+          <h2 class="title">About Swappee test</h2>
           <h1 class="sub-title">Trade what you want in swappee</h1>  
         </div>
 
