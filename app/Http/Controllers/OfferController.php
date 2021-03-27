@@ -67,6 +67,6 @@ class OfferController extends Controller
     'image' => $imagePath
        ]);
 
-       echo "success";
+       return redirect('home')->with('success','Please wait to accept your offer');
    }
 }
