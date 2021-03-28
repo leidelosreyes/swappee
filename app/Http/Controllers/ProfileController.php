@@ -23,6 +23,14 @@ class ProfileController extends Controller
     $posts = post::where('user_id',Auth::id())->paginate(10);
     return view('user.profile', compact('posts'));
    }
+   public function index_public_view()
+   {
+    //    query builder
+    // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
+    //     eloquent orm
+    $posts = post::where('user_id',Auth::id())->paginate(10);
+    return view('user.profile_public_view', compact('posts'));
+   }
   
    public function search()
     {

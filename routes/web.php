@@ -77,4 +77,5 @@ Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_off
 Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 'show_notifications'])->name('show.notifications');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
+Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
 Route::get('/search', [App\Http\Controllers\ProfileController::class, 'search'])->name('search');

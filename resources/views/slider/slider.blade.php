@@ -1,10 +1,4 @@
-<div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                    <h2 class="title text-center">Categories</h2>
-            </div>
-        </div>
-</div>
+
 
 <div class="slickSlider container card card-body pl-1">
     
