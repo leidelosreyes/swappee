@@ -13774,3 +13774,18 @@ notification */
   border-radius:50%;
   box-shadow:0 0 1px #333;
 }
+.slick-next:before,
+.slick-prev::before
+{
+  color: orange;
+  background: orange;
+  border-radius: 100%;
+  padding-top:2px;
+  font-weight: 100;
+  
+}
+
+.categories-radius
+{
+  border-radius: 100%;
+}

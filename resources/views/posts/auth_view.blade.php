@@ -18,7 +18,7 @@
 				 </div>
 			 </div>
 		</div> -->
-		<div class="col-sm-6 mt-4 mb-4 ">
+		<div class="col-sm-5 mt-4 mb-4 mr-4 ml-4">
 			<div class="card">
 				<div class=card-body>
 					<div class="view-product">
@@ -34,22 +34,29 @@
 
 		<div class="col-sm-6 mt-4 mb-4 products-section">
             <div class="card">
-			<img src="{{$post->user->avatar}}" class="card-avatar-view" style="margin-top:-30px;"/>
+			@if(empty($post->user->avatar))
+				  <img src="{{asset('image/user_icon.png')}}" class="card-avatar-view" style="margin-top:-30px;"/>
+                  @else
+				  <img src="{{$post->user->avatar}}" class="card-avatar-view" style="margin-top:-30px;"/>
+                  @endif
 				<div class="card-body">
                     
                             
-								<h4>{{$post->product_name}}</h4><br>
+				<h1>{{$post->product_name}}</h1>
+								
+								<hr>
+							    <h3 style="color:#FFB52E;"> PHP {{$post->price}}</h3>
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p>
+								
 								<hr>
 								
-								<p><i class="fas fa-money-bill" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Price:</b> ₱{{$post->price}}</p>								
-                                <p><i class="fas fa-tags" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Item Description:</b> {{$post->description}}</p>								
+														
                                 <p><i class="fas fa-sync-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Wish to Swap:</b> {{$post->wishitem}}</p>								
-								<p><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
-								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> {{$post->created_at->diffForHumans()}}</p>
+								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> <i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
 								<hr>
 							
                                 <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$post->delivery_method}}</p>
+								<p><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
 								<!-- <form action="">
                               <textarea name="" id=""  class="form-control mb-2" rows="5"></textarea>
 							  <button type="submit" class="btn btn-primary">Send Message</button>  
@@ -63,4 +70,21 @@
 
 	</div>
 </div>
+<div class="container">
+ <div class="col-md-12 ml-1 mr-0">
+	<div class="card mb-4 products-section">
+		<div class="card-header bg-white">
+			<h3>Porduct Descriptions</h3>
+		</div>
+		<div class="card-body">
+			
+				<div>
+				{!! $post->description !!}	
+				</div>
+			
+		</div>
+	</div>
+ </div>	
+</div>
+
 @endsection

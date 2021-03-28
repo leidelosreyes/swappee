@@ -2,26 +2,21 @@
 
 @section('content')
 
-
+@include('slider.slider')
 
 <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <!-- meta -->
-                
                     <h2 class="title text-center">Available for Swap</h2>
-                   
-                
-                <!--/ meta -->
             </div>
         </div>
 
 
 <div class="row">
-            <div class="col-xl-3">
+            <div class="col-xl-3 d-none d-lg-block">
                 <!-- Personal-Information -->
                 <div class="card-box">
-                    <h4 class="header-title mt-0">Categories</h4>
+                    <h4 class="header-title mt-0">Menu</h4>
                     <div class="panel-body">
                         
                         <hr>
@@ -31,6 +26,7 @@
                           <a href=""><p class="font-15">Appliances </p></a>
                           <a href=""><p class="font-15">Home & living </p></a>
                           <a href=""><p class="font-15">Fashion </p></a>
+                          <a href=""><p class="font-15">Beauty Products </p></a>
                           <a href=""><p class="font-15">Sports & lifestyle </p></a>
                           <a href=""><p class="font-15">Toys </p></a>
                           <a href=""><p class="font-15">Antiques </p></a>
@@ -76,10 +72,14 @@
   <div class="row">
 
         @foreach ($posts as $post) 
-        <div class="col-sm-3 mt-4">
+        <div class="col-6 col-md-4 col-lg-3 b-col mt-4">
 
                   <div class="d-flex product-details ">
+                  @if(empty($post->user->avatar))
+                  <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+                  @else
                     <img src="{{$post->user->avatar}}" class="card-avatar"/>
+                  @endif
                       <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
                   </div> 
                     <div class="product-image-wrapper">

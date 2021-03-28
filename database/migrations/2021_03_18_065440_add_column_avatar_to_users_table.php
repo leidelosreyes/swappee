@@ -14,7 +14,7 @@ class AddColumnAvatarToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-        $table->string('avatar')->after('usertype');
+        $table->string('avatar')->nullable()->after('usertype');
         });
     }
 
