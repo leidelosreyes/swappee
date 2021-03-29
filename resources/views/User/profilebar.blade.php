@@ -11,7 +11,7 @@
                     @endif
                       
                             <div class="media-body text-white">
-                                <h4 class="mt-4 mb-1 font-18">{{Auth::user()->name}}</h4>
+                                <a href="{{route('user.profile')}}" style="color:white;"><h4 class="mt-4 mb-1 font-18">{{Auth::user()->name}}</h4></a>
                                
                                 <p class="text-light mb-0"><i class="fas fa-envelope"></i> {{Auth::user()->email}}</p>
                               

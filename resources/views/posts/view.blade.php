@@ -1,7 +1,8 @@
 @extends('layouts.layout2')
 @section('content')
 
-
+@include('layouts.header-nav')
+@include('layouts.carousel')
 
 <div class="container">
 	<div class="row">
@@ -47,7 +48,6 @@
                     
                               
 								<h1>{{$post->product_name}}</h1>
-								
 								<hr>
 							    <h3 style="color:#FFB52E;"> PHP {{$post->price}}</h3>
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p>
@@ -58,15 +58,41 @@
                                 <p><i class="fas fa-sync-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Wish to Swap:</b> {{$post->wishitem}}</p>								
 								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> <i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
 								<hr>
-							
+								
                                 <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$post->delivery_method}}</p>
-								<p><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
-								<form action="">
-                              <textarea name="" id=""  class="form-control mb-2 mt-4" rows="5"></textarea>
-							  <button type="submit" class="btn btn-primary">Send Message</button>  
+								<p class="mb-4"><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
+								<form action="/message" method ="post">
+                                  @csrf
+								  <input type="hidden"
+                                      placeholder="Enter r id" 
+                                      id="receiver_id"
+                                      name="receiver_id"
+                                      class="form-control @error('receiver_id') is-invalid @enderror"
+                                      value="{{$post->user_id}}"
+                                      autocomplete="receiver_id" autofocus
+                                      >
+                                      @error('receiver_id')
+                                          <span class="invalid-feedback" role="alert ">
+                                              <strong style="color:red;">{{$message}}</strong>
+                                          </span>
+                                      @enderror
+                                            <textarea 
+                                            id="message"
+                                            name="message"
+                                            class="form-control @error('message') is-invalid @enderror"
+                                            value="{{old('message')}}"
+                                            autocomplete="message" autofocus
+                                            >
+                                            </textarea>
+                                            @error('message')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror							  
+									<button type="submit" class="btn btn-primary mt-4">Send Message</button>  
 							  </form>
 
-						   </textarea>
+						  
 				</div>
             </div>
         </div>
@@ -90,4 +116,5 @@
 		</div>
   </div>	
 </div>
+
 @endsection

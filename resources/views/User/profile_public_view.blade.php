@@ -5,6 +5,10 @@
      <div class="mt-4">
         @include('user.profilebar')   
      </div>
+     <!-- slider -->
+        <!-- @include('slider.slider') -->
+     <!-- end slider -->
+
     <!-- modal for mobile view -->
     <div class="container demo">
     
@@ -28,7 +32,7 @@
                         
                     </div>
                 <div class="card-box">
-                <form class="d-flex mb-2 mt-2"  action="{{route('search')}}" method="GET">
+                <form class="d-flex mb-2 mt-2" action="{{route('search.public_view')}}" method="GET">
 						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
    					</form>
                        
@@ -37,6 +41,7 @@
                         <hr>
                         
                         <div class="text-left">
+                          <a href=""><p class="">All Products</p></a>
                           <a href=""><p class="">Electronic Devices</p></a>
                           <a href=""><p class="font-15">Appliances </p></a>
                           <a href=""><p class="font-15">Home & living </p></a>
@@ -85,7 +90,7 @@
      <div class="col-xl-3 d-none d-lg-block">
                 <!-- Personal-Information -->
                 <div class="card-box">
-                <form class="d-flex mb-2 mt-2"  action="{{route('search')}}" method="GET">
+                <form class="d-flex mb-2 mt-2"  action="{{route('search.public_view')}}" method="GET">
 						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
    					</form>
                        
@@ -94,6 +99,7 @@
                         <hr>
                         
                         <div class="text-left">
+                          <a href="{{route('user.profile_public_view')}}"><p class="">All Products</p></a>
                           <a href=""><p class="">Electronic Devices</p></a>
                           <a href=""><p class="font-15">Appliances </p></a>
                           <a href=""><p class="font-15">Home & living </p></a>

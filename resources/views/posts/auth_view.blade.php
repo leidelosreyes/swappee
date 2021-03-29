@@ -3,7 +3,8 @@
 
 
 
-<div class="container">
+<div class="container mt-4">
+   @include('user.profilebar')
 	<div class="row">
 		<!-- <div class="col-sm-2 mt-4">
 			 <div class="card">
@@ -34,11 +35,11 @@
 
 		<div class="col-sm-6 mt-4 mb-4 products-section">
             <div class="card">
-			@if(empty($post->user->avatar))
+			<!-- @if(empty($post->user->avatar))
 				  <img src="{{asset('image/user_icon.png')}}" class="card-avatar-view" style="margin-top:-30px;"/>
                   @else
 				  <img src="{{$post->user->avatar}}" class="card-avatar-view" style="margin-top:-30px;"/>
-                  @endif
+                  @endif -->
 				<div class="card-body">
                     
                             

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Message;
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -21,7 +22,8 @@ class ProfileController extends Controller
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
     $posts = post::where('user_id',Auth::id())->paginate(10);
-    return view('user.profile', compact('posts'));
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    return view('user.profile', compact('posts','messages'));
    }
    public function index_public_view()
    {
@@ -31,6 +33,24 @@ class ProfileController extends Controller
     $posts = post::where('user_id',Auth::id())->paginate(10);
     return view('user.profile_public_view', compact('posts'));
    }
+   public function search_public_view()
+   {
+
+       $search = request()->query('search'); 
+       if($search!="")
+       {   $posts = post::where('product_name','like', '%'.$search.'%')
+           ->where('user_id',Auth::id())->paginate(10);
+           $posts->appends(['search' => $search]);
+         
+       }
+       else
+       {
+           $posts = post::paginate(10);
+       }
+   
+       return view('user.profile_public_view',compact('posts'));
+       
+   }
   
    public function search()
     {
@@ -39,13 +59,10 @@ class ProfileController extends Controller
        
         
         if($search!="")
-        {   $posts = post::where(function ($query) use ($search){
-            $query->where('product_name','like', '%'.$search.'%')
-                  ->orWhere('id', 'like', '%'.$search.'%');
-        })
-        ->paginate(10);
-        $posts->appends(['search' => $search]);
-           
+        {   $posts = post::where('product_name','like', '%'.$search.'%')
+            ->where('user_id',Auth::id())->paginate(10);
+            $posts->appends(['search' => $search]);
+  
         }
         else
         {
@@ -62,7 +79,8 @@ class ProfileController extends Controller
    public function edit_auth_user_post($posts)
    {
           $posts = post::find($posts);
-         return view('posts.edit_user_post',compact('posts'));
+          $messages = Message::where('receiver_id',Auth::id())->get();
+         return view('posts.edit_user_post',compact('posts','messages'));
    }
    public function update_auth_user_post(Request $request ,post $posts )
    {

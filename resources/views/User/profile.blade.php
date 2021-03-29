@@ -11,88 +11,16 @@
                 <!-- side menu -->
                  @include('user.sidemenu')
                 <!--  end side menu -->
-                <div class="card-box ribbon-box">
-                    <div class="ribbon ribbon-primary">Messages</div>
-                    <div class="clearfix"></div>
-                    <div class="inbox-widget">
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Tomaslau</p>
-                                <p class="inbox-item-text">I've finished it! See you so...</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Stillnotdavid</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Kurafire</p>
-                                <p class="inbox-item-text">Nice to meet you</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Shahedk</p>
-                                <p class="inbox-item-text">Hey! there I'm available...</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Adhamdannaway</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Tomaslau</p>
-                                <p class="inbox-item-text">I've finished it! See you so...</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#">
-                            <div class="inbox-item">
-                                <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle" alt=""></div>
-                                <p class="inbox-item-author">Stillnotdavid</p>
-                                <p class="inbox-item-text">This theme is awesome!</p>
-                                <p class="inbox-item-date">
-                                    <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
+
+                  <!-- side bar message -->
+                    @include('messages.sidebar_message')
+                  <!-- sidebar message end -->
             <div class="col-xl-8" >
 
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item active" aria-current="page">Products</li>
                 <li class="breadcrumb-item"><a href="{{route('show.notifications')}}">Notifications</a></li>            
                 <li class="breadcrumb-item"><a href="{{route('show.offers')}}">Offers</a></li>
                
@@ -105,12 +33,21 @@
                         <p>{{$message}}</p>
                     </div>
                     @endif
+                   
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
                             <h4 class="header-title mb-3">My Product</h4> 
+                           
                             <a class="btn btn-primary float-right" href="{{route('posts.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
-                    <form class="d-flex mb-2 mt-2"  action="{{route('search')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box" type="search" name="search" placeholder="Search your items" aria-label="Search">
+                    <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
+						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
    					</form>
+                       @forelse($posts as $post)
+                        @empty
+                            <div class="alert alert-danger mt-4">
+                                <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
+                             </div>
+                        @endforelse        
+                     
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -123,12 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @forelse($posts as $post)
-				            @empty
-                                <div class="alert alert-danger mt-4">
-                                    <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
-                                </div>
-                            @endforelse  
+                           
                             @foreach($posts as $post)
                                 <tr>
                                     <td style="width:100px;"><img src="/storage/{{$post->image}}"  style=" max-width:4rem; max-height:5rem;"id="show-img" ></td>

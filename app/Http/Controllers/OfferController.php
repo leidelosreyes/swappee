@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
+use App\Models\Message;
 use App\Models\User;
 use Auth;
 
@@ -24,8 +25,9 @@ class OfferController extends Controller
    {
     $offer = offer::where('sender_id',Auth::id())->get();
    
+    $messages = Message::where('receiver_id',Auth::id())->get();
     
-    return view('user.offer', compact('offer'));
+    return view('user.offer', compact('offer','messages'));
    
    }
    public function show_notifications()
@@ -35,7 +37,8 @@ class OfferController extends Controller
     $users = DB::table('users')
             ->leftJoin('offers', 'users.id', '=', 'offers.sender_id')
             ->get();
-    return view('user.notification',compact('notifications'));
+     $messages = Message::where('receiver_id',Auth::id())->get();
+    return view('user.notification',compact('notifications','messages'));
    
    }
    public function store(Request $request )

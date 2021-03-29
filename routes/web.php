@@ -78,4 +78,9 @@ Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 's
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
 Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
-Route::get('/search', [App\Http\Controllers\ProfileController::class, 'search'])->name('search');
+Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');
+Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
+
+//-----------------------------------message-------------------------------------
+Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
+Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageController::class, 'show_message'])->name('show.message');

@@ -1,14 +1,16 @@
 @extends('layouts.layout2')
 
 @section('content')
-<div class="container">
+@include('layouts.header-nav')
+@include('layouts.carousel')
+<!-- <div class="container">
         <div class="row">
             <div class="col-md-12">
                     <h2 class="title text-center">Categories</h2>
             </div>
         </div>
 </div>
-@include('slider.slider')
+@include('slider.slider') -->
 
 <div class="container">
         <div class="row">

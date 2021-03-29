@@ -44,130 +44,7 @@
 		</section>
 
 		
-        <section>
-    <nav class="navbar navbar-expand-md navbar-dark">
-		<div class="container" style="margin-top: 15px;padding-bottom: 5px;">
-			<a href="{{url('/')}}" class="navbar-brand logo-nav"><img src="{{asset('image/swappee_logo.png')}}" style="width:150px;height: 50px;margin-bottom: 5px;" alt=""></a>
-			
-			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
-				<span class="menu-icon-bar"></span>
-				<span class="menu-icon-bar"></span>
-				<span class="menu-icon-bar"></span>
-			</button>
-			
-			<div id="main-nav" class="collapse navbar-collapse">
-				<ul class="navbar-nav ml-auto">
-					<li><a href="{{route('home')}}"  class="nav-item nav-link active navfonts" style="font-size: 1rem;">Home</a></li>
-					<li><a href="" class="nav-item nav-link  navfonts" style="font-size: 1rem;">About Us</a></li>
-					<li class="dropdown">
-						<!-- <a href="auction.php" class="nav-item nav-link  navfonts"  data-toggle="dropdown"style="font-size: 18px;">Auction</a> -->
-						<!-- <div class="dropdown-menu">
-							<a href="#" class="dropdown-item">Dropdown Item 1</a>
-							<a href="#" class="dropdown-item">Dropdown Item 2</a>
-							<a href="#" class="dropdown-item">Dropdown Item 3</a>
-						</div> -->
-					</li>
-					<li><a href="{{route('contact')}}" class="nav-item nav-link  navfonts" style="font-size: 1rem;">Contact Us</a></li>
-                    <li class="dropdown">
-						<a href="" class="nav-item nav-link  navfonts" data-toggle="dropdown" style="font-size: 1rem;" > {{ Auth::user()->name }}</a>
-						<div class="dropdown-menu">
-							<a href="{{route('user.profile')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
-              <a href="{{route('user.profile_public_view')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-globe-asia"></i> Public Profile</a>
-							<a class="dropdown-item navfonts" href="{{ route('index') }}" style="font-size: .80rem;"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                 <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
-                            </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                         </form>
-						
-						</div>
-					</li>
-
-
-                   
-</div>
-</li>
-					<!-- <li><a href="views/register.php" class="nav-item nav-link  navfonts"style="font-size: 18px;">Register</a></li> -->
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	</section>
-
-  <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">    
-            <img class="carousel-image" style="height:500px; width:100%; " src="{{asset('image/delivery-c-new.jpg')}}" alt="First slide">
-            <div class="carousel-caption d-md-block">
-            <h1 style="font-family:Copperplate; font-size: 40px;">
-                <span>Swappee</span>
-            </h1>
-          
-            <h3 style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 700">Cash Less Transactions for Swap!</h3>
-          
-             <form class="d-flex"  action="{{route('search')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box" type="search" name="search" placeholder="Search" aria-label="Search">
-
-   					    </form>
-             <p style="color: #ffffff;font-size: 16px;font-weight: 300;font-family: 'Roboto', sans-serif;margin-top: 15px;">Swapping will make you fell better. </p>
-      </div>
-    </div>
-    <div class="carousel-item ">
-      <img class="carousel-image" style="height:500px; width:100%; " src="{{asset('image/new-swap-c.jpg')}}" alt="Second slide">
-      <div class="carousel-caption d-md-block">
-            <h1 style="font-family:Copperplate; font-size: 40px;">
-                <span>Deliver</span>
-            </h1>
-            <h3 style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 700;margin-top: 15px;">Cash Less Transactions for Swap!</h3>
-            <form class="d-flex"  action="{{route('search')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box" type="search" name="search" placeholder="Search" aria-label="Search">
-
-   					    </form>
-           
-             <p style="color: #ffffff;font-size: 16px;font-weight: 300;font-family: 'Roboto', sans-serif;margin-top: 15px;">We deliver your package with love. </p>
-
-      </div>
-    
-    </div>
-    <div class="carousel-item ">
-      <img class="carousel-image" style="height:500px; width:100%; " src="{{asset('image/bidding new.jpg')}}" alt="Third slide">
-      <div class="carousel-caption d-md-block">
-            <h1 style="font-family:Copperplate; font-size: 40px;">
-                <span>Auction</span>
-            </h1>
-             <h3  style="color: #FE980F;font-family: 'Roboto', sans-serif;font-size: 28px;font-weight: 700">Cash Less Transactions for Swap!</h3>
-             
-             <form class="d-flex"  action="{{route('search')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box" type="search" name="search" placeholder="Search" aria-label="Search">
-
-   					    </form>
-
-             <p style="color: #ffffff;font-size: 16px;font-weight: 300;font-family: 'Roboto', sans-serif;margin-top: 15px;">Our auction is fair and competitive, enter at your own risk. </p>
-
-      </div>
-     
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
+      
 
 @yield('content')
 
@@ -262,9 +139,18 @@
          width: "100%"
         
       })
+      tinymce.init({
+        selector:'#message',
+         plugins: 'lists',
+         toolbar: 'bullist',
+         plugins: 'paste',
+         height: 200,
+         width: "100%"
+        
+      })
       
 </script>
-<script type="text/javascript">
+<script>
     $('.slickSlider').slick({
   autoplay: true,
   autoplaySpeed: 2000,

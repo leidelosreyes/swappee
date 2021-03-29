@@ -87,7 +87,7 @@
                     @if (Route::has('login'))
                 <!-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> -->
                     @auth
-                        <a href="{{ url('/home') }}"  class="nav-item nav-link navfonts" style="font-size:1rem;"><i class="fas fa-home"></i> Home</a>
+                        <a href="{{ url('/home') }}"  class="nav-item nav-link navfonts" style="font-size:1rem;"><i class="fas fa-home"></i></a>
                     @else
 					  <a href="{{ route('login') }}" class="nav-item nav-link navfonts" style="font-size: 1rem;">  Login </a>
 

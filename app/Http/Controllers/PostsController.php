@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Message;
 use Carbon\Carbon;
 use Auth;
 
@@ -19,7 +20,8 @@ class PostsController extends Controller
 
     public function create()
     {   
-        return view('posts.create');
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        return view('posts.create',compact('messages'));
     }
 
     public function store()
