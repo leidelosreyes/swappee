@@ -22,6 +22,29 @@
                                             @enderror
 
                                 </div>
+
+                                <div class="form-group row">
+                                            <label style="margin-bottom:0;">Choose Categories <label style="color:red;">*</label></label>
+                                            <select type="text" 
+                                            id="category_id"
+                                            name="category_id"
+                                            class="form-control  @error('categories') is-invalid @enderror"
+                                            value="{{old('category_id')}}"
+                                            autocomplete="category_id" autofocus
+                                            >
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                            
+                                            </select>
+                                            @error('category_id')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror
+
+                                </div>
+
                                 <div class="form-group row">
                                             <label style="margin-bottom:0;">Price <label style="color:red;">*</label></label>
                                             <input type="number"

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Message;
+use App\Models\Categories;
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -30,8 +31,9 @@ class ProfileController extends Controller
     //    query builder
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
+    $categories = Categories::all();
     $posts = post::where('user_id',Auth::id())->paginate(10);
-    return view('user.profile_public_view', compact('posts'));
+    return view('user.profile_public_view', compact('posts','categories'));
    }
    public function search_public_view()
    {
@@ -80,7 +82,8 @@ class ProfileController extends Controller
    {
           $posts = post::find($posts);
           $messages = Message::where('receiver_id',Auth::id())->get();
-         return view('posts.edit_user_post',compact('posts','messages'));
+          $categories = Categories::all();
+         return view('posts.edit_user_post',compact('posts','messages','categories'));
    }
    public function update_auth_user_post(Request $request ,post $posts )
    {

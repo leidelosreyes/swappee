@@ -42,15 +42,9 @@
                         
                         <div class="text-left">
                           <a href=""><p class="">All Products</p></a>
-                          <a href=""><p class="">Electronic Devices</p></a>
-                          <a href=""><p class="font-15">Appliances </p></a>
-                          <a href=""><p class="font-15">Home & living </p></a>
-                          <a href=""><p class="font-15">Fashion </p></a>
-                          <a href=""><p class="font-15">Beauty Products </p></a>
-                          <a href=""><p class="font-15">Sports & lifestyle </p></a>
-                          <a href=""><p class="font-15">Toys </p></a>
-                          <a href=""><p class="font-15">Antiques </p></a>
-                          <a href=""><p class="font-15">Others </p></a>
+                          @foreach($categories as $category)
+                          <a href=""><p class="font-15" value="{{$category->id}}">{{$category->name}}</p></a>
+                          @endforeach
                           <hr>
                           <div class="container">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">

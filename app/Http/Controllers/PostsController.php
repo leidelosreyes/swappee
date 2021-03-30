@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Message;
+use App\Models\Categories;
 use Carbon\Carbon;
 use Auth;
 
@@ -21,7 +22,8 @@ class PostsController extends Controller
     public function create()
     {   
         $messages = Message::where('receiver_id',Auth::id())->get();
-        return view('posts.create',compact('messages'));
+        $categories = Categories::all();
+        return view('posts.create',compact('messages','categories'));
     }
 
     public function store()
@@ -33,6 +35,7 @@ class PostsController extends Controller
                 'location' => 'required',
                 'wishitem' => 'required',
                 'price' => 'required',
+                'category_id' => 'required',
                 'delivery_method' => 'required',
                 'image' => ['required','image']
 
@@ -46,6 +49,7 @@ class PostsController extends Controller
             'location' => $data['location'],
             'wishitem' => $data['wishitem'],
             'price' => $data['price'],
+            'category_id' =>$data['category_id'],
             'delivery_method' => $data['delivery_method'],
             'image' => $imagePath
 
