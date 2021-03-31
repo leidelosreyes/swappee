@@ -14,7 +14,9 @@ class AddColumnCategoriesToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('category_id')->nullable()->after('user_id')->constrained();
+            $table->foreignId('category_id')->nullable()
+            ->after('user_id')->constrained()
+            ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

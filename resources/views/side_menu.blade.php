@@ -1,14 +1,15 @@
 <div class="col-xl-3 d-none d-lg-block">
                 <!-- Personal-Information -->
                 <div class="card-box">
-                    <h4 class="header-title mt-0">Menu</h4>
+                    <h4 class="header-title mt-0">Categories</h4>
                     <div class="panel-body">
                         
                         <hr>
                         
                         <div class="text-left">
+                        <a href="{{route('home')}}"><p class="font-15" >All Products </p></a>
                          @foreach($categories as $category)
-                          <a href=""><p class="font-15" value="{{$category->id}}">{{$category->name}}</p></a>
+                          <a href="{{route('filter.category',$category->id)}}"><p class="font-15" value="{{$category->id}}">{{$category->name}}</p></a>
                           @endforeach
                           <hr>
                           <div class="container">

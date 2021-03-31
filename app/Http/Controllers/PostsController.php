@@ -21,7 +21,7 @@ class PostsController extends Controller
 
     public function create()
     {   
-        $messages = Message::where('receiver_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
         $categories = Categories::all();
         return view('posts.create',compact('messages','categories'));
     }

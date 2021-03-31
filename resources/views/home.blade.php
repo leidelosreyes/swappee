@@ -18,7 +18,7 @@
                     <h2 class="title text-center">Available for Swap</h2>
             </div>
         </div>
-
+ @include('slider.slider')  
 
 <div class="row">
        @include('side_menu')    
@@ -38,9 +38,9 @@
         @forelse($posts as $post)
 				   @empty
            <img src="{{asset('/image/x-error-removebg-preview.png')}}" style=" height: 150px; width:150px; margin-top:100px;" class="center-img" id="show-img" > 
-            <h3 style="text-align:center;"><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Matched Found</h3>
+            <h3 style="text-align:center;"><i class="fas fa-exclamation-triangle" style="color:red;"></i> Nothing's Found</h3>
            @endforelse  
-         
+     
                  	
 <div class="container ">
   <div class="row">
@@ -70,7 +70,7 @@
                               </div>  
                                 <p style="font-size:.70rem;"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
                                 <div class="product-bottom-details">
-                                  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{$post->price}}</div>
+                                  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->price)}}</div>
                                   <div class="product-links">
                                    
                                     <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>
@@ -86,7 +86,9 @@
                   @endforeach
          </div>
 </div>
-<div class="container">{{$posts->links()}}</div>
+<div class="container mt-4 text-center">
+  {{$posts->links()}}
+</div>
 </section>
 
 </div>

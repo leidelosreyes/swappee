@@ -54,7 +54,7 @@
                               </div>  
                                 <p style="font-size:.70rem;"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
                                 <div class="product-bottom-details">
-                                  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{$post->price}}</div>
+                                  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->price)}}</div>
                                   <div class="product-links">
                                    
                                     <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>
@@ -70,7 +70,11 @@
                   @endforeach
          </div>
 </div>
-
+<div class="container mt-4 text-center">
+  {{$posts->links()}}
+</div>
+   
+ 
 </section>
 <section class="about-section">
   <div class="container">

@@ -88,3 +88,4 @@ Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageControlle
 //--------------------------------------categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
 Route::get('/categories/create',[App\Http\Controllers\CategoriesController::class, 'create'])->name('categories.create');
+Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');

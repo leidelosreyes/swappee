@@ -46,7 +46,7 @@
 				<h1>{{$post->product_name}}</h1>
 								
 								<hr>
-							    <h3 style="color:#FFB52E;"> PHP {{$post->price}}</h3>
+							    <h3 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h3>
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p>
 								
 								<hr>

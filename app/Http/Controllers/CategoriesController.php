@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Auth;
 
 class CategoriesController extends Controller
 {
@@ -61,6 +63,13 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
+    public function filter_post_by_category($category_id)
+    {
+        $categories = categories::all();
+        $posts = post::where('category_id',$category_id)
+        ->paginate(20);
+        return view('home',compact('posts','categories'));
+    }
     public function show(Categories $categories)
     {
         //

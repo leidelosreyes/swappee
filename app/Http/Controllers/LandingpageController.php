@@ -10,7 +10,9 @@ class LandingpageController extends Controller
 {
     public function landingpage()
     {
-        $posts = Post::all();
+        $posts = Post::latest('updated_at','desc')
+        ->orderBy('created_at', 'desc')
+        ->simplepaginate(20);
         $categories = Categories::all();
         return view('welcome', compact('posts','categories'));
     }
