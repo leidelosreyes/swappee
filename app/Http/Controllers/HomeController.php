@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Categories;
+use App\Models\Sub_categorie;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -31,7 +32,8 @@ class HomeController extends Controller
         ->orderBy('created_at', 'desc')
         ->simplepaginate(20);
         $categories = Categories::all();
-        return view('home', compact('posts','categories'));
+        $sub_categories = sub_categorie::all();
+        return view('home', compact('posts','categories','sub_categories'));
          
     }
 

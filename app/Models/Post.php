@@ -19,4 +19,8 @@ class Post extends Model
     {
         return $this->belongsTo(Categories::class);
     }
+    public function sub_categories()
+    {
+        return $this->belongsTo(Sub_categorie::class);
+    }
 }

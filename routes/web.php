@@ -64,7 +64,7 @@ Route::get('/posts/{post}',[App\Http\Controllers\PostsController::class, 'show']
 Route::get('/authPosts/{post}',[App\Http\Controllers\ProfileController::class,'auth_item_show'])->name('auth-posts.show');
 Route::get('/posts/{post}/edit_user_post',[App\Http\Controllers\ProfileController::class,'edit_auth_user_post'])->name('posts.edit');
 Route::put('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'update_auth_user_post'])->name('posts.update');
-Route::delete('/posts/{posts}',[AOp\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');
+Route::delete('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');
 //--------------------------------auction item---------------------------------
 Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'create'])->name('auctions.create');
 Route::post('/auctions',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions');
@@ -89,3 +89,6 @@ Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageControlle
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
 Route::get('/categories/create',[App\Http\Controllers\CategoriesController::class, 'create'])->name('categories.create');
 Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');
+//--------------------------------------------sub_categories-------------------------
+Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
+Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');

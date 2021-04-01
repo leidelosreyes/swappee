@@ -12,6 +12,10 @@
    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
    <link rel="stylesheet" type="text/css" href="{{asset('plugins/slick/slick.css')}}">
    <link rel="stylesheet" type="text/css" href="{{asset('plugins/slick/slick-theme.css')}}">
+   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+ 
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
     <script src="{{asset('js/jquery.js')}}"></script>
   
 </head>

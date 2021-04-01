@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Categories;
+use App\Models\Sub_Categorie;
 use Carbon\Carbon;
 use Auth;
 
@@ -23,7 +24,8 @@ class PostsController extends Controller
     {   
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
         $categories = Categories::all();
-        return view('posts.create',compact('messages','categories'));
+        $sub_categories = sub_categorie::all();
+        return view('posts.create',compact('messages','categories','sub_categories'));
     }
 
     public function store()
@@ -36,6 +38,7 @@ class PostsController extends Controller
                 'wishitem' => 'required',
                 'price' => 'required',
                 'category_id' => 'required',
+                'sub_category_id' => 'required',
                 'delivery_method' => 'required',
                 'image' => ['required','image']
 
@@ -50,6 +53,7 @@ class PostsController extends Controller
             'wishitem' => $data['wishitem'],
             'price' => $data['price'],
             'category_id' =>$data['category_id'],
+            'sub_category_id' =>$data['sub_category_id'],
             'delivery_method' => $data['delivery_method'],
             'image' => $imagePath
 
@@ -62,6 +66,7 @@ class PostsController extends Controller
     }
     public function show(post $post)
     {
+        // <-- validation to user for swapping -->
        
            if($post->user_id == Auth::id())
            {

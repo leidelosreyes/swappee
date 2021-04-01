@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Sub_categorie;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Auth;
@@ -56,6 +57,18 @@ class CategoriesController extends Controller
         return $categories;
 
     }
+    public function store_sub_category(Request $request)
+    {
+        $data = $this->validate($request,
+        [
+         'name'=> 'required|min:3|max:255|string'
+        ]);
+      
+        $sub_categories = Sub_categorie::create(['name'=>$data['name']]);
+
+        return $sub_categories;
+
+    }
 
     /**
      * Display the specified resource.
@@ -68,7 +81,16 @@ class CategoriesController extends Controller
         $categories = categories::all();
         $posts = post::where('category_id',$category_id)
         ->paginate(20);
-        return view('home',compact('posts','categories'));
+        $sub_categories = sub_categorie::all();
+        return view('home',compact('posts','categories','sub_categories'));
+    }
+    public function filter_post_by_sub_category($sub_category_id)
+    {
+        $categories = categories::all();
+        $posts = post::where('sub_category_id',$sub_category_id)
+        ->paginate(20);
+        $sub_categories = sub_categorie::all();
+        return view('home',compact('posts','categories','sub_categories'));
     }
     public function show(Categories $categories)
     {

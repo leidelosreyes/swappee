@@ -12,14 +12,16 @@
                           <a href="{{route('filter.category',$category->id)}}"><p class="font-15" value="{{$category->id}}">{{$category->name}}</p></a>
                           @endforeach
                           <hr>
-                          <div class="container">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <p class="font-15">Second Hand </p>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <p class="font-15">new </p>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <p class="font-15">old </p>
-                          </div>
+                          @foreach($sub_categories as $sub_category)
+                            <form action="{{route('filter.sub_category',$sub_category->id)}}" method="GET">
+                                <div class="container">
+                                  <input type="checkbox" class="form-check-input" name="sub_category" value="{{$sub_category->id}}"
+                                  onChange="this.form.submit()">
+                                  <p class="font-15">{{$sub_category->name}} </p>
+                                </div>
+                            </form>  
+                          @endforeach
+                         
                         </div>
                         <ul class="social-links list-inline mt-4 mb-0">
                             <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
