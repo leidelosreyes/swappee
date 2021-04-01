@@ -12,6 +12,23 @@
                           <a href="{{route('filter.category',$category->id)}}"><p class="font-15" value="{{$category->id}}">{{$category->name}}</p></a>
                           @endforeach
                           <hr>
+                          
+                            <form action="{{route('filter.price')}}" method="GET">
+                                <input id="ex6" name="price"  
+                                data-slider-id="price-slider" 
+                                data-slider-tooltip="hide" 
+                                onChange="this.form.submit()" 
+                                type="text" data-slider-min="1" 
+                                data-slider-max="100000" 
+                                data-slider-step="1" 
+                                data-slider-value="3"
+                                />
+                               
+                               <span id="ex6CurrentSliderValLabel"class="a-color">CURRENT PRICE: <span id="ex6SliderVal">{{number_format(0)}}</span></span>
+                               
+                            </form>
+                                         
+                          <hr>
                           @foreach($sub_categories as $sub_category)
                             <form action="{{route('filter.sub_category',$sub_category->id)}}" method="GET">
                                 <div class="container">

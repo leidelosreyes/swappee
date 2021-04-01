@@ -13,10 +13,10 @@
    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
    <link rel="stylesheet" type="text/css" href="{{asset('plugins/slick/slick.css')}}">
    <link rel="stylesheet" type="text/css" href="{{asset('plugins/slick/slick-theme.css')}}">
-   
-   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
     <script src="{{asset('js/jquery.js')}}"></script>
+    
   
 </head>
 <body>
@@ -109,8 +109,7 @@
 </div>
 
 </footer>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 <script src="{{asset('js/index.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
@@ -188,6 +187,13 @@
 });
 
 </script>
-
+      <script>
+        var slider = new Slider("#ex6");
+        $('.slider-selection').css('background', '#FFB52E'); 
+        $('.slider-handle').css('background', '#FFB52E');   
+        slider.on("slide", function(sliderValue) {
+          document.getElementById("ex6SliderVal").textContent = sliderValue;
+        });
+      </script>
 </body>
 </html>

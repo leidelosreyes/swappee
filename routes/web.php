@@ -92,3 +92,5 @@ Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController:
 //--------------------------------------------sub_categories-------------------------
 Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
+//-----------------------------------------filter by price------------------------------
+Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');

@@ -84,6 +84,16 @@ class CategoriesController extends Controller
         $sub_categories = sub_categorie::all();
         return view('home',compact('posts','categories','sub_categories'));
     }
+    public function filter_by_price(Request $request)
+    {
+        $categories = categories::all();
+        $sub_categories = sub_categorie::all();
+        $price = $request->price;
+        $min_val = 1;
+        $posts = post::whereBetween('price',[$min_val,$price])
+        ->paginate(20);
+        return view('home',compact('posts','categories','sub_categories'));
+    }
     public function filter_post_by_sub_category($sub_category_id)
     {
         $categories = categories::all();
