@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Categories;
 use App\Models\Sub_Categorie;
+use App\Models\Offer;
 use Carbon\Carbon;
 use Auth;
 
@@ -25,7 +26,8 @@ class PostsController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
-        return view('posts.create',compact('messages','categories','sub_categories'));
+        $notifications = Offer::all();
+        return view('posts.create',compact('messages','categories','sub_categories','notifications'));
     }
 
     public function store()
@@ -40,6 +42,7 @@ class PostsController extends Controller
                 'category_id' => 'required',
                 'sub_category_id' => 'required',
                 'delivery_method' => 'required',
+                
                 'image' => ['required','image']
 
         ]);
@@ -55,12 +58,13 @@ class PostsController extends Controller
             'category_id' =>$data['category_id'],
             'sub_category_id' =>$data['sub_category_id'],
             'delivery_method' => $data['delivery_method'],
+            
             'image' => $imagePath
 
 
         ]);
 
-        return redirect('home')->with('success','Product Post successfully');
+        return redirect('home')->with('success','Please Wait for the approval of your product !');
         
           
     }

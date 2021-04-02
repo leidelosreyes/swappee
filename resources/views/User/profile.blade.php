@@ -4,6 +4,7 @@
 
     <div class="container mt-4">
         @include('user.profilebar')
+        
         <!-- end row -->
         <div class="row">
             <div class="col-xl-4">
@@ -56,6 +57,7 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Date</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -67,7 +69,13 @@
                                     <td style="max-width:120px;height:20px;"><div class="mt-2"style="height:20px; overflow:hidden">{{$post->product_name}}</div></td>
                                     <td style=""><div class="mt-2">PHP {{$post->price}}</div></td>
                                     <td style=""><div class="mt-2"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</div></td>
-                                    
+                                    <td style="">
+                                    @if($post->approved == true)
+                                    <div class="mt-2"><i class="far fa-thumbs-up" style="color:blue;"></i> <span class="bg-blue">Approved</span></div>
+                                    @else
+                                    <div class="mt-2"><i class="fas fa-history" style="color:red;"></i> <span class="bg-pink">Pending</span></div>
+                                    @endif
+                                    </td>
                                     <td>
                                     <div class="d-flex mt-2">
                                     <a href="{{route('auth-posts.show',$post->id)}}"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>

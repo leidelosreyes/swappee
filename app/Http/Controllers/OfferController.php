@@ -17,17 +17,17 @@ class OfferController extends Controller
     }
    public function create($post)
    {
-
-      return view('offers.create',compact('post'));
+      $notifications = offer::where('receiver_id',Auth::id())->get();
+      return view('offers.create',compact('post','notifications'));
 
    }
    public function show_offers()
    {
     $offer = offer::where('sender_id',Auth::id())->get();
-   
+    $notifications = offer::where('receiver_id',Auth::id())->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
     
-    return view('user.offer', compact('offer','messages'));
+    return view('user.offer', compact('offer','messages','notifications'));
    
    }
    public function show_notifications()

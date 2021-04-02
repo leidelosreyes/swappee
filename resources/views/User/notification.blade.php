@@ -46,8 +46,8 @@
                                     <td><div div class="mt-3">{{$notification->sender->name}}</div></td>
                                      <td> 
                                         <div class="d-flex mt-2">
-                                          <button class="btn btn-outline-success mr-2">Accept</button>
-                                          <button class="btn btn-outline-danger">Decline</button>
+                                        <a href=""style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Open</a>
+                                         
                                         </div>
 
                                      </td>

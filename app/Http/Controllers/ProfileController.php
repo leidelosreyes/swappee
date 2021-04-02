@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Offer;
 use App\Models\Message;
 use App\Models\Categories;
 use Carbon\Carbon;
@@ -24,7 +25,9 @@ class ProfileController extends Controller
     //     eloquent orm
     $posts = post::where('user_id',Auth::id())->paginate(10);
     $messages = Message::where('receiver_id',Auth::id())->get();
-    return view('user.profile', compact('posts','messages'));
+    $notifications = offer::where('receiver_id',Auth::id())->get();
+    $notifications_count = count($notifications);
+    return view('user.profile', compact('posts','messages','notifications'));
    }
    public function index_public_view()
    {
@@ -58,7 +61,7 @@ class ProfileController extends Controller
     {
 
         $search = request()->query('search');
-       
+        $messages = Message::where('receiver_id',Auth::id())->get();
         
         if($search!="")
         {   $posts = post::where('product_name','like', '%'.$search.'%')
@@ -71,7 +74,7 @@ class ProfileController extends Controller
             $posts = post::paginate(10);
         }
     
-        return view('user.profile',compact('posts'));
+        return view('user.profile',compact('posts','messages'));
         
     }
    public function auth_item_show(post $post)

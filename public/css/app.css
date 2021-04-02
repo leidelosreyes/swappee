@@ -13573,8 +13573,9 @@ margin-left: 40px;
 .inbox-widget .inbox-item {
   border-bottom: 1px solid #f3f6f8;
   overflow: hidden;
+  width: auto;
   padding: 10px 0;
-  position: relative
+  position: relative;
 }
 
 .inbox-widget .inbox-item .inbox-item-img {
@@ -13777,16 +13778,16 @@ notification */
 .badge1[data-badge]:after {
   content:attr(data-badge);
   position:absolute;
- 
-  left:4px;
+  margin-left:-90px;
+  margin-top: -5px;
   font-size:.7em;
   background:red;
-  color:white;
+  /* color:white; */
   width:18px;height:18px;
   text-align:center;
-  line-height:18px;
+  line-height:12px;
   border-radius:50%;
-  box-shadow:0 0 1px #333;
+  /* box-shadow:0 0 1px #333; */
 }
 .slick-next:before,
 .slick-prev::before
@@ -13867,3 +13868,5 @@ notification */
 .btn-demo:focus {
 	outline: 0;
 }
+
+/* notifications */

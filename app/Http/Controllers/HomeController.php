@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest('updated_at','desc')
+        $posts = Post::where('approved',1)->latest('updated_at','desc')
         ->orderBy('created_at', 'desc')
         ->simplepaginate(20);
         $categories = Categories::all();
@@ -46,7 +46,7 @@ class HomeController extends Controller
         if($search!="")
         {   $posts = post::where(function ($query) use ($search){
             $query->where('product_name', 'like', '%'.$search.'%')
-                  ->orWhere('id', 'like', '%'.$search.'%');
+                  ->orWhere('location', 'like', '%'.$search.'%');
         })
         ->simplepaginate(20);
         $posts->appends(['search' => $search]);
@@ -57,7 +57,8 @@ class HomeController extends Controller
             $posts = post::simplepaginate(20);
         }
         $categories = Categories::all();
-        return view('home',compact('posts','categories'));
+        $sub_categories = sub_categorie::all();
+        return view('home',compact('posts','categories','sub_categories'));
         
     }
   

@@ -1,7 +1,6 @@
 <div class="card-box">
                     <h4 class="header-title mt-0">Menu </h4>
-                    
-                    
+                   
                     <div class="panel-body">
             
                         <hr>
@@ -32,9 +31,9 @@
                        <a href="#homeSubmenu"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
                       
                     </li>
-                <li>
+                <!-- <li>
                     <a href="{{route('show.notifications')}}"class="a-color badge1" data-badge="2"><i class="far fa-bell"></i> Notifications</a> 
-                </li>
+                </li> -->
                 <li>
                     <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered</a> 
                 </li>
