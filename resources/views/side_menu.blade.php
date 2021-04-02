@@ -1,5 +1,5 @@
 <div class="col-xl-3 d-none d-lg-block">
-                <!-- Personal-Information -->
+                <!-- side menu -->
                 <div class="card-box">
                     <h4 class="header-title mt-0">Categories</h4>
                     <div class="panel-body">
@@ -47,3 +47,4 @@
                         </ul>
                     </div>
                 </div>
+          <!-- end side menu -->
