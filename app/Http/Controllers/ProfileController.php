@@ -23,7 +23,7 @@ class ProfileController extends Controller
     //    query builder
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
-    $posts = post::where('user_id',Auth::id())->paginate(10);
+    $posts = post::where('user_id',Auth::id())->simplepaginate(20);
     $messages = Message::where('receiver_id',Auth::id())->get();
     $notifications = offer::where('receiver_id',Auth::id())->get();
     $notifications_count = count($notifications);
@@ -62,6 +62,7 @@ class ProfileController extends Controller
 
         $search = request()->query('search');
         $messages = Message::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->get();
         
         if($search!="")
         {   $posts = post::where('product_name','like', '%'.$search.'%')
@@ -74,19 +75,21 @@ class ProfileController extends Controller
             $posts = post::paginate(10);
         }
     
-        return view('user.profile',compact('posts','messages'));
+        return view('user.profile',compact('posts','messages','notifications'));
         
     }
    public function auth_item_show(post $post)
    {
-       return view('posts.auth_view',compact('post'));
+    $notifications = offer::where('receiver_id',Auth::id())->get();
+       return view('posts.auth_view',compact('post','notifications'));
    }
    public function edit_auth_user_post($posts)
    {
           $posts = post::find($posts);
           $messages = Message::where('receiver_id',Auth::id())->get();
+          $notifications = offer::where('receiver_id',Auth::id())->get();
           $categories = Categories::all();
-         return view('posts.edit_user_post',compact('posts','messages','categories'));
+         return view('posts.edit_user_post',compact('posts','messages','categories','notifications'));
    }
    public function update_auth_user_post(Request $request ,post $posts )
    {

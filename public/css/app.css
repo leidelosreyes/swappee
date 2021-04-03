@@ -13869,4 +13869,12 @@ notification */
 	outline: 0;
 }
 
-/* notifications */
+/* user product */
+.product-image-user {
+  width: 100%;
+  height:10rem;
+  object-fit: scale-down;
+}
+
+
+/* breadcrumbs */
