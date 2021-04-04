@@ -78,8 +78,8 @@ class PostsController extends Controller
               ->with('error','You are not able to Swap on your own item');
            }
        
-        
-            return view('posts.view',compact('post'));
+           $more_posts = post::where('user_id',$post->user_id)->simplepaginate(20);
+            return view('posts.view',compact('post','more_posts'));
         
     }
 

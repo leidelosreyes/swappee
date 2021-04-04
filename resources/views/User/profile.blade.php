@@ -16,6 +16,7 @@
 
                   <!-- side bar message -->
                     @include('messages.sidebar_message')
+                    
                   <!-- sidebar message end -->
             <div class="col-xl-8" >
     
@@ -82,8 +83,8 @@
                                         </div>
                                     
                                         <div class="d-flex flex-column mt-2">
-                                        <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary btn-sm mb-2" type="button">Edit</a>
-                                        <a href="{{route('auth-posts.show',$post->id)}}" class="btn btn-primary btn-sm" type="button">Details</a>
+                                        <a href="{{route('posts.edit',$post->id)}}" class="btn btn-outline-warning btn-sm mb-2" type="button">Edit</a>
+                                        <a href="{{route('auth-posts.show',$post->id)}}" class="btn btn-outline-warning btn-sm" type="button">Details</a>
                                         {!! Form::open(['route' => ['posts.delete', $post->id], 'method' => 'delete']) !!}
                                         <button class="delete form-control btn-sm mt-2" style="height:30px;" >Delete</button>
                                         {!!Form::close() !!}

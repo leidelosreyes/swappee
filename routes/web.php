@@ -83,6 +83,7 @@ Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController
 
 //-----------------------------------message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
+Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message');
 Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageController::class, 'show_message'])->name('show.message');
 
 //--------------------------------------categories--------------------------------------

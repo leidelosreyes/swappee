@@ -24,7 +24,7 @@ class ProfileController extends Controller
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
-    $messages = Message::where('receiver_id',Auth::id())->get();
+    $messages = Message::where('receiver_id',Auth::id())->limit(10)->get();
     $notifications = offer::where('receiver_id',Auth::id())->get();
     $notifications_count = count($notifications);
     return view('user.profile', compact('posts','messages','notifications'));
@@ -78,6 +78,7 @@ class ProfileController extends Controller
         return view('user.profile',compact('posts','messages','notifications'));
         
     }
+   
    public function auth_item_show(post $post)
    {
     $notifications = offer::where('receiver_id',Auth::id())->get();

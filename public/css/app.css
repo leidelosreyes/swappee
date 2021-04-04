@@ -13644,7 +13644,7 @@ margin-left: 40px;
 }
 
 .ribbon-box .ribbon-primary {
-  background: #2d7bf4;
+  background: #FFB52E;
 }
 
 .ribbon-box .ribbon {
@@ -13877,4 +13877,65 @@ notification */
 }
 
 
-/* breadcrumbs */
+/* message badge */
+.badge-notification {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 100%;
+  background: red;
+  color: white;
+}
+
+/* messages convo */
+/* Chat containers */
+.container1 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+/* .container1 img {
+  float: left;
+
+  width: 10px;
+  margin-right: 20px;
+  border-radius: 50%;
+} */
+
+/* Style the right image */
+.container1 img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
+

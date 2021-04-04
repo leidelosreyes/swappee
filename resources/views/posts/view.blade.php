@@ -6,37 +6,20 @@
 
 <div class="container">
 	<div class="row">
-		<!-- <div class="col-sm-2 mt-4">
-			 <div class="card">
-				 <div class="panel-body">
-				 <div class="text-left">
-                          <a href=""><p class="">make offer</p></a>
-                          <a href=""><p class="font-15">report </p></a>
-                         
-                          <hr>
-                          
-                        </div>
-				 </div>
-			 </div>
-		</div> -->
-		<div class="col-sm-5 mt-4 mb-4 mr-4 ml-4 ">
+		<div class="col-sm-5 mt-4 mb-4">
 			<div class="card">
 				<div class=card-body>
 					<div class="view-product">
 						<div class="show" href="/storage/{{$post->image}}" style=" height: 25rem; width: 100%;">
-							<img src="/storage/{{$post->image}}" class="w-100" id="show-img" > 
+							<img src="/storage/{{$post->image}}" style="width:100%;height:100%;" id="show-img" > 
 						</div>					
 					</div>
-					<a href="{{route('offers.create',$post->user_id)}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>
-					
-				</div> 
-
-	
-				
+					<a href="{{route('offers.create',$post->user_id)}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>		
+				</div> 	
 			</div>
 		</div>
 
-		<div class="col-sm-6 mt-4 mb-4 mb-4 products-section">
+		<div class="col-sm-7 mt-4 mb-4">
             <div class="card">
 			@if(empty($post->user->avatar))
 				  <img src="{{asset('image/user_icon.png')}}" class="card-avatar-view" style="margin-top:-30px;"/>
@@ -61,7 +44,23 @@
 								
                                 <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$post->delivery_method}}</p>
 								<p class="mb-4"><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
-								<form action="/message" method ="post">
+<!-- Button trigger modal -->
+	<button type="button" style="background-color:#FFB52E;border:none;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	<i class="far fa-comment-alt"></i> Message
+	</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form action="/message" method ="post">
                                   @csrf
 								  <input type="hidden"
                                       placeholder="Enter r id" 
@@ -89,8 +88,21 @@
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
                                             @enderror							  
-									<button type="submit" class="btn btn-primary mt-4">Send Message</button>  
-							  </form>
+									 
+									<div class="modal-footer">
+									
+									<button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i class="fas fa-times"></i></button>
+									<button type="sumbit" class="btn btn-primary"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send</button>
+                    </div>
+							    </form>
+                                 </div>
+      
+    </div>
+  </div>
+</div>
+								
+<!-- end modal -->
+							
 
 						  
 				</div>
@@ -101,7 +113,7 @@
 	</div>
 </div>
 <div class="container">
-  <div class="col-md-12 ml-1 mr-0">
+  <div>
 		<div class="card mb-4 products-section">
 			<div class="card-header bg-white">
 				<h3>Product Descriptions </h3>
@@ -115,6 +127,62 @@
 			</div>
 		</div>
   </div>	
+</div>
+
+<div class="container mb-4"> 
+	<div class="card">
+			<div class="card-header bg-white">
+				<h3>More Items </h3>
+			</div>
+		<div class="card-body">
+		<div class="row">
+
+@foreach ($more_posts as $post) 
+<div class="col-6 col-md-6 col-lg-3 b-col mt-4">
+
+		  <div class="d-flex product-details ">
+		  @if(empty($post->user->avatar))
+		  <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+		  @else
+			<img src="{{$post->user->avatar}}" class="card-avatar"/>
+		  @endif
+			  <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+		  </div> 
+			<div class="product-image-wrapper">
+
+			  <div class="single-products">
+				  <div class="productinfo">
+							
+				 <img src="/storage/{{$post->image}}"  style=" height:11rem; width: 100%;
+					  object-fit: cover;" alt="" />
+					  
+					<div class="product-details">
+					  <div  style="height:20px; overflow:hidden;">
+						  <p style="font-size: 16px;font-weight: 500;">{{$post->product_name}}</p>
+					  </div>  
+						<p style="font-size:.70rem;"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
+						<div class="product-bottom-details">
+						  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->price)}}</div>
+						  <div class="product-links">
+						   
+							<a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>
+						  </div>
+						</div>
+					  </div>                    
+				  </div>
+			  </div>
+			
+			</div>
+			
+		  </div>
+		  @endforeach
+		    <div class="container mt-4 mmb-4 text-center">
+			{{$more_posts->links()}}
+			</div>
+ </div>
+		</div>
+	</div>
+
 </div>
 
 @endsection
