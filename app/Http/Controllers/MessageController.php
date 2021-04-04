@@ -71,6 +71,6 @@ class MessageController extends Controller
      'reply' => 1
         ]);
  
-        return redirect()->back();
+        return redirect()->back()->with('success','Your Message successfully sent');
     }
 }
