@@ -16,7 +16,7 @@
             <div class="col-xl-8" >
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Home</li>
+                <li class="breadcrumb-item"><a href="{{route('user.profile')}}">Products</a></li>
                 <li class="breadcrumb-item"><a href="{{route('show.notifications')}}">Notifications</a></li>            
                 <li class="breadcrumb-item"><a href="{{route('show.offers')}}">Offers</a></li>
                

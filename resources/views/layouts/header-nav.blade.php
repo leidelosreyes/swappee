@@ -12,16 +12,9 @@
 			<div id="main-nav" class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
 					<li><a href="{{route('home')}}"  class="nav-item nav-link active navfonts" style="font-size: 1rem;">Home</a></li>
-					<li><a href="" class="nav-item nav-link  navfonts" style="font-size: 1rem;">About Us</a></li>
-					<li class="dropdown">
-						<!-- <a href="auction.php" class="nav-item nav-link  navfonts"  data-toggle="dropdown"style="font-size: 18px;">Auction</a> -->
-						<!-- <div class="dropdown-menu">
-							<a href="#" class="dropdown-item">Dropdown Item 1</a>
-							<a href="#" class="dropdown-item">Dropdown Item 2</a>
-							<a href="#" class="dropdown-item">Dropdown Item 3</a>
-						</div> -->
-					</li>
-					<li><a href="{{route('contact')}}" class="nav-item nav-link  navfonts" style="font-size: 1rem;">Contact Us</a></li>
+					<li><a href="" class="nav-item nav-link  navfonts" style="font-size: 1rem;">About</a></li>
+					<!-- <li><a href="" class="nav-item nav-link  navfonts" style="font-size: 1rem;" data-toggle="modal" data-target="#addmodal">Add Product</a></li> -->
+					<li><a href="{{route('posts.create')}}" class="nav-item nav-link  navfonts" style="font-size: 1rem;" >Add Product</a></li>
                     <li class="dropdown">
 						<a href="" class="nav-item nav-link  navfonts" data-toggle="dropdown" style="font-size: 1rem;" > {{ Auth::user()->name }}</a>
 						<div class="dropdown-menu">

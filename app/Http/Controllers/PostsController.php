@@ -26,7 +26,7 @@ class PostsController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
-        $notifications = Offer::all();
+        $notifications = offer::where('receiver_id',Auth::id())->get();
         return view('posts.create',compact('messages','categories','sub_categories','notifications'));
     }
 
@@ -38,7 +38,7 @@ class PostsController extends Controller
                 'description' => 'required',
                 'location' => 'required',
                 'wishitem' => 'required',
-                'price' => 'required',
+                'price' => 'required|string|min:2|max:6',
                 'category_id' => 'required',
                 'sub_category_id' => 'required',
                 'delivery_method' => 'required',

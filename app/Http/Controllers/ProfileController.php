@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Post;
-use App\Models\User;
-use App\Models\Offer;
-use App\Models\Message;
-use App\Models\Categories;
+use App\Models\{Post,User,Offer,Message,Categories};
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
