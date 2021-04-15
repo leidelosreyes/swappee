@@ -84,7 +84,7 @@
                                     
                                         <div class="d-flex flex-column mt-2">
                                         <a href="{{route('posts.edit',$post->id)}}" class="btn btn-outline-warning btn-sm mb-2" type="button">Edit</a>
-                                        <a href="{{route('auth-posts.show',$post->id)}}" class="btn btn-outline-warning btn-sm" type="button">Details</a>
+                                        <button  data-toggle="modal" data-target="#{{$post->id}}" class="btn btn-outline-warning btn-sm" >Details</button>
                                         {!! Form::open(['route' => ['posts.delete', $post->id], 'method' => 'delete']) !!}
                                         <button class="delete form-control btn-sm mt-2" style="height:30px;" >Delete</button>
                                         {!!Form::close() !!}
@@ -109,8 +109,85 @@
         <!-- end row -->
     </div>
     <!-- container -->
+ </div>
 </div>
-                    </div>
+ <!-- Modal -->
+ @foreach($posts as $post)
+ <div class="modal fade" id="{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body">
+                <div class="container">
+
+<div class="row">
+    <div class="col-sm-5 mt-4 mb-4">
+        <div class="card">
+            <div class=card-body>
+                <div class="view-product">
+               
+                        <img src="/storage/{{$post->image}}" style="width:100%;height:100%;" id="show-img" > 
+                    					
+                </div>	
+            </div> 	
+        </div>
+    </div>
+
+    <div class="col-sm-7 mt-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                
+                          
+                            <h1>{{$post->product_name}}</h1>
+                            <hr>
+                            <h3 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h3>
+                            <p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p> 
+                            
+                            <hr>
+                            
+                                                    
+                            <p><i class="fas fa-sync-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Wish to Swap:</b> {{$post->wishitem}}</p>								
+                            <p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> <i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
+                            <hr>
+                            
+                            <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$post->delivery_method}}</p>
+                            <p class="mb-4"><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>					  
+            </div>
+        </div>
+    </div>
+                        
+
+</div>
+</div>
+<div class="container">
+<div>
+    <div class="card mb-4 products-section">
+        <div class="card-header bg-white">
+            <h3>Product Descriptions </h3>
+        </div>
+        <div class="card-body">
+            
+                <div class="container">
+                {!! $post->description !!}	
+                </div>
+            
+        </div>
+    </div>
+</div>	
+</div>
+                  </div>
+              </div>
+           </div>
+        </div>        
+                           
+
+          @endforeach   
+            <!-- end modal -->
                 
                
 @endsection

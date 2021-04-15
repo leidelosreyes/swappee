@@ -19,5 +19,9 @@ class Offer extends Model
     {
             return $this->belongsTo(user::class,'sender_id');
     }
+    public function post()
+    {
+        return $this->belongsTo(post::class);
+    }
    
 }

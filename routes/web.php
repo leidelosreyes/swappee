@@ -71,7 +71,7 @@ Route::post('/auctions',[App\Http\Controllers\AuctionController::class, 'store']
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 //------------------------------------offer----------------------------------------
-Route::get('/offers/create/{post}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
+Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
 Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_offers'])->name('show.offers');
 Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 'show_notifications'])->name('show.notifications');

@@ -15,10 +15,11 @@ class OfferController extends Controller
     {
         $this->middleware(['auth','verified']);
     }
-   public function create($post)
+   public function create($post,$post_id)
    {
+      
       $notifications = offer::where('receiver_id',Auth::id())->get();
-      return view('offers.create',compact('post','notifications'));
+      return view('offers.create',compact('post','notifications','post_id'));
 
    }
    public function show_offers()
@@ -53,12 +54,13 @@ class OfferController extends Controller
         'price' => 'required',
         'delivery_method' => 'required',
         'receiver_id' =>'required',
+        'post_id' => 'required',
         'image' => ['required','image']
 
        ]);
       
        $imagePath = request('image')->store('uploads','public');
-
+        
     auth()->user()->sender()->create
     ([
     'product_name' => $data['product_name'],
@@ -67,6 +69,7 @@ class OfferController extends Controller
     'price' => $data['price'],
     'delivery_method' => $data['delivery_method'],
     'receiver_id' => $data['receiver_id'],
+    'post_id' => $data['post_id'],
     'image' => $imagePath
        ]);
 

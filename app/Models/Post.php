@@ -10,9 +10,7 @@ class Post extends Model
     use HasFactory;
     protected $guarded = [];
     public function user()
-    {
-
-        
+    {     
         return $this->belongsTo(User::class);
     }
     public function categories()
@@ -22,5 +20,9 @@ class Post extends Model
     public function sub_categories()
     {
         return $this->belongsTo(Sub_categorie::class);
+    }
+    public function offer()
+    {
+        return $this->hasMany(Offer::class);
     }
 }

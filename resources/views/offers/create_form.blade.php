@@ -6,7 +6,7 @@
                                  <div class="container">
                                   <form action="/offers" method ="post" enctype="multipart/form-data">
                                    @csrf
-                                   <div class="form-group row">
+                            <div class="form-group row">
                                       <input type="hidden"
                                       placeholder="Enter r id" 
                                       id="receiver_id"
@@ -21,7 +21,23 @@
                                           </span>
                                       @enderror
 
-                          </div>
+                            </div>
+                            <div class="form-group row">
+                                      <input type="hidden"
+                                      placeholder="Enter r id" 
+                                      id="post_id"
+                                      name="post_id"
+                                      class="form-control @error('post_id') is-invalid @enderror"
+                                      value="{{$post_id}}"
+                                      autocomplete="post_id" autofocus
+                                      >
+                                      @error('post_id')
+                                          <span class="invalid-feedback" role="alert ">
+                                              <strong style="color:red;">{{$message}}</strong>
+                                          </span>
+                                      @enderror
+
+                            </div>
                                      <div class="form-group row">
                                       
                                                      <label style="margin-bottom:0;">Item Name <label style="color:red;">*</label></label>

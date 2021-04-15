@@ -71,7 +71,7 @@
                                         <div class="d-flex flex-column mt-4">
                                         <a href="" class="btn btn-primary btn-sm mb-2" type="button">Accept</a>
                                         <a href="" class="btn btn-primary btn-sm" type="button">Decline</a>
-                                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">More Details</button>
+                                        <button class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal" data-target="#notification-modal{{$notification->id}}"type="button">More Details</button>
                                         </div>
                                     </div>
                                 </div>                
@@ -92,7 +92,74 @@
         <!-- end row -->
     </div>
     <!-- container -->
+ </div>
 </div>
+          <!-- Modal -->
+          @foreach($notifications as $notification)
+<div class="modal fade" id="notification-modal{{$notification->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Offers</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-5">
+			     <img src="/storage/{{$notification->image}}" class="swap-trans-image" id="show-img" > 		
+            </div>
+            <div class="col-2">
+                <div>
+                    <img src="{{asset('image/trans-swap.png')}}" class="swap-trans" >
+                </div>     
+            </div>
+            <div class="col-5">
+                    <img src="/storage/{{$notification->post->image}}" class="swap-trans-image" id="show-img" > 	
+            </div>
+            <div class="container">
+                <div>
+                    <div class="card mb-4 products-section">
+                            <div class="card-header bg-white">
+                                <h3>Sender Details </h3>
+                            </div>
+                            <div class="card-body">
+                               <div class="container">
+                               <h1>{{$notification->product_name}}</h1>
+								<hr>
+							    <h3 style="color:#FFB52E;">PHP {{number_format($notification->price)}}</h3>
+								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Offered by: {{$notification->sender->name}}</b></p>				
+								<hr>
+								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> <i class="far fa-clock" style="color:green"></i>{{$notification->created_at->diffForHumans()}}</p>
+								<hr>
+                                <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$notification->delivery_method}} </p>
+								<p class="mb-4"><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$notification->location}}</p>
+                               </div>          
+                      </div>
                     </div>
-                
+                </div>	
+            </div>
+            <div class="container">
+                <div>
+                    <div class="card mb-4 products-section">
+                            <div class="card-header bg-white">
+                                <h3>Product Descriptions </h3>
+                            </div>
+                            <div class="card-body">
+                               <div class="container">
+                                    {!!$notification->description!!}
+                               </div>          
+                      </div>
+                    </div>
+                </div>	
+            </div>
+
+        </div>
+    </div> 
+    </div>
+  </div>
+</div>
+	@endforeach							
+<!-- end modal -->      
 @endsection

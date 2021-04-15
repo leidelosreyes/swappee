@@ -14,7 +14,7 @@
 							<img src="/storage/{{$post->image}}" style="width:100%;height:100%;" id="show-img" > 
 						</div>					
 					</div>
-					<a href="{{route('offers.create',$post->user_id)}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>		
+					<a href="{{route('offers.create',[$post->user_id,$post->id])}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>		
 				</div> 	
 			</div>
 		</div>
