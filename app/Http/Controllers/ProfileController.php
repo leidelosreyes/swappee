@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\{Post,User,Offer,Message,Categories};
+use App\Models\{Post,User,Offer,Message,Categories,sub_categorie};
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -85,19 +85,22 @@ class ProfileController extends Controller
           $posts = post::find($posts);
           $messages = Message::where('receiver_id',Auth::id())->get();
           $notifications = offer::where('receiver_id',Auth::id())->get();
+          $sub_categories = sub_categorie::all();
           $categories = Categories::all();
-         return view('posts.edit_user_post',compact('posts','messages','categories','notifications'));
+         return view('posts.edit_user_post',compact('posts','messages','categories','notifications','sub_categories'));
    }
    public function update_auth_user_post(Request $request ,post $posts )
    {
-      $request->validate([
-                'product_name' => 'required',
-                'description' => 'required',
-                'location' => 'required',
-                'wishitem' => 'required',
-                'price' => 'required',
-                'delivery_method' => 'required'
-     ]);
+    $data = request()->validate([
+        'product_name' => 'required',
+        'description' => 'required',
+        'location' => 'required',
+        'wishitem' => 'required',
+        'price' => 'required|string|min:2|max:8',
+        'category_id' => 'required',
+        'sub_category_id' => 'required',
+        'delivery_method' => 'required'    
+    ]);
       $posts->update($request->all());
       return redirect()->route('user.profile')
             ->with('success','Product updated successfully');

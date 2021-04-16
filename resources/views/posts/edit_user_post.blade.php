@@ -30,7 +30,7 @@
                     </div>
                     @endif
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
-                <h4 class="header-title mb-3">Edit New Product</h4> 
+                <h4 class="header-title mb-3">Edit Product</h4> 
                         @include('posts.edit_user_post_form')
                                
                 </div>              

@@ -134,11 +134,13 @@
                                         @enderror
                                       
                                     </div>
+                                    <label  for="image" style="margin-bottom:0;">Product Description <label style="color:red;">*</label></label>
                                     <textarea 
                                             id="description"
                                             name="description"
                                             class="form-control @error('description') is-invalid @enderror"
                                             value="{{old('description')}}"
+                                            placeholder="Enter Product Description ..."
                                             autocomplete="description" autofocus
                                             >
                                             </textarea>

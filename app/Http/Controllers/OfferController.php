@@ -45,7 +45,7 @@ class OfferController extends Controller
    public function store(Request $request )
    {
 
-    
+
     $data = request()->validate
        ([
         'product_name' => 'required',
@@ -58,9 +58,8 @@ class OfferController extends Controller
         'image' => ['required','image']
 
        ]);
-      
        $imagePath = request('image')->store('uploads','public');
-        
+       dd($data);
     auth()->user()->sender()->create
     ([
     'product_name' => $data['product_name'],

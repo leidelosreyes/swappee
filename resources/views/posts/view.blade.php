@@ -14,7 +14,11 @@
 							<img src="/storage/{{$post->image}}" style="width:100%;height:100%;" id="show-img" > 
 						</div>					
 					</div>
-					<a href="{{route('offers.create',[$post->user_id,$post->id])}}"style="background-color:#FFB52E; border:none;" class="btn btn-primary mt-2 block">Make Offer</a>		
+					<!-- Button trigger modal -->
+						<button class="btn btn-primary  mt-4 " type="button" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#offer-modal">
+									<i class="far fa-comment-alt"></i> Make offer
+                        </button>
+					<!-- End Button -->
 				</div> 	
 			</div>
 		</div>
@@ -31,8 +35,20 @@
                     
                               
 								<h1>{{$post->product_name}}</h1>
+								<!-- Button trigger modal -->
+								<div class="mt-4">
+									<button type="button" class="btn btn-primary mt-4" style="float:right;background-color:#FFB52E;border:none;" data-toggle="modal" data-target="#exampleModal">
+									<i class="far fa-comment-alt"></i> Message
+									</button>
+								</div>
+								<div class="mt-4">
+									<button type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+									<i class="fas fa-user-circle"></i> Visit Profile
+									</button>
+								</div>
 								<hr>
 							    <h3 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h3>
+								
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p>
 								
 								<hr>
@@ -44,17 +60,14 @@
 								
                                 <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$post->delivery_method}}</p>
 								<p class="mb-4"><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$post->location}}</p>
-<!-- Button trigger modal -->
-	<button type="button" style="background-color:#FFB52E;border:none;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-	<i class="far fa-comment-alt"></i> Message
-	</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Compose Message</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -80,6 +93,7 @@
                                             name="message"
                                             class="form-control @error('message') is-invalid @enderror"
                                             value="{{old('message')}}"
+											placeholder="Compose Here ..."
                                             autocomplete="message" autofocus
                                             >
                                             </textarea>
@@ -184,5 +198,28 @@
 	</div>
 
 </div>
+   
 
+        <!-- Modal -->
+        <div class="modal fade" id="offer-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Make an Offer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+                <div class="modal-body">
+						  
+						
+                        @include('offers.create_form')
+						
+                  </div>
+          
+              </div>
+           </div>
+        </div>                                          
+     <!-- end modal -->
+		
 @endsection

@@ -135,6 +135,7 @@
          toolbar: 'bullist',
          plugins: 'paste',
          height: 400,
+         branding: false,
          width: "100%"
         
       })
@@ -143,6 +144,7 @@
          plugins: 'lists',
          toolbar: 'bullist',
          plugins: 'paste',
+         branding: false,
          height: 200,
          width: "100%"
         

@@ -1,4 +1,4 @@
-<div class="col-xl-3 d-none d-lg-block">
+
                 <!-- side menu -->
                 <div class="card-box">
                     <h4 class="header-title mt-0">Categories</h4>
@@ -40,11 +40,7 @@
                           @endforeach
                          
                         </div>
-                        <ul class="social-links list-inline mt-4 mb-0">
-                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                        </ul>
+                        
                     </div>
-                </div>
+              
           <!-- end side menu -->
