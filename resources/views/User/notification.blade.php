@@ -1,42 +1,22 @@
 @extends('layouts.layout2')
 @section('content')
-        
-    <div class="container mt-4">
-      @include('user.profilebar')
-        <!-- end row -->
-        <div class="row">
-            <div class="col-xl-4">
-
-                <!-- side menu -->
-                 @include('user.sidemenu')
-                <!--  end side menu -->
-              <!-- side bar message -->
-              @include('messages.sidebar_message')
-                  <!-- sidebar message end -->
-
-            <div class="col-xl-8" >
-            <nav aria-label="breadcrumb">
-            <ol class="breadcrumb" style="background:white;">
-                <li class="breadcrumb-item"><a href="{{route('user.profile')}}">Products</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Notifications</li>            
-                <li class="breadcrumb-item"><a href="{{route('show.offers')}}">offers</a></li>
-               
-            </ol>
-            </nav>
-        
-                <!-- end row -->
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{$message}}</p>
-                    </div>
-                    @endif
-                <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
-                    <h4 class="header-title mb-3 d-flex">Notifications</h4>
-                    <form class="d-flex"  action="{{route('search')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search Notification" aria-label="Search">
-   					</form>
-                    
-                            <!-- notification card -->
+<div class="container mt-4">
+    @include('user.profilebar') 
+    <div class="row">
+        <div class="col-xl-3 d-none d-lg-block">
+                    <!-- side menu-->                   
+                            @include('user.sidemenu')
+                    <!-- end side menu-->              
+        </div>  
+        <section class="products-section col-xl-9 mb-4">
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success mt-4">
+                                        <p>{{$message}}</p>
+                                    </div>
+                                    @endif                 
+                    <!-- notifiacation card -->
+                    <h4 class="header-title mb-3 mt-4">My Notifications</h4> 
+                           <!-- notification card -->
             @forelse($notifications as $notification)
                         @empty
                             <div class="alert alert-danger mt-4">
@@ -84,18 +64,12 @@
                  @endforeach
                 <!-- end notification card -->
         
-                 
-                </div>
-
-            
-        </div>
-        <!-- end row -->
+                    <!-- end notifiacation card -->
+        </section>    
     </div>
-    <!-- container -->
- </div>
 </div>
-          <!-- Modal -->
-          @foreach($notifications as $notification)
+  <!-- Modal -->
+@foreach($notifications as $notification)
 <div class="modal fade" id="notification-modal{{$notification->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">

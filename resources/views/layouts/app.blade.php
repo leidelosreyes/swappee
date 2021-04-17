@@ -60,60 +60,99 @@
             </div>
     </div>
 </section> -->
-<section class="back">
-    <div class="container cons">
-        <div class="row top-bar" id="main">
-            <div class="col">
-                <span class="">
-                <i class="fab fa-facebook-f" style="color: #3B5998;"></i>
-                </span>
-               
-                <span class="">
-				<i class="fab fa-twitter" style="color: #55ACEE;"></i>
-				</span>
+<!-- navbar for web view  -->
+
+<div class="d-none d-lg-block">
+	<nav class="navbar navbar-light bg-light mb-2">
+		<div class="container">
+			<a class="navbar-brand"  href="{{url('/')}}">
+			<img src="{{asset('image/swappee_logo.png')}}" style="width:150px;height: 50px;margin-bottom: 5px;" alt="">
+			</a>
+				<ul class="nav justify-content-end">
+				 
+					<!-- <li class="nav-item">
+					<a class="nav-link" style="color: #57585a;" href="#"><i class="far fa-bookmark"></i> Watchlist</a>
+					</li> -->
 				
-				<span class="">
-				<i class="fab fa-instagram" style="color:#dd4b39;"></i>
-				</span>
+					@if (Route::has('login'))
+          <li class="nav-item">
+                    @auth
+                        <a href="{{ url('/home') }}"  class="nav-item nav-link navfonts" style="color: #57585a;"><i class="fas fa-home"></i></a>
+                    @else
+					             <a href="{{ route('login') }}" class="nav-item nav-link navfonts" style="color: #57585a;"> Login |</a>
+            </li>
+                        @if (Route::has('register'))
+                      <a href="{{ route('register') }}" class="nav-item nav-link navfonts"style="color: #57585a;">Register</a>
+                        @endif
+                    @endauth
                 
-                
-             </div>
-           
-             <div class="col text-right">
                
-                <span class="">
-                @guest
-                            @if (Route::has('login'))
-                                
-                              <a  href="{{ route('login') }}"> <i class="fas fa-sign-in-alt"></i> {{ __('Login') }}</a>
-                                     
-                        
-                            
-                            @endif
-                            
-                         
-                </span>
+                    @endif
+				
 
-                <span class="">
-                    |
-                </span>
+				</ul>
+	              <!-- <div class="mb-4 col-xl-12">
+				      <form class="d-flex"  action="{{route('search')}}" method="GET">
+						<input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
+						<button type="submit" class="searchButton">
+						<i class="fa fa-search"></i>
+					  </form>
+					</button>
+                  </div> -->
+		</div>	
+	</nav>
+</div>
 
-                <span class="text-white">
-                @if (Route::has('register'))
-                               
-                               <a  href="{{ route('register') }}"><i class="fas fa-user-plus"></i> {{ __('Register') }}</a>
-                           
-                       @endif
-                </span>
-              
-                @endguest         
-            </div>
-    </div>
-</section>
+<!-- end nav web view -->
+
+<!-- navbar for mobile view  -->
+
+<div class="d-sm-block d-md-none mb-4">
+<nav class="navbar navbar-light bg-light mb-2">
+		<div class="container">
+			<a class="navbar-brand"  href="{{url('/')}}">
+			<img src="{{asset('image/swappee_logo.png')}}" style="width:150px;height: 50px;margin-bottom: 5px;" alt="">
+			</a>
+				<ul class="nav justify-content-end">
+				  
+					<!-- <li class="nav-item">
+					<a class="nav-link" style="color: #57585a;" href="#"><i class="far fa-bookmark"></i> Watchlist</a>
+					</li> -->
+				
+					@if (Route::has('login'))
+          <li class="nav-item">
+                    @auth
+                        <a href="{{ url('/home') }}"  class="nav-item nav-link navfonts" style="color: #57585a;"><i class="fas fa-home"></i></a>
+                    @else
+					             <a href="{{ route('login') }}" class="nav-item nav-link navfonts" style="color: #57585a;"> Login |</a>
+            </li>
+                        @if (Route::has('register'))
+                      <a href="{{ route('register') }}" class="nav-item nav-link navfonts"style="color: #57585a;">Register</a>
+                        @endif
+                    @endauth
+                
+               
+                    @endif
+				
+
+				</ul>
+	              <!-- <div class="mb-4 col-xl-12">
+				      <form class="d-flex"  action="{{route('search')}}" method="GET">
+						<input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
+						<button type="submit" class="searchButton">
+						<i class="fa fa-search"></i>
+					  </form>
+					</button>
+                   </div> -->
+		</div>	
+	</nav>
+</div>
+
+<!-- end nav mobile view -->	
     <div id="app">
        
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

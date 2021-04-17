@@ -9,7 +9,7 @@
         <div class="card card-signin">
           <div class="card-body">
           <div class="logo-row" style="text-align: center;">
-    <a href="../index.php"><img src="../image/swappee_logo.png" alt="ggggg" style="height: 50px;"></a>
+    <a href="{{url('/')}}"><img src="../image/swappee_logo.png" alt="ggggg" style="height: 50px;"></a>
       </div>
             <h5 class="card-title text-center"></h5>
             <form class="form-signin"  method="POST" action="{{ route('login') }}">

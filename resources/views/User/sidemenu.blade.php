@@ -1,8 +1,8 @@
 <div class="card-box">
-                    <h4 class="header-title mt-0">Menu </h4>
-                   
+                
                     <div class="panel-body">
-            
+                        <h4>Menu</h4>
+               
                         <hr>
                         <div class="text-left">
         <ul  style="list-style-type:none;"> 
@@ -17,7 +17,7 @@
                         <ul class="collapse list-unstyled" id="homeSubmenu1">
                             <div class="pl-2">
                                  <li>
-                                        <a href="{{route('user.profile')}}"class="a-color"><i class="fa fa-sync"></i> Swap</a>
+                                        <a href="{{route('user.profile')}}"class="a-color"><i class="fa fa-sync"></i> Swap </a>
                                 </li>
                                     <li>
                                         <a href="#"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
@@ -34,10 +34,16 @@
                 <!-- <li>
                     <a href="{{route('show.notifications')}}"class="a-color badge1" data-badge="2"><i class="far fa-bell"></i> Notifications</a> 
                 </li> -->
+                <hr>
                 <li>
-                    <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered</a> 
+                <a href="#homeSubmenu"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">({{$messages->count()}})</span></a> 
+                </li>
+                <li>
+                    <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">({{$offer->count()}})</span></a> 
                 </li>
 
+
+                <hr>
                 <li>
                       <a class="a-color" href="{{ route('index') }}" style="font-size: .80rem;"
                             onclick="event.preventDefault();

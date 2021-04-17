@@ -1,6 +1,9 @@
 @extends('layouts.layout1')
 @section('content')
 <div class="container">
+@include('layouts.carousel')
+</div>
+<div class="container">
         <div class="row">
             <div class="col-md-12">
                     <h2 class="title text-center">Categories</h2>

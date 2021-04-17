@@ -20,10 +20,10 @@ class ProfileController extends Controller
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
-    $messages = Message::where('receiver_id',Auth::id())->limit(10)->get();
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
     $notifications = offer::where('receiver_id',Auth::id())->get();
-    $notifications_count = count($notifications);
-    return view('user.profile', compact('posts','messages','notifications'));
+    return view('user.profile', compact('posts','messages','notifications','offer'));
    }
    public function index_public_view()
    {
@@ -85,9 +85,10 @@ class ProfileController extends Controller
           $posts = post::find($posts);
           $messages = Message::where('receiver_id',Auth::id())->get();
           $notifications = offer::where('receiver_id',Auth::id())->get();
+          $offer = offer::where('sender_id',Auth::id())->get();
           $sub_categories = sub_categorie::all();
           $categories = Categories::all();
-         return view('posts.edit_user_post',compact('posts','messages','categories','notifications','sub_categories'));
+         return view('posts.edit_user_post',compact('posts','messages','categories','notifications','sub_categories','offer'));
    }
    public function update_auth_user_post(Request $request ,post $posts )
    {

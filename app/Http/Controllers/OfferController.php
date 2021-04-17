@@ -39,7 +39,8 @@ class OfferController extends Controller
             ->leftJoin('offers', 'users.id', '=', 'offers.sender_id')
             ->get();
      $messages = Message::where('receiver_id',Auth::id())->get();
-    return view('user.notification',compact('notifications','messages'));
+     $offer = offer::where('sender_id',Auth::id())->get();
+    return view('user.notification',compact('notifications','messages','offer'));
    
    }
    public function store(Request $request )
@@ -59,7 +60,6 @@ class OfferController extends Controller
 
        ]);
        $imagePath = request('image')->store('uploads','public');
-       dd($data);
     auth()->user()->sender()->create
     ([
     'product_name' => $data['product_name'],

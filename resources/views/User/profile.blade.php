@@ -1,56 +1,48 @@
 @extends('layouts.layout2')
 
 @section('content')
+  
 
-    <div class="container mt-4">
-        @include('user.profilebar')
-        
-        <!-- end row -->
-        <div class="row">
-            <div class="col-xl-4">
-
-                <!-- side menu -->
-                 @include('user.sidemenu')
-                <!--  end side menu -->
-
-
-                  <!-- side bar message -->
-                    @include('messages.sidebar_message')
-                    
-                  <!-- sidebar message end -->
-            <div class="col-xl-8" >
-    
-            <nav aria-label="breadcrumb">
-            <ol class="breadcrumb"  style="background:white;box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
-                <li class="breadcrumb-item active" aria-current="page">Products</li>
-                <li class="breadcrumb-item"><a href="{{route('show.notifications')}}">Notifications</a></li>            
-                <li class="breadcrumb-item"><a href="{{route('show.offers')}}">Offers</a></li>
-               
-            </ol>
-            </nav>
-
-                <!-- end row -->
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{$message}}</p>
-                    </div>
-                    @endif
-
-
-
-
-
-                   
-                <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
-                            <h4 class="header-title mb-3">My Product</h4> 
+<div class="container">
+@include('user.profilebar')
+  <div class="row">
+     <div class="col-xl-3 d-none d-lg-block">
+         
+                <!-- side menu-->                   
+                        @include('user.sidemenu')
+                 <!-- end side menu-->
+                  
+     </div>  
+ 
+        <!-- product section -->
+        <section class="products-section col-xl-9 mb-4">
+                               @if ($message = Session::get('success'))
+                                <div class="alert alert-success mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
+                                @if ($message = Session::get('error'))
+                                <div class="alert alert-danger mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
+                                <h4 class="header-title mb-3 mt-4">My Product</h4> 
                            
-                            <a class="btn btn-primary float-right" href="{{route('posts.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
-                    <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
-   					</form>
-                       
-                <!-- product card -->
-                @forelse($posts as $post)
+                           <a class="btn btn-primary float-right" href="{{route('posts.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
+                   <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
+                       <input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
+                      </form>
+                      
+              
+               @forelse($posts as $post)
+                       @empty
+                           <div class="alert alert-danger mt-4">
+                               <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
+                            </div>
+               @endforelse
+
+       <!-- product card -->
+       @forelse($posts as $post)
                         @empty
                             <div class="alert alert-danger mt-4">
                                 <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
@@ -99,18 +91,14 @@
                 </div>
                  @endforeach
                 <!-- end product card -->
-
-                   
-            <!-- end col -->
-           
-
-            
+         </div>
         </div>
-        <!-- end row -->
-    </div>
-    <!-- container -->
- </div>
 </div>
+
+
+<!-- end col -->
+
+   
  <!-- Modal -->
  @foreach($posts as $post)
  <div class="modal fade" id="{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

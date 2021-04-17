@@ -12,53 +12,12 @@
                       
                             <div class="media-body text-white">
                                 <a href="{{route('user.profile')}}" style="color:white;"><h4 class="mt-4 mb-1 font-18">{{Auth::user()->name}}</h4></a>
-                               
-                                <p class="text-light mb-0"><i class="fas fa-envelope"></i> {{Auth::user()->email}}</p>
-                                <div class="dropdown">
-                                @if($notifications->count()== 0)
-                                <a class="dropdown-toggle" style="color:white;"
-                                    d="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    ><i class="far fa-bell"></i>&nbspNotifications</a> 
-                                @else
-                                    <a class="dropdown-toggle badge1" data-badge="{{$notifications->count()}}" style="color:white;"
-                                    d="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    ><i class="far fa-bell"></i>&nbspNotifications</a> 
-                                @endif
-                               
-                         <!-- notification -->
-                         <div class="inbox-widget"> 
-                         
-                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                           <div class="card-body">
-                                    <h5>Notifications</h5>
-                                    
-                        </div>
-                             @foreach($notifications as $notification)
-                               <a class="dropdown-item" href="{{route('show.notifications')}}"> 
-                               <img src="{{$notification->sender->avatar}}" class="card-avatar"/> 
-                               <b>{{$notification->sender->name}}</b>
-                               Wants to swap your item
-                               <!-- <p style="margin-left:50px;"><i class="far fa-clock" style="color:green"></i> {{$notification->created_at->diffForHumans()}}</p> -->
-                             
-                               
-                               </a>   
-                               <div style="margin-left:90px;">
-                                    <a href="" class="btn btn-primary ml-4 btn-sm">Accept</a>
-                                    <a href="" class="btn btn-secondary btn-sm">Decline</a>
-                               </div>                      
-                             @endforeach
-                           
-
-                             <footer>
-                                <div class="card-body">
-                                    <a href=""><p style="text-align:center;">See all Notifications</p></a>
-                                </div>
-                             </footer>                        
-                             </div>
-                        </div>
-                        <!-- end notification -->
-                        
-                        </div>
+                                <p class="text-light mb-0"><i class="far fa-clock" style="color:green"></i> Joined {{Auth::user()->created_at->diffForHumans()}}</p>
+                                <p class="text-light mb-0"> {{Auth::user()->email}}</p>
+                                
+                                  <!-- side modal for mobile view -->
+                                   @include('user.sidemodal')
+                                        <!-- end side modal -->     
                                     
                             </div>
                         </div>

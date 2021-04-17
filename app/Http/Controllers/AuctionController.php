@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Auction;
+use Auth;
+use App\Models\{User,offer,post,Categories,Sub_categorie};
 
 class AuctionController extends Controller
 {
@@ -13,8 +15,13 @@ class AuctionController extends Controller
     }
     public function index()
     {   
-        $auctions =auction::paginate(9);
-        return view('auctions.index',compact('auctions'));
+        $auctions = auction::where('approved',1)->latest('updated_at','desc')
+        ->orderBy('created_at', 'desc')
+        ->simplepaginate(20);
+        $categories = Categories::all();
+        $sub_categories = sub_categorie::all();
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('auctions.index',compact('auctions','categories','sub_categories','notifications'));
     }
 
     public function create()

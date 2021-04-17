@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Post;
-use App\Models\Categories;
-use App\Models\Sub_categorie;
+use App\Models\{User,offer,post,Categories,Sub_categorie};
+use Auth;
+
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -33,7 +32,8 @@ class HomeController extends Controller
         ->simplepaginate(20);
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
-        return view('home', compact('posts','categories','sub_categories'));
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('home', compact('posts','categories','sub_categories','notifications'));
          
     }
 
@@ -58,7 +58,8 @@ class HomeController extends Controller
         }
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
-        return view('home',compact('posts','categories','sub_categories'));
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications'));
         
     }
   

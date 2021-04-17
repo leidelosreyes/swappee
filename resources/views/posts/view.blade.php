@@ -1,9 +1,8 @@
 @extends('layouts.layout2')
 @section('content')
-
-@include('layouts.header-nav')
+<div class="container">
 @include('layouts.carousel')
-
+</div>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-5 mt-4 mb-4">
