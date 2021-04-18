@@ -1,11 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Categories;
-use App\Models\Sub_categorie;
+use App\Models\{Sub_categorie,offer,Categories,post};
 use Illuminate\Http\Request;
-use App\Models\Post;
 use Auth;
 
 class CategoriesController extends Controller
@@ -82,7 +79,8 @@ class CategoriesController extends Controller
         $posts = post::where('category_id',$category_id)
         ->paginate(20);
         $sub_categories = sub_categorie::all();
-        return view('home',compact('posts','categories','sub_categories'));
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications'));
     }
     public function filter_by_price(Request $request)
     {
@@ -92,7 +90,8 @@ class CategoriesController extends Controller
         $min_val = 1;
         $posts = post::whereBetween('price',[$min_val,$price])
         ->paginate(20);
-        return view('home',compact('posts','categories','sub_categories'));
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications'));
     }
     public function filter_post_by_sub_category($sub_category_id)
     {
@@ -100,7 +99,8 @@ class CategoriesController extends Controller
         $posts = post::where('sub_category_id',$sub_category_id)
         ->paginate(20);
         $sub_categories = sub_categorie::all();
-        return view('home',compact('posts','categories','sub_categories'));
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications'));
     }
     public function show(Categories $categories)
     {

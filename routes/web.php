@@ -67,7 +67,7 @@ Route::put('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'upda
 Route::delete('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');
 //--------------------------------auction item---------------------------------
 Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'create'])->name('auctions.create');
-Route::post('/auctions',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions');
+Route::post('/auctions/store',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions.store');
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 //------------------------------------offer----------------------------------------
@@ -77,6 +77,7 @@ Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_off
 Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 'show_notifications'])->name('show.notifications');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
+Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');
 Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
 Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');
 Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');

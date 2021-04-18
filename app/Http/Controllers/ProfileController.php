@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\{Post,User,Offer,Message,Categories,sub_categorie};
+use App\Models\{Post,User,Offer,Message,Categories,sub_categorie,auction};
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -24,6 +24,18 @@ class ProfileController extends Controller
     $offer = Offer::where('sender_id',Auth::id())->get();
     $notifications = offer::where('receiver_id',Auth::id())->get();
     return view('user.profile', compact('posts','messages','notifications','offer'));
+   }
+   public function auction_index()
+   {
+    //    query builder
+    // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
+    //     eloquent orm
+    $posts = post::where('user_id',Auth::id())->simplepaginate(20);
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    $notifications = offer::where('receiver_id',Auth::id())->get();
+    $auctions = auction::where('user_id',Auth::id())->simplepaginate(20);
+    return view('auctions.profile_view', compact('posts','messages','notifications','offer','auctions'));
    }
    public function index_public_view()
    {

@@ -13,14 +13,14 @@
                     <a href="{{route('user.profile_public_view')}}"class="a-color"><i class="fas fa-globe-asia"></i> Public Profile </a>  
                 </li>       
                 <li>    
-                    <a href="#homeSubmenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> My Items<i class="fas fa-chevron-right" style="float:right"></i></a> 
-                        <ul class="collapse list-unstyled" id="homeSubmenu1">
+                    <a href="#sidemenu" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> My Items<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                        <ul class="collapse list-unstyled" id="sidemenu">
                             <div class="pl-2">
                                  <li>
                                         <a href="{{route('user.profile')}}"class="a-color"><i class="fa fa-sync"></i> Swap </a>
                                 </li>
                                     <li>
-                                        <a href="#"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
+                                        <a href="{{route('user.auction_view')}}"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
                                 </li>
                             </div>
                                 <hr>

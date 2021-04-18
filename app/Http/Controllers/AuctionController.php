@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Auction;
 use Auth;
-use App\Models\{User,offer,post,Categories,Sub_categorie};
+use App\Models\{User,offer,post,Categories,Sub_categorie,message};
 
 class AuctionController extends Controller
 {
@@ -26,7 +26,13 @@ class AuctionController extends Controller
 
     public function create()
     {   
-        return view('auctions.create');
+         
+        $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
+        $categories = Categories::all();
+        $sub_categories = sub_categorie::all();
+        $offer = offer::where('sender_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        return view('auctions.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
     public function store()
@@ -38,7 +44,9 @@ class AuctionController extends Controller
                 'bidding_start_price' => 'required',
                 'description' => 'required',
                  'end_date' => 'required',
-               'image' => ['required','image']
+                 'category_id' => 'required',
+                 'sub_category_id' => 'required',
+                  'image' => ['required','image']
 
          ]);
 
@@ -50,12 +58,14 @@ class AuctionController extends Controller
              'description' => $data['description'],
              'bidding_start_price' => $data['bidding_start_price'],
              'end_date' => $data['end_date'],
+             'category_id'=> $data['category_id'],
+             'sub_category_id'=> $data['sub_category_id'],
              'image' => $imagePath
 
 
          ]);
 
-         return redirect('home');
+         return redirect('auctions/index')->with('success','Please wait for the approval of your product');
         
           
     }

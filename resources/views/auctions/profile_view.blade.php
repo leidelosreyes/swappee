@@ -28,27 +28,18 @@
                                 @endif
                                 <h4 class="header-title mb-3 mt-4">My Product</h4> 
                            
-                           <a class="btn btn-primary float-right" href="{{route('posts.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
+                           <a class="btn btn-primary float-right" href="{{route('auctions.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
                    <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
                        <input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
                       </form>
-                      
-              
-               @forelse($posts as $post)
-                       @empty
-                           <div class="alert alert-danger mt-4">
-                               <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
-                            </div>
-               @endforelse
-
        <!-- product card -->
-       @forelse($posts as $post)
+       @forelse($auctions as $post)
                         @empty
                             <div class="alert alert-danger mt-4">
                                 <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
                              </div>
                 @endforelse
-                @foreach($posts as $post)
+                @foreach($auctions as $post)
                     <div class="container mt-4 mb-2">
                         <div class="d-flex justify-content-center row">
                             <div class="col-md-12">
@@ -56,8 +47,9 @@
                                     <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image-user" src="/storage/{{$post->image}}"></div>
                                     <div class="col-md-6 mt-1">
                                         <h5 style="over-flow:hidden;">{{$post->product_name}}</h5>     
-                                        <p class="text-justify text-truncate para mb-0"> <h4 class="mr-1" style="color:#FFB52E;">PHP {{number_format($post->price)}}</h4></p>
-                                        <div class="d-flex flex-row">                   
+                                        <p class="text-justify text-truncate para mb-0"> <h4 class="mr-1" style="color:#FFB52E;">PHP {{number_format($post->estimated_price)}}</h4></p>
+                                        <p class="text-justify text-truncate para mb-0"><i class="far fa-calendar-times"></i> End Date: {{$post->end_date}}</p>
+                                        <div class="d-flex flex-row">
                                             <div class="ratings mr-2">
                                             @if($post->approved == true)
                                             <i class="far fa-thumbs-up" style="color:blue;"></i> <span class="bg-blue">Approved </span>
@@ -65,8 +57,8 @@
                                             <i class="fas fa-history" style="color:red;"></i> <span class="bg-pink">Pending</span>
                                             @endif
                                             <i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}
-                                            </div>
-                                        </div>
+                                            </div>                    
+                                        </div>                        
                                     </div>
                                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                         <div class="d-flex flex-row align-items-center">
@@ -86,7 +78,7 @@
                         </div>
                     </div>
                 <div class="container text-center">
-                        {{$posts->links()}}
+                        {{$auctions->links()}}
                 </div>
                  @endforeach
                 <!-- end product card -->
@@ -99,7 +91,7 @@
 
    
  <!-- Modal -->
- @foreach($posts as $post)
+ @foreach($auctions as $post)
  <div class="modal fade" id="{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
