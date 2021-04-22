@@ -31,6 +31,10 @@ class PostsController extends Controller
         return view('posts.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
+    protected function getFileName($file)
+     {
+        return str_random(32) . '.' . $file->extension();
+     }
     public function store(Request $request)
     {
         
