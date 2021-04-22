@@ -114,12 +114,12 @@
                                     d="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     ><i class="far fa-bell"></i></a> 
                                 @else
-								  
-                                   
-                                @endif
-                                <a href="" style="color: #57585a; font-size:20px;" 
+								<a href="" style="color: #57585a; font-size:20px;" 
                                      data-toggle="modal" data-target="#exampleModal-notifcation" 
                                     ><i class="far fa-bell"></i></a> 
+                                   
+                                @endif
+                               
                          <!-- notification -->
                          <div class="inbox-widget"> 
                          
