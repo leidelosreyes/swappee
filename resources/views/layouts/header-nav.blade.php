@@ -110,9 +110,10 @@
 					<li class="nav-link">
 					
                                 @if($notifications->count()== 0)
-                                <a class="dropdown-toggle"style="color: #57585a; font-size:20px;"  class="nav-link "
-                                    d="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+								<a href="" style="color: #57585a; font-size:20px;" 
+                                     data-toggle="modal" data-target="#exampleModal-notifcation" 
                                     ><i class="far fa-bell"></i></a> 
+                                   
                                 @endif
                                
                          <!-- notification -->
