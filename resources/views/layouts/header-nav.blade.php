@@ -12,7 +12,7 @@
 				    <li class="nav-item">
 					<a class="nav-link " style="color: #57585a;" href="{{route('home')}}"><i class="fas fa-home"></i> Home</a>
 					</li>
-					<li class="nav-link">
+					<li class="nav-link d-none d-lg-block">
 					<div class="dropdown">
                                 @if($notifications->count()== 0)
                                 <a class="dropdown-toggle"style="color: #57585a;" class="nav-link "
