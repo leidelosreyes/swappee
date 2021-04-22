@@ -113,7 +113,7 @@
                           <div class="productinfo">
                                     
 
-                         <img src="{{asset('image/$post->image'}}"  style=" height: 10rem; width: 100%;
+                         <img src="{{asset('image/$post->image')}}"  style=" height: 10rem; width: 100%;
 
                               object-fit: cover;" alt="no image" />
                               
