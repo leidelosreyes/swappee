@@ -48,8 +48,9 @@ class PostsController extends Controller
 
         ]);
 
-        $imagePath = request('image')->store('uploads','public');
-       
+        // $imagePath = request('image')->store('uploads','public');
+        $imagePath = $this->getFileName($request->image);
+        $request->image->move(base_path('public/image'),$imagePath);
         auth()->user()->posts()->create([
             'product_name' => $data['product_name'],
             'description' => $data['description'],
