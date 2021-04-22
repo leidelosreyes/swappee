@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Auction;
+use App\Models\auction;
 use Auth;
 use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message};
 
@@ -15,7 +15,7 @@ class AuctionController extends Controller
     }
     public function index()
     {   
-        $auctions = Auction::where('approved',1)->latest('updated_at','desc')
+        $auctions = auction::where('approved',1)->latest('updated_at','desc')
         ->orderBy('created_at', 'desc')
         ->simplepaginate(20);
         $categories = Categories::all();
