@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Auction;
+use App\Models\auction;
 use Auth;
 use App\Models\{User,offer,post,Categories,Sub_categorie,message};
 
