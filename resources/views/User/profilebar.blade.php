@@ -16,7 +16,7 @@
                                 <p class="text-light mb-0"> {{Auth::user()->email}}</p>
                                 
                                   <!-- side modal for mobile view -->
-                                   @include('user.sidemodal')
+                                   @include('User.sidemodal')
                                         <!-- end side modal -->     
                                     
                             </div>
