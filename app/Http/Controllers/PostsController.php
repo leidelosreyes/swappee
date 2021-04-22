@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Categories;
-use App\Models\Sub_Categorie;
+use App\Models\Sub_categorie;
 use App\Models\Offer;
 use Carbon\Carbon;
 use Auth;
