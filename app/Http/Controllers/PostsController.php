@@ -31,10 +31,7 @@ class PostsController extends Controller
         return view('posts.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
-    protected function getFileName($file)
-     {
-        return str_random(32) . '.' . $file->extension();
-     }
+
     public function store(Request $request)
     {
         
@@ -53,7 +50,7 @@ class PostsController extends Controller
         ]);
 
         // $imagePath = request('image')->store('uploads','public');
-        $imagePath = $this->getFileName($request->image);
+        $imagePath = $request->image;
         $request->image->move(base_path('public/image'),$imagePath);
         auth()->user()->posts()->create([
             'product_name' => $data['product_name'],
