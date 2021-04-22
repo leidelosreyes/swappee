@@ -37,7 +37,7 @@ Route::get('/user/index', function () {
 //  Route::get('/terms_condition', function () {
 //     return view('terms_condition');
 // });
-Auth::routes();
+//  Auth::routes(['verify']);
   Route::group(['middleware' => ['auth','admin']],function(){
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     
