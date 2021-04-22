@@ -35,12 +35,12 @@ return [
 
     'mailers' => [
         'smtp' => [
-            'transport' => 'smtp',
-            'host' => 'smtp.gmail.com',
-            'port' => 587,
-            'encryption' =>  'tls',
-            'username' => 'leidelosreyes060296@gmail.com',
-            'password' => 'delacruzleo02',
+            'transport' => env('MAIL_MAILER'),
+            'host' => env('MAIL_HOST'),
+            'port' => env('MAIL_PORT'),
+            'encryption' =>  env('MAIL_ENCRYPTION'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
         ],
