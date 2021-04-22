@@ -25,9 +25,9 @@ class PostsController extends Controller
     {   
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
         $categories = Categories::all();
-        $sub_categories = sub_categorie::all();
-        $offer = offer::where('sender_id',Auth::id())->get();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $sub_categories = Sub_categorie::all();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('posts.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
@@ -78,8 +78,8 @@ class PostsController extends Controller
             return redirect()->route('home')
               ->with('error','You are not able to Swap on your own item');
            }
-           $notifications = offer::where('receiver_id',Auth::id())->get();
-           $more_posts = post::where('user_id',$post->user_id)->simplepaginate(20);
+           $notifications = Offer::where('receiver_id',Auth::id())->get();
+           $more_posts = Post::where('user_id',$post->user_id)->simplepaginate(20);
             return view('posts.view',compact('post','more_posts','notifications'));
         
     }
