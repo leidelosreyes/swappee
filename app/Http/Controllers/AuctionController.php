@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\auction;
+use App\Models\Auction;
 use Auth;
-use App\Models\{User,offer,post,Categories,Sub_categorie,message};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message};
 
 class AuctionController extends Controller
 {
@@ -15,12 +15,12 @@ class AuctionController extends Controller
     }
     public function index()
     {   
-        $auctions = auction::where('approved',1)->latest('updated_at','desc')
+        $auctions = Auction::where('approved',1)->latest('updated_at','desc')
         ->orderBy('created_at', 'desc')
         ->simplepaginate(20);
         $categories = Categories::all();
-        $sub_categories = sub_categorie::all();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $sub_categories = Sub_categorie::all();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications'));
     }
 
@@ -29,9 +29,9 @@ class AuctionController extends Controller
          
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
         $categories = Categories::all();
-        $sub_categories = sub_categorie::all();
-        $offer = offer::where('sender_id',Auth::id())->get();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $sub_categories = Sub_categorie::all();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('auctions.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
