@@ -112,8 +112,8 @@
                       <div class="single-products">
                           <div class="productinfo">
                                     
-                         <img src="https://swappee.online/storage/{{$post->image}}"  style=" height: 10rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                         <img src="/storage/uploads/{{$post->image}}"  style=" height: 10rem; width: 100%;
+                              object-fit: cover;" alt="no image" />
                               
                             <div class="product-details">
                               <div  style="height:20px; overflow:hidden;">
