@@ -1,7 +1,7 @@
 @extends('layouts.layout2')
  @section('content')
  <div class="container mt-4">
-    @include('user.profilebar') 
+    @include('User.profilebar') 
     <div class="row">
         <div class="col-xl-3 d-none d-lg-block">
                     <!-- side menu-->                   
