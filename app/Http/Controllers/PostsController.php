@@ -31,7 +31,7 @@ class PostsController extends Controller
         return view('posts.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
         
         $data = request()->validate([
