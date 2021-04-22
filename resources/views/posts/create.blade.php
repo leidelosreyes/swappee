@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xl-3 d-none d-lg-block">
                     <!-- side menu-->                   
-                            @include('user.sidemenu')
+                            @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
         <section class="products-section col-xl-9 mb-4">
