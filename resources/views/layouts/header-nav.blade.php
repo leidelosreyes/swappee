@@ -12,8 +12,8 @@
 				    <li class="nav-item">
 					<a class="nav-link " style="color: #57585a;" href="{{route('home')}}"><i class="fas fa-home"></i> Home</a>
 					</li>
-					<li class="nav-link d-none d-lg-block">
-					<div class="dropdown">
+					<li class="nav-link">
+					<!-- <div class="dropdown">
                                 @if($notifications->count()== 0)
                                 <a class="dropdown-toggle"style="color: #57585a;" class="nav-link "
                                     d="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -23,7 +23,7 @@
                                     <a class="dropdown-toggle badge1" data-badge="{{$notifications->count()}}" style="color: #57585a;"
                                     d="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     ><i class="far fa-bell"></i>&nbspNotifications</a> 
-                                @endif
+                                @endif -->
                                
                          <!-- notification -->
                          <div class="inbox-widget"> 
