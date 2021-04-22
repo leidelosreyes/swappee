@@ -112,7 +112,7 @@
                       <div class="single-products">
                           <div class="productinfo">
                                     
-                         <img src="/storage/uploads/{{$post->image}}"  style=" height: 10rem; width: 100%;
+                         <img src="{{storage_path('/storage/$post->image')}}"  style=" height: 10rem; width: 100%;
                               object-fit: cover;" alt="no image" />
                               
                             <div class="product-details">
