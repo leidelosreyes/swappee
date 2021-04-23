@@ -34,6 +34,25 @@
                 <label for="email">Email <label for="username" style="color:red;"> * </label></label>
               </div>
               <div class="form-label-group">
+              <input class="mb-3 form-control @error('cellphone_no') is-invalid @enderror" id="cellphone_no" name="cellphone_no" value="{{ old('cellphone_no') }}"  autocomplete="cellphone_no" autofocus type="number"  placeholder="Enter Cellphone Number"> 
+                        @error('cellphone_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                <label for="cellphone_no">Cellphone No <label for="cellphone_no" style="color:red;"> * </label></label>
+              </div>
+           
+              <div class="form-label-group">
+              <input class="mb-3 form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}"  autocomplete="address" autofocus type="text"  placeholder="Enter Address"> 
+                        @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                <label for="address">Address <label for="address" style="color:red;"> * </label></label>
+              </div>
+              <div class="form-label-group">
               <input id="password"  placeholder="Enter Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')

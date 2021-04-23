@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Swappee') }}</title>
+    <title>Swappee</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -156,5 +156,43 @@
             @yield('content')
         </main>
     </div>
+
+   
+    <script>
+         function geolocate() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var geolocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              var circle = new google.maps.Circle({
+                center: geolocation,
+                radius: position.coords.accuracy
+              });
+              Address.setBounds(circle.getBounds());
+            });
+          }
+
+        }
+          function initAutocomplete() {
+              Address = new
+                      google.maps.places.Autocomplete(
+                              /** @type {!HTMLInputElement}
+
+                               */(document.getElementById('address')),
+                              {types: ['geocode'], componentRestrictions: {country: 'Ph'}});
+
+              Address.addListener('place_changed', fillInAddress);
+          }
+          function fillInAddress() {
+            var place = Address.getPlace();
+            console.log(place);
+          document.getElementById('latitude').value = place.geometry.location.lat();
+          document.getElementById('longitude').value = place.geometry.location.lng();
+        }
+    
+    </script>
+     <script src="https://maps.googleapis.com/maps/api/js?input=Philippines&types=geocode&key=AIzaSyBJCSjFGcsFkG5Zy7k3Ph6ArHv6EoWSxpk&libraries=places&callback=initAutocomplete"async defer></script>
 </body>
 </html>
