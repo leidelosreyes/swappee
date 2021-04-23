@@ -120,14 +120,14 @@
                           </div>
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
-                            <img src="/storage/{{$post->image}}"  style=" height:6rem; width: 100%;
+                            <img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
                               object-fit: cover;" alt="" />
                           </div>		
                            <!-- end mobile veiw -->
                               
                             <div class="product-details">
                               <div  style="height:20px; overflow:hidden;">
-                                  <p style="font-size: 16px;font-weight: 500;">{{$post->product_name}}</p>
+                                  <p style="font-size: 12px;font-weight: 400;">{{$post->product_name}}</p>
                               </div>  
                                 <p style="font-size:.70rem;"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
                                 <div class="product-bottom-details">
