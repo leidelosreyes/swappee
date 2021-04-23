@@ -27,12 +27,12 @@
 <!-- end side bar -->
 <section class="products-section col-xl-9 mb-4">
 <!-- mobile view side bar -->
-<div class="d-sm-block d-md-none mb-2">
+<div class="d-sm-block d-md-none mt-2">
     
         <div class="card-body text-left">       
             <a href=""data-toggle="modal" data-target="#exampleModal"><p> <i class="fas fa-bars"></i> All Categories</p> </a>             
         </div>
-    
+        <hr>
     <!-- modal -->
             <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -67,6 +67,7 @@
 <!-- end modal -->
 </div>  
 <!-- end mobile view -->
+
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
@@ -97,7 +98,7 @@
   <div class="row">
 
         @foreach ($posts as $post) 
-        <div class="col-6 col-md-4 col-lg-3 b-col mt-4">
+        <div class="col-6 col-md-4 col-lg-3 b-col mt-2">
 
                   <div class="d-flex product-details ">
                   @if(empty($post->user->avatar))
