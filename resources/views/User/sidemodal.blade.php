@@ -36,7 +36,7 @@
                                                                     <a href="{{route('user.profile')}}"class="a-color"><i class="fa fa-sync"></i> Swap </a>
                                                             </li>
                                                                 <li>
-                                                                    <a href="#"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
+                                                                    <a href="{{route('user.auction_view')}}"class="a-color"><i class="fa fa-gavel"></i> Auction</a>                     
                                                             </li>
                                                         </div>
                                                             <hr>
