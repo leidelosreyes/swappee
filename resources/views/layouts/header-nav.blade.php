@@ -65,8 +65,8 @@
 					<li class="dropdown">
 						<a href="" class="nav-item nav-link  navfonts" data-toggle="dropdown" style="color: #57585a;" ><i class="far fa-user-circle"></i> {{ Auth::user()->name }}</a>
 						<div class="dropdown-menu">
-							<a href="{{route('User.profile')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-user"></i> Acount</a>
-                            <a href="{{route('User.profile_public_view')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-globe-asia"></i> Public Profile</a>
+							<a href="{{route('user.profile')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-user"></i> Acount</a>
+                            <a href="{{route('user.profile_public_view')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-globe-asia"></i> Public Profile</a>
 							<a class="dropdown-item navfonts" href="{{ route('index') }}" style="font-size: .80rem;"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
