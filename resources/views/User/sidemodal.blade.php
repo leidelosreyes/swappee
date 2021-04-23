@@ -1,8 +1,10 @@
 <!-- mobile view side bar -->
 <div class="d-sm-block d-md-none mb-2">
     
-             
-            <a href=""data-toggle="modal" style="color:white;"data-target="#exampleModal"><p> <i class="fas fa-bars"></i> Menu</p> </a>             
+             <div class="text-left mt-4">
+             <a href=""data-toggle="modal" style=""data-target="#exampleModal"><p> <i class="fas fa-bars"></i> Menu</p> </a>             
+             </div>
+        
         
     
     <!-- modal -->

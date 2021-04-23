@@ -13,11 +13,9 @@
                             <div class="media-body text-white">
                                 <a href="{{route('user.profile')}}" style="color:white;"><h4 class="mt-4 mb-1 font-18">{{Auth::user()->name}}</h4></a>
                                 <p class="text-light mb-0"><i class="far fa-clock" style="color:green"></i> Joined {{Auth::user()->created_at->diffForHumans()}}</p>
-                                <p class="text-light mb-0"> {{Auth::user()->email}}</p>
+                                <!-- <p class="text-light mb-0"><i class="far fa-envelope" style="color:white"></i> {{Auth::user()->email}}</p> -->
                                 
-                                  <!-- side modal for mobile view -->
-                                   @include('User.sidemodal')
-                                        <!-- end side modal -->     
+                                  
                                     
                             </div>
                         </div>
