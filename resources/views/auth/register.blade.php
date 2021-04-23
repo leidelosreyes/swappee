@@ -7,7 +7,7 @@
         <div class="card card-signin ">
           <div class="card-body">
           <div class="logo-row" style="text-align: center;">
-          <a href="../index.php"><img src="../image/swappee_logo.png" alt="ggggg" style="height: 50px;"></a>
+                  <p>Resigtration Form</p>
       </div>
             <h5 class="card-title text-center"></h5>
             <form class="form-signin" method="POST" action="{{ route('register') }}">
@@ -32,6 +32,33 @@
                                     </span>
                         @enderror
                 <label for="email">Email <label for="username" style="color:red;"> * </label></label>
+              </div>
+              <div class="form-label-group">
+              <input class="mb-3 form-control @error('cellphone_no') is-invalid @enderror" id="cellphone_no" name="cellphone_no" value="{{ old('cellphone_no') }}" required autocomplete="cellphone_no" autofocus type="number"  placeholder="Enter Cellphone Number"> 
+                        @error('cellphone_no')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                <label for="cellphone_no">Cellphone No <label for="cellphone_no" style="color:red;"> * </label></label>
+              </div>
+              <div class="form-label-group">
+              <input class="mb-3 form-control @error('birthday') is-invalid @enderror" id="birthday" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" autofocus type="date"  placeholder="Enter Birthdate"> 
+                        @error('birthday')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                <label for="birthday">Birthday <label for="birthday" style="color:red;"> * </label></label>
+              </div>
+              <div class="form-label-group">
+              <input class="mb-3 form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus type="text"  placeholder="Enter Address"> 
+                        @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
+                <label for="address">Address <label for="address" style="color:red;"> * </label></label>
               </div>
 
               <div class="form-label-group">
