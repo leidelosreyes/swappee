@@ -51,7 +51,7 @@ return [
         'client_id' => '669852352886-eedi3mlepkeo57rg7oco1ab94eu94maf.apps.googleusercontent.com',
         // 'client_secret' => 'fdde8dcb46dfc189a8b4789a880552f9',
         'client_secret' => 'jW4rLCIGxPzNUvQCbsaCOZtw',
-        'redirect' => 'http://localhost:8000/login/google/callback',
+        'redirect' => 'https://swappee.online/login/google/callback',
       ],
 
 
