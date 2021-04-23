@@ -2,7 +2,7 @@
 <div class="d-sm-block d-md-none mb-2">
     
              <div class="text-left mt-4">
-             <a href=""data-toggle="modal" style=""data-target="#exampleModal"><p> <i class="fas fa-bars"></i> Menu</p> </a>             
+             <a href=""data-toggle="modal" style=""data-target="#exampleModal"><p> <i class="fas fa-bars"></i>  Menu</p></a>             
              </div>
         
         

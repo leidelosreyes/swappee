@@ -16,7 +16,10 @@
  
         <!-- product section -->
         <section class="products-section col-xl-9 mb-4">
-                               @if ($message = Session::get('success'))
+         <!-- side modal for mobile view -->
+         @include('User.sidemodal')
+         <!-- end side modal -->    
+                           @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
                                 </div>
@@ -26,12 +29,28 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h4 class="header-title mb-3 mt-4">My Product</h4> 
+                                <h4 class="header-title mb-3 mt-4">Auctions</h4> 
                            
-                           <a class="btn btn-primary float-right" href="{{route('auctions.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
-                   <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
-                       <input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
-                      </form>
+                           <!-- web view -->
+
+                        <div class="d-none d-lg-block">
+                            <a class="btn btn-primary float-right" href="{{route('auctions.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
+                        <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
+                        <input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
+                        </form>
+                        </div>
+                         
+                       
+                         <!-- mobile view -->
+                        <div class="d-sm-block d-md-none">
+                            <div class="ml-2">
+                                <a class="btn btn-primary float-right" href="{{route('auctions.create')}}" style="background-color:#FFB52E; border:none;"><i class="fas fa-plus"></i></a>      
+                            </div>  
+                                <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
+                                <input class="form-control mr-sm-2 mr-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
+                                </form>                   
+                        </div>
+                         <!-- end mobile view -->
        <!-- product card -->
        @forelse($auctions as $post)
                         @empty
