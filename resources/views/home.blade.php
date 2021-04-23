@@ -13,13 +13,26 @@
             </div>
         </div>
  @include('slider.slider')  
- <!-- mobile view side bar -->
-<div class="d-sm-block d-md-none mb-4">
-    <div class="card">
+ 
+
+
+
+<!-- side bar will show only in web view -->
+
+<div class="row">
+    <div class="col-xl-3 d-none d-lg-block">
+         @include('side_menu')              
+    </div>   
+</div>
+<!-- end side bar -->
+<section class="products-section col-xl-9 mb-4">
+<!-- mobile view side bar -->
+<div class="d-sm-block d-md-none mb-2">
+    
         <div class="card-body text-left">       
             <a href=""data-toggle="modal" data-target="#exampleModal"><p> <i class="fas fa-bars"></i> All Categories</p> </a>             
         </div>
-    </div>
+    
     <!-- modal -->
             <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -54,19 +67,6 @@
 <!-- end modal -->
 </div>  
 <!-- end mobile view -->
-
-
-
-<!-- side bar will show only in web view -->
-
-<div class="row">
-    <div class="col-xl-3 d-none d-lg-block">
-         @include('side_menu')              
-    </div>   
-</div>
-<!-- end side bar -->
-<section class="products-section col-xl-9 mb-4">
-
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
