@@ -1,9 +1,5 @@
            
-                <div class="row">
-                    <div class="col mb-4">
-                         <div class="card">
-                             <div class="card-body">
-                                 
+              
                                   <form action="/offers" method ="post" enctype="multipart/form-data">
                                    @csrf
                             <div class="form-group row">
@@ -185,9 +181,5 @@
                                               <button type="sumbit" class="btn btn-primary mt-4"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send Offer</button>  
 
                         </form>   
-                   </div>
-                 </div>
-               </div>
-            </div>
-         </div>
+                  
                  
