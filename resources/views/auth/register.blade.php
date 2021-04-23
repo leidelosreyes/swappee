@@ -42,7 +42,7 @@
                         @enderror
                 <label for="cellphone_no">Cellphone No <label for="cellphone_no" style="color:red;"> * </label></label>
               </div>
-              <div class="form-label-group">
+              <!-- <div class="form-label-group">
               <input class="mb-3 form-control @error('birthday') is-invalid @enderror" id="birthday" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" autofocus type="date"  placeholder="Enter Birthdate"> 
                         @error('birthday')
                                     <span class="invalid-feedback" role="alert">
@@ -50,9 +50,9 @@
                                     </span>
                         @enderror
                 <label for="birthday">Birthday <label for="birthday" style="color:red;"> * </label></label>
-              </div>
+              </div> -->
               <div class="form-label-group">
-              <input class="mb-3 form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus type="text"  placeholder="Enter Address"> 
+              <input class="mb-3 form-control @error('address') is-invalid @enderror" id="location" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus type="text"  placeholder="Enter Address"> 
                         @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
