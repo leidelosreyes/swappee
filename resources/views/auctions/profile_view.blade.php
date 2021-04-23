@@ -4,12 +4,12 @@
   
 
 <div class="container">
-@include('user.profilebar')
+@include('User.profilebar')
   <div class="row">
      <div class="col-xl-3 d-none d-lg-block">
          
                 <!-- side menu-->                   
-                        @include('user.sidemenu')
+                        @include('User.sidemenu')
                  <!-- end side menu-->
                   
      </div>  
