@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\{Sub_categorie,offer,Categories,post};
+use App\Models\{Sub_categorie,Offer,Categories,Post};
 use Illuminate\Http\Request;
 use Auth;
 
@@ -75,31 +75,31 @@ class CategoriesController extends Controller
      */
     public function filter_post_by_category($category_id)
     {
-        $categories = categories::all();
-        $posts = post::where('category_id',$category_id)
+        $categories = Categories::all();
+        $posts = Post::where('category_id',$category_id)
         ->paginate(20);
-        $sub_categories = sub_categorie::all();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $sub_categories = Cub_categorie::all();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications'));
     }
     public function filter_by_price(Request $request)
     {
-        $categories = categories::all();
-        $sub_categories = sub_categorie::all();
+        $categories = Categories::all();
+        $sub_categories = Sub_categorie::all();
         $price = $request->price;
         $min_val = 1;
-        $posts = post::whereBetween('price',[$min_val,$price])
+        $posts = Post::whereBetween('price',[$min_val,$price])
         ->paginate(20);
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications'));
     }
     public function filter_post_by_sub_category($sub_category_id)
     {
-        $categories = categories::all();
-        $posts = post::where('sub_category_id',$sub_category_id)
+        $categories = Categories::all();
+        $posts = Post::where('sub_category_id',$sub_category_id)
         ->paginate(20);
-        $sub_categories = sub_categorie::all();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $sub_categories = Sub_categorie::all();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications'));
     }
     public function show(Categories $categories)

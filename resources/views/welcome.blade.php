@@ -107,46 +107,7 @@
     </div>
   </div>
 </section>
-<section class="container ">
-    <h4> Our Services </h4>
-  </div>
-  <div class="card-body">
-  <section class="features-section bg-light">
-  <div class="container ">
-    <div class="row justify-content-center">
-    
-      <div>
-        <!--Features title Start!-->
-      </div>
-    </div>
-    <div class="row">
 
-        <!--Features  Item!-->
-        <div class="col-6 col-md-6 col-lg-4 b-col d-flex">
-          <div class="col-lg-12 features-item" style="margin-bottom: 20px;">
-            <div class="icon"><i class="fa fa-truck"></i></div>
-            <h3>Delivery</h3>
-            <p>We deliver your package with love.</p>
-          </div>
-        </div>
-        <!--end!-->
-        <div class="col-6 col-md-6 col-lg-4 b-col d-flex">
-          <div class="col-lg-12 features-item" style="margin-bottom: 20px;">
-            <div class="icon"><i class="fa fa-sync"></i></div>
-            <h3>Swap</h3>
-            <p>Swapping will make you feel better.</p>
-          </div>
-        </div>
-        <!--end!-->
-        <div class="col-6 col-md-6 col-lg-4 b-col d-flex">
-          <div class="col-lg-12 features-item" style="margin-bottom: 20px;">
-            <div class="icon"><i class="fa fa-gavel"></i></div>
-            <h3>Auction</h3>
-            <p>Our auction is fair and competitive</p>
-          </div>
-        </div>
-        <!--end!--> 
-</section>
 </div>
 </section>
 
