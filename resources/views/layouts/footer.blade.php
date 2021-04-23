@@ -95,9 +95,9 @@
 
   <div class="footer-icons">
 
-    <a href="#"><i class="fab fa-facebook-f" style="color: #3B5998; background-color:none;"></i></a>
-    <a href="#"><i class="fab fa-twitter" style="color: #55ACEE; background-color:none;"></i></a>
-    <a href="#"><i class="fab fa-instagram" style="color:#dd4b39; background-color:none;"></i></a>
+    <a href="#"><i class="fab fa-facebook-f" style="color: #3B5998; "></i></a>
+    <a href="#"><i class="fab fa-twitter" style="color: #55ACEE; "></i></a>
+    <a href="#"><i class="fab fa-instagram" style="color:#dd4b39; "></i></a>
     
 
   </div>

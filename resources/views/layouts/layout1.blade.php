@@ -101,7 +101,11 @@
 				
 
 				</ul>
-	              <div class="mb-4 col-xl-12">
+	             
+		</div>	
+	</nav>
+</div>
+<div class="mb-4 col-xl-12">
 				      <form class="d-flex"  action="{{route('search')}}" method="GET">
 						<input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
 						<button type="submit" class="searchButton">
@@ -109,10 +113,6 @@
 					  </form>
 					</button>
          </div>
-		</div>	
-	</nav>
-</div>
-
 <!-- end nav mobile view -->	
 
 		
