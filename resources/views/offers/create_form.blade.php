@@ -177,8 +177,13 @@
                                                   
                                                           <p style="color:red;">{{$message}}</p>
                                                     
-                                              @enderror  
-                                              <button type="sumbit" class="btn btn-primary mt-4"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send Offer</button>  
+                                              @enderror 
+                                             
+                                                    <button type="sumbit" class="btn btn-primary mt-4"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send Offer</button>  
+                                              
+
+                                            
+                                            
 
                         </form>   
                   

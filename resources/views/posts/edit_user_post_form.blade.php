@@ -1,11 +1,7 @@
 <form method="post" action="/posts/{{$posts->id}}" >
         @csrf
         @method('PUT')   
-       <div class="row">
-           <div class="col mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="container">
+       
                         
                           <div class="form__div">
                                         <input type="text" 
@@ -158,8 +154,5 @@
                                                 </span>
                                             @enderror      
     
-                         <button type="sumbit" class="btn btn-primary mt-4"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button> 
-             </div>
-           </div>
-       </div>
+                         <button type="sumbit" class="btn btn-primary mt-4 mb-4 "style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button> 
 </form>

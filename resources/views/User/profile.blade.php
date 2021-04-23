@@ -139,7 +139,15 @@
             <div class="card-body">
                 
                           
-                            <h1>{{$post->product_name}}</h1>
+                            	<!-- web view	 -->
+								<div class="d-none d-lg-block">
+									<h1>{{$post->product_name}}</h1>
+								</div>
+								 <!-- mobile view -->
+								<div class="d-sm-block d-md-none">
+								  <b>{{$post->product_name}}</b>
+								</div>
+								<!-- end mobile view -->
                             <hr>
                             <h3 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h3>
                             <p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p> 

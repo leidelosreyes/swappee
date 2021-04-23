@@ -9,6 +9,9 @@
                     <!-- end side menu-->              
         </div>  
         <section class="products-section col-xl-9 mb-4">
+             <!-- side modal for mobile view -->
+             @include('User.sidemodal')
+             <!-- end side modal -->  
                                 @if ($message = Session::get('success'))
                                     <div class="alert alert-success mt-4">
                                         <p>{{$message}}</p>
@@ -100,7 +103,16 @@
                             </div>
                             <div class="card-body">
                                <div class="container">
-                               <h1>{{$notification->product_name}}</h1>
+                              
+                            	<!-- web view	 -->
+								<div class="d-none d-lg-block">
+									<h1>{{$notification->product_name}}</h1>
+								</div>
+								 <!-- mobile view -->
+								<div class="d-sm-block d-md-none">
+								  <b>{{$notification->product_name}}</b>
+								</div>
+								<!-- end mobile view -->
 								<hr>
 							    <h3 style="color:#FFB52E;">PHP {{number_format($notification->price)}}</h3>
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Offered by: {{$notification->sender->name}}</b></p>				

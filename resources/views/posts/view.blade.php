@@ -33,20 +33,51 @@
 				<div class="card-body">
                     
                               
-								<h1>{{$post->product_name}}</h1>
+								<!-- web view	 -->
+								<div class="d-none d-lg-block">
+									<h1>{{$post->product_name}}</h1>
+								</div>
+								 <!-- mobile view -->
+								<div class="d-sm-block d-md-none">
+								  <b>{{$post->product_name}}</b>
+								</div>
+								<div class="d-sm-block d-md-none">
+								<h5 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h5>
+								</div>
+								<!-- end mobile view -->
+
 								<!-- Button trigger modal -->
-								<div class="mt-4">
-									<button type="button" class="btn btn-primary mt-4" style="float:right;background-color:#FFB52E;border:none;" data-toggle="modal" data-target="#exampleModal">
-									<i class="far fa-comment-alt"></i> Message
-									</button>
+								<div class="d-none d-lg-block">
+									<div class="mt-4">
+										<button type="button" class="btn btn-primary mt-4" style="float:right;background-color:#FFB52E;border:none;" data-toggle="modal" data-target="#exampleModal">
+										<i class="far fa-comment-alt"></i> Message
+										</button>
+									</div>
+									<div class="mt-4">
+										<button type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+										<i class="fas fa-user-circle"></i> Visit Profile
+										</button>
+									</div>
 								</div>
-								<div class="mt-4">
-									<button type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
-									<i class="fas fa-user-circle"></i> Visit Profile
-									</button>
+
+								<div class="d-sm-block d-md-none ">
+									<div class="mt-4">
+										<button type="button" class="btn btn-primary mt-2" style="float:right;background-color:#FFB52E;border:none;" data-toggle="modal" data-target="#exampleModal">
+										<i class="far fa-comment-alt"></i>
+										</button>
+									</div>
+									<div class="mt-4">
+										<button type="button" class="btn btn-outline-info mt-2" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+										<i class="fas fa-user-circle"></i>
+										</button>
+									</div>
 								</div>
+								
 								<hr>
-							    <h3 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h3>
+								<div class="d-none d-lg-block">
+								   <h3 style="color:#FFB52E;"> PHP {{number_format($post->price)}}</h3>
+								</div>
+							    
 								
 								<p><i class="fas fa-user-alt" style="color:#999;"></i><b style="color:#999; font-weight:400;"> Posted by:</b> {{$post->user->name}}</p>
 								
