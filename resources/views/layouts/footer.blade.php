@@ -4,16 +4,14 @@
 
 <div class="footer-left container">
 
-  <h3>Swappee<span style="color: #FFB52E;">.com</span></h3>
+  <h3>Swappee<span style="color: #FFB52E;">.online</span></h3>
 
   <p class="footer-links">
-    <a href="index.php" class="link-1">Home</a>
-    
-    <a href="#">Blog</a>
+    <a href="{{route('home')}}" class="link-1">Home</a>
   
     <a href="{{ route('policy') }}">Privacy & Policy</a>
   
-    <a href="about.php">About</a>
+    <a href="{{url ('about')}}">About</a>
     
     <a href="{{ route('terms_condition') }}">Terms & Conditions</a>
     
@@ -33,12 +31,12 @@
 
   <div>
     <i class="fa fa-phone" style="font-size: 15px;color:"></i>
-    <p>+63-4617-99654</p>
+    <p>+63-9756-7438-49</p>
   </div>
 
   <div>
     <i class="fa fa-envelope" style="font-size: 15px;"></i>
-    <p><a href="mailto:support@company.com" style="color: #FFB52E;">Swappee.com</a></p>
+    <p><a href="mailto:support@company.com" style="color: #FFB52E;">Swappee6@gmail.com</a></p>
   </div>
 
 </div>
@@ -47,7 +45,7 @@
 
   <p class="footer-company-about">
     <span>About the company</span>
-    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+    Acknowledging the online barter gives us a better insight in use of digital transactions, in times the integrity of the process have been obstructed by the other users because of the platforms that was used doesn’t have those processes that maintains its integrity.
   </p>
 
   <div class="footer-icons">
@@ -71,16 +69,14 @@
 
 <div class="footer-left container">
 
-  <h3>Swappee<span style="color: #FFB52E;">.com</span></h3>
+  <h3>Swappee<span style="color: #FFB52E;">.online</span></h3>
 
   <p class="footer-links">
-    <a href="index.php" class="link-1">Home</a>
-    
-    <a href="#">Blog</a>
+    <a href="{{route ('home')}}" class="link-1">Home</a>
   
     <a href="{{ route('policy') }}">Privacy & Policy</a>
   
-    <a href="about.php">About</a>
+    <a href="{{url ('about')}}">About</a>
     
     <a href="{{ route('terms_condition') }}">Terms & Conditions</a>
     
@@ -94,7 +90,7 @@
 
   <p class="footer-company-about">
     <span>Follow Us</span>
-    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+    Acknowledging the online barter gives us a better insight in use of digital transactions, in times the integrity of the process have been obstructed by the other users because of the platforms that was used doesn’t have those processes that maintains its integrity.
   </p>
 
   <div class="footer-icons">

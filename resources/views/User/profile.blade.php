@@ -32,15 +32,6 @@
                    <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
                        <input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
                       </form>
-                      
-              
-               @forelse($posts as $post)
-                       @empty
-                           <div class="alert alert-danger mt-4">
-                               <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
-                            </div>
-               @endforelse
-
        <!-- product card -->
        @forelse($posts as $post)
                         @empty
