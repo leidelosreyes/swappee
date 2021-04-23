@@ -18,14 +18,14 @@ class OfferController extends Controller
    public function create($post,$post_id)
    {
       
-      $notifications = offer::where('receiver_id',Auth::id())->get();
+      $notifications = Offer::where('receiver_id',Auth::id())->get();
       return view('offers.create',compact('post','notifications','post_id'));
 
    }
    public function show_offers()
    {
-    $offer = offer::where('sender_id',Auth::id())->get();
-    $notifications = offer::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
     
     return view('User.offer', compact('offer','messages','notifications'));
@@ -33,13 +33,13 @@ class OfferController extends Controller
    }
    public function show_notifications()
    {
-    $notifications = offer::where('receiver_id',Auth::id())->get();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
     
     $users = DB::table('users')
             ->leftJoin('offers', 'users.id', '=', 'offers.sender_id')
             ->get();
      $messages = Message::where('receiver_id',Auth::id())->get();
-     $offer = offer::where('sender_id',Auth::id())->get();
+     $offer = Offer::where('sender_id',Auth::id())->get();
     return view('User.notification',compact('notifications','messages','offer'));
    
    }

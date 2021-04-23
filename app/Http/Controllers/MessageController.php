@@ -23,8 +23,8 @@ class MessageController extends Controller
 
     // $messages_side = Message::where('receiver_id',Auth::id())->get();
        
-     $notifications = offer::where('receiver_id',Auth::id())->get();
-     $reply = message::where('id',$messages->id)
+     $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $reply = Message::where('id',$messages->id)
       ->where('sender_id',Auth::id())
      ->where('reply',1)
       ->get();

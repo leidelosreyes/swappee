@@ -4,7 +4,7 @@
 
 
 <div class="container mt-4">
-@include('user.profilebar')
+@include('User.profilebar')
 	<div class="row">
 		<div class="col-sm-5 mt-4 mb-4">
 			<div class="card">
