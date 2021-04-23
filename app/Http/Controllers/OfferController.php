@@ -28,7 +28,7 @@ class OfferController extends Controller
     $notifications = offer::where('receiver_id',Auth::id())->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
     
-    return view('user.offer', compact('offer','messages','notifications'));
+    return view('User.offer', compact('offer','messages','notifications'));
    
    }
    public function show_notifications()
@@ -40,7 +40,7 @@ class OfferController extends Controller
             ->get();
      $messages = Message::where('receiver_id',Auth::id())->get();
      $offer = offer::where('sender_id',Auth::id())->get();
-    return view('user.notification',compact('notifications','messages','offer'));
+    return view('User.notification',compact('notifications','messages','offer'));
    
    }
    public function store(Request $request )

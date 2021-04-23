@@ -1,13 +1,13 @@
 @extends('layouts.layout2')
  @section('content')
  <div class="container mt-4">
-    @include('user.profilebar')
+    @include('User.profilebar')
         <!-- end row -->
         <div class="row">
             <div class="col-xl-4">
 
                 <!-- side menu -->
-                 @include('user.sidemenu')
+                 @include('User.sidemenu')
                 <!--  end side menu -->
                 <div class="card-box ribbon-box">
                     <div class="ribbon ribbon-primary">Messages</div>

@@ -123,7 +123,7 @@ class ProfileController extends Controller
    {
          $posts = post::find($posts);
          $posts->delete();
-         return redirect()->route('User.profile')
+         return redirect()->route('user.profile')
             ->with('success','Product deleted successfully');
    }
 }
