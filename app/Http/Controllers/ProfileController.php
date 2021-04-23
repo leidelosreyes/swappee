@@ -23,7 +23,7 @@ class ProfileController extends Controller
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
     $notifications = offer::where('receiver_id',Auth::id())->get();
-    return view('user.profile', compact('posts','messages','notifications','offer'));
+    return view('User.profile', compact('posts','messages','notifications','offer'));
    }
    public function auction_index()
    {
@@ -44,7 +44,7 @@ class ProfileController extends Controller
     //     eloquent orm
     $categories = Categories::all();
     $posts = post::where('user_id',Auth::id())->paginate(10);
-    return view('user.profile_public_view', compact('posts','categories'));
+    return view('User.profile_public_view', compact('posts','categories'));
    }
    public function search_public_view()
    {
@@ -61,7 +61,7 @@ class ProfileController extends Controller
            $posts = post::paginate(10);
        }
    
-       return view('user.profile_public_view',compact('posts'));
+       return view('User.profile_public_view',compact('posts'));
        
    }
   
@@ -123,7 +123,7 @@ class ProfileController extends Controller
    {
          $posts = post::find($posts);
          $posts->delete();
-         return redirect()->route('user.profile')
+         return redirect()->route('User.profile')
             ->with('success','Product deleted successfully');
    }
 }
