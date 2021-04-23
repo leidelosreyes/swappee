@@ -78,7 +78,7 @@ class CategoriesController extends Controller
         $categories = Categories::all();
         $posts = Post::where('category_id',$category_id)
         ->paginate(20);
-        $sub_categories = Cub_categorie::all();
+        $sub_categories = Sub_categorie::all();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications'));
     }
