@@ -45,7 +45,7 @@
 
   <p class="footer-company-about">
     <span>About the company</span>
-    Acknowledging the online barter gives us a better insight in use of digital transactions, in times the integrity of the process have been obstructed by the other users because of the platforms that was used doesn’t have those processes that maintains its integrity.
+    Acknowledging the online barter gives us a better insight in use of digital transactions, in times the integrity of the process.
   </p>
 
   <div class="footer-icons">
@@ -90,7 +90,7 @@
 
   <p class="footer-company-about">
     <span>Follow Us</span>
-    Acknowledging the online barter gives us a better insight in use of digital transactions, in times the integrity of the process have been obstructed by the other users because of the platforms that was used doesn’t have those processes that maintains its integrity.
+  Follows on our social media account 
   </p>
 
   <div class="footer-icons">

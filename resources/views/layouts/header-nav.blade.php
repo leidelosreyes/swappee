@@ -155,7 +155,10 @@
 					</li>
 
 				</ul>
-	              <div class="mb-4 col-xl-12">
+	              
+		</div>	
+	</nav>
+	<div class="mb-4 col-xl-12">
 				      <form class="d-flex"  action="{{route('search')}}" method="GET">
 						<input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
 						<button type="submit" class="searchButton">
@@ -163,9 +166,6 @@
 					  </form>
 					</button>
                 </div>
-		</div>	
-	</nav>
-
 	   
  <!-- Modal -->
 		<div class="modal fade" id="exampleModal-notifcation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

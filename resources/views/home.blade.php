@@ -126,7 +126,7 @@
                                   <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->price)}}</div>
                                   <div class="product-links">
                                    
-                                    <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>
+                                    <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap</p></a>
                                   </div>
                                 </div>
                               </div>                    
