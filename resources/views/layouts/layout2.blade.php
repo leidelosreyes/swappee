@@ -46,6 +46,7 @@
 
  <!-- textarea api -->
  <script src="https://cdn.tiny.cloud/1/d5z57kxjuvf3qb1pxqwp575nkn5dp86srz52ip6w742ozfjo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ 
 
 <script>
       tinymce.init({

@@ -69,9 +69,18 @@ class AuctionController extends Controller
         
           
     }
-    public function show(auction $auction)
+    public function show(Auction $auction)
     {
+        // <-- validation to user for swapping -->
+       
+           if($auction->user_id == Auth::id())
+           {
+            return redirect()->route('auctions.index')
+              ->with('error','You are not able to Bid on your own item');
+           }
+           $notifications = Offer::where('receiver_id',Auth::id())->get();
+           $more_posts = Auction::where('user_id',$auction->user_id)->simplepaginate(20);
+            return view('auctions.view',compact('auction','more_posts','notifications'));
         
-        return view('auctions.view',compact('auction'));
     }
 }
