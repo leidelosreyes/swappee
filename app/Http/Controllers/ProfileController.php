@@ -71,6 +71,7 @@ class ProfileController extends Controller
         $search = request()->query('search');
         $messages = Message::where('receiver_id',Auth::id())->get();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
         
         if($search!="")
         {   $posts = Post::where('product_name','like', '%'.$search.'%')
@@ -83,7 +84,7 @@ class ProfileController extends Controller
             $posts = Post::paginate(10);
         }
     
-        return view('User.profile',compact('posts','messages','notifications'));
+        return view('User.profile',compact('posts','messages','notifications','offer'));
         
     }
    
