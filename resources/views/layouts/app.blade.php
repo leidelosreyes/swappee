@@ -156,7 +156,5 @@
             @yield('content')
         </main>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?input=Philippines&types=geocode&key=AIzaSyBJCSjFGcsFkG5Zy7k3Ph6ArHv6EoWSxpk&libraries=places&callback=initAutocomplete"async defer></script>
-    <script src="{{asset('js/location.js')}}"></script>
 </body>
 </html>
