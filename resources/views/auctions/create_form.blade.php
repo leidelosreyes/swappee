@@ -1,7 +1,5 @@
 
-           <div class="col mb-4">
-                <div class="card">
-                    <div class="card-body">
+          
                        
                          <form action="{{route('auctions.store')}}" method ="post" enctype="multipart/form-data">
                           @csrf
@@ -144,6 +142,5 @@
                                               <button type="sumbit" class="btn btn-primary mt-4"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button>  
                </form>   
             
-           </div>
-       </div>
+        
 
