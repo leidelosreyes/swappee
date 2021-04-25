@@ -48,8 +48,18 @@
                       <div class="single-products">
                           <div class="productinfo">
                                     
-                         <img src="/storage/{{$post->image}}"  style=" height: 10rem; width: 100%;
+                          <!-- web view -->
+                          <div class="d-none d-lg-block">
+                              <img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
                               object-fit: cover;" alt="" />
+                          </div>
+                              <!-- mobile view -->
+                          <div class="d-sm-block d-md-none">
+                            <img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
+                              object-fit: cover;" alt="" />
+                          </div>		
+                           <!-- end mobile veiw -->
+                              
                               
                             <div class="product-details">
                               <div  style="height:20px; overflow:hidden;">

@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('description');
             $table->string('location');
             $table->string('wishitem');
-            $table->decimal('price');
+            $table->integer('price');
             $table->string('delivery_method');
             $table->string('image');
             $table->timestamps();

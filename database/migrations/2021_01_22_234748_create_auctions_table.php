@@ -17,9 +17,9 @@ class CreateAuctionsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('product_name');
-            $table->string('estimated_price');
+            $table->integer('estimated_price');
             $table->text('description');
-            $table->string('bidding_start_price');
+            $table->integer('bidding_start_price');
             $table->string('end_date');
             $table->string('image');
             $table->timestamps();

@@ -116,7 +116,7 @@ class ProfileController extends Controller
         'delivery_method' => 'required'    
     ]);
       $posts->update($request->all());
-      return redirect()->route('User.profile')
+      return redirect()->route('user.profile')
             ->with('success','Product updated successfully');
      
    }
