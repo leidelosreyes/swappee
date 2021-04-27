@@ -29,6 +29,7 @@ public function callback()
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
+                    'avatar' => $user->avatar,
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy')
                 ]);
