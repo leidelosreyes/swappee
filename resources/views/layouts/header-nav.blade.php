@@ -101,7 +101,7 @@
 	<nav class="navbar navbar-light bg-light mb-2">
 		<div class="container">
 			<a class="navbar-brand"  href="{{url('/')}}">
-			<img src="{{asset('image/swappee_logo.png')}}" style="width:120px;height: 40px;margin-bottom: 5px;" alt="">
+			<img src="{{asset('image/swappee_logo.png')}}" style="width:130px;height: 45px;margin-bottom: 5px;" alt="">
 			</a>
 				<ul class="nav justify-content-end">
 				    <li class="nav-item">

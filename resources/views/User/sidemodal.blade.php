@@ -2,13 +2,13 @@
 <div class="d-sm-block d-md-none">
     
            
-<a class="nav-link" style="color: #57585a; font-size:20px;"data-toggle="modal" style=""data-target="#exampleModal"><p> <i class="fas fa-bars"></i></p></a>             
+<a class="nav-link" style="color: #57585a; font-size:20px;"data-toggle="modal" style=""data-target="#exampleModal1"><p> <i class="fas fa-bars"></i></p></a>             
             
         
         
     
     <!-- modal -->
-            <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal left fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">

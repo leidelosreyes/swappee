@@ -10,7 +10,10 @@
             </div>
         </div>
 </div>
+<div class="container">
 @include('slider.slider')
+</div>
+
 <section class="container">
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">

@@ -2,13 +2,15 @@
 
 @section('content')
 
-<div class="container">
+
 @include('layouts.carousel')
-</div>
             <div class="col-md-12">
                     <h2 class="title text-center">Available for Swap</h2>
             </div>
-            @include('slider.slider')        
+            <div class="container">
+             @include('slider.slider') 
+            </div>
+                  
 <div class="container">
         <div class="row">
             
