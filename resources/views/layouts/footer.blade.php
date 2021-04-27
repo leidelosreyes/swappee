@@ -18,7 +18,7 @@
     <a href="{{ route('contact') }}">Contact</a>
   </p>
 
-  <p class="footer-company-name" style="color: #FFB52E;">Swappee © 2021</p>
+  <p class="footer-company-name" style="color: #FFB52E;">Swappee © <?php echo date("Y"); ?> Copyright.</p>
 </div>
 
 
@@ -83,7 +83,7 @@
     <a href="{{ route('contact') }}">Contact</a>
   </p>
 
-  <p class="footer-company-name" style="color: #FFB52E;">Swappee © 2021</p>
+  <p class="footer-company-name" style="color: #FFB52E;">Swappee © <?php echo date("Y"); ?> Copyright.</p>
 </div>
 
 <div class="footer-right">

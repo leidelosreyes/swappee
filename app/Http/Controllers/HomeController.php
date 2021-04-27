@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message};
 use Auth;
 
 use Carbon\Carbon;
@@ -32,8 +32,10 @@ class HomeController extends Controller
         ->simplepaginate(20);
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
         $notifications = offer::where('receiver_id',Auth::id())->get();
-        return view('home', compact('posts','categories','sub_categories','notifications'));
+        return view('home', compact('posts','categories','sub_categories','notifications','messages','offer'));
          
     }
 
@@ -59,7 +61,9 @@ class HomeController extends Controller
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
         $notifications = offer::where('receiver_id',Auth::id())->get();
-        return view('home',compact('posts','categories','sub_categories','notifications'));
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
         
     }
   

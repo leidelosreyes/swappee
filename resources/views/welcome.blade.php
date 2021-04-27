@@ -50,27 +50,27 @@
                                     
                           <!-- web view -->
                           <div class="d-none d-lg-block">
-                              <img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                          <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
+                              object-fit: cover;" alt="" /></a>
                           </div>
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
-                            <img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                          <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
+                              object-fit: cover;" alt="" /></a>
                           </div>		
                            <!-- end mobile veiw -->
                               
                               
                             <div class="product-details">
                               <div  style="height:20px; overflow:hidden;">
-                                  <p style="font-size: 16px;font-weight: 500;">{{$post->product_name}}</p>
+                                  <p style="font-size: 16px;font-weight: 500;overflow:hidden;">{{$post->product_name}}</p>
                               </div>  
                                 <p style="font-size:.70rem;"><i class="far fa-clock" style="color:green"></i> {{$post->created_at->diffForHumans()}}</p>
                                 <div class="product-bottom-details">
                                   <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->price)}}</div>
                                   <div class="product-links">
                                    
-                                    <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>
+                                    <a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap</p></a>
                                   </div>
                                 </div>
                               </div>                    
@@ -100,17 +100,17 @@
       <div class="col-lg-6 order-first order-lg-last">
         <div class="section-title">
           <!--About title Start!-->
-          <h2 class="title">Swappee</h2>
+          <h2 class="title">About Swappee</h2>
           <h1 class="sub-title">Trade what you want in swappee</h1>  
         </div>
 
         <div class="about-content">
-          <p>Acknowledging the online barter gives us a better insight in use of digital transactions, in times the integrity of the process have been obstructed by the other users because of the platforms that was used doesn’t have those processes that maintains its integrity.</p>
+          <p>We're dedicated to providing you the best of Trading items, with a focus on dependability and We're working to turn our passion for Trading items into a booming online website. I will keep posting more important posts on my Website for all of you. Please give your support and love</p>
           <ul class="list-unstyled"> 
-            <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            <li><i class="fa fa-check"></i> Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li><i class="fas fa-check"></i> Hello Friends Welcome To Swappee!</li>
+            <li><i class="fas fa-check"></i> Swappee is a Professional Trading items Platform.</li>
+            <li><i class="fas fa-check"></i> Here we will provide you only interesting content, which you will like very much</li>
+            <li><i class="fas fa-check"></i> Swappee will keep posting more important posts on my Website for all of you.</li>
           </ul>
         </div>
       </div>

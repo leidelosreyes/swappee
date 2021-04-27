@@ -21,7 +21,9 @@ class AuctionController extends Controller
         $categories = Categories::all();
         $sub_categories = Sub_categorie::all();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
-        return view('auctions.index',compact('auctions','categories','sub_categories','notifications'));
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
     }
 
     public function create()
@@ -80,7 +82,9 @@ class AuctionController extends Controller
            }
            $notifications = Offer::where('receiver_id',Auth::id())->get();
            $more_posts = Auction::where('user_id',$auction->user_id)->simplepaginate(20);
-            return view('auctions.view',compact('auction','more_posts','notifications'));
+           $messages = Message::where('receiver_id',Auth::id())->get();
+           $offer = Offer::where('sender_id',Auth::id())->get();
+            return view('auctions.view',compact('auction','more_posts','notifications','messages','offer'));
         
     }
 }

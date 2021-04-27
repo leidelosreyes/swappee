@@ -101,7 +101,7 @@
 	<nav class="navbar navbar-light bg-light mb-2">
 		<div class="container">
 			<a class="navbar-brand"  href="{{url('/')}}">
-			<img src="{{asset('image/swappee_logo.png')}}" style="width:150px;height: 50px;margin-bottom: 5px;" alt="">
+			<img src="{{asset('image/swappee_logo.png')}}" style="width:120px;height: 40px;margin-bottom: 5px;" alt="">
 			</a>
 				<ul class="nav justify-content-end">
 				    <li class="nav-item">
@@ -109,12 +109,11 @@
 					</li>
 					<li class="nav-link">
 					
-                                @if($notifications->count()== 0)
 								<a href="" style="color: #57585a; font-size:20px;" 
                                      data-toggle="modal" data-target="#exampleModal-notifcation" 
                                     ><i class="far fa-bell"></i></a> 
                                    
-                                @endif
+                             
                                
                          <!-- notification -->
                          <div class="inbox-widget"> 
@@ -152,6 +151,10 @@
 					</li>
 					<li class="nav-item">
 						<a href="{{route('user.profile')}}" class="nav-item nav-link  navfonts"  style="color: #57585a; font-size:20px;" ><i class="far fa-user-circle"></i></a>
+					</li>
+
+					<li class="nav-item">
+				     	@include('User.sidemodal')
 					</li>
 
 				</ul>

@@ -10,7 +10,7 @@ class LandingpageController extends Controller
 {
     public function landingpage()
     {
-        $posts = Post::latest('updated_at','desc')
+        $posts = Post::where('approved',1)->latest('updated_at','desc')
         ->orderBy('created_at', 'desc')
         ->simplepaginate(20);
         $categories = Categories::all();

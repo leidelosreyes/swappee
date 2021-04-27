@@ -9,8 +9,8 @@
 			<div class="card">
 				<div class=card-body>
 					<div class="view-product">
-						<div class="show" href="/storage/{{$post->image}}" style=" height: 25rem; width: 100%;">
-							<img src="/storage/{{$post->image}}" style="width:100%;height:100%;" id="show-img" > 
+						<div class="show" href="/storage/{{$post->image}}" style=" height: 25rem; width: 100%;  object-fit: cover;">
+							<img src="/storage/{{$post->image}}" style="width:100%;height:100%; object-fit: cover;" id="show-img" > 
 						</div>					
 					</div>
 					<!-- Button trigger modal -->
@@ -190,7 +190,7 @@
 		  @else
 			<img src="{{$post->user->avatar}}" class="card-avatar"/>
 		  @endif
-			  <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+			  <p style="font-size:.75rem;overflow:hidden;" class="mt-2 ml-2">{{$post->user->name}}</p>
 		  </div> 
 			<div class="product-image-wrapper">
 
@@ -219,7 +219,7 @@
 						  <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->price)}}</div>
 						  <div class="product-links">
 						   
-							<a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap Now</p></a>
+							<a href="/posts/{{$post->id}}"> <p style="font-size:.75rem;">Swap</p></a>
 						  </div>
 						</div>
 					  </div>                    

@@ -139,7 +139,7 @@
                                                           <p style="color:red;">{{$message}}</p>
                                                     
                                               @enderror  
-                                              <button type="sumbit" class="btn btn-primary mt-4"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button>  
+                                              <button type="sumbit" class="btn btn-primary mt-4 mb-4"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button>  
                </form>   
             
         

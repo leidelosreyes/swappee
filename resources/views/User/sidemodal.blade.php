@@ -1,9 +1,9 @@
 <!-- mobile view side bar -->
-<div class="d-sm-block d-md-none mb-2">
+<div class="d-sm-block d-md-none">
     
-             <div class="text-left mt-4">
-             <a href=""data-toggle="modal" style=""data-target="#exampleModal"><p> <i class="fas fa-bars"></i>  Menu</p></a>             
-             </div>
+           
+<a class="nav-link" style="color: #57585a; font-size:20px;"data-toggle="modal" style=""data-target="#exampleModal"><p> <i class="fas fa-bars"></i></p></a>             
+            
         
         
     

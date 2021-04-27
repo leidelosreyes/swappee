@@ -5,14 +5,15 @@
 <div class="container">
 @include('layouts.carousel')
 </div>
-
-<div class="container">
-        <div class="row">
             <div class="col-md-12">
                     <h2 class="title text-center">Available for Swap</h2>
             </div>
+            @include('slider.slider')        
+<div class="container">
+        <div class="row">
+            
         </div>
- @include('slider.slider')  
+  
  
 
 
@@ -30,9 +31,11 @@
 <div class="d-sm-block d-md-none mt-2">
     
         <div class="card-body text-left">       
-            <a href=""data-toggle="modal" data-target="#exampleModal"><p> <i class="fas fa-bars"></i> All Categories</p> </a>             
+            <a href=""data-toggle="modal" data-target="#exampleModal"><p><i class="fas fa-border-all"></i> All Categories</p> </a>             
         </div>
         <hr>
+
+     
     <!-- modal -->
             <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -94,7 +97,7 @@
            @endforelse  
      
                  	
-<div class="container ">
+<div class="container">
   <div class="row">
 
         @foreach ($posts as $post) 
@@ -106,7 +109,7 @@
                   @else
                     <img src="{{$post->user->avatar}}" class="card-avatar"/>
                   @endif
-                      <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+                      <p style="font-size:.75rem; overflow:hidden;" class="mt-2 ml-2">{{$post->user->name}}</p>
                   </div> 
                     <div class="product-image-wrapper">
 
@@ -114,17 +117,18 @@
                           <div class="productinfo">
                                     
 
-                      	  <!-- web view -->
-                            <div class="d-none d-lg-block">
-                              <img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                      	   <!-- web view -->
+                           <div class="d-none d-lg-block">
+                          <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
+                              object-fit: cover;" alt="" /></a>
                           </div>
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
-                            <img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                          <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
+                              object-fit: cover;" alt="" /></a>
                           </div>		
                            <!-- end mobile veiw -->
+                              
                               
                             <div class="product-details">
                               <div  style="height:20px; overflow:hidden;">

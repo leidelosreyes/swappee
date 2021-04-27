@@ -17,7 +17,7 @@
         <!-- product section -->
         <section class="products-section col-xl-9 mb-4">
          <!-- side modal for mobile view -->
-         @include('User.sidemodal')
+        
          <!-- end side modal -->    
                            @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
