@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\{Sub_categorie,Offer,Categories,Post};
+use App\Models\{Sub_categorie,Offer,Categories,Post,Message};
 use Illuminate\Http\Request;
 use Auth;
 
@@ -80,7 +80,9 @@ class CategoriesController extends Controller
         ->paginate(20);
         $sub_categories = Sub_categorie::all();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
-        return view('home',compact('posts','categories','sub_categories','notifications'));
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
     }
     public function filter_by_price(Request $request)
     {
@@ -91,7 +93,9 @@ class CategoriesController extends Controller
         $posts = Post::whereBetween('price',[$min_val,$price])
         ->paginate(20);
         $notifications = Offer::where('receiver_id',Auth::id())->get();
-        return view('home',compact('posts','categories','sub_categories','notifications'));
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
     }
     public function filter_post_by_sub_category($sub_category_id)
     {
@@ -100,7 +104,9 @@ class CategoriesController extends Controller
         ->paginate(20);
         $sub_categories = Sub_categorie::all();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
-        return view('home',compact('posts','categories','sub_categories','notifications'));
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
     }
     public function show(Categories $categories)
     {
