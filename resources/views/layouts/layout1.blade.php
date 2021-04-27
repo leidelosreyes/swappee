@@ -138,8 +138,8 @@
   speed: 300,
   slidesToShow: 7,
   slidesToScroll: 5,
-  prevArrow: null,
-  nextArrow: null,
+  // prevArrow: null,
+  // nextArrow: null,
   responsive: [
     {
       breakpoint: 1024,
