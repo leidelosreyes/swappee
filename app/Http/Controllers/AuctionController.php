@@ -48,7 +48,7 @@ class AuctionController extends Controller
                  'end_date' => 'required',
                  'category_id' => 'required',
                  'sub_category_id' => 'required',
-                 'image' => ['required|max:10240','image']
+                 'image' => 'required|max:8192|image'
 
          ]);
 
