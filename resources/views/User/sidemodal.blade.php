@@ -26,7 +26,7 @@
                                                 <a href="{{route('home')}}"class="a-color"><i class="fas fa-home"></i> Home </a>  
                                             </li> 
                                             <li>
-                                                <a href="{{route('user.profile_public_view')}}"class="a-color"><i class="fas fa-globe-asia"></i> Public Profile </a>  
+                                                <a href="#"class="a-color"><i class="fas fa-globe-asia"></i> Public Profile </a>  
                                             </li>       
                                             <li>    
                                                 <a href="#homeSubmenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> My Items<i class="fas fa-chevron-right" style="float:right"></i></a> 
@@ -44,7 +44,7 @@
                                                     </ul>   
                                             </li>        
                                                 <li> 
-                                                    <a href="#homeSubmenu"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
+                                                    <a href="#"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
                                                     
                                                 </li>
                                             <!-- <li>
@@ -52,7 +52,7 @@
                                             </li> -->
                                             <hr>
                                             <li>
-                                            <a href="#homeSubmenu"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">({{$messages->count()}})</span></a> 
+                                            <a href="#"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">({{$messages->count()}})</span></a> 
                                             </li>
                                             <li>
                                                 <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">({{$offer->count()}})</span></a> 
