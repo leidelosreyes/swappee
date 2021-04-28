@@ -110,9 +110,14 @@
 <div class="d-sm-block d-md-none mb-4">
 <nav class="navbar navbar-light bg-light mb-2">
 		<div class="container">
-			<a class="navbar-brand"  href="{{url('/')}}">
-			<img src="{{asset('image/swappee_logo.png')}}" style="width:150px;height: 50px;margin-bottom: 5px;" alt="">
-			</a>
+    <div class="footer-icons">
+
+<a href="#"><i class="fab fa-facebook-f mr-2" style="color: #3B5998; "></i></a>
+<a href="#"><i class="fab fa-twitter mr-2" style="color: #55ACEE; "></i></a>
+<a href="#"><i class="fab fa-instagram" style="color:#dd4b39; "></i></a>
+
+
+</div>
 				<ul class="nav justify-content-end">
 				  
 					<!-- <li class="nav-item">

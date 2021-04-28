@@ -7,7 +7,7 @@
         <div class="card card-signin ">
           <div class="card-body">
           <div class="logo-row" style="text-align: center;">
-                  <p>Resigtration Form</p>
+          <a href="{{url('/')}}"><img src="../image/swappee_logo.png" alt="ggggg" style="height: 50px;"></a>
       </div>
             <h5 class="card-title text-center"></h5>
             <form class="form-signin" method="POST" action="{{ route('register') }}">
@@ -68,14 +68,13 @@
                 <label for="password-confirm"> Confirm Password <label for="username" style="color:red;"> * </label></label>
               </div>
 
-              <div class="custom-control custom-checkbox mb-3">
-                <!-- <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label> -->
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <hr class="my-4">
-              <a class="btn btn-lg btn-google btn-block text-uppercase"href="{{route('login.google')}}" ><i class="fab fa-google mr-2"></i> Sign in with Google</a>
-              <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{route('login.facebook')}}"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
+             <div class="justify-content-center">
+             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+              <hr>
+              <a class="btn btn-lg btn-google btn-block text-uppercase"href="{{route('login.google')}}" ><i class="fab fa-google"></i> Sign in with Google</a>
+              <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{route('login.facebook')}}"><i class="fab fa-facebook-f"></i> Sign in with Facebook</a>
+             </div>
+              
             </form>
           </div>
         </div>
