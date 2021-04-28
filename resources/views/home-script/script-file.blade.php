@@ -6,7 +6,7 @@
 	<script src="{{asset('js/zoom-main.js')}}"></script>
   <script src="{{asset('js/location.js')}}"></script>
   <script src="{{asset('js/slider.js')}}"></script>
-  <script src="{{asset('js/maxdate.js')}}"></script>
+ 
 
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCgx9Bd4uEQheMNgrbi-r6Zbg1spXEgof8"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?input=Philippines&types=geocode&key=AIzaSyBJCSjFGcsFkG5Zy7k3Ph6ArHv6EoWSxpk&libraries=places&callback=initAutocomplete"async defer></script>
@@ -90,4 +90,19 @@
           document.getElementById("ex6SliderVal").textContent = sliderValue;
         });
       </script>
+<script>
 
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+var yyyy = today.getFullYear();
+if(dd<10){
+  dd='0'+dd
+} 
+if(mm<10){
+  mm='0'+mm
+} 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("end_date").setAttribute("min", today);
+</script>

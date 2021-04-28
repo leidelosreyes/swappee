@@ -43,7 +43,7 @@
                                         name="end_date"
                                         style="height:60px;"
                                         placeholder=" "
-                                        class="form__input form-control  @error('end_date') is-invalid @enderror"
+                                        class="form__input form-control @error('end_date') is-invalid @enderror"
                                         value="{{old('end_date')}}"
                                         autocomplete="end_date" autofocus
                                         >

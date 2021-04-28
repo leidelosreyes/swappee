@@ -1,21 +1,13 @@
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+var yyyy = today.getFullYear();
+if(dd<10){
+  dd='0'+dd
+} 
+if(mm<10){
+  mm='0'+mm
+} 
 
-    
-  var dtToday = new Date();
-  
-  var month = dtToday.getMonth() + 1;
-  var day = dtToday.getDate();
-  var year = dtToday.getFullYear();
-  if(month < 10)
-      month = '0' + month.toString();
-  if(day < 10)
-      day = '0' + day.toString();
-  
-  var maxDate = year + '-' + month + '-' + day;
-
-  // or instead:
-  // var maxDate = dtToday.toISOString().substr(0, 10);
-
-
-  $('#end_date').attr('min', maxDate);
-    
-    
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("end_date").setAttribute("min", today);
