@@ -1,7 +1,7 @@
 
 <!-- carousel for web view  -->
 
-<div class="d-none d-lg-block">
+<div class="d-none d-lg-block container">
   <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

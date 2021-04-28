@@ -2,8 +2,10 @@
 
 @section('content')
 
-
+  
 @include('layouts.carousel')
+
+
             <div class="col-md-12">
                     <h2 class="title text-center">Available for Swap</h2>
             </div>

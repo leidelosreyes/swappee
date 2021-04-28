@@ -68,7 +68,7 @@
                 <label for="password-confirm"> Confirm Password <label for="username" style="color:red;"> * </label></label>
               </div>
 
-             <div class="justify-content-center">
+             <div class="text-center">
              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <hr>
               <a class="btn btn-lg btn-google btn-block text-uppercase"href="{{route('login.google')}}" ><i class="fab fa-google"></i> Sign in with Google</a>
