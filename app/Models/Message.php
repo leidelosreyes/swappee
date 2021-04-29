@@ -11,11 +11,11 @@ class Message extends Model
     protected $guarded = [];
     public function m_receiver()
     {
-           return $this->belongsTo(user::class,'receiver_id');
+           return $this->belongsTo(User::class,'receiver_id');
     }
 
     public function m_sender()
     {
-            return $this->belongsTo(user::class,'sender_id');
+            return $this->belongsTo(User::class,'sender_id');
     }
 }

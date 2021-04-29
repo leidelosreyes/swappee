@@ -186,7 +186,11 @@
 
 								</div>
                                <a style="color: #57585a;"href="{{route('show.notifications')}}"> 
-                               <img src="{{$notification->sender->avatar}}" class="card-avatar"/> 
+							   @if(empty(@notification->sender->avatar))
+							   <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+							   @else
+							   <img src="{{$notification->sender->avatar}}" class="card-avatar"/> 
+							   @endif 
                                <b>{{$notification->sender->name}}</b>	
                                Wants to swap your items 
                                </a> 

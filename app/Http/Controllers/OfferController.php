@@ -34,10 +34,6 @@ class OfferController extends Controller
    public function show_notifications()
    {
     $notifications = Offer::where('receiver_id',Auth::id())->get();
-    
-    $users = DB::table('users')
-            ->leftJoin('offers', 'users.id', '=', 'offers.sender_id')
-            ->get();
      $messages = Message::where('receiver_id',Auth::id())->get();
      $offer = Offer::where('sender_id',Auth::id())->get();
     return view('User.notification',compact('notifications','messages','offer'));
@@ -56,7 +52,7 @@ class OfferController extends Controller
         'delivery_method' => 'required',
         'receiver_id' =>'required',
         'post_id' => 'required',
-        'image' => ['required','image']
+        'image' => 'required|max:8192|image'
 
        ]);
        $imagePath = request('image')->store('uploads','public');

@@ -12,16 +12,16 @@ class Offer extends Model
     protected $guarded = [];
     public function receiver()
     {
-           return $this->belongsTo(user::class,'receiver_id');
+           return $this->belongsTo(User::class,'receiver_id');
     }
 
     public function sender()
     {
-            return $this->belongsTo(user::class,'sender_id');
+            return $this->belongsTo(User::class,'sender_id');
     }
     public function post()
     {
-        return $this->belongsTo(post::class);
+        return $this->belongsTo(Post::class);
     }
    
 }
