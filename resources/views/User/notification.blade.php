@@ -1,11 +1,11 @@
 @extends('layouts.layout2')
 @section('content')
 <div class="container mt-4">
-    @include('user.profilebar') 
+    @include('User.profilebar') 
     <div class="row">
         <div class="col-xl-3 d-none d-lg-block">
                     <!-- side menu-->                   
-                            @include('user.sidemenu')
+                            @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
         <section class="products-section col-xl-9 mb-4">
@@ -39,8 +39,12 @@
                                         
                                         <div class="d-flex flex-row">
                                             <div class="ratings mr-2">
-                                           
-                                            <img src="{{$notification->sender->avatar}}" class="card-avatar"/> </i><span class="bg-pink"><b>{{$notification->sender->name}}</b> Want to swap your item</span>
+                                           @if(empty($notification->sender->avatar))
+                                           <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+                                           @else
+                                           <img src="{{$notification->sender->avatar}}" class="card-avatar"/> </i><span class="bg-pink"><b>{{$notification->sender->name}}</b> Want to swap your item</span>
+                                           @endif
+                                          
                                             
                                            
                                             </div>
