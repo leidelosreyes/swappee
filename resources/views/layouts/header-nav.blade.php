@@ -186,7 +186,7 @@
 
 								</div>
                                <a style="color: #57585a;"href="{{route('show.notifications')}}"> 
-							   @if(empty(@notification->sender->avatar))
+							   @if(empty($notification->sender->avatar))
 							   <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
 							   @else
 							   <img src="{{$notification->sender->avatar}}" class="card-avatar"/> 
