@@ -100,7 +100,7 @@
 								  <b>{{$auction->product_name}}</b>
 								</div>
 								<div class="d-sm-block d-md-none">
-								<h5 style="color:#FFB52E;"> PHP {{number_format($auction->price)}}</h5>
+								<h5 style="color:#FFB52E;"> PHP {{number_format($auction->estimated_price)}}</h5>
 								</div>
 								<!-- end mobile view -->
 
