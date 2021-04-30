@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class auction extends Model
+class bidder extends Model
 {
     use HasFactory;
     protected $guarded=[];
-    public function user(){
+    public function auction(){
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(auction::class);
     }
-    public function bidder(){
-        return $this->hasMany(bidder::class);
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

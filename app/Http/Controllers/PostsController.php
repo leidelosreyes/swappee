@@ -62,7 +62,9 @@ class PostsController extends Controller
             'sub_category_id' =>$data['sub_category_id'],
             'delivery_method' => $data['delivery_method'],
             
-            'image' => $imagePath
+            'image' => $imagePath,
+            'created_at' => Carbon::now()->timezone('Asia/Manila'),
+            'updated_at' => Carbon::now()->timezone('Asia/Manila')
 
 
         ]);

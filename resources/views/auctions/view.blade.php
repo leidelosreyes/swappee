@@ -64,6 +64,11 @@
 <!-- end carousel for web view  -->
 </div>
 <div class="container">
+                                  @if ($message = Session::get('error'))
+									<div class="alert alert-danger mt-4">
+										<p>{{$message}}</p>
+									</div>
+									@endif
 	<div class="row">
 		<div class="col-sm-5 mt-4 mb-4">
 			<div class="card">
@@ -144,11 +149,20 @@
 														
                             			
 								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Posted date:</b> <i class="far fa-clock" style="color:green"></i> {{$auction->created_at->diffForHumans()}}</p>
-								<p><i class="far fa-calendar-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> End date:</b> <i class="far fa-clock" style="color:red"></i> {{$auction->end_date}}</p>
+								@if($auction->end_date == date('Y-m-d'))
+								<p><i class="far fa-calendar-times"style="color:#999;"></i><b style="color:#999;font-weight:400;"> End date:</b> <i class="far fa-clock" style="color:red"></i> <span style="color:red"> Bid has been ended</span></p>
+								@else
+								<p><i class="far fa-calendar-times"style="color:#999;"></i><b style="color:#999;font-weight:400;"> End date:</b> <i class="far fa-clock" style="color:red"></i> {{$auction->end_date}}</p>
+								@endif
+								
 								<hr>
 								
-								<p><i class="fas fa-sync-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Bid Start Price:</b> {{number_format($auction->bidding_start_price)}}</p>					
-								<p class="mb-4"><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Bid Current Price:</b> {{$auction->location}}</p>		  
+								<p><i class="fas fa-coins" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Bid Current Price:</b> {{number_format($auction->bidding_start_price)}}</p>
+								@if($bidders->count()== 0)
+								<p><i class="far fa-play-circle"style="color:#999;"></i><b style="color:#999;font-weight:400;"> Bid Start Price:</b> {{number_format($auction->bidding_start_price)}}</p>
+								<p class="mb-4"><i class="fas fa-users" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Bidders:</b> No Bidders Yet </p>
+								@endif					
+								
 		 						<hr>
 
 								 <button class="btn btn-primary " type="button" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">
@@ -178,12 +192,20 @@
 		</div>	
 </div>
 <div class="container">
+@if ($message = Session::get('success'))
+                                <div class="alert alert-success mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
 		<div class="card mb-4 products-section">
 			<div class="card-header bg-white">
 				<h3>Bidders </h3>
 			</div>
 			<div class="card-body">	
 						@include('auctions.bidders_table')
+						<div class="container mt-4 text-center">
+						
+						</div>
 			</div>
 		</div>	
 </div>
@@ -194,7 +216,7 @@
 				<h3>More Items </h3>
 			</div>
 		<div class="card-body">
-		<div class="row">
+<div class="row">
 
 @foreach ($more_posts as $post) 
 <div class="col-6 col-md-6 col-lg-3 b-col mt-4">
@@ -244,13 +266,13 @@
 			
 		  </div>
 		  @endforeach
-		    <div class="container mt-4 mmb-4 text-center">
-			{{$more_posts->links()}}
-			</div>
+		   
  </div>
 		</div>
 	</div>
-
+	<div class="container mt-4 mmb-4 text-center">
+			{{$more_posts->links()}}
+			</div>
 </div>
    
 
@@ -265,28 +287,36 @@
                 </button>
             </div>
                 <div class="modal-body">
-				<p class="mb-4">Make sure your bid is higher than bid current price <span  style="color:#FFB52E;">( PHP {{number_format($post->estimated_price)}}) </span>  </p>
-					<form action="" method="post">
+				<p class="mb-4">Make sure your bid is higher than bid current price <span  style="color:#FFB52E;">( PHP {{number_format($auction->bidding_start_price)}}) </span>  </p>
+					<form action="/bidder/store" method="post">
+					@csrf
 					<div class="form__div">
                                         <input type="number" 
-                                        id="bidding_start_price"
-                                        name="bidding_start_price"
+                                        id="amount"
+                                        name="amount"
                                         style="height:60px;"
                                         placeholder=" "
-                                        class="form__input form-control  @error('bidding_start_price') is-invalid @enderror"
-                                        value="{{old('bidding_start_price')}}"
-                                        autocomplete="bidding_start_price" autofocus
+                                        class="form__input form-control  @error('amount') is-invalid @enderror"
+                                        value="{{$auction->bidding_start_price}}"
+                                        autocomplete="amount" autofocus
                                         >
                                         <label for="" class="form__label">Enter Your Bid</label></label>
-                                         @error('bidding_start_price')
+                                         @error('amount')
                                                 <span class="invalid-feedback" role="alert ">
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
                                         @enderror
                                       
                                     </div>
+									<input type="hidden"
+									id="auction_id"
+									name="auction_id"
+									value={{$auction->id}}
+									>
                        
-
+									<button class="btn btn-primary " type="submit" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">
+									<i class="far fa-comment-alt"></i> Bid
+                                 </button>
 					</form>
 						 
                   </div>

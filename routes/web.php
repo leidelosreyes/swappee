@@ -40,8 +40,9 @@ Route::get('/user/index', function () {
 Auth::routes(['verify' => true]);
   Route::group(['middleware' => ['auth','admin']],function(){
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-    
- 
+    Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_admin'])->name('show.admin');
+    Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
+    Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
  });
  
 Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage'])->name('/');
@@ -96,3 +97,4 @@ Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class,
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
 //-----------------------------------------filter by price------------------------------
 Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');
+Route::post('/bidder/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');

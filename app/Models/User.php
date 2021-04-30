@@ -73,6 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Profile::class);
     }
+    public function bid()
+    {
+        return $this->hasMany(bidder::class);
+    }
    
     
 }

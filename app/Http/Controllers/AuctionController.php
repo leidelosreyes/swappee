@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\auction;
 use Auth;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message};
+use Carbon\Carbon;
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder};
 
 class AuctionController extends Controller
 {
@@ -62,7 +63,9 @@ class AuctionController extends Controller
              'end_date' => $data['end_date'],
              'category_id'=> $data['category_id'],
              'sub_category_id'=> $data['sub_category_id'],
-             'image' => $imagePath
+             'image' => $imagePath,
+             'created_at' => Carbon::now()->timezone('Asia/Manila'),
+             'updated_at' => Carbon::now()->timezone('Asia/Manila')
 
 
          ]);
@@ -73,7 +76,7 @@ class AuctionController extends Controller
     }
     public function show(Auction $auction)
     {
-        // <-- validation to user for swapping -->
+        // <-- validation to user for bidding -->
        
            if($auction->user_id == Auth::id())
            {
@@ -84,7 +87,8 @@ class AuctionController extends Controller
            $more_posts = Auction::where('user_id',$auction->user_id)->simplepaginate(20);
            $messages = Message::where('receiver_id',Auth::id())->get();
            $offer = Offer::where('sender_id',Auth::id())->get();
-            return view('auctions.view',compact('auction','more_posts','notifications','messages','offer'));
+           $bidders = bidder::where('auction_id',$auction->id)->orderBy('amount','desc')->get();
+           return view('auctions.view',compact('auction','more_posts','notifications','messages','offer','bidders'));
         
     }
 }
