@@ -137,19 +137,32 @@
                                     <a href="{{route('create.admin')}}"class="a-color"> Create Administrator </a>
                                     </li>
                                    <li>
-                                    <a href="admin/show/1"class="a-color"> Admins </a>
+                                    <a href="{{route('show.admin',1)}}"class="a-color"> Admins </a>
                                     </li>
                                     <li>
-                                    <a href="admin/show/2"class="a-color"> Posts-Moderator-Admin</a>                     
+                                    <a href="{{route('show.admin',2)}}"class="a-color"> Posts-Moderator-Admin</a>                     
                                     </li>
                                     <li>
-                                    <a href="admin/show/3"class="a-color"> Contents-Manager-Admin </a>
+                                    <a href="{{route('show.admin',3)}}"class="a-color"> Contents-Manager-Admin </a>
                                     </li>
                                     <li>
-                                    <a href="admin/show/4"class="a-color"> Users-Manager-Admin</a>                     
+                                    <a href="{{route('show.admin',4)}}"class="a-color"> Users-Manager-Admin</a>                     
                                     </li>
                             </div>                                          
-                      </ul>   
+                      </ul>  
+           <li class="nav-item">
+           <a href="#homeSubmenu2" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> Posts<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                      <ul class="collapse list-unstyled" id="homeSubmenu2">
+                            <div class="pl-2">
+                                  <li>
+                                    <a href="{{route('show_swap.admin')}}"class="a-color"> Swap </a>
+                                    </li>
+                                   <li>
+                                    <a href="{{route('show_auction.admin')}}"class="a-color"> Auction </a>
+                                    </li>
+                            </div>                                          
+                      </ul>  
+           </li>  
           
           <li class="nav-header">LABELS</li>
           <li class="nav-item">

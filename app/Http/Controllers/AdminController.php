@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction};
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Carbon\Carbon;
@@ -53,5 +53,14 @@ class AdminController extends Controller
         ]);
         return redirect('admin')->with('success','New Administrator Created Successfuly');
 
+    }
+
+    public function show_swap(){
+        $swap = Post::all();
+       return view('admins.admin.swap.show',compact('swap'));
+    }
+    public function show_auction(){
+        $auction = auction::all();
+       return view('admins.admin.auction.show',compact('auction'));
     }
 }

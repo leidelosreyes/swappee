@@ -43,6 +43,12 @@ Auth::routes(['verify' => true]);
     Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_admin'])->name('show.admin');
     Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
     Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
+    Route::prefix('swap')->group(function (){
+      Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
+    });
+    Route::prefix('auction')->group(function (){
+      Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_auction'])->name('show_auction.admin');
+    });
  });
  
 Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage'])->name('/');
