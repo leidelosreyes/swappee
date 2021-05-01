@@ -45,7 +45,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{url('/home')}}" class="nav-link">Home</a>
+        <a href="{{url('/admin')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{url('/contact')}}" class="nav-link">Contact</a>
@@ -114,7 +114,12 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/new.jpg" class="img-circle elevation-1" alt="User Image">
+       
+                  @if(empty($post->user->avatar))
+                  <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+                  @else
+                    <img src="{{$post->user->avatar}}" class="card-avatar"/>
+                  @endif
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -156,6 +161,7 @@
                             <div class="pl-2">
                                   <li>
                                     <a href="{{route('show_swap.admin')}}"class="a-color"> Swap </a>
+                        
                                     </li>
                                    <li>
                                     <a href="{{route('show_auction.admin')}}"class="a-color"> Auction </a>
@@ -163,9 +169,39 @@
                             </div>                                          
                       </ul>  
            </li>  
+           <li class="nav-item">
+           <a href="#homeSubmenu3" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> Categories<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                      <ul class="collapse list-unstyled" id="homeSubmenu3">
+                            <div class="pl-2">
+                                  <li>
+                                    <a href="{{route('create_categories.admin')}}" class="a-color"> Create Categories </a>
+                          
+                                    </li>
+                                   <li>
+                                    <a href="{{route('create_sub_categories.admin')}}"class="a-color"> Create Sub Categories </a>
+                                    </li>
+                            </div>                                          
+                      </ul>  
+           </li>  
           
-          <li class="nav-header">LABELS</li>
-          <li class="nav-item">
+           <li class="nav-item">
+           <a href="#homeSubmenu4" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> Users<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                      <ul class="collapse list-unstyled" id="homeSubmenu4">
+                            <div class="pl-2">
+                                  <li>
+                                    <a href="{{route('create_categories.admin')}}" class="a-color"> Create Users </a>
+                          
+                                    </li>
+                                   <li>
+                                    <a href="{{route('show_user.admin','verified')}}"class="a-color"> Verified User </a>
+                                    </li>
+                                    <li>
+                                    <a href="{{route('show_user.admin','not-verified')}}"class="a-color"> Not Verified User </a>
+                                    </li>
+                            </div>                                          
+                      </ul>  
+           </li>  
+          <!-- <li class="nav-item">
           </a>
 
                         <div class="nav-link">
@@ -180,7 +216,7 @@
                                 @csrf
                             </form>
             
-          </li>
+          </li> -->
           
         </ul>
       </nav>

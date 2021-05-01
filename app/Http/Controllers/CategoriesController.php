@@ -28,7 +28,27 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admins.categories.create');
+        if(Auth::user()->usertype != 'admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Add Categories');
+        }
+        if(Auth::user()->usertype != 'content-manager-admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Add Categories');
+        }
+        return view('admins.admin.categories.create-categories');
+    }
+    public function create_sub_category()
+    {
+        if(Auth::user()->usertype != 'admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Add categories');
+        }
+        if(Auth::user()->usertype != 'content-manager-admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Add Categories');
+        }
+        return view('admins.admin.categories.create-sub-category');
     }
 
     /**
@@ -41,8 +61,8 @@ class CategoriesController extends Controller
     {
         $data = $this->validate($request,
         [
-         'name'=> 'required|min:3|max:255|string',
-         'icon'=> 'required'
+         'name'=> 'required|min:3|max:50|string',
+         'icon'=> 'required|max:8192|image'
         
         ]);
       
@@ -51,19 +71,19 @@ class CategoriesController extends Controller
                             'icon'=> $imagePath
         ]);
 
-        return $categories;
+        return redirect('admin')->with('success','New Administrator Created Successfuly');
 
     }
     public function store_sub_category(Request $request)
     {
         $data = $this->validate($request,
         [
-         'name'=> 'required|min:3|max:255|string'
+         'name'=> 'required|min:3|max:50|string'
         ]);
       
         $sub_categories = Sub_categorie::create(['name'=>$data['name']]);
 
-        return $sub_categories;
+        return redirect('admin')->with('success','New Administrator Created Successfuly');
 
     }
 

@@ -23,13 +23,16 @@ class AdminController extends Controller
             return view('admins.admin.show',compact('admin'));
         }
         if($params == 2){
-             return $params;
+            $admin = User::where('usertype','post-moderator-admin')->get();
+            return view('admins.admin.show',compact('admin'));
         }
         if($params == 3){
-            return $params;
+            $admin = User::where('usertype','content-manager-admin')->get();
+            return view('admins.admin.show',compact('admin'));
         }
         if($params == 4){
-            return $params;
+            $admin = User::where('usertype','user-manager-admin')->get();
+            return view('admins.admin.show',compact('admin'));
         }
       
     }
@@ -55,12 +58,79 @@ class AdminController extends Controller
 
     }
 
+    public function edit($id){
+        if(Auth::user()->usertype != 'admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Edit Administrator');
+        }
+        $admin = User::find($id);
+        dd($admin);
+    }
+    public function delete($id){
+        if(Auth::user()->usertype != 'admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Delete Administrator');
+        }
+        $admin = User::find($id);
+        dd($admin);
+    }
+
     public function show_swap(){
-        $swap = Post::all();
-       return view('admins.admin.swap.show',compact('swap'));
+        if(Auth::user()->usertype == 'post-moderator-admin')
+        {
+             $swap = Post::all();
+            return view('admins.admin.swap.show',compact('swap'));
+        }
+        if(Auth::user()->usertype == 'admin')
+        {
+             $swap = Post::all();
+            return view('admins.admin.swap.show',compact('swap'));
+        }
+      
+        return redirect()->back()->with('error','You are not authorized');
+        
     }
     public function show_auction(){
-        $auction = auction::all();
-       return view('admins.admin.auction.show',compact('auction'));
+        if(Auth::user()->usertype == 'admin')
+        {
+            $auction = auction::all();
+            return view('admins.admin.swap.show',compact('swap'));
+        }
+        if(Auth::user()->usertype == 'post-moderator-admin')
+        {
+            $auction = auction::all();
+            return view('admins.admin.swap.show',compact('swap'));
+        }
+       
+        return redirect()->back()->with('error','You are not authorized');
+    }
+    public function show_user($params){
+      if($params == "verified"){
+        if(Auth::user()->usertype == 'admin')
+        {
+            $user = User::where('usertype',null)->where('email_verified_at','!=',null)->get();
+             return view('admins.admin.users.show',compact('user')); 
+        }
+        if(Auth::user()->usertype == 'user-manager-admin')
+        {
+            $user = User::where('usertype',null)->where('email_verified_at','!=',null)->get();
+            return view('admins.admin.users.show',compact('user')); 
+        }
+      }
+      if($params == "not-verified"){
+        if(Auth::user()->usertype == 'admin')
+        {
+            $user = User::where('usertype',null)->where('email_verified_at',null)->get();
+            return view('admins.admin.users.show',compact('user'));  
+        }
+        if(Auth::user()->usertype == 'user-manager-admin')
+        {
+            $user = User::where('usertype',null)->where('email_verified_at',null)->get();
+            return view('admins.admin.users.show',compact('user')); 
+        }
+      }
+        
+       
+         return redirect()->back()->with('error','You are not authorized');
     }
 }

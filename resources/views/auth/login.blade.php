@@ -55,7 +55,7 @@
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
               <a class="btn btn-lg btn-google btn-block text-uppercase" href="{{ route('login.google') }}" role="button" ><i class="fab fa-google mr-2"></i>Sign in with Google</a>
-              <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{ route('login.google') }}"role="button" ><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
+              <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{ route('login.facebook') }}"role="button" ><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
             </form>
            
               

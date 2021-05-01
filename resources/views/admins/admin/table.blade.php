@@ -4,7 +4,7 @@
     
       <th scope="col">Name</th>
       <th scope="col">Email</th>
-      <th scope="col">Address</th>
+      <th scope="col">User Type</th>
       <th scope="col">Verified At</th>
       <th scope="col">Actions</th>
     </tr>
@@ -16,7 +16,7 @@
      
       <td> <p class="mt-2">{{$admin->name}}</p> </td>
       <td> <p class="mt-2">{{$admin->email}}</p> </td>
-      <td> <p class="mt-2">{{$admin->profile->address}}</p> </td>
+      <td> <p class="mt-2">{{$admin->usertype}}</p> </td>
       <td>  {{$admin->email_verified_at}} </td>
       <td>
                                     <div class="d-flex mt-2">

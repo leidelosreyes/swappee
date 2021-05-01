@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use illuminate\http\Request;
@@ -95,21 +96,17 @@ class LoginController extends Controller
         $user = Socialite::driver('google')->stateless()->user();
         $this->_registerOrLoginUser($user);
         return redirect()->route('user.profile');
-
-
-        // $user->token;
+        
     }
     protected function _registerOrLoginUser($data){
         $user = User::where('email','=',$data->email)->first();
         if(!$user)
         {
-           $user = new User();
-           $user->name = $data->name;
-           $user->email = $data->email;
-           $user->provider_id = $data->id;
-           $user->avatar = $data->avatar;
-           $user->save();
-
+           $user = User::create([
+               'name'  => $data->name,
+               'email' => $data->email,
+               'provider_id' => $data->id
+           ]);
         }
         Auth::login($user);
 
