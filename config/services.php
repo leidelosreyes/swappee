@@ -37,7 +37,7 @@ return [
       'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://swappee.online/login/google/callback',
+        'redirect' => env('GOOGLE_REDIRECT'),
       ],
 
 
