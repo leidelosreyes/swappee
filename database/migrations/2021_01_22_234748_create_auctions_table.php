@@ -15,7 +15,7 @@ class CreateAuctionsTable extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('product_name');
             $table->integer('estimated_price');
             $table->text('description');

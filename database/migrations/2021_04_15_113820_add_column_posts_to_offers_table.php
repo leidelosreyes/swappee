@@ -17,7 +17,7 @@ class AddColumnPostsToOffersTable extends Migration
             $table->foreignId('post_id')
             ->after('receiver_id')
             ->nullable()
-            ->constrained();
+            ->constrained()->onDelete('cascade');
         });
     }
 

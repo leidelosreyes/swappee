@@ -28,27 +28,28 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->usertype != 'admin')
+        if(Auth::user()->usertype == 'admin')
         {
-            return redirect()->back()->with('error','You are not authorized to Add Categories');
+            return view('admins.admin.categories.create-categories');
+            
         }
-        if(Auth::user()->usertype != 'content-manager-admin')
+        if(Auth::user()->usertype == 'content-manager-admin')
         {
-            return redirect()->back()->with('error','You are not authorized to Add Categories');
+            return view('admins.admin.categories.create-categories');
         }
-        return view('admins.admin.categories.create-categories');
+        return redirect()->back()->with('error','You are not authorized to Add Categories');
     }
     public function create_sub_category()
     {
-        if(Auth::user()->usertype != 'admin')
+        if(Auth::user()->usertype == 'admin')
         {
-            return redirect()->back()->with('error','You are not authorized to Add categories');
+            return view('admins.admin.categories.create-categories');
         }
-        if(Auth::user()->usertype != 'content-manager-admin')
+        if(Auth::user()->usertype == 'content-manager-admin')
         {
-            return redirect()->back()->with('error','You are not authorized to Add Categories');
+            return view('admins.admin.categories.create-categories');
         }
-        return view('admins.admin.categories.create-sub-category');
+        return redirect()->back()->with('error','You are not authorized to Add Sub_Categories');
     }
 
     /**

@@ -17,6 +17,7 @@ class AddColumnSubCategoriesToAuctionsTable extends Migration
             $table->foreignId('sub_category_id')->nullable()
             ->after('category_id')
             ->constrained()
+            ->onUpdate('cascade')
             ->onDelete('cascade');
         });
     }

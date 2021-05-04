@@ -18,9 +18,10 @@ class CreateBiddersTable extends Migration
             $table->foreignId('auction_id')
             ->nullable()
             ->constrained()
+            ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreignId('user_id')
-            ->nullable()->constrained()->onDelete('cascade');
+            ->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->integer('amount');
             $table->timestamps();
         });

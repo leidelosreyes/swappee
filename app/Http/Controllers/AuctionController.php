@@ -43,8 +43,8 @@ class AuctionController extends Controller
         
          $data = request()->validate([
                 'product_name' => 'required',
-                 'estimated_price' => 'required',
-                'bidding_start_price' => 'required',
+                 'estimated_price' => 'required|string|min:2|max:6',
+                'bidding_start_price' => 'required|string|min:2|max:6',
                 'description' => 'required',
                  'end_date' => 'required',
                  'category_id' => 'required',
