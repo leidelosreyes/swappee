@@ -110,3 +110,8 @@ Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesCon
 //-----------------------------------------filter by price------------------------------
 Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');
 Route::post('/bidder/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');
+
+
+//======== courier routes ===========
+
+Route::get('/courier/calculate',[App\Http\Controllers\CourierController::class,'calculate_order']);
