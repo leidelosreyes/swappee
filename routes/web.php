@@ -101,10 +101,10 @@ Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageControlle
 
 //--------------------------------------categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
-Route::get('/categories/create',[App\Http\Controllers\CategoriesController::class, 'create'])->name('create_categories.admin');
+Route::get('/categories/create',[App\Http\Controllers\AdminController::class, 'create'])->name('create_categories.admin');
 Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');
 //--------------------------------------------sub_categories-------------------------
-Route::get('/sub_categories/create',[App\Http\Controllers\CategoriesController::class, 'create_sub_category'])->name('create_sub_categories.admin');
+Route::get('/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
 Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
 //-----------------------------------------filter by price------------------------------

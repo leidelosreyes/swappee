@@ -9,7 +9,10 @@ use Auth;
 use Carbon\Carbon;
 class AdminController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
     
     public function index()
     {
@@ -93,13 +96,15 @@ class AdminController extends Controller
     public function show_auction(){
         if(Auth::user()->usertype == 'admin')
         {
-            $auction = auction::all();
-            return view('admins.admin.swap.show',compact('swap'));
+            $auction = User::all();
+           
+            return view('admins.admin.auction.show',compact('auction'));
         }
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
             $auction = auction::all();
-            return view('admins.admin.swap.show',compact('swap'));
+          
+            return view('admins.admin.auction.show',compact('auction'));
         }
        
         return redirect()->back()->with('error','You are not authorized');
@@ -133,4 +138,32 @@ class AdminController extends Controller
        
          return redirect()->back()->with('error','You are not authorized');
     }
+
+
+    public function create_category()
+    {
+        if(Auth::user()->usertype == 'admin')
+        {
+            return view('admins.admin.categories.create-categories');
+            
+        }
+        if(Auth::user()->usertype == 'content-manager-admin')
+        {
+            return view('admins.admin.categories.create-categories');
+        }
+        return redirect()->back()->with('error','You are not authorized to Add Categories');
+    }
+    public function create_sub_category()
+    {
+        if(Auth::user()->usertype == 'admin')
+        {
+            return view('admins.admin.categories.create-categories');
+        }
+        if(Auth::user()->usertype == 'content-manager-admin')
+        {
+            return view('admins.admin.categories.create-categories');
+        }
+        return redirect()->back()->with('error','You are not authorized to Add Sub_Categories');
+    }
+
 }

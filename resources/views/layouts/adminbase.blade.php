@@ -189,7 +189,7 @@
                       <ul class="collapse list-unstyled" id="homeSubmenu4">
                             <div class="pl-2">
                                   <li>
-                                    <a href="{{route('create_categories.admin')}}" class="a-color"> Create Users </a>
+                                    <a href="#" class="a-color"> Create Users </a>
                           
                                     </li>
                                    <li>

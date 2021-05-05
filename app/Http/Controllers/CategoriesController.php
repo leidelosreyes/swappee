@@ -26,32 +26,7 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        if(Auth::user()->usertype == 'admin')
-        {
-            return view('admins.admin.categories.create-categories');
-            
-        }
-        if(Auth::user()->usertype == 'content-manager-admin')
-        {
-            return view('admins.admin.categories.create-categories');
-        }
-        return redirect()->back()->with('error','You are not authorized to Add Categories');
-    }
-    public function create_sub_category()
-    {
-        if(Auth::user()->usertype == 'admin')
-        {
-            return view('admins.admin.categories.create-categories');
-        }
-        if(Auth::user()->usertype == 'content-manager-admin')
-        {
-            return view('admins.admin.categories.create-categories');
-        }
-        return redirect()->back()->with('error','You are not authorized to Add Sub_Categories');
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
