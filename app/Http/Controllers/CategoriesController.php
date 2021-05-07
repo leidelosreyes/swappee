@@ -47,7 +47,7 @@ class CategoriesController extends Controller
                             'icon'=> $imagePath
         ]);
 
-        return redirect('admin')->with('success','New Administrator Created Successfuly');
+        return redirect('admin')->with('success','New Category Created Successfuly');
 
     }
     public function store_sub_category(Request $request)
@@ -59,7 +59,7 @@ class CategoriesController extends Controller
       
         $sub_categories = Sub_categorie::create(['name'=>$data['name']]);
 
-        return redirect('admin')->with('success','New Administrator Created Successfuly');
+        return redirect('admin')->with('success','New Sub Category Created Successfuly');
 
     }
 

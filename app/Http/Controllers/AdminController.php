@@ -157,11 +157,11 @@ class AdminController extends Controller
     {
         if(Auth::user()->usertype == 'admin')
         {
-            return view('admins.admin.categories.create-categories');
+            return view('admins.admin.categorie.create-sub-category');
         }
         if(Auth::user()->usertype == 'content-manager-admin')
         {
-            return view('admins.admin.categories.create-categories');
+            return view('admins.admin.categories.create-sub-category');
         }
         return redirect()->back()->with('error','You are not authorized to Add Sub_Categories');
     }

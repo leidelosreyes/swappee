@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bidder,auction,Offer,Message};
+use App\Models\{bidder,auction,Offer,Message,User};
 use Auth;
+use Mail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,24 @@ class BidderController extends Controller
      */
     public function index()
     {
-        //
+        $datenow = date('Y-m-d');
+        $auction = auction::where('end_date',$datenow)->first();
+        if( $datenow  == $auction->end_date)
+        {
+            $max_amount = Bidder::max('amount');
+            $winners = Bidder::where('amount',$max_amount)->first();
+            $user_id = $winners->user_id;
+            $user = User::findOrFail($user_id);
+            $user_email = $user->email;
+            $user_name  = $user->name;
+            $body_message = "You are the winner of the bidding Please Go to swappee and buy the Cost of item and delivery Charge then give your Drop off location and Contact Person to Deliver your item" ;
+            $subject= "Congratulations You Are The Winner";
+            $data = array('name'=>$user_name, "body" => $body_message);
+            Mail::send('messages.mail', $data, function($message) use($user_email) {
+            $message->to($user_email)->subject('Congratulations Bidders You are the winner');
+            $message->from('swappee6@gmail.com','Swappee');
+            });
+        }
     }
 
     /**
