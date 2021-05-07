@@ -24,6 +24,7 @@ class CreateBiddersTable extends Migration
             ->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->integer('amount');
             $table->timestamps();
+           
         });
     }
 

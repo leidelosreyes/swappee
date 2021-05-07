@@ -166,4 +166,44 @@ class AdminController extends Controller
         return redirect()->back()->with('error','You are not authorized to Add Sub_Categories');
     }
 
+
+    public function archive($deleted){
+        if($deleted == 'posts_deleted'){
+            $posts = Post::onlyTrashed()->get();
+            return view('admins.admin.archive.show',compact('posts'));
+        }
+        if($deleted == 'auctions_deleted'){
+            $auctions = Auction::onlyTrashed()->get();
+            return view('admins.admin.archive.auction',compact('auctions'));
+        }
+        if($deleted == 'admins_deleted'){
+            $admins = User::onlyTrashed()->get();
+            return view('admins.admin.archive.admin_disposed',compact('admins'));
+        }
+        if($deleted == 'offers_deleted'){
+            $offer = Offers::onlyTrashed()->get();
+            return view('admins.admin.archive.offer',compact('offers'));
+        }
+        if($deleted == 'message'){
+            $messages = Messages::onlyTrashed()->get();
+        }
+        if($deleted == 'category'){
+            $categories = Categories::onlyTrashed()->get();
+        }
+        if($deleted == 'sub_category'){
+            $sub_categories = Sub_categories::onlyTrashed()->get();
+        }
+       
+        
+    }
+    public function delete_admin($id){
+        $admin = User::findOrFail($id)->delete();
+        return redirect()->back()->with('success','Admin Deleted Successfully');
+    }
+    public function delete_offer($id){
+        $offer = Offer::findOrFail($id)->delete();
+        return redirect()->back()->with('success','Admin Deleted Successfully');
+    }
+
+  
 }

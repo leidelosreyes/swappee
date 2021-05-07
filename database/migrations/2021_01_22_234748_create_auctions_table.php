@@ -23,6 +23,7 @@ class CreateAuctionsTable extends Migration
             $table->string('end_date');
             $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

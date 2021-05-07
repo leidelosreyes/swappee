@@ -23,6 +23,7 @@ Schema::create('users', function (Blueprint $table) {
     $table->string('password')->nullable();
     $table->rememberToken()->nullable();    
     $table->timestamps();
+    $table->softDeletes();
 });
 }
 

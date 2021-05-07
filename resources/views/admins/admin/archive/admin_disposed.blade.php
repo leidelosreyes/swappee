@@ -14,8 +14,31 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h4 class="header-title mb-3 mt-4">Admins</h4> 
-            @include('admins.admin.table')
+                                <h4 class="header-title mb-3 mt-4">For Swap</h4> 
+                                <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">User-type</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Deleted At</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+    @foreach($admins as $admin)
+      <td> <p class="mt-2">{{$admin->name}}</p> </td>
+      <td> <p class="mt-2">{{$admin->usertype}}</p> </td>
+      <td> <p class="mt-2">{{$admin->created_at}}</p> </td>
+      <td> <p class="mt-2">{{$admin->deleted_at}} </p> </td>
+    </tr>
+    @endforeach
+    <tr>
+ 
+  </tbody>
+</table>
         </div>
     </div>
 </div>

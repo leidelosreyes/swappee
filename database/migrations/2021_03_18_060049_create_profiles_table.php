@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('address')->nullable();
             $table->string('birthday')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

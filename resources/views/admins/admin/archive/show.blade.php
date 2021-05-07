@@ -18,35 +18,23 @@
                                 <table class="table table-hover">
   <thead>
     <tr>
-    
+      <th scope="col">User</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Location</th>
-      <th scope="col">Approved</th>
-      <th scope="col">Actions</th>
+      <th scope="col">Deleted At</th>
+      
     </tr>
   </thead>
   <tbody>
   
     <tr>
-    @foreach($swap as $swap)
-     
+    @foreach($posts as $swap)
+      <td> <p class="mt-2">{{$swap->user->name}}</p> </td>
       <td> <p class="mt-2">{{$swap->product_name}}</p> </td>
       <td> <p class="mt-2">{{$swap->price}}</p> </td>
       <td> <p class="mt-2">{{$swap->location}}</p> </td>
-      <td>  {{$swap->approved}} </td>
-      <td>
-                                    <div class="d-flex mt-2">
-                                    <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
-                                    <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
-                                   
-                                            <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">
-                                                <i class="fas fa-trash-alt" style="color:red;"></i>
-                                            </button>
-                                
-                                    </div>
-                                    </td>
-    
+      <td> <p class="mt-2">{{$swap->deleted_at}} </p> </td>
     </tr>
     @endforeach
     <tr>
