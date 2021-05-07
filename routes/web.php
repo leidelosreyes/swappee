@@ -54,6 +54,10 @@ Auth::routes(['verify' => true]);
     Route::prefix('user')->group(function (){
       Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_user'])->name('show_user.admin');
     });
+    Route::prefix('categories')->group(function (){
+      Route::get('/admin/create',[App\Http\Controllers\AdminController::class, 'create_category'])->name('create_categories.admin');
+      Route::get('/admin/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
+    });
  });
  
 Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage'])->name('/');
@@ -101,17 +105,20 @@ Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageControlle
 
 //--------------------------------------categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
-Route::get('/categories/create',[App\Http\Controllers\AdminController::class, 'create'])->name('create_categories.admin');
 Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');
 //--------------------------------------------sub_categories-------------------------
-Route::get('/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
 Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
 //-----------------------------------------filter by price------------------------------
 Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');
-Route::post('/bidder/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');
-
-
-//======== courier routes ===========
-
-Route::get('/courier/calculate',[App\Http\Controllers\CourierController::class,'calculate_order']);
+//------------------------------------------bidders route------------------------------------------//
+//-------------------------------------------Courier Route------------------------------------------
+Route::prefix('mr.speedy')->group(function(){
+  Route::get('/courier/calculate',[App\Http\Controllers\CourierController::class,'calculate_order'])->name('courier.calculate');
+  Route::get('/courier/info_location',[App\Http\Controllers\CourierController::class,'courier_info_and_location'])->name('courier.info_location');
+});
+//------------------------------------------bidders Routes -----------------------------------------------
+Route::prefix('bidders')->group(function(){
+  Route::post('/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');
+  Route::get('/index',[App\Http\Controllers\BidderController::class,'index'])->name('bidders.index');
+});
