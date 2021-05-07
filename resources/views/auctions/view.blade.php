@@ -288,7 +288,7 @@
             </div>
                 <div class="modal-body">
 				<p class="mb-4">Make sure your bid is higher than bid current price <span  style="color:#FFB52E;">( PHP {{number_format($auction->bidding_start_price)}}) </span>  </p>
-					<form action="/bidder/store" method="post">
+					<form action="{{route('bidders.store')}}" method="post">
 					@csrf
 					<div class="form__div">
                                         <input type="number" 
