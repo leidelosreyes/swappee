@@ -91,4 +91,8 @@ class AuctionController extends Controller
            return view('auctions.view',compact('auction','more_posts','notifications','messages','offer','bidders'));
         
     }
+    public function delete($id){
+        $auction = auction::findOrFail($id)->delete();
+        return redirect()->back()->with('success','Auction Deleted Successfully');
+    }
 }
