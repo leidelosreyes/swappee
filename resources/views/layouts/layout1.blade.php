@@ -132,6 +132,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- Script for TEXTAREA -->
+<script src="https://cdn.tiny.cloud/1/d5z57kxjuvf3qb1pxqwp575nkn5dp86srz52ip6w742ozfjo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- <script src="{{asset('js/index.js')}}"></script> -->
     <script type="text/javascript">
     $('.slickSlider').slick({
@@ -172,6 +174,30 @@
   ]
 });
 
+</script>
+
+<script>
+      tinymce.init({
+        selector:'#description',
+         plugins: 'lists',
+         toolbar: 'bullist',
+         plugins: 'paste',
+         height: 300,
+         branding: false,
+         width: "100%"
+        
+      })
+      tinymce.init({
+        selector:'#message',
+         plugins: 'lists',
+         toolbar: 'bullist',
+         plugins: 'paste',
+         branding: false,
+         height: 300,
+         width: "100%"
+        
+      })
+      
 </script>
   
 </body>
