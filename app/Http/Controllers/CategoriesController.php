@@ -65,7 +65,7 @@ class CategoriesController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * 
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
