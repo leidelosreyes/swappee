@@ -36,6 +36,9 @@
                 </li> -->
                 <hr>
                 <li>
+                <a href="{{route('user.won_view')}}"class="a-color"><i class="fas fa-trophy"></i> Auction Won Items <span style="float:right;">()</span></a> 
+                </li>
+                <li>
                 <a href="#homeSubmenu"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">({{$messages->count()}})</span></a> 
                 </li>
                 <li>

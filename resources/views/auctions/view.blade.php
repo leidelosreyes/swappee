@@ -1,8 +1,12 @@
 @extends('layouts.layout2')
 @section('content')
 <div class="container">
+@if ($message = Session::get('success'))
+                                <div class="alert alert-success mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
 <!-- carousel for web view  -->
-
 <div class="d-none d-lg-block">
   <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
     <ol class="carousel-indicators">
@@ -192,11 +196,6 @@
 		</div>	
 </div>
 <div class="container">
-@if ($message = Session::get('success'))
-                                <div class="alert alert-success mt-4">
-                                     <p>{{$message}}</p>
-                                </div>
-                                @endif
 		<div class="card mb-4 products-section">
 			<div class="card-header bg-white">
 				<h3>Bidders </h3>

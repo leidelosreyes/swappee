@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction};
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use Mail;
 use Carbon\Carbon;
 class AdminController extends Controller
 {
@@ -158,7 +159,7 @@ class AdminController extends Controller
     {
         if(Auth::user()->usertype == 'admin')
         {
-            return view('admins.admin.categorie.create-sub-category');
+            return view('admins.admin.categories.create-sub-category');
         }
         if(Auth::user()->usertype == 'content-manager-admin')
         {
@@ -218,5 +219,35 @@ class AdminController extends Controller
         $auction = Auction::findOrFail($id)->delete();
         return redirect()->back()->with('success','Auction Post Deleted Successfully');
     }
+
+    //----------------------------- function for bidders -------------------------------------//
+    public function show_all_bidders(){
+         $bidders = Bidder::simplepaginate(20);
+         return view('admins.admin.bidding.bidder',compact('bidders'));
+    }
+
+    public function show_all_winners(){
+        $winners = Bidder::where('winners',1)->simplepaginate(20);
+        return view('admins.admin.bidding.winner',compact('winners'));
+    }
+    public function send_notify($id){
+        $winners = Bidder::where('id',$id)->first();
+        $user_id = $winners->user_id;
+        $user = User::findOrFail($user_id);
+        $user_email = $user->email;
+        $user_name  = $user->name;
+        $body_message = "You are the winner of the bidding Please Go to Swappee Web App and pay the Cost of item and delivery Charge then give your Drop off location and Contact Person to Deliver your item" ;
+        $subject= "Congratulations You Are The Winner";
+        $data = array('name'=>$user_name, "body" => $body_message);
+        Mail::send('messages.mail', $data, function($message) use($user_email) {
+        $message->to($user_email)->subject('Congratulations Bidders You are the winner');
+        $message->from('swappee6@gmail.com','Swappee');
+        });
+
+        return redirect()->back()->with('success','Notification successfully Sent');
+
+    }
+    //--------------------------------- end function -----------------------------------------//
+
   
 }

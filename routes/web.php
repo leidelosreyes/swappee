@@ -44,7 +44,7 @@ Auth::routes(['verify' => true]);
     Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
     Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
     Route::get('/admin/edit/{id}',[App\Http\Controllers\AdminController::class,'edit'])->name('edit.admin');
-    //Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
+    Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
       Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
@@ -71,7 +71,6 @@ Auth::routes(['verify' => true]);
       Route::get('/admin/create',[App\Http\Controllers\AdminController::class, 'create_category'])->name('create_categories.admin');
       Route::get('/admin/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
     });
-
  });
 
  
@@ -113,6 +112,7 @@ Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController
 Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
 Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');
 Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
+Route::get('/user/show/won_item',[App\Http\Controllers\BidderController::class, 'show'])->name('user.won_view');
 
 //-----------------------------------message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
@@ -132,6 +132,7 @@ Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class,
 Route::prefix('mr.speedy')->group(function(){
   Route::get('/courier/calculate',[App\Http\Controllers\CourierController::class,'calculate_order'])->name('courier.calculate');
   Route::get('/courier/info_location',[App\Http\Controllers\CourierController::class,'courier_info_and_location'])->name('courier.info_location');
+  Route::post('/courier/store',[App\Http\Controllers\CourierController::class,'store'])->name('courier.store');
 });
 //------------------------------------------bidders Routes -----------------------------------------------
 Route::prefix('bidders')->group(function(){

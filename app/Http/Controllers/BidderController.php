@@ -25,13 +25,13 @@ class BidderController extends Controller
         $auction = auction::where('end_date',$datenow)->first();
         if( $datenow  == $auction->end_date)
         {
-            $max_amount = Bidder::max('amount');
-            $winners = Bidder::where('amount',$max_amount)->first();
+            $max_amount = bidder::max('amount');
+            $winners = bidder::where('amount',$max_amount)->first();
             $user_id = $winners->user_id;
             $user = User::findOrFail($user_id);
             $user_email = $user->email;
             $user_name  = $user->name;
-            $body_message = "You are the winner of the bidding Please Go to swappee and buy the Cost of item and delivery Charge then give your Drop off location and Contact Person to Deliver your item" ;
+            $body_message = "You are the winner of the bidding Please Go to swappee and pay the Cost of item and delivery Charge then give your Drop off location and Contact Person to Deliver your item" ;
             $subject= "Congratulations You Are The Winner";
             $data = array('name'=>$user_name, "body" => $body_message);
             Mail::send('messages.mail', $data, function($message) use($user_email) {
@@ -63,6 +63,10 @@ class BidderController extends Controller
         $datenow = date('Y-m-d');
         if( $datenow  == $auction->end_date)
         {
+            $max_amount = bidder::max('amount');
+            $winners = bidder::where('amount',$max_amount)->update([
+                'winners' => 1
+            ]);
             return redirect()->back()
             ->with('error','Sorry bid has been ended');
         }
@@ -76,7 +80,7 @@ class BidderController extends Controller
             'auction_id' => 'required'
         ]);
         $auction = auction::find($request->auction_id);
-        if($auction->bidding_start_price>$request->amount)
+        if($auction->bidding_start_price > $request->amount)
         {
             return redirect()->back()
             ->with('error','Bid must be higher than bid current price');
@@ -110,9 +114,13 @@ class BidderController extends Controller
      * @param  \App\Models\bidder  $bidder
      * @return \Illuminate\Http\Response
      */
-    public function show(bidder $bidder)
+    public function show()
     {
-        //
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $winners = bidder::where('user_id',Auth::id())->Where('winners',1)->simplepaginate(20);
+        return view('bidding.winner',compact('winners','messages','offer','notifications'));
     }
 
     /**
