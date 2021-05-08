@@ -17,15 +17,15 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->usertype == 'admin'||'content-manager-admin'||'post-moderator-admin'||'user-manager-admin')
-        {
-            return $next($request);
-        }
-        else
+        if(Auth::user()->usertype == null)
         {
             return redirect('login');
         }
-      
+        return $next($request);
+       
+          
+        
+    
     }
     // protected function redirectTo($request)
     // {
