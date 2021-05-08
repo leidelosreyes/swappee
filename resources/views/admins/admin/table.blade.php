@@ -2,16 +2,16 @@
   <thead>
     <tr>
     
+      <th scope="col">Image</th>
       <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">User Type</th>
-      <th scope="col">Verified At</th>
-      <th scope="col">Actions</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Amount</th>
     </tr>
   </thead>
   <tbody>
   
-    <tr>
+  <tr>
     @foreach($admin as $admin)
      
       <td> <p class="mt-2">{{$admin->name}}</p> </td>
@@ -29,10 +29,9 @@
                                 
                                     </div>
                                     </td>
-    
+      @endforeach
     </tr>
-    @endforeach
-    <tr>
- 
   </tbody>
 </table>
+
+
