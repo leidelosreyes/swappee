@@ -71,6 +71,11 @@ Auth::routes(['verify' => true]);
       Route::get('/admin/create',[App\Http\Controllers\AdminController::class, 'create_category'])->name('create_categories.admin');
       Route::get('/admin/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
     });
+    Route::prefix('bidders')->group(function (){
+      Route::get('/admin/show_winner',[App\Http\Controllers\AdminController::class, 'show_all_winners'])->name('show_winner.admin');
+      Route::get('/admin/show_bidder',[App\Http\Controllers\AdminController::class, 'show_all_bidders'])->name('show_bidder.admin');
+      Route::get('/admin/send_notify/{id}',[App\Http\Controllers\AdminController::class, 'send_notify'])->name('send_notify.admin');
+    });
  });
 
  
