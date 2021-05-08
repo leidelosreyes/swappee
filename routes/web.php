@@ -44,17 +44,24 @@ Auth::routes(['verify' => true]);
     Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
     Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
     Route::get('/admin/edit/{id}',[App\Http\Controllers\AdminController::class,'edit'])->name('edit.admin');
-    Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete'])->name('delete.admin');
+    // Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
+      
+      });
+    Route::prefix('deleted')->group(function(){
+      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
+      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_offer'])->name('delete_offer.admin');
+      Route::get('/admin/show/{deleted}',[App\Http\Controllers\AdminController::class, 'archive'])->name('archive.admin');
     });
-    Route::prefix('auction')->group(function (){
+      Route::prefix('auction')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_auction'])->name('show_auction.admin');
     });
     Route::prefix('user')->group(function (){
       Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_user'])->name('show_user.admin');
     });
  });
+
  
 Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage'])->name('/');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -82,6 +89,7 @@ Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'c
 Route::post('/auctions/store',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions.store');
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
+Route::delete('/auctions/{id}',[App\Http\Controllers\AuctionController::class, 'delete'])->name('auctions.delete');
 //------------------------------------offer----------------------------------------
 Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
