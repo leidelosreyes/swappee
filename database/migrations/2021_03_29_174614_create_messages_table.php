@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
             $table->foreignId('receiver_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('cascade');          
             $table->text('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

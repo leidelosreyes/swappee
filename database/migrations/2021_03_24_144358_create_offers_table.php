@@ -24,6 +24,7 @@ class CreateOffersTable extends Migration
             $table->string('delivery_method');
             $table->string('image');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
