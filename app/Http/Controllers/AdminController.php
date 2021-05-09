@@ -96,7 +96,7 @@ class AdminController extends Controller
     public function show_auction(){
         if(Auth::user()->usertype == 'admin')
         {
-            $auction = User::all();
+            $auction = Auction::all();
            
             return view('admins.admin.auction.show',compact('auction'));
         }
@@ -106,8 +106,9 @@ class AdminController extends Controller
           
             return view('admins.admin.auction.show',compact('auction'));
         }
-       
+
         return redirect()->back()->with('error','You are not authorized');
+
     }
     public function show_user($params){
       if($params == "verified"){
@@ -169,41 +170,53 @@ class AdminController extends Controller
 
     public function archive($deleted){
         if($deleted == 'posts_deleted'){
-            $posts = Post::onlyTrashed()->get();
+            $posts = Post::onlyTrashed()->simplePaginate(20);
             return view('admins.admin.archive.show',compact('posts'));
         }
         if($deleted == 'auctions_deleted'){
-            $auctions = Auction::onlyTrashed()->get();
+            $auctions = Auction::onlyTrashed()->simplepaginate(20);
             return view('admins.admin.archive.auction',compact('auctions'));
         }
         if($deleted == 'admins_deleted'){
-            $admins = User::onlyTrashed()->get();
+            $admins = User::onlyTrashed()->simplepaginate(20);
             return view('admins.admin.archive.admin_disposed',compact('admins'));
         }
         if($deleted == 'offers_deleted'){
-            $offer = Offers::onlyTrashed()->get();
+            $offer = Offers::onlyTrashed()->simplepaginate(20);
             return view('admins.admin.archive.offer',compact('offers'));
         }
         if($deleted == 'message'){
-            $messages = Messages::onlyTrashed()->get();
+            $messages = Messages::onlyTrashed()->simplepaginate(20);
         }
-        if($deleted == 'category'){
-            $categories = Categories::onlyTrashed()->get();
-        }
-        if($deleted == 'sub_category'){
-            $sub_categories = Sub_categories::onlyTrashed()->get();
-        }
+       
        
         
     }
-    public function delete_admin($id){
-        $admin = User::findOrFail($id)->delete();
-        return redirect()->back()->with('success','Admin Deleted Successfully');
-    }
+   
     public function delete_offer($id){
         $offer = Offer::findOrFail($id)->delete();
         return redirect()->back()->with('success','Admin Deleted Successfully');
     }
-
+    public function post_approval($id){
+        $post = Post::findOrFail($id)->update([
+        'approved'=> 1 
+        ]);
+        return redirect()->back()->with('success','Posted Item succesfully approved'); 
+    }
+   
+    public function auction_approval($id){
+        $post = Auction::findOrFail($id)->update([
+        'approved'=> 1 
+        ]);
+        return redirect()->back()->with('success','Auction succesfully approved'); 
+    }
+    public function delete_swap($id){
+        $swap = Post::findOrFail($id)->delete();
+        return redirect()->back()->with('success','Swap Post Deleted Successfully');
+    }
+    public function delete_auction($id){
+        $auction = Auction::findOrFail($id)->delete();
+        return redirect()->back()->with('success','Auction Post Deleted Successfully');
+    }
   
 }
