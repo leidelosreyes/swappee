@@ -35,16 +35,14 @@
                     <td> <p class="mt-2">{{$user->created_at}}</p> </td>
                     <td> <p class="mt-2">{{$user->email_verified_at}}</p> </td>
                     <td>
-                                                    <div class="d-flex mt-2">
-                                                    <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
-                                                    <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
+                        <div class="d-flex mt-2">
+                            <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
+                            <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
                                                 
-                                                            <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">
-                                                                <i class="fas fa-trash-alt" style="color:red;"></i>
-                                                            </button>
+                          
                                                 
-                                                    </div>
-                                                    </td>
+                        </div>
+                    </td>
                     
                     </tr>
                     @endforeach
