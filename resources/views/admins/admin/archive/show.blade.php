@@ -22,7 +22,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Location</th>
-      <th scope="col">Deleted At</th>
+      
       
     </tr>
   </thead>
@@ -45,4 +45,5 @@
     </div>
 </div>
 
+{{$posts->links()}}
 @endsection
