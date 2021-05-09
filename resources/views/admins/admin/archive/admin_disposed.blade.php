@@ -14,7 +14,7 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h4 class="header-title mb-3 mt-4">For Swap</h4> 
+                                <h4 class="header-title mb-3 mt-4">Admins Deleted</h4> 
                                 <table class="table table-hover">
   <thead>
     <tr>
