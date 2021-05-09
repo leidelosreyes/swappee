@@ -22,11 +22,7 @@
                                     <div class="d-flex mt-2">
                                     <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
                                     <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
-                                   
-                                    {!! Form::open(['route' => ['delete.admin', $admin->id], 'method' => 'delete']) !!}
-                                        <button class="delete form-control btn-sm mt-2" style="height:30px;" >Delete</button>
-                                    {!!Form::close() !!}
-                                
+                                  
                                     </div>
                                     </td>
     
