@@ -44,26 +44,34 @@ Auth::routes(['verify' => true]);
     Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
     Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
     Route::get('/admin/edit/{id}',[App\Http\Controllers\AdminController::class,'edit'])->name('edit.admin');
-    // Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
+    //Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
-      
-      });
+      Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
+    });
+
     Route::prefix('deleted')->group(function(){
-      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
+      
       Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_offer'])->name('delete_offer.admin');
       Route::get('/admin/show/{deleted}',[App\Http\Controllers\AdminController::class, 'archive'])->name('archive.admin');
+      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_swap'])->name('delete_swap.admin');
+      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_auction'])->name('delete_auction.admin');
     });
-      Route::prefix('auction')->group(function (){
+
+    Route::prefix('auction')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_auction'])->name('show_auction.admin');
+      Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'auction_approval'])->name('auction_approval.admin');    
     });
+
     Route::prefix('user')->group(function (){
       Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_user'])->name('show_user.admin');
     });
+
     Route::prefix('categories')->group(function (){
       Route::get('/admin/create',[App\Http\Controllers\AdminController::class, 'create_category'])->name('create_categories.admin');
       Route::get('/admin/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
     });
+
  });
 
  
