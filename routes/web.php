@@ -118,7 +118,8 @@ Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::
 Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');
 Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
 Route::get('/user/show/won_item',[App\Http\Controllers\BidderController::class, 'show'])->name('user.won_view');
-
+Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('user.edit_profile');
+Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
 //-----------------------------------message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
 Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message');

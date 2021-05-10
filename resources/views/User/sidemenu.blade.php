@@ -28,7 +28,7 @@
                         </ul>   
                </li>        
                     <li> 
-                       <a href="#homeSubmenu"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
+                       <a href="{{route('user.edit_profile')}}"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
                       
                     </li>
                 <!-- <li>

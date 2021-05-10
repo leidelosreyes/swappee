@@ -127,4 +127,36 @@ class ProfileController extends Controller
          return redirect()->route('user.profile')
             ->with('success','Product deleted successfully');
    }
+   public function edit_profile(){
+    $id = Auth::id();
+    $user = User::findOrFail($id);
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    return view('User.edit_profile',compact('user','messages','notifications','offer'));
+
+   }
+   public function update_profile(Request $request){
+       $id = Auth::id();
+        $request->validate([
+            'name'         => 'required',
+          
+            'password'     => 'required|Confirmed|min:8',
+            'cellphone_no' => 'required',
+            'address'      => 'required|max:255',
+            'image'        => 'required|max:8192|image'
+        ]);
+       $imagePath = request('image')->store('uploads','public');   
+       $user = User::where('id',$id)->update([
+           'name'     => $request->name,
+           'email'    => $request->email,
+           'password' => $request->password,
+           'avatar'   => $imagePath
+       ]);
+       $profile = Profile::where('user_id',$id)->update([
+           'cellphone_no' => $request->cellphone_no,
+           'address'      => $request->address,
+           'birthday'     => $request->birthday
+       ]);
+   }
 }
