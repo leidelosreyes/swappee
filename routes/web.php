@@ -48,19 +48,17 @@ Auth::routes(['verify' => true]);
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
       Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
+      Route::post('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_swap'])->name('delete_swap.admin');
     });
 
     Route::prefix('deleted')->group(function(){
-      
-      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_offer'])->name('delete_offer.admin');
       Route::get('/admin/show/{deleted}',[App\Http\Controllers\AdminController::class, 'archive'])->name('archive.admin');
-      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_swap'])->name('delete_swap.admin');
-      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_auction'])->name('delete_auction.admin');
     });
 
     Route::prefix('auction')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_auction'])->name('show_auction.admin');
       Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'auction_approval'])->name('auction_approval.admin');    
+      Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_auction'])->name('delete_auction.admin');
     });
 
     Route::prefix('user')->group(function (){
