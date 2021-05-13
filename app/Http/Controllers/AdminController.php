@@ -49,6 +49,14 @@ class AdminController extends Controller
     }
     public function store(Request $request){
 
+
+        $request->validate([
+            'name'=>'required|min:3|max:50',
+            'email'=>'required',
+            'user_type'=>'required',
+            'password'=>'required',
+            'email_verified_at'=>'required'
+        ]);
         $admin = User::insert([
             'name'     => $request->name,
             'email'    => $request->email,
