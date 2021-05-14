@@ -50,25 +50,26 @@ Auth::routes(['verify' => true]);
       Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
       Route::post('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_swap'])->name('delete_swap.admin');
     });
-
+//--------------------------------------------------Admin Archiving---------------------------------------------------------------------//
     Route::prefix('deleted')->group(function(){
       Route::get('/admin/show/{deleted}',[App\Http\Controllers\AdminController::class, 'archive'])->name('archive.admin');
     });
-
+//-------------------------------------------------Auction Approval---------------------------------------------------------------------//
     Route::prefix('auction')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_auction'])->name('show_auction.admin');
       Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'auction_approval'])->name('auction_approval.admin');    
       Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_auction'])->name('delete_auction.admin');
     });
-
+//--------------------------------------------------Show Registered admins---------------------------------------------------------------------//
     Route::prefix('user')->group(function (){
       Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_user'])->name('show_user.admin');
     });
-
+//--------------------------------------------------Creating Categories and Sub-categories---------------------------------------------------------------------//
     Route::prefix('categories')->group(function (){
       Route::get('/admin/create',[App\Http\Controllers\AdminController::class, 'create_category'])->name('create_categories.admin');
       Route::get('/admin/sub_categories/create',[App\Http\Controllers\AdminController::class, 'create_sub_category'])->name('create_sub_categories.admin');
     });
+    //--------------------------------------------------Bidders---------------------------------------------------------------------//
     Route::prefix('bidders')->group(function (){
       Route::get('/admin/show_winner',[App\Http\Controllers\AdminController::class, 'show_all_winners'])->name('show_winner.admin');
       Route::get('/admin/show_bidder',[App\Http\Controllers\AdminController::class, 'show_all_bidders'])->name('show_bidder.admin');
@@ -90,7 +91,7 @@ Route::get('/login/facebook/callback', [App\Http\Controllers\Auth\LoginControlle
 Route::get('/login/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
 
-//-------------------------------posts item ----------------------------------------
+//-------------------------------Posts item ----------------------------------------
 Route::get('/posts/create',[App\Http\Controllers\PostsController::class, 'create'])->name('posts.create');
 Route::post('/posts',[App\Http\Controllers\PostsController::class, 'store'])->name('posts');
 Route::get('/posts/{post}',[App\Http\Controllers\PostsController::class, 'show'])->name('posts.show');
@@ -98,13 +99,13 @@ Route::get('/authPosts/{post}',[App\Http\Controllers\ProfileController::class,'a
 Route::get('/posts/{post}/edit_user_post',[App\Http\Controllers\ProfileController::class,'edit_auth_user_post'])->name('posts.edit');
 Route::put('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'update_auth_user_post'])->name('posts.update');
 Route::delete('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');
-//--------------------------------auction item---------------------------------
+//--------------------------------Auction item---------------------------------
 Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'create'])->name('auctions.create');
 Route::post('/auctions/store',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions.store');
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 Route::delete('/auctions/{id}',[App\Http\Controllers\AuctionController::class, 'delete'])->name('auctions.delete');
-//------------------------------------offer----------------------------------------
+//------------------------------------Offer----------------------------------------
 Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
 Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_offers'])->name('show.offers');
@@ -118,27 +119,27 @@ Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController
 Route::get('/user/show/won_item',[App\Http\Controllers\BidderController::class, 'show'])->name('user.won_view');
 Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('user.edit_profile');
 Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
-//-----------------------------------message-------------------------------------
+//-----------------------------------Message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
 Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message');
 Route::get('/messages/message/{messages}',[App\Http\Controllers\MessageController::class, 'show_message'])->name('show.message');
 
-//--------------------------------------categories--------------------------------------
+//--------------------------------------Categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
 Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');
-//--------------------------------------------sub_categories-------------------------
+//--------------------------------------------Sub_categories-------------------------
 Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
-//-----------------------------------------filter by price------------------------------
+//-----------------------------------------Filter by price------------------------------
 Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');
-//------------------------------------------bidders route------------------------------------------//
+
 //-------------------------------------------Courier Route------------------------------------------
 Route::prefix('mr.speedy')->group(function(){
   Route::get('/courier/calculate',[App\Http\Controllers\CourierController::class,'calculate_order'])->name('courier.calculate');
   Route::get('/courier/info_location',[App\Http\Controllers\CourierController::class,'courier_info_and_location'])->name('courier.info_location');
   Route::post('/courier/store',[App\Http\Controllers\CourierController::class,'store'])->name('courier.store');
 });
-//------------------------------------------bidders Routes -----------------------------------------------
+//------------------------------------------Bidders Routes -----------------------------------------------
 Route::prefix('bidders')->group(function(){
   Route::post('/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');
   Route::get('/index',[App\Http\Controllers\BidderController::class,'index'])->name('bidders.index');

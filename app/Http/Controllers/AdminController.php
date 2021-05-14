@@ -49,6 +49,15 @@ class AdminController extends Controller
     }
     public function store(Request $request){
 
+        $validateData = $request->validate([
+            'name' => ['required' , 'min:3' , 'max:50'],
+            'email' =>['required'],
+            'usertype' => ['required'],
+            'email_verified-at'=>$request->email_verified_at,
+            'password' => ['required']
+
+        ]);
+
         $admin = User::insert([
             'name'     => $request->name,
             'email'    => $request->email,
@@ -249,5 +258,5 @@ class AdminController extends Controller
     }
     //--------------------------------- end function -----------------------------------------//
 
-  
+    
 }

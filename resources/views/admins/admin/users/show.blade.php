@@ -15,16 +15,15 @@
                                 @endif
                                 <h4 class="header-title mb-3 mt-4">Users</h4> 
            <table class="table table-hover">
-                <thead>
-                    <tr>
-                    
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Created Date</th>
-                    <th scope="col">Verified At</th>
-                    <th scope="col">Actions</th>
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Verified At</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
                 <tbody>
                 
                     <tr>
@@ -37,10 +36,7 @@
                     <td>
                         <div class="d-flex mt-2">
                             <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
-                            <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
-                                                
-                          
-                                                
+                            <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>                     
                         </div>
                     </td>
                     
