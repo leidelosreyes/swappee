@@ -42,13 +42,13 @@
                                            @if(empty($notification->sender->avatar))
                                            <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
                                            @else
-                                           <img src="{{$notification->sender->avatar}}" class="card-avatar"/> </i><span class="bg-pink"><b>{{$notification->sender->name}}</b> Want to swap your item</span>
+                                           <img src="{{$notification->sender->avatar}}" class="card-avatar"/> </i><span class="bg-pink"><b>{{$notification->sender->name}}</b> Offer swap to  your item</span>
                                            @endif
-                                          
-                                            
-                                           
                                             </div>
                                         </div>
+                                         <p><i class="fas fa-truck" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Delivery Method:</b> {{$notification->delivery_method}} </p>
+								         <p><i class="fas fa-map-marker-alt" style="color:#999;"></i><b style="color:#999;font-weight:400;"> Locations:</b> {{$notification->location}}</p>
+                                         <p><i class="far fa-address-card"  style="color:#999;"></i><b style="color:#999;font-weight:400;"> Contact Number:</b> {{$notification->sender->profile->cellphone_no}} </p>   
                                     </div>
                                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                         <div class="d-flex flex-row align-items-center">
@@ -56,9 +56,14 @@
                                         </div>
                                     
                                         <div class="d-flex flex-column mt-4">
-                                        <a href="" class="btn btn-primary btn-sm mb-2" type="button">Accept</a>
-                                        <a href="" class="btn btn-primary btn-sm" type="button">Decline</a>
-                                        <button class="btn btn-outline-primary btn-sm mt-2" data-toggle="modal" data-target="#notification-modal{{$notification->id}}"type="button">More Details</button>
+                                        {!! Form::open(['route' => ['accept.offer', $notification->id], 'method' => 'post']) !!}
+                                        <button class="form-control btn btn-outline-warning btn-sm mb-2">Accept</button>
+                                        {!!Form::close() !!}
+                                        <button class="form-control btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#notification-modal{{$notification->id}}"type="button">More Details</button>
+                                        {!! Form::open(['route' => ['posts.delete', $notification->id], 'method' => 'delete']) !!}
+                                        @csrf
+                                        <button class="form-control btn-sm mt-2" style="height:30px;" >Delete</button>
+                                        {!!Form::close() !!}
                                         </div>
                                     </div>
                                 </div>                

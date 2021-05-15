@@ -48,6 +48,7 @@ class HomeController extends Controller
         if($search!="")
         {   $posts = post::where(function ($query) use ($search){
             $query->where('product_name', 'like', '%'.$search.'%')
+                  ->orWhere('delivery_method', 'like', '%'.$search.'%')
                   ->orWhere('location', 'like', '%'.$search.'%');
         })
         ->simplepaginate(20);

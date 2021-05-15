@@ -25,7 +25,7 @@ class OfferController extends Controller
    }
    public function show_offers()
    {
-    $offer = Offer::where('sender_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
     $notifications = Offer::where('receiver_id',Auth::id())->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
     
@@ -34,7 +34,7 @@ class OfferController extends Controller
    }
    public function show_notifications()
    {
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = Offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
      $messages = Message::where('receiver_id',Auth::id())->get();
      $offer = Offer::where('sender_id',Auth::id())->get();
     return view('User.notification',compact('notifications','messages','offer'));
@@ -84,4 +84,30 @@ class OfferController extends Controller
        
        return redirect('home')->with('success','Please wait to accept your offer');
    }
+
+   // function for accepting offer
+    public function accept_offer($id){
+      $find_user = Offer::findOrFail($id);
+      $receiver_id = $find_user->sender_id;
+      $receiver = User::findOrFail($receiver_id);
+      $user_email = $receiver->email;
+      $receiver_name = $receiver->name;
+      $sender_name = Auth::user()->name;
+      $body_message = "Your Offer is Accepted Clink the link to redirect to Swappee to see full details";
+      $subject= "Accepted Offer";
+      $data = array('name'=>$receiver_name, "body" => $body_message);
+      Mail::send('messages.mail', $data, function($message) use($user_email) {
+      $message->to($user_email)->subject('For Swap');
+      $message->from('swappee6@gmail.com','Swappee');
+      });
+
+
+         $offer = Offer::findOrFail($id)->update([
+            'is_accepted' => 1
+         ]);
+   //-------------------------- for sending notifications -------------------------//
+         return redirect()->back()->with('success','Offer succesfully accepted'); 
+      }
+   
+
 }

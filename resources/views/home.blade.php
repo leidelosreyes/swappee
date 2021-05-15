@@ -123,7 +123,7 @@
 
                       	   <!-- web view -->
                            <div class="d-none d-lg-block">
-                          <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
+                          <a href="{{route('posts.show',$post->id)}}"><img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
                               object-fit: cover;" alt="" /></a>
                           </div>
                               <!-- mobile view -->

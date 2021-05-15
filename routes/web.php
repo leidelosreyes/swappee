@@ -109,6 +109,7 @@ Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferControll
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
 Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_offers'])->name('show.offers');
 Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 'show_notifications'])->name('show.notifications');
+Route::post('/user/accept/{id}',[App\Http\Controllers\OfferController::class, 'accept_offer'])->name('accept.offer');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');

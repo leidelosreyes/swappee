@@ -39,7 +39,8 @@
                                         
                                         <div class="d-flex flex-row">
                                             <div class="ratings mr-2">
-                                            @if(empty($offer->receiver->avatar))
+                                            
+                                            @if(empty($offers->receiver->avatar))
                                             Receiver Name <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/> </i><span class="bg-pink"></i><span class="bg-pink"><b>{{$offers->receiver->name}}</b></span>
                                             @else
                                             Receiver Name <img src="{{$offers->receiver->avatar}}" class="card-avatar"/> </i><span class="bg-pink"></i><span class="bg-pink"><b>{{$offers->receiver->name}}</b></span>
@@ -72,6 +73,7 @@
                     <!-- end offer card -->
         </section>    
     </div>
+    {{$offer->links()}}
 </div>
         
    
