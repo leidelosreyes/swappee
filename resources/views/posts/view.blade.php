@@ -75,7 +75,7 @@
 						</div>					
 					</div>
 					<!-- Button trigger modal -->
-						<button class="btn btn-primary  mt-4 " type="button" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#offer-modal">
+						<button class="btn btn-primary  mt-4 form-control " type="button" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#offer-modal">
 									<i class="far fa-comment-alt"></i> Make offer
                         </button>
 					<!-- End Button -->
@@ -197,7 +197,7 @@
 									<div class="modal-footer">
 									
 								
-									<button type="sumbit" class="btn btn-primary"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send</button>
+									<button type="sumbit" class="btn btn-primary form-control"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send</button>
                     </div>
 							    </form>
                                  </div>
@@ -307,7 +307,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Make an Offer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
