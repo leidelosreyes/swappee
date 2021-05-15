@@ -140,7 +140,6 @@ class ProfileController extends Controller
        $id = Auth::id();
         $request->validate([
             'name'         => 'required',
-          
             'password'     => 'required|Confirmed|min:8',
             'cellphone_no' => 'required',
             'address'      => 'required|max:255',
