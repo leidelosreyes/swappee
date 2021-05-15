@@ -1,7 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 <!-- <script src="{{asset('js/index.js')}}"></script> -->
   <script src="{{asset('js/main.js')}}"></script>
-  <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script>
+  <!-- <script src="{{asset('js/jquery.scrollUp.min.js')}}"></script> -->
   <script src="{{asset('js/zoom-image.js')}}"></script>
 	<script src="{{asset('js/zoom-main.js')}}"></script>
   <script src="{{asset('js/location.js')}}"></script>
@@ -105,4 +105,23 @@ if(mm<10){
 
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("end_date").setAttribute("min", today);
+</script>
+
+<script>
+  $(document).on("click", ".browse", function() {
+  var file = $(this).parents().find(".file");
+  file.trigger("click");
+});
+$('input[type="file"]').change(function(e) {
+  var fileName = e.target.files[0].name;
+  $("#file").val(fileName);
+
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    // get loaded data and render thumbnail.
+    document.getElementById("preview").src = e.target.result;
+  };
+  // read the image file as a data URL.
+  reader.readAsDataURL(this.files[0]);
+})
 </script>

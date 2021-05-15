@@ -99,76 +99,30 @@
 
 <div class="d-sm-block d-md-none mb-4">
 	<nav class="navbar navbar-light bg-light mb-2">
-		<div class="container">
-			<a class="navbar-brand"  href="{{url('/')}}">
-			<img src="{{asset('image/swappee_logo.png')}}" style="width:120px;height: 45px;margin-bottom: 5px;" alt="">
-			</a>
-				<ul class="nav justify-content-end">
-				    <li class="nav-item">
-					<a class="nav-link " style="color: #57585a; font-size:20px;" href="{{route('home')}}"><i class="fas fa-home"></i></a>
-					</li>
-					<li class="nav-link">
-					
-								<a href="" style="color: #57585a; font-size:20px;" 
-                                     data-toggle="modal" data-target="#exampleModal-notifcation" 
-                                    ><i class="far fa-bell"></i></a> 
-                                   
-                             
-                               
-                         <!-- notification -->
-                         <div class="inbox-widget"> 
-                         
-                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                           <div class="card-body">
-                                    <h5>Notifications</h5>
-                                    
-                        </div>
-                             @foreach($notifications as $notification)
-                               <a class="dropdown-item" href="{{route('show.notifications')}}"> 
-                               <img src="{{$notification->sender->avatar}}" class="card-avatar"/> 
-                               <b>{{$notification->sender->name}}</b>
-                               Wants to swap your item           
-                            </a>   
-                                                
-                             @endforeach
-                           
+		<div class="container d-block">
 
-                             <footer>
-                                <div class="card-body">
-                                    <a href=""><p style="text-align:center;">See all Notifications</p></a>
-                                </div>
-                             </footer>                        
-                             </div>
-                        
-                        <!-- end notification -->
-                        
-					</li>
-				    <li class="nav-item">
-					<a class="nav-link " style="color: #57585a; font-size:20px;" href="{{route('posts.create')}}"><i class="fas fa-plus padding-right"></i></a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link" style="color: #57585a; font-size:20px;" href="{{route('auctions.index')}}"><i class="fas fa-gavel"></i></a>
-					</li>
-					<li class="nav-item">
-						<a href="{{route('user.profile')}}" class="nav-item nav-link  navfonts"  style="color: #57585a; font-size:20px;" ><i class="far fa-user-circle"></i></a>
-					</li>
+
+		  <div class="row">
+   			 <div class="col-10 pt-1">
+				<form class="d-flex"  action="{{route('search')}}" method="GET">
+						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your offers" aria-label="Search">
+   				</form>
+   			 </div>
+    		 <div class="col">
+			 	<ul class="nav justify-content-end">
+				    
 
 					<li class="nav-item">
 				     	@include('User.sidemodal')
 					</li>
 
-				</ul>
+				 </ul>
+    		</div>
+  		</div>
 	              
-		</div>	
+	</div>	
 	</nav>
-	<div class="mb-4 col-xl-12">
-				      <form class="d-flex"  action="{{route('search')}}" method="GET">
-						<input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
-						<button type="submit" class="searchButton">
-						<i class="fa fa-search"></i>
-					  </form>
-					</button>
-                </div>
+	
 	   
  <!-- Modal -->
 		<div class="modal fade" id="exampleModal-notifcation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

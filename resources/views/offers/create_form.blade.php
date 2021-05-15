@@ -170,9 +170,28 @@
                                                 @enderror
 
                                   
-                                        <label class="mt-4" for="image" style="margin-bottom:0;">Post Image <label style="color:red;">*</label></label>
-                                        <input type="file" name="image" id="image" class="form-control-file">
-                                  
+                                                <label class="mt-4" for="image" style="margin-bottom:0;">Post Image <label style="color:red;">*</label></label>
+                                            <div class="card mt-0">
+                                                <div class="card-body pt-0">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                          
+                                                             <input type="file"name="image" class="file" accept="image/*" style="visibility: hidden;position: absolute;">
+                                                           <div class="input-group my-3">
+                                                             <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+                                                             <div class="input-group-append">
+                                                              <button type="button" class="browse btn btn-primary" style="background-color: #FFB52E;border:none;">Browse...</button>
+                                                             </div>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                    <img src="" id="preview" class="img-thumbnail" style="width:100%; border:none;">
+                                                </div>
+                                            </div>
                                               @error('image')
                                                   
                                                           <p style="color:red;">{{$message}}</p>
