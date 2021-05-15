@@ -28,10 +28,11 @@ class MessageController extends Controller
       ->where('sender_id',Auth::id())
      ->where('reply',1)
       ->get();
+      $offer = Offer::where('sender_id',Auth::id())->get();
     
      
     // dd($reply);
-     return view('messages.message',compact('messages','notifications','reply'));
+     return view('messages.message',compact('messages','notifications','reply','offer'));
     
     }
 
