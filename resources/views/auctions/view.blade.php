@@ -313,7 +313,7 @@
 									value={{$auction->id}}
 									>
                        
-									<button class="btn btn-primary " type="submit" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">
+									<button class="btn btn-primary form-control" type="submit" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">
 									<i class="far fa-comment-alt"></i> Bid
                                  </button>
 					</form>

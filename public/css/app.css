@@ -13019,6 +13019,12 @@ a#scrollUp {
   color: #57585a;
   text-transform: uppercase;
 }
+.b-color:hover{
+  color: #FFB52E;
+}
+.b-color{
+  color: #57585a;
+}
 
 .overflow {
   
@@ -13204,7 +13210,7 @@ notification */
   margin-bottom: 1.5rem;
 }
 .form__input{
-  position: absolute;
+  position: static;
   top: 0;
   left: 0;
   width: 100%;
