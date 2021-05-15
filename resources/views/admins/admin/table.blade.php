@@ -2,11 +2,11 @@
   <thead>
     <tr>
     
-      <th scope="col">Image</th>
       <th scope="col">Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Amount</th>
+      <th scope="col">Email</th>
+      <th scope="col">User Type</th>
+      <th scope="col">Verified Date</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -20,14 +20,15 @@
       <td>  {{$admin->email_verified_at}} </td>
       <td>
                                     <div class="d-flex mt-2">
-                                    <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;"></i>
-                                    <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>
-                                  
+                                    <a href="#"><button style="outline:none;border:0;background:transparent;margin-right:10px"><i class="far fa-eye" style="color: #57585a;"></i></button>
+                                    <a href="#" style="margin-right:5px;"><i class="fas fa-edit"></i></a>                                  
                                     </div>
                                     </td>
+                                    </tr>
       @endforeach
-    </tr>
+    
   </tbody>
+  
 </table>
 
 
