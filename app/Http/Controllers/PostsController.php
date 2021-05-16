@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Categories;
 use App\Models\Sub_categorie;
-use App\Models\Offer;
+use App\Models\{ActivityLog,Offer};
 use Carbon\Carbon;
 use Auth;
 
@@ -68,7 +68,8 @@ class PostsController extends Controller
 
 
         ]);
-
+        $action = "Created swap item {$request->product_name}";
+        $activitylog = ActivityLog::store_log($action);
         return redirect('home')->with('success','Please Wait for the approval of your product !');
         
           
@@ -79,6 +80,8 @@ class PostsController extends Controller
        
            if($post->user_id == Auth::id())
            {
+            $action = "Failed Swap-Trying to swap own item";
+            $activitylog = ActivityLog::store_log($action);
             return redirect()->route('home')
               ->with('error','You are not able to Swap on your own item');
            }

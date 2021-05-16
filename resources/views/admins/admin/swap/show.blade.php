@@ -55,7 +55,7 @@
                                     <a href="#"><i class="far fa-eye" style="color: #57585a; margin-right:5px;padding-right:10px"></i>
                                     <a href="#" style="margin-right:5px;padding-right:10px"><i class="fas fa-edit"></i></a>
                                    
-                                    {!! Form::open(['route' => ['delete_swap.admin', $swap->id], 'method' => 'get']) !!}
+                                    {!! Form::open(['route' => ['delete_swap.admin', $swap->id], 'method' => 'post']) !!}
                                       <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">
                                       <i class="fas fa-trash-alt" style="color:red;"></i>
                                       </button>     
