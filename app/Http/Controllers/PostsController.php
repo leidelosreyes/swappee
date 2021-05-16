@@ -83,7 +83,7 @@ class PostsController extends Controller
             }
             if(Auth::user()->profile->contact_no == null){
                 return redirect()->route('home')
-              ->with('error','Please go to your profile and provide address');
+              ->with('error','Please go to your profile and provide contact no');
             }
            if($post->user_id == Auth::id())
            {
