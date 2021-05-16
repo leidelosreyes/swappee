@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,ActivityLog};
 use Auth;
 
 use Carbon\Carbon;
