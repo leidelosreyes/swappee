@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction,ActivityLog};
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use Mail;
@@ -43,6 +43,8 @@ class AdminController extends Controller
     public function create(){
         if(Auth::user()->usertype != 'admin')
         {
+            $action = "Attempted to access unauthorized module!";
+            $activitylog = ActivityLog::store_log($action);
             return redirect()->back()->with('error','You are not authorized to create new Administrator');
         }
         return view('admins.admin.create');
@@ -67,6 +69,9 @@ class AdminController extends Controller
             'created_at' => Carbon::now()->timezone('Asia/Manila'),
             'updated_at' => Carbon::now()->timezone('Asia/Manila')
         ]);
+        
+        $action = "Added {$request->name} as {$request->usertype}";
+        $activitylog = ActivityLog::store_log($action);
         return redirect('admin')->with('success','New Administrator Created Successfuly');
 
     }
@@ -74,6 +79,8 @@ class AdminController extends Controller
     public function edit($id){
         if(Auth::user()->usertype != 'admin')
         {
+            $action = "Attempted Access unauthorized module ";
+            $activitylog = ActivityLog::store_log($action);
             return redirect()->back()->with('error','You are not authorized to Edit Administrator');
         }
         $admin = User::find($id);
@@ -211,6 +218,9 @@ class AdminController extends Controller
         $post = Post::findOrFail($id)->update([
         'approved'=> 1 
         ]);
+        $item_name= Post::findOrFail($id);
+        $action = "Approved Swap Item: {$item_name->product_name}";
+        $activitylog = ActivityLog::store_log($action);
         return redirect()->back()->with('success','Posted Item succesfully approved'); 
     }
    
@@ -218,13 +228,23 @@ class AdminController extends Controller
         $post = Auction::findOrFail($id)->update([
         'approved'=> 1 
         ]);
+        $item_name= Auction::findOrFail($id);
+        $action = "Approved Auction Item: {$item_name->product_name}";
+        $activitylog = ActivityLog::store_log($action);
         return redirect()->back()->with('success','Auction succesfully approved'); 
     }
     public function delete_swap($id){
+        
+        $item_name= Post::findOrFail($id);
+        $action = "Deleted Item Swap: {$item_name->product_name}";
+        $activitylog = ActivityLog::store_log($action);
         $swap = Post::findOrFail($id)->delete();
         return redirect()->back()->with('success','Swap Post Deleted Successfully');
     }
     public function delete_auction($id){
+        $item_name= Auction::findOrFail($id);
+        $action = "Deleted Auctioned Item: {$item_name->product_name}";
+        $activitylog = ActivityLog::store_log($action);
         $auction = Auction::findOrFail($id)->delete();
         return redirect()->back()->with('success','Auction Post Deleted Successfully');
     }
