@@ -1,7 +1,6 @@
 @extends('layouts.layout2')
 
 @section('content')
-
   
 @include('layouts.carousel')
 
@@ -165,6 +164,7 @@
 
 </div>
 </div>
+
 @endsection
 
 

@@ -108,6 +108,15 @@ class OfferController extends Controller
    //-------------------------- for sending notifications -------------------------//
          return redirect()->back()->with('success','Offer succesfully accepted'); 
       }
+   //--------------------------------Show accepted item ---------------------------------
+     public function show_for_delivery(){
+      $delivery = Offer::where('delivery_method','Delivery')->where('receiver_id',Auth::id())->simplepaginate(1);
+      $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
+      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $messages = Message::where('receiver_id',Auth::id())->get();
+      
+      return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery'));
+   }
    
 
 }

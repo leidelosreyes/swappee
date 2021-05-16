@@ -38,7 +38,7 @@
                                         <a href=""class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
                                 </li>
                                 <li>
-                                        <a href=""class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
+                                        <a href="{{route('for_delivery_item.show')}}"class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
                                 </li>
                             </div>
                                 <hr>

@@ -2,7 +2,7 @@
 <div class="d-sm-block d-md-none">
     
            
-<a class="nav-link mt-2" style="color: #57585a; font-size:20px;"data-toggle="modal" style=""data-target="#exampleModal1"><p> <i class="fas fa-bars"></i></p></a>             
+<a class="nav-link mt-2" style="color: #57585a; font-size:25px;"data-toggle="modal" style=""data-target="#exampleModal1"><p> <i class="fas fa-bars"></i></p></a>             
             
         
         
