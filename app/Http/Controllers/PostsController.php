@@ -77,7 +77,7 @@ class PostsController extends Controller
     public function show(post $post)
     {
         // <-- validation to user for swapping -->
-         $address = Auth::User()->profile->address;
+         $address = auth()->user()->profile->address;
             if($address == null){
                 return redirect()->route('home')
               ->with('error','Please go to your profile and provide address');
