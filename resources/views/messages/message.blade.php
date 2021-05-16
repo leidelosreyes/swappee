@@ -19,12 +19,6 @@
                         <p>{{$message}}</p>
                     </div>
                     @endif
-<<<<<<< HEAD
-                   
-                <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
-                        content
-                </div>
-=======
 
                 <!-- START OF MEESAGE    -->
                 <div class="card-box"> 
@@ -37,9 +31,7 @@
                     </div>
                     <div class="col pr-0">
                     <p class="email-summary">
-                     <strong>Commits pushed</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit... 
-                     <span class="label label-success" style="background-color: #5cb85c;border-radius: 10%"><span style="color:white;">New</span></span></p>
-                    <!-- <a href="#" class="b-color"><i class="fas fa-trash"></i></a> -->
+                     <strong>Commits pushed</strong> Lorem ipsum dolor sit amet
                     </div>
                     <div class="col col-lg-1">
                     <a href="#" class="b-color"><i class="fas fa-trash"></i></a>
@@ -48,7 +40,6 @@
                 
                 </div>
                 <!-- END   -->
->>>>>>> ec289496b468275a3223cb9541b6d646838e619a
              </div>
         </div>
  </div>
