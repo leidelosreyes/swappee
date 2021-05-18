@@ -73,7 +73,7 @@ Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
-// Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/index/old', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/privacy_policy', [App\Http\Controllers\PolicyController::class, 'policy'])->name('policy');
 Route::get('/terms_condition', [App\Http\Controllers\TermsconditionController::class, 'TermsCondition'])->name('terms_condition');
 //------------------------------Social Media Route ----------------------------------------------
