@@ -14,16 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
-// Route::get('/index', function () {  
-//        return view('index');
-//  });
-//  Route::get('/contact', function () {  
-//     return view('contact');
-// });
 
-//  Route::get('/policy', function () {
-//      return view('policy'); });
 Route::get('/about', function () {
     return view('about');
 });
@@ -79,10 +70,10 @@ Auth::routes(['verify' => true]);
 
  
 Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage'])->name('/');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
-Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+// Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/privacy_policy', [App\Http\Controllers\PolicyController::class, 'policy'])->name('policy');
 Route::get('/terms_condition', [App\Http\Controllers\TermsconditionController::class, 'TermsCondition'])->name('terms_condition');
 //------------------------------Social Media Route ----------------------------------------------
