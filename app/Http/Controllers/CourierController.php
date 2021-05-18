@@ -10,6 +10,10 @@ use App\Models\Profile;
 
 class CourierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
     public function calculate_order(){
         $auction_id= bidder::where('user_id',Auth::id())->Where('winners',1)->first();
         $id = $auction_id->auction_id;

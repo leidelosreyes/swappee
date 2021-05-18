@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
-    protected $guarded =[];
-    // public function user(){
+    protected $fillable =[
+      'user_id',
+      'address',
+      'cellphone_no'
+    ];
+    public function user(){
 
-    //     return $this->belogsTo(User::class);
-    // }
+        return $this->belogsTo(User::class);
+    }
 }
