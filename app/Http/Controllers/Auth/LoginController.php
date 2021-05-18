@@ -109,9 +109,9 @@ class LoginController extends Controller
                'avatar' => $data->avatar
            ]);
         }
-        $action = "Log in Successfully";
-        $activitylog = ActivityLog::store_log($action);
-        Auth::login($user);
+        // $action = "Log in Successfully";
+        // $activitylog = ActivityLog::store_log($action);
+       Auth::login($user);
     }
     
 }

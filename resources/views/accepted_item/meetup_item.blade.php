@@ -82,10 +82,10 @@
                             </div>
                         </div>
                             <div class="col-md-12 mt-4">
-                                        <button class="form-control btn btn-outline-warning  mb-2" data-toggle="modal" data-target="#delivery{{$notification->id}}"><i class="fas fa-shipping-fast"></i> To ship</button>
+                                        <button class="form-control btn btn-outline-warning  mb-2" data-toggle="modal" data-target="#delivery{{$notification->id}}">Send Info</button>
                             </div>   
                     </div>
-                <div class="container text-center mb-4">
+                <div class="container text-center">
                         {{$delivery->links()}}
                 </div>
                  @endforeach
@@ -101,7 +101,7 @@
         <div class="modal-dialog modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">To deliver</h5>
+                <h5 class="modal-title" id="exampleModalLabel">To Meet Up</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -109,26 +109,60 @@
                 <div class="modal-body">
 				<div class="alert alert-success alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Note!</strong> For a better user experience avoid Fake Delivery booking unless you are willing to lose points on your account and will be ban Until further Notice From Swappee.
+                <strong>Note!</strong> For a better user experience avoid Fake Meetup unless you are willing to lose points on your account and will be ban Until further Notice From Swappee.
                 <br>
                 <br>
-                Once your order is settle , Cancellation is prohibited for the sake of both parties
                 </div>
-                <form action="{{route('courier_swap.calculate')}}" method="get">
+                <form action="{{route('meet_up.send_info')}}" method="post">
 					@csrf
-                    <h2>Pick-Up</h2>
-					<div class="form__div">
-                                        <input type="text" 
-                                        id="pickup_location"
-                                        name="pickup_location"
+                    <h2>Meet-Up</h2>
+                    <div class="form__div">
+                                        <input type="date" 
+                                        id="end_date"
+                                        name="end_date"
                                         style="height:60px;"
                                         placeholder=" "
-                                        class="form__input form-control  @error('pickup_location') is-invalid @enderror"
+                                        class="form__input form-control @error('meetup_date') is-invalid @enderror"
+                                        value="{{old('meetup_date')}}"
+                                        autocomplete="meetup_date" autofocus
+                                        >
+                                        <label for="" class="form__label">Meetup date <label style="color:red;">*</label></label>
+                                         @error('meetup_date')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                        @enderror
+                    </div>
+                    <div class="form__div">
+                                        <input type="text" 
+                                        id="meetup_time"
+                                        name="meetup_time"
+                                        style="height:60px;"
+                                        placeholder=" "
+                                        class="form__input form-control  @error('meetup_time') is-invalid @enderror"
+                                        value="{{old('meetup_time')}}"
+                                        autocomplete="meetup_time" autofocus
+                                        >
+                                        <label for="" class="form__label">Meet Up Time</label></label>
+                                         @error('meetup_time')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                        @enderror
+                                      
+                                    </div>      
+					<div class="form__div">
+                                        <input type="text" 
+                                        id="meetup_location"
+                                        name="meetup_location"
+                                        style="height:60px;"
+                                        placeholder=" "
+                                        class="form__input form-control  @error('meetup_location') is-invalid @enderror"
                                         value="{{$deliver->post->location}}"
-                                        autocomplete="pickup_location" autofocus
+                                        autocomplete="meetup_location" autofocus
                                         >
                                         <label for="" class="form__label">Address</label></label>
-                                         @error('pickup_location')
+                                         @error('meetup_location')
                                                 <span class="invalid-feedback" role="alert ">
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
@@ -153,45 +187,9 @@
                                         @enderror
                                       
                         </div>
-                        <h2>Drop-Off</h2>
-                        <div class="form__div">
-                                        <input type="text" 
-                                        id="drop_off_location"
-                                        name="drop_off_location"
-                                        style="height:60px;"
-                                        placeholder=" "
-                                        class="form__input form-control  @error('drop_off_location') is-invalid @enderror"
-                                        value="{{$deliver->location}}"
-                                        autocomplete="drop_off_location" autofocus
-                                        >
-                                        <label for="" class="form__label">Address</label></label>
-                                         @error('drop_off_location')
-                                                <span class="invalid-feedback" role="alert ">
-                                                    <strong style="color:red;">{{$message}}</strong>
-                                                </span>
-                                        @enderror
-                                      
-                                    </div>
-                        <div class="form__div">
-                                    <input type="number" 
-                                        id="contact_number"
-                                        name="contact_number"
-                                        style="height:60px;"
-                                        placeholder=" "
-                                        class="form__input form-control  @error('contact_number') is-invalid @enderror"
-                                        value="{{$deliver->sender->profile->cellphone_no}}"
-                                        autocomplete="contact_number" autofocus
-                                        >
-                                        <label for="" class="form__label">Phone Number</label></label>
-                                         @error('contact_number')
-                                                <span class="invalid-feedback" role="alert ">
-                                                    <strong style="color:red;">{{$message}}</strong>
-                                                </span>
-                                        @enderror
-                                      
-                        </div>
+                       
                         <div class="modal-footer">
-                            <button class="btn btn-primary " type="submit" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">Calculate Order</button>
+                            <button class="btn btn-primary " type="submit" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">Proceed</button>
                         </div>      
 					</form>
                 </div>

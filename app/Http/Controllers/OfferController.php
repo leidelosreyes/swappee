@@ -110,13 +110,40 @@ class OfferController extends Controller
       }
    //--------------------------------Show accepted item ---------------------------------
      public function show_for_delivery(){
-      $delivery = Offer::where('delivery_method','Delivery')->where('receiver_id',Auth::id())->simplepaginate(1);
+      $delivery = Offer::where('delivery_method','Delivery')
+      ->where('is_accepted',1)
+      ->where('receiver_id',Auth::id())
+      ->simplepaginate(1);
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
       $notifications = Offer::where('receiver_id',Auth::id())->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
-      
       return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery'));
    }
+   public function show_for_meetup(){
+      $delivery = Offer::where('delivery_method','Meet Up')
+      ->where('is_accepted',1)
+      ->where('receiver_id',Auth::id())
+      ->simplepaginate(1);
+      $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
+      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $messages = Message::where('receiver_id',Auth::id())->get();
+      return view('accepted_item.meetup_item', compact('offer','messages','notifications','delivery'));
+   }
+      public function send_info_meetup(Request $request){
+         $receiver_name = 'leo dela cruz';
+         $user_email = 'leidelosreyes060296@gmail.com';
+         $sender_name = Auth::user()->name;
+         $body_message = "{$sender_name} Send to you a meetup information Date : {$request->end_date} \n Location : {$request->meetup_location}\n Available Time : {$request->meetup_time}\n Contact number : {$request->contact_no}";
+         $data = array('name'=>$receiver_name, "body" => $body_message);
+         Mail::send('messages.mail', $data, function($message) use($user_email) {
+         $message->to($user_email)->subject('Meet Up Information');
+         $message->from('swappee6@gmail.com','Swappee');
+         });
+
+         return redirect()->back()->with('success','Meet Up information Succesfully sent');
+
+      }
+
    
 
 }
