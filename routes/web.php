@@ -79,7 +79,7 @@ Auth::routes(['verify' => true]);
 
  
 Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage'])->name('/');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
 Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
