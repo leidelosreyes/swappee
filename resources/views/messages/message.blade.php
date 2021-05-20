@@ -19,12 +19,12 @@
                         <p>{{$message}}</p>
                     </div>
                     @endif
-<<<<<<< HEAD
+
                    
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
                         content
                 </div>
-=======
+
 
                 <!-- START OF MEESAGE    -->
                 <div class="card-box"> 
@@ -48,7 +48,7 @@
                 
                 </div>
                 <!-- END   -->
->>>>>>> ec289496b468275a3223cb9541b6d646838e619a
+
              </div>
         </div>
  </div>
