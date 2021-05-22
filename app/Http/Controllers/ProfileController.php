@@ -43,8 +43,11 @@ class ProfileController extends Controller
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
     $categories = Categories::all();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
     $posts = Post::where('user_id',Auth::id())->paginate(10);
-    return view('User.profile_public_view', compact('posts','categories'));
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    return view('User.profile_public_view', compact('posts','categories','messages','offer','notifications'));
    }
    public function search_public_view()
    {
