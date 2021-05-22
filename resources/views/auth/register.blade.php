@@ -72,7 +72,7 @@
              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
               <hr>
               <a class="btn btn-lg btn-google btn-block text-uppercase"href="{{route('login.google')}}" ><i class="fab fa-google"></i> Sign in with Google</a>
-              <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{route('login.facebook')}}"><i class="fab fa-facebook-f"></i> Sign in with Facebook</a>
+              <!-- <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{route('login.facebook')}}"><i class="fab fa-facebook-f"></i> Sign in with Facebook</a> -->
              </div>
               
             </form>

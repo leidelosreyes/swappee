@@ -1,7 +1,6 @@
 @extends('layouts.layout2')
 
 @section('content')
-
   
 @include('layouts.carousel')
 
@@ -113,7 +112,9 @@
                   @else
                     <img src="{{$post->user->avatar}}" class="card-avatar"/>
                   @endif
-                      <p style="font-size:.75rem; overflow:hidden;" class="mt-2 ml-2">{{$post->user->name}}</p>
+                    <div style="height:30px; overflow:hidden;">
+                    <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+                    </div>
                   </div> 
                     <div class="product-image-wrapper">
 
@@ -163,6 +164,7 @@
 
 </div>
 </div>
+
 @endsection
 
 

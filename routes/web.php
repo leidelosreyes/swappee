@@ -14,16 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
-// Route::get('/index', function () {  
-//        return view('index');
-//  });
-//  Route::get('/contact', function () {  
-//     return view('contact');
-// });
 
-//  Route::get('/policy', function () {
-//      return view('policy'); });
 Route::get('/about', function () {
     return view('about');
 });
@@ -47,7 +38,7 @@ Auth::routes(['verify' => true]);
     Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
-      Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
+      Route::post('/admin/approve/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
       Route::post('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_swap'])->name('delete_swap.admin');
     });
 //--------------------------------------------------Admin Archiving---------------------------------------------------------------------//
@@ -82,7 +73,7 @@ Route::get('/', [App\Http\Controllers\LandingpageController::class, 'landingpage
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'contact'])->name('contact');
-Route::get('/index', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/index/old', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
 Route::get('/privacy_policy', [App\Http\Controllers\PolicyController::class, 'policy'])->name('policy');
 Route::get('/terms_condition', [App\Http\Controllers\TermsconditionController::class, 'TermsCondition'])->name('terms_condition');
 //------------------------------Social Media Route ----------------------------------------------
@@ -111,6 +102,8 @@ Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->n
 Route::get('/user/offer',[App\Http\Controllers\OfferController::class, 'show_offers'])->name('show.offers');
 Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 'show_notifications'])->name('show.notifications');
 Route::post('/user/accept/{id}',[App\Http\Controllers\OfferController::class, 'accept_offer'])->name('accept.offer');
+Route::get('/user/show/delivery',[App\Http\Controllers\OfferController::class, 'show_for_delivery'])->name('for_delivery_item.show');
+Route::get('/user/show/meetup',[App\Http\Controllers\OfferController::class, 'show_for_meetup'])->name('for_meetup_item.show');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');
@@ -139,9 +132,16 @@ Route::prefix('mr.speedy')->group(function(){
   Route::get('/courier/calculate',[App\Http\Controllers\CourierController::class,'calculate_order'])->name('courier.calculate');
   Route::get('/courier/info_location',[App\Http\Controllers\CourierController::class,'courier_info_and_location'])->name('courier.info_location');
   Route::post('/courier/store',[App\Http\Controllers\CourierController::class,'store'])->name('courier.store');
+  Route::get('/courier/calculate-swap',[App\Http\Controllers\CourierController::class,'calculate_order_swap'])->name('courier_swap.calculate');
+  Route::post('/courier/place_order',[App\Http\Controllers\CourierController::class,'place_order_swap'])->name('courier_swap.place_order');
 });
 //------------------------------------------Bidders Routes -----------------------------------------------
 Route::prefix('bidders')->group(function(){
   Route::post('/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');
   Route::get('/index',[App\Http\Controllers\BidderController::class,'index'])->name('bidders.index');
+});
+
+//---------------------------------------------- meet up routes --------------------------------------------
+Route::prefix('meetup')->group(function (){
+  Route::post('/send_info',[App\Http\Controllers\OfferController::class,'send_info_meetup'])->name('meet_up.send_info');
 });

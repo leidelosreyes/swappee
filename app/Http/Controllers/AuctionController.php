@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\auction;
 use Auth;
 use Carbon\Carbon;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,ActivityLog};
 
 class AuctionController extends Controller
 {
@@ -38,7 +38,7 @@ class AuctionController extends Controller
         return view('auctions.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
-    public function store()
+    public function store(Request $request)
      {
         
          $data = request()->validate([
@@ -69,7 +69,8 @@ class AuctionController extends Controller
 
 
          ]);
-
+         $action = "Created auction item $request->product_name";
+         $activitylog = ActivityLog::store_log($action);
          return redirect('auctions/index')->with('success','Please wait for the approval of your product');
         
           
@@ -92,6 +93,9 @@ class AuctionController extends Controller
         
     }
     public function delete($id){
+        $item_name = auction::findOrFail($id);
+        $action = "Deleted an auction item $item_name->product_name";
+         $activitylog = ActivityLog::store_log($action);
         $auction = auction::findOrFail($id)->delete();
         return redirect()->back()->with('success','Auction Deleted Successfully');
     }

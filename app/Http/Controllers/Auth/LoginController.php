@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
+use App\Models\{ActivityLog,User};
 use illuminate\http\Request;
 use Auth;
 
@@ -109,9 +109,9 @@ class LoginController extends Controller
                'avatar' => $data->avatar
            ]);
         }
-        Auth::login($user);
-
-        
+        // $action = "Log in Successfully";
+        // $activitylog = ActivityLog::store_log($action);
+       Auth::login($user);
     }
     
 }

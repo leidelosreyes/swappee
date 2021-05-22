@@ -3,13 +3,13 @@
 @section('content')
 
     <div class="container mt-4">
-        @include('user.profilebar')
+        @include('User.profilebar')
         <!-- end row -->
         <div class="row">
             <div class="col-xl-4">
 
                 <!-- side menu -->
-                 @include('user.sidemenu')
+                 @include('User.sidemenu')
                 <!--  end side menu -->
             </div>  
             <div class="col-xl-8" >
@@ -20,10 +20,12 @@
                     </div>
                     @endif
 
+
                    
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
                         content
                 </div>
+
 
 
                 <!-- START OF MEESAGE    -->
@@ -37,9 +39,7 @@
                     </div>
                     <div class="col pr-0">
                     <p class="email-summary">
-                     <strong>Commits pushed</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit... 
-                     <span class="label label-success" style="background-color: #5cb85c;border-radius: 10%"><span style="color:white;">New</span></span></p>
-                    <!-- <a href="#" class="b-color"><i class="fas fa-trash"></i></a> -->
+                     <strong>Commits pushed</strong> Lorem ipsum dolor sit amet
                     </div>
                     <div class="col col-lg-1">
                     <a href="#" class="b-color"><i class="fas fa-trash"></i></a>

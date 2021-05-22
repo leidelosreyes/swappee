@@ -67,11 +67,11 @@
 <div class="d-sm-block d-md-none mb-4">
 <div class="footer"style="position: fixed;left: 0;bottom: 0;width: 100%;background-color: whitesmoke;color: white;text-align: center;" >
   <div class="row">
-    <div class="col"><a class="nav-link " style="color: #57585a; font-size:20px;" href="{{route('home')}}"><i class="fas fa-home"></i></a></div>
-    <div class="col"><a href="" style="color: #57585a; font-size:20px;" data-toggle="modal" data-target="#exampleModal-notifcation"><i class="far fa-bell" style="padding-top:.9rem;">	</i></a></div>
-    <div class="col"><a class="nav-link " style="color: #57585a; font-size:20px;" href="{{route('posts.create')}}"><i class="fas fa-plus padding-right"></i></a></div>
-    <div class="col"><a class="nav-link" style="color: #57585a; font-size:20px;" href="{{route('auctions.index')}}"><i class="fas fa-gavel"></i></a></div>
-    <div class="col"><a href="{{route('user.profile')}}" class="nav-item nav-link  navfonts"  style="color: #57585a; font-size:20px;" ><i class="far fa-user-circle"></i></a></div>
+    <div class="col"><a class="nav-link " style="color: #57585a; font-size:25px;" href="{{route('home')}}"><i class="fas fa-home"></i></a></div>
+    <div class="col"><a href="" style="color: #57585a; font-size:25px;" data-toggle="modal" data-target="#exampleModal-notifcation"><i class="far fa-bell" style="padding-top:.9rem;">	</i></a></div>
+    <div class="col"><a class="nav-link " style="color: #57585a; font-size:25px;" href="{{route('posts.create')}}"><i class="fas fa-plus padding-right"></i></a></div>
+    <div class="col"><a class="nav-link" style="color: #57585a; font-size:25px;" href="{{route('auctions.index')}}"><i class="fas fa-gavel"></i></a></div>
+    <div class="col"><a href="{{route('user.profile')}}" class="nav-item nav-link  navfonts"  style="color: #57585a; font-size:25px;" ><i class="far fa-user-circle"></i></a></div>
   </div>
 </div>         
 </div>   

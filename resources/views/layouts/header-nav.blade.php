@@ -66,8 +66,8 @@
 						<a href="" class="nav-item nav-link  navfonts" data-toggle="dropdown" style="color: #57585a;" ><i class="far fa-user-circle"></i> {{ Auth::user()->name }}</a>
 						<div class="dropdown-menu">
 							<a href="{{route('user.profile')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-user"></i> Acount</a>
-                            <a href="{{route('user.profile_public_view')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-globe-asia"></i> Public Profile</a>
-							<a class="dropdown-item navfonts" href="{{ route('index') }}" style="font-size: .80rem;"
+                            <!-- <a href="{{route('user.profile_public_view')}}" style="font-size: .80rem;" class="dropdown-item"><i class="fas fa-globe-asia"></i> Public Profile</a> -->
+							<a class="dropdown-item navfonts" href="{{ route('home') }}" style="font-size: .80rem;"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                  <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
@@ -97,30 +97,26 @@
 
 <!-- navbar for mobile view  -->
 
-<div class="d-sm-block d-md-none mb-4">
-	<nav class="navbar navbar-light bg-light mb-2">
-		<div class="container d-block">
-
-
-		  <div class="row">
-   			 <div class="col-10 pt-1">
-				<form class="d-flex"  action="{{route('search')}}" method="GET">
-						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your offers" aria-label="Search">
-   				</form>
-   			 </div>
-    		 <div class="col">
-			 	<ul class="nav justify-content-end">
-				    
-
-					<li class="nav-item">
-				     	@include('User.sidemodal')
-					</li>
-
-				 </ul>
-    		</div>
-  		</div>
-	              
-	</div>	
+<div class="d-sm-block d-md-none">
+<nav id="navbar_top" class="navbar navbar-light bg-light mb-2 navbar-fixed-top">
+		<div class="container">
+			<a class="navbar-brand"  href="{{url('/')}}">
+			<img src="{{asset('image/swappee_logo.png')}}" style="width:120px;height: 45px;margin-bottom: 5px;" alt="">
+			</a>  
+				
+				
+				@include('User.sidemodal')
+					
+		</div>	
+		<div class="mb-2 col-xl-12">
+				      <form class="d-flex"  action="{{route('search')}}" method="GET">
+						<input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
+						<button type="submit" class="searchButton">
+						<i class="fa fa-search"></i>
+					  </form>
+					</button>
+                </div>
+	   
 	</nav>
 	
 	   

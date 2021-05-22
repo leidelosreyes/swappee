@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\{Post,User,Offer,Message,Categories,Sub_categorie,auction};
+use App\Models\{Post,User,Offer,Message,Categories,Sub_categorie,auction,ActivityLog};
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -119,13 +119,18 @@ class ProfileController extends Controller
         'delivery_method' => 'required'    
     ]);
       $posts->update($request->all());
+      $action = "Updated an item {$request->product_name}";
+      $activitylog = ActivityLog::store_log($action);
       return redirect()->route('user.profile')
             ->with('success','Product updated successfully');
      
    }
    public function destroy_auth_user_post($posts)
    {
+         
          $posts = Post::find($posts);
+         $action = "Deleted an item {$posts->product_name}";
+         $activitylog = ActivityLog::store_log($action);
          $posts->delete();
          return redirect()->route('user.profile')
             ->with('success','Product deleted successfully');
@@ -160,5 +165,8 @@ class ProfileController extends Controller
            'address'      => $request->address,
            'birthday'     => $request->birthday
        ]);
+      
+        $action = "Updated Profile information";
+        $activitylog = ActivityLog::store_log($action);
    }
 }

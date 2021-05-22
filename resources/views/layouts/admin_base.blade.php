@@ -55,11 +55,11 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     
-                                        @if(empty($post->user->avatar))
-                                            <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
-                                        @else
-                                            <img src="{{$post->user->avatar}}" class="card-avatar"/>
-                                        @endif
+                                @if(empty(Auth::user()->avatar))
+                                <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+                                @else
+                                    <img src="{{Auth::user()->avatar}}" class="card-avatar"/>
+                                @endif
                                             <p class="mt-2 ml-2">{{ Auth::user()->name }}</p>
                                             
                                     

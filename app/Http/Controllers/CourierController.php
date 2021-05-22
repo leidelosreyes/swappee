@@ -10,6 +10,10 @@ use App\Models\Profile;
 
 class CourierController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
     public function calculate_order(){
         $auction_id= bidder::where('user_id',Auth::id())->Where('winners',1)->first();
         $id = $auction_id->auction_id;
@@ -144,4 +148,82 @@ class CourierController extends Controller
          
         // echo $result;
     }
+
+    public function calculate_order_swap(Request $request){
+        $curl = curl_init(); 
+        curl_setopt($curl, CURLOPT_URL, 'https://robotapitest.mrspeedy.ph/api/business/1.1/calculate-order'); 
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST'); 
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['X-DV-Auth-Token: 3AA731EB88E2F1155562E4CBFA059C8D00C20959']); 
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $data = [ 
+            'matter' => 'Documents', 
+            'points' => [ 
+                [ 
+                    'address' => $request->pickup_location, 
+                    'contact_person' => [ 
+                        'phone' => $request->contact_no, 
+                    ], 
+                ], 
+                [ 
+                    'address' =>   $request->drop_off_location, 
+                    'contact_person' => [ 
+                        'phone' =>$request->contact_number, 
+                    ], 
+                ], 
+            ], 
+        ]; 
+         
+        $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); 
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $json); 
+         
+        $result = curl_exec($curl); 
+        if ($result === false) { 
+            throw new Exception(curl_error($curl), curl_errno($curl)); 
+        } 
+         
+        $courier = json_decode($result);
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('courier.place_order',compact('courier','messages','notifications','offer'));
+    }
+
+     public function place_order_swap(Request $request){
+        $curl = curl_init(); 
+        curl_setopt($curl, CURLOPT_URL, 'https://robotapitest.mrspeedy.ph/api/business/1.1/create-order'); 
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST'); 
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['X-DV-Auth-Token:  3AA731EB88E2F1155562E4CBFA059C8D00C20959']); 
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+         
+        $data = [ 
+            'matter' => 'Documents', 
+            'points' => [ 
+                [ 
+                    'address' => $request->pickup_location, 
+                    'contact_person' => [ 
+                        'phone' => $request->contact_no, 
+                    ], 
+                ], 
+                [ 
+                    'address' =>   $request->drop_off_location, 
+                    'contact_person' => [ 
+                        'phone' =>$request->contact_number, 
+                    ], 
+                ], 
+            ], 
+        ]; 
+         
+        $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); 
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $json); 
+         
+        $result = curl_exec($curl); 
+        if ($result === false) { 
+            throw new Exception(curl_error($curl), curl_errno($curl)); 
+        } 
+        $courier = json_decode($result);
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('courier.order_list',compact('courier','messages','notifications','offer'));
+     }
 }
