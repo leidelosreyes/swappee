@@ -109,7 +109,7 @@ Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');
 Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
 Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');
-Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
+Route::get('/search/search_public_view/{id}', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
 Route::get('/user/show/won_item',[App\Http\Controllers\BidderController::class, 'show'])->name('user.won_view');
 Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('user.edit_profile');
 Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
@@ -145,3 +145,13 @@ Route::prefix('bidders')->group(function(){
 Route::prefix('meetup')->group(function (){
   Route::post('/send_info',[App\Http\Controllers\OfferController::class,'send_info_meetup'])->name('meet_up.send_info');
 });
+
+
+
+//-----------------------------------------------------public profile-----------------------------------
+Route::prefix('public_profile')->group(function (){
+  Route::get('/posts/{id}',[App\Http\Controllers\ProfileController::class, 'show_public_view'])->name('public_profile_posts.show');
+  Route::get('/category/{category}/{id}',[App\Http\Controllers\ProfileController::class, 'filter_by_category'])->name('public_profile_posts.filter');
+  Route::get('/sub_category/{sub_category}/{id}',[App\Http\Controllers\ProfileController::class, 'filter_by_sub_category'])->name('public_profile_sub.filter');
+});
+

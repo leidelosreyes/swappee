@@ -113,7 +113,7 @@
                     <img src="{{$post->user->avatar}}" class="card-avatar"/>
                   @endif
                     <div style="height:30px; overflow:hidden;">
-                    <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+                   <a href="{{route('public_profile_posts.show',$post->user_id)}}"><p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p></a> 
                     </div>
                   </div> 
                     <div class="product-image-wrapper">
