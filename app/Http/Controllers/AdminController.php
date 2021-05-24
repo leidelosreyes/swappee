@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction,ActivityLog};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction,ActivityLog,Profile};
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Auth;
 use Mail;
 use Carbon\Carbon;
@@ -23,20 +24,20 @@ class AdminController extends Controller
     public function show_admin($params)
     {
         if($params == 1){
-            $admin = User::where('usertype','admin')->get();
-            return view('admins.admin.show',compact('admin'));
+            $admins = User::where('usertype','admin')->get();
+            return view('admins.admin.show',compact('admins'));
         }
         if($params == 2){
-            $admin = User::where('usertype','post-moderator-admin')->get();
-            return view('admins.admin.show',compact('admin'));
+            $admins = User::where('usertype','post-moderator-admin')->get();
+            return view('admins.admin.show',compact('admins'));
         }
         if($params == 3){
-            $admin = User::where('usertype','content-manager-admin')->get();
-            return view('admins.admin.show',compact('admin'));
+            $admins = User::where('usertype','content-manager-admin')->get();
+            return view('admins.admin.show',compact('admins'));
         }
         if($params == 4){
-            $admin = User::where('usertype','user-manager-admin')->get();
-            return view('admins.admin.show',compact('admin'));
+            $admins = User::where('usertype','user-manager-admin')->get();
+            return view('admins.admin.show',compact('admins'));
         }
       
     }
@@ -50,14 +51,13 @@ class AdminController extends Controller
         return view('admins.admin.create');
     }
     public function store(Request $request){
-
+        $id = Auth::id();
         $validateData = $request->validate([
-            'name' => ['required' , 'min:3' , 'max:50'],
+            'name' => ['required' ,'min:3' ,'max:50'],
             'email' =>['required'],
             'usertype' => ['required'],
             'email_verified-at'=>$request->email_verified_at,
             'password' => ['required']
-
         ]);
 
         $admin = User::insert([
@@ -69,7 +69,11 @@ class AdminController extends Controller
             'created_at' => Carbon::now()->timezone('Asia/Manila'),
             'updated_at' => Carbon::now()->timezone('Asia/Manila')
         ]);
-        
+        $profile = Profile::where('user_id',$id)->insert([
+            'cellphone_no' => $request->cellphone_no,
+            'address'      => $request->address,
+            'birthday'      => $request->birthday
+        ]);
         $action = "Added {$request->name} as {$request->usertype}";
         $activitylog = ActivityLog::store_log($action);
         return redirect('admin')->with('success','New Administrator Created Successfuly');
@@ -84,15 +88,14 @@ class AdminController extends Controller
             return redirect()->back()->with('error','You are not authorized to Edit Administrator');
         }
         $admin = User::find($id);
-        dd($admin);
+        
     }
     public function delete($id){
         if(Auth::user()->usertype != 'admin')
         {
             return redirect()->back()->with('error','You are not authorized to Delete Administrator');
         }
-        $admin = User::find($id);
-        dd($admin);
+        $admin = User::findOrFail($id);  
     }
 
     public function show_swap(){
@@ -106,7 +109,6 @@ class AdminController extends Controller
              $swap = Post::all();
             return view('admins.admin.swap.show',compact('swap'));
         }
-      
         return redirect()->back()->with('error','You are not authorized');
         
     }
@@ -278,5 +280,23 @@ class AdminController extends Controller
     }
     //--------------------------------- end function -----------------------------------------//
 
-    
+    public function update(Request $request,$id){
+       
+        if(Auth::user()->usertype != 'admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Update Administrator');
+        }
+      
+        $admin = User::where('id',$id)->update([
+              'name'       =>$request->name,
+              'email'      =>$request->email,
+              'usertype'   =>$request->usertype,
+          ]);
+          $profile = Profile::where('id',$id)->update([
+            'cellphone_no'=>$request->cellphone_no,
+            'address'    =>$request->address
+          ]);
+        return redirect('admin')->with('success','Admin Successfully updated');
+    }
+   
 }
