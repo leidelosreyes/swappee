@@ -14,8 +14,16 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h4 class="header-title mb-3 mt-4">Admins</h4> 
+
+
+                            @foreach($admins as $admin)
+                                <h4 class="header-title mb-3 mt-4">
+                                    {{ucfirst($admin->usertype)}}
+                                </h4> 
+                                    
+                            @endforeach
             @include('admins.admin.table')
+     
         </div>
     </div>
 </div>
