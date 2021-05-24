@@ -7,13 +7,14 @@
             <h4 class="header-title mb-3 mt-4">Create Administrator</h4>            
                <form action="{{route('store.admin')}}" method ="post" enctype="multipart/form-data">
                           @csrf
+
                           <div class="form__div">
                                         <input type="text" 
                                         id="name"
                                         name="name"
                                         style="height:60px;"
                                         class="form__input form-control @error('name') is-invalid @enderror"
-                                        value="{{old('name')}}"
+                                        value="{{old('$admin->name')}}"
                                         autocomplete="name" autofocus
                                         placeholder=" ">
                                         <label for="" class="form__label">Name <label style="color:red;">*</label></label>
@@ -23,6 +24,7 @@
                                                 </span>
                                             @enderror
                             </div>
+
                             <div class="form__div">
                                         <input type="email" 
                                         id="email"
@@ -39,8 +41,9 @@
                                                 </span>
                                             @enderror
                             </div>
+
                             <div class="form__div">
-                                        <input type="text" 
+                                        <input type="password" 
                                         id="password"
                                         name="password"
                                         style="height:60px;"
@@ -48,13 +51,14 @@
                                         value="{{old('password')}}"
                                         autocomplete="password" autofocus
                                         placeholder=" ">
-                                        <label for="" class="form__label">Passwprd <label style="color:red;">*</label></label>
+                                        <label for="" class="form__label">Password <label style="color:red;">*</label></label>
                                         @error('password')
                                                 <span class="invalid-feedback" role="alert ">
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
                                             @enderror
                             </div>
+
                             <div class="form__div">
                                       <select id="inputState" 
                                       id="usertype"
@@ -77,6 +81,7 @@
                                       @enderror
                                        <label for="" class="form__label">Choose Sub Usertype <label style="color:red;">*</label></label>    
                                   </div>
+
                                   <div class="form__div">
                                         <input type="date" 
                                         id="email_verified_at"
@@ -86,6 +91,7 @@
                                         class="form__input form-control @error('email_verified_at') is-invalid @enderror"
                                         value="{{old('email_verified_at')}}"
                                         autocomplete="email_verified_at" autofocus
+                                        onkeydown=disable
                                         >
                                         <label for="" class="form__label">Verified Admin <label style="color:red;">*</label></label>
                                          @error('email_verified_at')
@@ -94,6 +100,43 @@
                                                 </span>
                                         @enderror
                                       
+                                    </div>
+
+                                    <div class="form__div">
+                                        <input type="number" 
+                                        id="cellphone_no"
+                                        name="cellphone_no"
+                                        style="height:60px;"
+                                        placeholder=" "
+                                        class="form__input form-control @error('cellphone_no') is-invalid @enderror"
+                                        value="{{old('$admin->profile->cellphone_no')}}"
+                                        autocomplete="cellphone_no" autofocus
+                                        >
+                                        <label for="" class="form__label">Cellphone number <label style="color:red;">*</label></label>
+                                         @error('email_verified_at')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                        @enderror
+                                      
+                                    </div>
+
+                                    <div class="form__div">
+                                        <input type="text" 
+                                        id="address"
+                                        name="address"
+                                        style="height:60px;"
+                                        placeholder=" "
+                                        class="form__input form-control @error('address') is-invalid @enderror"
+                                        value="{{old('$admin->profile->address')}}"
+                                        autocomplete="address" autofocus
+                                        >
+                                        <label for="" class="form__label">Address <label style="color:red;">*</label></label>
+                                         @error('email_verified_at')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                        @enderror
                                     </div>
                     <button type="sumbit" class="btn btn-primary mt-4 mb-4"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button>  
                </form>   
