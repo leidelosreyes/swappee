@@ -15,15 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
  
-// Route::get('/index', function () {  
-//        return view('index');
-//  });
-//  Route::get('/contact', function () {  
-//     return view('contact');
-// });
-
-//  Route::get('/policy', function () {
-//      return view('policy'); });
 Route::get('/about', function () {
     return view('about');
 });
@@ -40,11 +31,13 @@ Route::get('/user/index', function () {
 Auth::routes(['verify' => true]);
   Route::group(['middleware' => ['auth','admin']],function(){
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_admin'])->name('show.admin');
+    Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_admin'])->name('show_admin.admin');
     Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
     Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
     Route::get('/admin/edit/{id}',[App\Http\Controllers\AdminController::class,'edit'])->name('edit.admin');
-    Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
+    Route::post('/admin/update/{id}',[App\Http\Controllers\AdminController::class,'update'])->name('update.admin');
+    Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete_admin.admin');
+    
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
       Route::post('/admin/show/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
@@ -145,3 +138,6 @@ Route::prefix('bidders')->group(function(){
   Route::post('/store',[App\Http\Controllers\BidderController::class,'store'])->name('bidders.store');
   Route::get('/index',[App\Http\Controllers\BidderController::class,'index'])->name('bidders.index');
 });
+
+
+
