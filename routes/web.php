@@ -96,6 +96,7 @@ Route::post('/auctions/store',[App\Http\Controllers\AuctionController::class, 's
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 Route::delete('/auctions/{id}',[App\Http\Controllers\AuctionController::class, 'delete'])->name('auctions.delete');
+Route::get('/search/auction', [App\Http\Controllers\AuctionController::class, 'search'])->name('auctions.search');
 //------------------------------------Offer----------------------------------------
 Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
@@ -121,11 +122,14 @@ Route::get('/message/show',[App\Http\Controllers\MessageController::class, 'show
 //--------------------------------------Categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
 Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');
+Route::get('/auction/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_auction_by_category'])->name('filter.category_auction');
 //--------------------------------------------Sub_categories-------------------------
 Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
+Route::get('/auction/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_auction_by_sub_category'])->name('filter.sub_category_auction');
 //-----------------------------------------Filter by price------------------------------
 Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');
+Route::get('/auction/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_auction_by_price'])->name('filter.auction_price');
 
 //-------------------------------------------Courier Route------------------------------------------
 Route::prefix('mr.speedy')->group(function(){

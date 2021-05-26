@@ -99,4 +99,30 @@ class AuctionController extends Controller
         $auction = auction::findOrFail($id)->delete();
         return redirect()->back()->with('success','Auction Deleted Successfully');
     }
+    public function search()
+    {
+
+        $search = request()->query('search');
+       
+        
+        if($search!="")
+        {   $auctions = auction::where(function ($query) use ($search){
+            $query->where('product_name', 'like', '%'.$search.'%');
+        })
+        ->simplepaginate(20);
+        $auctions->appends(['search' => $search]);
+           
+        }
+        else
+        {
+            $auctions = auction::simplepaginate(20);
+        }
+        $categories = Categories::all();
+        $sub_categories = sub_categorie::all();
+        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
+        
+    }
 }
