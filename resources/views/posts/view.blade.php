@@ -86,7 +86,7 @@
 					</div>
 					<!-- Button trigger modal -->
 						<button class="btn btn-primary  mt-4 form-control " type="button" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#offer-modal">
-									<i class="far fa-comment-alt"></i> Make offer
+									Make offer
                         </button>
 					<!-- End Button -->
 				</div> 	
@@ -125,9 +125,9 @@
 										</button>
 									</div>
 									<div class="mt-4">
-										<button type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+										<a  href="{{route('public_profile_posts.show',$post->user_id)}}"type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;">
 										<i class="fas fa-user-circle"></i> Visit Profile
-										</button>
+										</a>
 									</div>
 								</div>
 
@@ -138,9 +138,9 @@
 										</button>
 									</div>
 									<div class="mt-4">
-										<button type="button" class="btn btn-outline-info mt-2" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+										<a href="{{route('public_profile_posts.show',$post->user_id)}}" type="button" class="btn btn-outline-info mt-2" style="float:right; margin:5px;">
 										<i class="fas fa-user-circle"></i>
-										</button>
+										</a>
 									</div>
 								</div>
 								
@@ -204,11 +204,11 @@
                                                 </span>
                                             @enderror							  
 									 
-									<div class="modal-footer">
+								
 									
 								
-									<button type="sumbit" class="btn btn-primary form-control"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send</button>
-                    </div>
+									<button type="sumbit" class="btn btn-primary form-control mt-4"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send</button>
+                  
 							    </form>
                                  </div>
       

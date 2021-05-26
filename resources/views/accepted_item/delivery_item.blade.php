@@ -107,7 +107,7 @@
                 </button>
             </div>
                 <div class="modal-body">
-				<div class="alert alert-success alert-dismissible">
+				<div class="alert alert-info alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Note!</strong> For a better user experience avoid Fake Delivery booking unless you are willing to lose points on your account and will be ban Until further Notice From Swappee.
                 <br>

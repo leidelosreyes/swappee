@@ -177,6 +177,10 @@ class ProfileController extends Controller
 
    public function show_public_view($id){
     $users = User::where('id',$id)->first();
+    if(!$users)
+    {
+    return redirect(404);
+    }
     $categories = Categories::all();
     $notifications = Offer::where('receiver_id',Auth::id())->get();
     $posts = Post::where('user_id',$id)->simplepaginate(10);

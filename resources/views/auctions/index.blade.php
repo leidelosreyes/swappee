@@ -15,11 +15,7 @@
  @include('slider.slider')  
  <!-- mobile view side bar -->
 <div class="d-sm-block d-md-none mb-4">
-    <div class="card">
-        <div class="card-body text-left">       
-            <a href=""data-toggle="modal" data-target="#exampleModal"><p> <i class="fas fa-bars"></i> All Categories</p> </a>             
-        </div>
-    </div>
+        <hr>
     <!-- modal -->
             <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -137,8 +133,11 @@
      
                  	
 <div class="container ">
+        <div class="card-body text-left mt-2">       
+            <a href=""data-toggle="modal" data-target="#exampleModal"><p><i class="fas fa-border-all"></i> All Categories</p> </a>             
+        </div>
+        <hr>
   <div class="row">
-
         @foreach ($auctions as $post) 
         <div class="col-6 col-md-4 col-lg-3 b-col mt-4">
 
@@ -148,7 +147,9 @@
                   @else
                     <img src="{{$post->user->avatar}}" class="card-avatar"/>
                   @endif
-                      <p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p>
+                  <div style="height:30px; overflow:hidden;">
+                    <a href="{{route('public_profile_posts.show',$post->user_id)}}"><p style="font-size:.75rem;" class="mt-2 ml-2">{{$post->user->name}}</p></a>
+                  </div>
                   </div> 
                     <div class="product-image-wrapper">
 
