@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/about', function () {
     return view('about');
 });
@@ -32,11 +31,13 @@ Route::get('/user/index', function () {
 Auth::routes(['verify' => true]);
   Route::group(['middleware' => ['auth','admin']],function(){
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_admin'])->name('show.admin');
+    Route::get('/admin/show/{params}', [App\Http\Controllers\AdminController::class, 'show_admin'])->name('show_admin.admin');
     Route::get('/admin/create', [App\Http\Controllers\AdminController::class, 'create'])->name('create.admin');
     Route::post('/admin/store', [App\Http\Controllers\AdminController::class, 'store'])->name('store.admin');
     Route::get('/admin/edit/{id}',[App\Http\Controllers\AdminController::class,'edit'])->name('edit.admin');
-    Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete.admin');
+    Route::post('/admin/update/{id}',[App\Http\Controllers\AdminController::class,'update'])->name('update.admin');
+    Route::get('/admin/delete/{id}',[App\Http\Controllers\AdminController::class,'delete_admin'])->name('delete_admin.admin');
+    
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
       Route::post('/admin/approve/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
@@ -97,6 +98,7 @@ Route::post('/auctions/store',[App\Http\Controllers\AuctionController::class, 's
 Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
 Route::delete('/auctions/{id}',[App\Http\Controllers\AuctionController::class, 'delete'])->name('auctions.delete');
+Route::get('/search/auction', [App\Http\Controllers\AuctionController::class, 'search'])->name('auctions.search');
 //------------------------------------Offer----------------------------------------
 Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
 Route::post('/offers',[App\Http\Controllers\OfferController::class, 'store'])->name('offers');
@@ -110,7 +112,7 @@ Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');
 Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
 Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');
-Route::get('/search/search_public_view', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
+Route::get('/search/search_public_view/{id}', [App\Http\Controllers\ProfileController::class, 'search_public_view'])->name('search.public_view');
 Route::get('/user/show/won_item',[App\Http\Controllers\BidderController::class, 'show'])->name('user.won_view');
 Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('user.edit_profile');
 Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
@@ -122,11 +124,14 @@ Route::get('/message/show',[App\Http\Controllers\MessageController::class, 'show
 //--------------------------------------Categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
 Route::get('/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_category'])->name('filter.category');
+Route::get('/auction/category/{category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_auction_by_category'])->name('filter.category_auction');
 //--------------------------------------------Sub_categories-------------------------
 Route::post('/sub_categories',[App\Http\Controllers\CategoriesController::class, 'store_sub_category'])->name('sub_categories.store');
 Route::get('/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_post_by_sub_category'])->name('filter.sub_category');
+Route::get('/auction/sub_category/{sub_category_id}',[App\Http\Controllers\CategoriesController::class, 'filter_auction_by_sub_category'])->name('filter.sub_category_auction');
 //-----------------------------------------Filter by price------------------------------
 Route::get('/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_by_price'])->name('filter.price');
+Route::get('/auction/filter_by_price',[App\Http\Controllers\CategoriesController::class, 'filter_auction_by_price'])->name('filter.auction_price');
 
 //-------------------------------------------Courier Route------------------------------------------
 Route::prefix('mr.speedy')->group(function(){
@@ -149,15 +154,10 @@ Route::prefix('meetup')->group(function (){
 
 
 
-
-
-
-//---------------------------------------------- ERROR 404 --------------------------------------------
-Route::prefix('error')->group(function(){
-  Route::get('404',[App\Http\Controllers\LandingpageController::class,'index_404']);
+//-----------------------------------------------------public profile-----------------------------------
+Route::prefix('public_profile')->group(function (){
+  Route::get('/posts/{id}',[App\Http\Controllers\ProfileController::class, 'show_public_view'])->name('public_profile_posts.show');
+  Route::get('/category/{category}/{id}',[App\Http\Controllers\ProfileController::class, 'filter_by_category'])->name('public_profile_posts.filter');
+  Route::get('/sub_category/{sub_category}/{id}',[App\Http\Controllers\ProfileController::class, 'filter_by_sub_category'])->name('public_profile_sub.filter');
 });
 
-//---------------------------------------------- ERROR 404 --------------------------------------------
-Route::prefix('error')->group(function(){
-  Route::get('mails',[App\Http\Controllers\LandingpageController::class,'mailed']);
-});

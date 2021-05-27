@@ -8,17 +8,29 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ env('APP_NAME') }} | Admin</title>
-
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Fonts -->
     <link rel="shortcut icon" href="{{ asset('image/swap_trans.png') }}">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
 
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
     
 
     <!-- Styles -->
@@ -87,16 +99,16 @@
                                                                             <a href="{{route('create.admin')}}"class="a-color">Create Administrator </a>
                                                                          </li>
                                                                         <li>
-                                                                            <a href="{{route('show.admin',1)}}"class="a-color">Admin</a>                     
+                                                                            <a href="{{route('show_admin.admin',1)}}"class="a-color">Admin</a>                     
                                                                         </li>
                                                                         <li>
-                                                                            <a href="{{route('show.admin',2)}}"class="a-color">Post Moderator Admin</a>                     
+                                                                            <a href="{{route('show_admin.admin',2)}}"class="a-color">Post Moderator Admin</a>                     
                                                                         </li>
                                                                         <li>
-                                                                            <a href="{{route('show.admin',3)}}"class="a-color">Contents Manager Admin</a>                     
+                                                                            <a href="{{route('show_admin.admin',3)}}"class="a-color">Contents Manager Admin</a>                     
                                                                         </li>
                                                                         <li>
-                                                                            <a href="{{route('show.admin',4)}}"class="a-color">User Manager Admin</a>                     
+                                                                            <a href="{{route('show_admin.admin',4)}}"class="a-color">User Manager Admin</a>                     
                                                                         </li>
                                                                 </div>
                                                                     <hr>
@@ -271,10 +283,30 @@
 
 <!-- End navbar for web view  -->
 
+<script>
+    $(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+
+    // or instead:
+    // var maxDate = dtToday.toISOString().substr(0, 10);
+    $('#email_verified_at').attr('min', maxDate);
+});
+</script>
 
 
 @yield('content')
-
+<script src="{{asset('js/location.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?input=Philippines&types=geocode&key=AIzaSyBJCSjFGcsFkG5Zy7k3Ph6ArHv6EoWSxpk&libraries=places&callback=initAutocomplete"async defer></script>
 
 </body>
 </html>

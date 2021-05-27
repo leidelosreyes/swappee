@@ -52,11 +52,11 @@
                       
        <!-- product card -->
        @forelse($posts as $post)
-                        @empty
-                            <div class="alert alert-danger mt-4">
-                                <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
-                             </div>
-                @endforelse
+            @empty
+                <div class="alert alert-danger mt-4">
+                    <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
+                </div>
+        @endforelse
                 @foreach($posts as $post)
                     <div class="container mt-4 mb-2">
                         <div class="d-flex justify-content-center row">

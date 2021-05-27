@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\{Post,User,Offer,Message,Categories,Sub_categorie,auction,ActivityLog};
+use App\Models\{Post,User,Offer,Message,Categories,Sub_categorie,auction,ActivityLog,Point};
 use Carbon\Carbon;
 use Auth;
 class ProfileController extends Controller
@@ -23,7 +23,8 @@ class ProfileController extends Controller
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
     $notifications = Offer::where('receiver_id',Auth::id())->get();
-    return view('User.profile', compact('posts','messages','notifications','offer'));
+    $points = Point::where('user_id',Auth::id())->first();
+    return view('User.profile', compact('posts','messages','notifications','offer','points'));
    }
    public function auction_index()
    {
@@ -42,26 +43,33 @@ class ProfileController extends Controller
     //    query builder
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
-    $categories = Categories::all();
-    $posts = Post::where('user_id',Auth::id())->paginate(10);
-    return view('User.profile_public_view', compact('posts','categories'));
+    // $categories = Categories::all();
+    // $notifications = Offer::where('receiver_id',Auth::id())->get();
+    // $offer = Offer::where('sender_id',Auth::id())->get();
+    // $posts = Post::where('user_id',Auth::id())->paginate(10);
+    // $messages = Message::where('receiver_id',Auth::id())->get();
+    // return view('User.profile_public_view', compact('posts','categories','messages','offer','notifications'));
    }
-   public function search_public_view()
+   public function search_public_view($id)
    {
-
        $search = request()->query('search'); 
        if($search!="")
        {   $posts = Post::where('product_name','like', '%'.$search.'%')
-           ->where('user_id',Auth::id())->paginate(10);
+           ->where('user_id',$id)->paginate(10);
            $posts->appends(['search' => $search]);
          
        }
        else
        {
-           $posts = Post::paginate(10);
+        $posts = Post::where('user_id',$id)->simplepaginate(20);
        }
    
-       return view('User.profile_public_view',compact('posts'));
+       $users = User::where('id',$id)->first();
+        $categories = Categories::all();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $points = Point::where('user_id',$id)->first();
+        $sub_categories = Sub_categorie::all();
+        return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
        
    }
   
@@ -165,5 +173,43 @@ class ProfileController extends Controller
       
         $action = "Updated Profile information";
         $activitylog = ActivityLog::store_log($action);
+   }
+
+   public function show_public_view($id){
+    $users = User::where('id',$id)->first();
+    if(!$users)
+    {
+    return redirect(404);
+    }
+    $categories = Categories::all();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $posts = Post::where('user_id',$id)->simplepaginate(10);
+    $points = Point::where('user_id',$id)->first();
+    $sub_categories = Sub_categorie::all();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+   }
+
+   public function filter_by_category($category,$id){
+    $users = User::where('id',$id)->first();
+    $posts = Post::where('category_id',$category)
+    ->where('user_id',$id)
+    ->simplepaginate(20);
+    $categories = Categories::all();
+    $sub_categories = Sub_categorie::all();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $points = Point::where('user_id',$id)->first();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+   }
+
+   public function filter_by_sub_category($sub_category,$id){
+    $users = User::where('id',$id)->first();
+    $posts = Post::where('sub_category_id',$sub_category)
+    ->where('user_id',$id)
+    ->simplepaginate(20);
+    $categories = Categories::all();
+    $sub_categories = Sub_categorie::all();
+    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $points = Point::where('user_id',$id)->first();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
    }
 }

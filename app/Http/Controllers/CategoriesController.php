@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\{Sub_categorie,Offer,Categories,Post,Message};
+use App\Models\{Sub_categorie,Offer,Categories,Post,Message,auction};
 use Illuminate\Http\Request;
 use Auth;
 
@@ -80,6 +80,17 @@ class CategoriesController extends Controller
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
     }
+    public function filter_auction_by_category($category_id)
+    {
+        $categories = Categories::all();
+        $auctions = auction::where('category_id',$category_id)
+        ->paginate(20);
+        $sub_categories = Sub_categorie::all();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
+    }
     public function filter_by_price(Request $request)
     {
         $categories = Categories::all();
@@ -93,6 +104,19 @@ class CategoriesController extends Controller
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
     }
+    public function filter_auction_by_price(Request $request)
+    {
+        $categories = Categories::all();
+        $sub_categories = Sub_categorie::all();
+        $price = $request->price;
+        $min_val = 1;
+        $auctions = auction::whereBetween('estimated_price',[$min_val,$price])
+        ->paginate(20);
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
+    }
     public function filter_post_by_sub_category($sub_category_id)
     {
         $categories = Categories::all();
@@ -103,6 +127,17 @@ class CategoriesController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
+    }
+    public function filter_auction_by_sub_category($sub_category_id)
+    {
+        $categories = Categories::all();
+        $auctions = auction::where('sub_category_id',$sub_category_id)
+        ->paginate(20);
+        $sub_categories = Sub_categorie::all();
+        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
     }
     public function show(Categories $categories)
     {
