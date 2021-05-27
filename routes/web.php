@@ -24,6 +24,7 @@ Route::get('/user/index', function () {
 
 
 
+
 //  Route::get('/terms_condition', function () {
 //     return view('terms_condition');
 // });
