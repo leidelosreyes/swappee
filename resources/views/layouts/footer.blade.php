@@ -25,17 +25,17 @@
 <div class="footer-center">
 
   <div>
-    <i class="fa fa-map-marker" style="font-size: 15px;"></i>
+    <i class="fa fa-map-marker" ></i>
     <p><span>University of Caloocan City</span> Congress Campus, Philippines</p>
   </div>
 
   <div>
-    <i class="fa fa-phone" style="font-size: 15px;color:"></i>
+    <i class="fa fa-phone"></i>
     <p>+63-9756-7438-49</p>
   </div>
 
   <div>
-    <i class="fa fa-envelope" style="font-size: 15px;"></i>
+    <i class="fa fa-envelope" ></i>
     <p><a href="mailto:support@company.com" style="color: #FFB52E;">Swappee6@gmail.com</a></p>
   </div>
 

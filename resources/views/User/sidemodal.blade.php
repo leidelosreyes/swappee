@@ -20,16 +20,16 @@
                         <div class="modal-body text-left">
                               <!-- side menu -->
                                    
-                                        <ul  style="list-style-type:none;"> 
+                                        <ul  style="list-style-type:none;padding: 0 0 0 20px; margin: 0;"> 
                                       
                                             <li>
-                                                <a href="{{route('home')}}"class="a-color"><i class="fas fa-home"></i> Home </a>  
+                                                <a href="{{route('home')}}"class="a-color"><i class="fas fa-home"></i><span style="margin-left: .5rem;"> Home</span> </a>  
                                             </li> 
                                             <li>
-                                                <a href="#"class="a-color"><i class="fas fa-globe-asia"></i> Public Profile </a>  
+                                                <a href="#"class="a-color"><i class="fas fa-globe-asia"></i><span style="margin-left: .7rem;"> Public Profile</span></a>  
                                             </li>       
                                             <li>    
-                                                <a href="#homeSubmenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i> My Items<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                                                <a href="#homeSubmenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i><span style="margin-left: .6rem;"> My Items</span><i class="fas fa-chevron-right" style="float:right"></i></a> 
                                                     <ul class="collapse list-unstyled" id="homeSubmenu1">
                                                         <div class="pl-2">
                                                                 <li>
@@ -44,7 +44,7 @@
                                                     </ul>   
                                             </li> 
                                             <li>    
-                    <a href="#sidemenu2" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check"></i> Accepted Item<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                    <a href="#sidemenu2" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check" style="font-size: 1.1rem;"></i><span style="margin-left: 1rem;"> Accepted Item</span><i class="fas fa-chevron-right" style="float:right"></i></a> 
                         <ul class="collapse list-unstyled" id="sidemenu2">
                             <div class="pl-2">
                                  <li>
@@ -62,7 +62,7 @@
                         </ul>   
                </li>               
                                                 <li> 
-                                                    <a href="#"class="a-color"><i class="fas fa-pencil-alt"></i> Edit Profile </a> 
+                                                    <a href="#"class="a-color"><i class="fas fa-pencil-alt"></i><span style="margin-left: .9rem;"> Edit Profile</span> </a> 
                                                     
                                                 </li>
                                             <!-- <li>
@@ -70,13 +70,13 @@
                                             </li> -->
                                             <hr>
                                             <li>
-                                            <a href="{{route('user.won_view')}}"class="a-color"><i class="fas fa-trophy"></i> Auction Won Items <span style="float:right;">()</span></a> 
+                                            <a href="{{route('user.won_view')}}"class="a-color"><i class="fas fa-trophy"></i><span style="margin-left:.9rem;"> Auction Won Items</span> <span style="float:right;">()</span></a> 
                                             </li>
                                             <li>
-                                            <a href="{{route('show.message')}}"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">()</span></a> 
+                                            <a href="{{route('show.message')}}"class="a-color"><i class="far fa-comment-alt"></i><span style="margin-left:.9rem;"> Messages </span><span style="float:right;">()</span></a> 
                                             </li>
                                             <li>
-                                                <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">()</span></a> 
+                                                <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i><span style="margin-left:.8rem;"> Offered </span><span style="float:right;">()</span></a> 
                                             </li>
 
 
@@ -85,7 +85,7 @@
                                                     <a class="a-color" href="{{ route('index') }}" style="font-size: .80rem;"
                                                         onclick="event.preventDefault();
                                                                         document.getElementById('logout-form').submit();">
-                                                                <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
+                                                                <i class="fas fa-sign-out-alt"></i> <span style="margin-left: 1.1rem;">{{ __('Logout') }}</span>
                                                     </a>
 
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
