@@ -25,6 +25,7 @@ Route::get('/user/index', function () {
 
 
 
+
 //  Route::get('/terms_condition', function () {
 //     return view('terms_condition');
 // });
@@ -144,4 +145,19 @@ Route::prefix('bidders')->group(function(){
 //---------------------------------------------- meet up routes --------------------------------------------
 Route::prefix('meetup')->group(function (){
   Route::post('/send_info',[App\Http\Controllers\OfferController::class,'send_info_meetup'])->name('meet_up.send_info');
+});
+
+
+
+
+
+
+//---------------------------------------------- ERROR 404 --------------------------------------------
+Route::prefix('error')->group(function(){
+  Route::get('404',[App\Http\Controllers\LandingpageController::class,'index_404']);
+});
+
+//---------------------------------------------- ERROR 404 --------------------------------------------
+Route::prefix('error')->group(function(){
+  Route::get('mails',[App\Http\Controllers\LandingpageController::class,'mailed']);
 });

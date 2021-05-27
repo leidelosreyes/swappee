@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\{Post,Offer};
 use App\Models\Categories;
+use Auth;
 
 class LandingpageController extends Controller
 {
@@ -16,4 +17,15 @@ class LandingpageController extends Controller
         $categories = Categories::all();
         return view('welcome', compact('posts','categories'));
     }
+    public function index_404()
+    {
+    return view('error.404');
+    }
+
+    public function mailed()
+    {
+    return view('messages.mails');
+    }
+
+
 }
