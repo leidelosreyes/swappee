@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\{User,Profile};
+use App\Models\{User,Profile,Point};
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -77,6 +77,10 @@ class RegisterController extends Controller
             'address'      => $data['address'],
             'cellphone_no' => $data['cellphone_no'],
         ]);
+               Point::create([
+                'user_id'  => $user->id,
+                'amount'  => 1,
+               ]);
         return $user;
     }
 }

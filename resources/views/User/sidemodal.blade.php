@@ -2,7 +2,7 @@
 <div class="d-sm-block d-md-none">
     
            
-<a class="nav-link mt-2" style="color: #57585a; font-size:20px;"data-toggle="modal" style=""data-target="#exampleModal1"><p> <i class="fas fa-bars"></i></p></a>             
+<a class="nav-link mt-2" style="color: #57585a; font-size:25px;"data-toggle="modal" style=""data-target="#exampleModal1"><p> <i class="fas fa-bars"></i></p></a>             
             
         
         
@@ -76,7 +76,7 @@
                                             <a href="{{route('show.message')}}"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">()</span></a> 
                                             </li>
                                             <li>
-                                                <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">({{$offer->count()}})</span></a> 
+                                                <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">()</span></a> 
                                             </li>
 
 

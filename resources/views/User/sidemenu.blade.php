@@ -35,10 +35,10 @@
                                         <a href=""class="a-color"><i class="fas fa-people-carry"></i> Pick Up </a>
                                 </li>
                                 <li>
-                                        <a href=""class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
+                                        <a href="{{route('for_meetup_item.show')}}"class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
                                 </li>
                                 <li>
-                                        <a href=""class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
+                                        <a href="{{route('for_delivery_item.show')}}"class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
                                 </li>
                             </div>
                                 <hr>
@@ -65,6 +65,9 @@
 
 
                 <hr>
+                <li>
+                    <a href=""class="a-color"><i class="fas fa-list-ol"></i> Order List </a> 
+                </li>
                 <li>
                       <a class="a-color" href="{{ route('index') }}" style="font-size: .80rem;"
                             onclick="event.preventDefault();

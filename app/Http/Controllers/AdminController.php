@@ -217,10 +217,21 @@ class AdminController extends Controller
         return redirect()->back()->with('success','Admin Deleted Successfully');
     }
     public function post_approval($id){
+        $item_name= Post::findOrFail($id);
+        $user_id = $item_name->user_id;
+        $user = User::findOrFail($user_id);
+        $user_name = $user->name;
+        $user_email = $user->email;
+        $body_message = "Your Post for Swap has been approved and reviewed by Swappee Ph" ;
+        $data = array('name'=>$user_name, "body" => $body_message);
+        Mail::send('messages.mail', $data, function($message) use($user_email) {
+        $message->to($user_email)->subject('Post Approval');
+        $message->from('swappee6@gmail.com','Swappee');
+        });
         $post = Post::findOrFail($id)->update([
         'approved'=> 1 
         ]);
-        $item_name= Post::findOrFail($id);
+      
         $action = "Approved Swap Item: {$item_name->product_name}";
         $activitylog = ActivityLog::store_log($action);
         return redirect()->back()->with('success','Posted Item succesfully approved'); 
@@ -231,6 +242,16 @@ class AdminController extends Controller
         'approved'=> 1 
         ]);
         $item_name= Auction::findOrFail($id);
+        $user_id = $item_name->user_id;
+        $user = User::findOrFail($user_id);
+        $user_name = $user->name;
+        $user_email = $user->email;
+        $body_message = "Your Post  For Auction has been approved and reviewed by Swappee Ph" ;
+        $data = array('name'=>$user_name, "body" => $body_message);
+        Mail::send('messages.mail', $data, function($message) use($user_email) {
+        $message->to($user_email)->subject('Post Approval');
+        $message->from('swappee6@gmail.com','Swappee');
+        });
         $action = "Approved Auction Item: {$item_name->product_name}";
         $activitylog = ActivityLog::store_log($action);
         return redirect()->back()->with('success','Auction succesfully approved'); 

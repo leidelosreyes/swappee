@@ -121,9 +121,9 @@
 										</button>
 									</div>
 									<div class="mt-4">
-										<button type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+										<a href="{{route('public_profile_posts.show',$auction->user_id)}}" type="button" class="btn btn-outline-info mt-4" style="float:right; margin:5px;">
 										<i class="fas fa-user-circle"></i> Visit Profile
-										</button>
+										</a>
 									</div>
 								</div>
 
@@ -134,9 +134,9 @@
 										</button>
 									</div>
 									<div class="mt-4">
-										<button type="button" class="btn btn-outline-info mt-2" style="float:right; margin:5px;" data-toggle="modal" data-target="#exampleModal">
+										<a href="{{route('public_profile_posts.show',$auction->user_id)}}" type="button" class="btn btn-outline-info mt-2" style="float:right; margin:5px;">
 										<i class="fas fa-user-circle"></i>
-										</button>
+										</a>
 									</div>
 								</div>
 								
@@ -170,7 +170,7 @@
 		 						<hr>
 
 								 <button class="btn btn-primary " type="button" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">
-									<i class="far fa-comment-alt"></i> Bid now
+								   Place your Bid
                                  </button>
 							
 					     
@@ -314,7 +314,7 @@
 									>
                        
 									<button class="btn btn-primary form-control" type="submit" style="background-color:#FFB52E;border:none;"  data-toggle="modal" data-target="#bid-modal">
-									<i class="far fa-comment-alt"></i> Bid
+									 Bid
                                  </button>
 					</form>
 						 

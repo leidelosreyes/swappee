@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Categories;
 use App\Models\Sub_categorie;
-use App\Models\{ActivityLog,Offer};
+use App\Models\{ActivityLog,Offer,Profile};
 use Carbon\Carbon;
 use Auth;
 
@@ -77,7 +77,16 @@ class PostsController extends Controller
     public function show(post $post)
     {
         // <-- validation to user for swapping -->
-       
+        //  $address = auth()->user()->profile->address;
+        //     if($address == null){
+        //         return redirect()->route('home')
+        //       ->with('error','Please go to your profile and provide address');
+        //     }
+        //     if(Auth::User()->profile->contact_no == null){
+        //         return redirect()->route('home')
+        //       ->with('error','Please go to your profile and provide contact no');
+        //     }
+           
            if($post->user_id == Auth::id())
            {
             $action = "Failed Swap-Trying to swap own item";

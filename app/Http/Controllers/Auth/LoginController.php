@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\{ActivityLog,User};
+use App\Models\{ActivityLog,User,Profile,Point};
 use illuminate\http\Request;
 use Auth;
 
@@ -108,10 +108,19 @@ class LoginController extends Controller
                'provider_id' => $data->id,
                'avatar' => $data->avatar
            ]);
+           Profile::create([
+            'user_id'      =>$user->id,
+            'address'      =>'philippines',
+            'cellphone_no' => null
+        ]);
+            Point::create([
+                'user_id'  => $user->id,
+                'amount'  => 1,
+               ]);
         }
-        $action = "Log in Successfully";
-        $activitylog = ActivityLog::store_log($action);
-        Auth::login($user);
+        // $action = "Log in Successfully";
+        // $activitylog = ActivityLog::store_log($action);
+       Auth::login($user);
     }
     
 }
