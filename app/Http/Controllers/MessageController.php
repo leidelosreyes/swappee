@@ -23,7 +23,7 @@ class MessageController extends Controller
 
      $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
        
-     $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
      $reply = Message::where('sender_id',Auth::id())
         ->where('reply',1)
          ->get();
@@ -37,7 +37,7 @@ class MessageController extends Controller
     }
     public function show_sender_message($id){
         $message_sender = Message::findOrFail($id);
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $reply = Message::where('sender_id',Auth::id())
         ->where('reply',1)
          ->get();
@@ -47,7 +47,7 @@ class MessageController extends Controller
         return view('messages.show',compact('message_sender','notifications','offer','messages','reply'));
     }
     public function show_sent_item(){
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
          $reply = Message::where('sender_id',Auth::id())
          ->where('reply',1)
           ->get();
@@ -56,7 +56,7 @@ class MessageController extends Controller
         return view('messages.sent_item',compact('reply','notifications','offer','messages'));
     }
     public function show_reply_message($id){
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $reply = Message::where('sender_id',Auth::id())
         ->where('reply',1)
          ->find($id);

@@ -21,7 +21,7 @@ class AuctionController extends Controller
         ->simplepaginate(20);
         $categories = Categories::all();
         $sub_categories = Sub_categorie::all();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
@@ -34,7 +34,7 @@ class AuctionController extends Controller
         $categories = Categories::all();
         $sub_categories = Sub_categorie::all();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         return view('auctions.create',compact('messages','categories','sub_categories','offer','notifications'));
     }
 
@@ -84,7 +84,7 @@ class AuctionController extends Controller
             return redirect()->route('auctions.index')
               ->with('error','You are not able to Bid on your own item');
            }
-           $notifications = Offer::where('receiver_id',Auth::id())->get();
+           $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
            $more_posts = Auction::where('user_id',$auction->user_id)->simplepaginate(20);
            $messages = Message::where('receiver_id',Auth::id())->get();
            $offer = Offer::where('sender_id',Auth::id())->get();

@@ -34,7 +34,7 @@ class HomeController extends Controller
         $sub_categories = sub_categorie::all();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         return view('home', compact('posts','categories','sub_categories','notifications','messages','offer'));
          
     }
@@ -61,7 +61,7 @@ class HomeController extends Controller
         }
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
-        $notifications = offer::where('receiver_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));

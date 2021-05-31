@@ -19,14 +19,14 @@ class OfferController extends Controller
    public function create($post,$post_id)
    {
       
-      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       return view('offers.create',compact('post','notifications','post_id'));
 
    }
    public function show_offers()
    {
     $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
     
     return view('User.offer', compact('offer','messages','notifications'));
@@ -119,7 +119,7 @@ class OfferController extends Controller
       ->where('receiver_id',Auth::id())
       ->simplepaginate(1);
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
-      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
       return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery'));
    }
@@ -129,7 +129,7 @@ class OfferController extends Controller
       ->where('receiver_id',Auth::id())
       ->simplepaginate(1);
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
-      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
       return view('accepted_item.meetup_item', compact('offer','messages','notifications','delivery'));
    }
