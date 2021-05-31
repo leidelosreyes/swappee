@@ -238,7 +238,8 @@
      </div>  
 
         <!-- product section -->
-        <section class="products-section col-xl-9 mb-4">
+        <section class="col-xl-9 mb-4">  
+        <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
@@ -298,6 +299,7 @@
                     
                   </div>
                   @endforeach
+            </div>
          </div>
 </div>
 <div class="container">{{$posts->links()}}</div>
@@ -334,7 +336,7 @@
                            <div class="row justify-content-between">
                              <div class="col-4">
                                 <div class="col-4">
-                                    <img src= "{{ asset('image/pogi.jpg') }}" alt="" style="width:10rem; height:10rem;">
+                                    <img src= "{{ asset('image/brand2.jpg') }}" alt="" style="width:10rem; height:10rem;">
                                 </div>
                              </div>
                           </div>
@@ -345,7 +347,7 @@
 
                     <div class="col-sm-6 col-md-8">
                         <div class="from" style="font-size: 12px;color: #9faecb;align-self: center;">
-                            <img src = "{{ asset('image/pogi.jpg') }}" style="height:1.8rem; width:1.8rem;width: 40px;height: 40px;margin-right: 1rem;border-radius: 100%;" alt="" class="thumb-lg rounded-circle">
+                            <img src = "{{ asset('image/joel.jpg') }}" style="height:1.8rem; width:1.8rem;width: 40px;height: 40px;margin-right: 1rem;border-radius: 100%;" alt="" class="thumb-lg rounded-circle">
                                 <span>@jeffersonlambutin.com
                                     Today, 3:47 PM
                                 </span>
@@ -366,7 +368,7 @@
                            <div class="row justify-content-between">
                              <div class="col-4">
                                 <div class="col-4">
-                                    <img src= "{{ asset('image/pogi.jpg') }}" alt="" style="width:10rem; height:10rem;">
+                                    <img src= "{{ asset('image/brand6.jpg') }}" alt="" style="width:10rem; height:10rem;">
                                 </div>
                              </div>
                           </div>

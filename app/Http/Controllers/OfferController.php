@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
 use Mail;
-use App\Models\Message;
+use App\Models\{Message,Receiveitem};
 use App\Models\User;
 use Auth;
 
@@ -101,9 +101,13 @@ class OfferController extends Controller
       $message->from('swappee6@gmail.com','Swappee');
       });
 
-
+         
          $offer = Offer::findOrFail($id)->update([
             'is_accepted' => 1
+         ]);
+         $offer_id = Offer::find($id);
+         $to_recieve = Receiveitem::create([
+            'offer_id' => $offer_id->id
          ]);
    //-------------------------- for sending notifications -------------------------//
          return redirect()->back()->with('success','Offer succesfully accepted'); 

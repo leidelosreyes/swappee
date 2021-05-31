@@ -18,7 +18,7 @@
                                     </div>
                                     @endif                 
                     <!-- notifiacation card -->
-                    <h4 class="header-title mb-3 mt-4">Items for Delivery</h4> 
+                    <h4 class="header-title mb-3 mt-4">Items for Meetup</h4> 
                            <!-- notification card -->
             @forelse($delivery as $notification)
                         @empty
@@ -85,7 +85,7 @@
                                         <button class="form-control btn btn-outline-warning  mb-2" data-toggle="modal" data-target="#delivery{{$notification->id}}">Send Info</button>
                             </div>   
                     </div>
-                <div class="container text-center">
+                <div class="container text-center mb-4">
                         {{$delivery->links()}}
                 </div>
                  @endforeach

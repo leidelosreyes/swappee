@@ -324,5 +324,62 @@
            </div>
         </div>                                          
      <!-- end modal -->
+
+	 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Compose Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form action="/message" method ="post">
+                                  @csrf
+								  <input type="hidden"
+                                      placeholder="Enter r id" 
+                                      id="receiver_id"
+                                      name="receiver_id"
+                                      class="form-control @error('receiver_id') is-invalid @enderror"
+                                      value="{{$post->user_id}}"
+                                      autocomplete="receiver_id" autofocus
+                                      >
+                                      @error('receiver_id')
+                                          <span class="invalid-feedback" role="alert ">
+                                              <strong style="color:red;">{{$message}}</strong>
+                                          </span>
+                                      @enderror
+                                            <textarea 
+                                            id="message"
+                                            name="message"
+                                            class="form-control @error('message') is-invalid @enderror"
+                                            value="{{old('message')}}"
+											placeholder="Compose Here ..."
+                                            autocomplete="message" autofocus
+                                            >
+                                            </textarea>
+                                            @error('message')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;">{{$message}}</strong>
+                                                </span>
+                                            @enderror							  
+									 
+								
+									
+								
+									<button type="sumbit" class="btn btn-primary form-control mt-4"style="background-color:#FFB52E;border:none;"> <i class="far fa-paper-plane"></i> Send</button>
+                  
+							    </form>
+                                 </div>
+      
+    </div>
+  </div>
+</div>
+								
+<!-- end modal -->
 		
 @endsection

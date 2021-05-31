@@ -47,14 +47,11 @@
                     <a href="#sidemenu2" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check"></i> Accepted Item<i class="fas fa-chevron-right" style="float:right"></i></a> 
                         <ul class="collapse list-unstyled" id="sidemenu2">
                             <div class="pl-2">
-                                 <li>
-                                        <a href=""class="a-color"><i class="fas fa-people-carry"></i> Pick Up </a>
+                            <li>
+                                        <a href="{{route('for_meetup_item.show')}}"class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
                                 </li>
                                 <li>
-                                        <a href=""class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
-                                </li>
-                                <li>
-                                        <a href=""class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
+                                        <a href="{{route('for_delivery_item.show')}}"class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
                                 </li>
                             </div>
                                 <hr>
@@ -74,6 +71,9 @@
                                             </li>
                                             <li>
                                             <a href="{{route('show.message')}}"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">()</span></a> 
+                                            </li>
+                                            <li>
+                                            <a href="{{route('show.sent_item')}}"class="a-color"><i class="fas fa-paper-plane"></i> Sent Item <span style="float:right;"></span></a> 
                                             </li>
                                             <li>
                                                 <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">()</span></a> 

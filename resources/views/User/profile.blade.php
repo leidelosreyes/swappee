@@ -15,10 +15,12 @@
      </div>  
  
         <!-- product section -->
-        <section class="products-section col-xl-9 mb-4">
+        <section class="col-xl-9 mb-4">
          <!-- side modal for mobile view -->
        
          <!-- end side modal -->    
+             
+         <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
@@ -99,6 +101,7 @@
                 </div>
                  @endforeach
                 <!-- end product card -->
+            </div>
          </div>
         </div>
 </div>
