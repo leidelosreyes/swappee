@@ -8,14 +8,15 @@
                             @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
-        <section class="products-section col-xl-9 mb-4">
+        <section class="col-xl-9 mb-4">
+        <div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
                                 @if ($message = Session::get('success'))
                                     <div class="alert alert-success mt-4">
                                         <p>{{$message}}</p>
                                     </div>
                                     @endif                 
         <!-- offer card -->
-                    <h4 class="header-title mb-3 mt-4">My offers</h4> 
+                    <h2>My offers</h2> 
                     <form class="d-flex"  action="{{route('search')}}" method="GET">
 						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your offers" aria-label="Search">
    					</form>
@@ -70,6 +71,7 @@
                        
                 </div>
                  @endforeach
+                 </div>
                     <!-- end offer card -->
         </section>    
     </div>

@@ -12228,7 +12228,7 @@ h2 {
 
 .footer-distributed .footer-company-about{
     line-height: 20px;
-    color:  #92999f;
+    color:  #ffffff;
     font-size: 13px;
     font-weight: normal;
     margin: 0;
@@ -13350,4 +13350,12 @@ transform: translate(-50%, -50%);
 
 .checked {
   color: #FFB52E;
+}
+/* body{margin-top:20px;} */
+.email-app {
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+    border: 1px solid #e1e6ef;
+    box-shadow: 0 10px 6px -6px #777;
 }

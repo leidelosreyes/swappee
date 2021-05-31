@@ -29,7 +29,8 @@
     </div>   
 </div>
 <!-- end side bar -->
-<section class="products-section col-xl-9 mb-4">
+<section class="col-xl-9 mb-4">
+<div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
 <!-- mobile view side bar -->
 <div class="d-sm-block d-md-none mt-2">
     
@@ -155,6 +156,7 @@
                     
                   </div>
                   @endforeach
+                  </div>
          </div>
 </div>
 <div class="container mt-4 text-center">

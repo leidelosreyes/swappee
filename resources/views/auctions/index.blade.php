@@ -106,6 +106,7 @@
 <!-- end side bar -->
 <section class="products-section col-xl-9 mb-4">
 
+
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
