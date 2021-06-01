@@ -15,6 +15,9 @@
  @include('slider.slider')  
  <!-- mobile view side bar -->
 <div class="d-sm-block d-md-none mb-4">
+        <div class="card-body text-left">       
+            <a href=""data-toggle="modal" data-target="#exampleModal"><p><i class="fas fa-border-all"></i> All Categories</p> </a>             
+        </div>
         <hr>
     <!-- modal -->
             <div class="modal left fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,10 +136,6 @@
      
                  	
 <div class="container ">
-        <div class="card-body text-left mt-2">       
-            <a href=""data-toggle="modal" data-target="#exampleModal"><p><i class="fas fa-border-all"></i> All Categories</p> </a>             
-        </div>
-        <hr>
   <div class="row">
         @foreach ($auctions as $post) 
         <div class="col-6 col-md-4 col-lg-3 b-col mt-4">
