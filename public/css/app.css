@@ -7,6 +7,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&family=Roboto:wght@100&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
  html{
   scroll-behavior: smooth;
  }
@@ -12169,29 +12174,29 @@ h2 {
 }
 
 .footer-distributed .footer-center i{
-    background-color:  #33383b;
-    color: #ffffff;
-    font-size: 25px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 42px;
-    margin: 10px 15px;
-    vertical-align: middle;
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  margin: 10px 15px;
+  vertical-align: middle;
 }
 
 .footer-distributed .footer-center i.fa-envelope{
-    font-size: 17px;
-    line-height: 38px;
+    font-size: 12px;
 }
 
 .footer-distributed .footer-center p{
     display: inline-block;
     color: #ffffff;
-  font-weight:400;
+    font-weight:400;
     vertical-align: middle;
     margin:0;
+    font-size: .9rem;
 }
 
 .footer-distributed .footer-center p span{
@@ -12228,7 +12233,7 @@ h2 {
 
 .footer-distributed .footer-company-about{
     line-height: 20px;
-    color:  #92999f;
+    color:  #ffffff;
     font-size: 13px;
     font-weight: normal;
     margin: 0;
@@ -12248,15 +12253,15 @@ h2 {
 
 .footer-distributed .footer-icons a{
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     /* background-color:  #33383b; */
     border-radius:100%;
-    font-size: 20px;
+    font-size: 15px;
     background-color: white;
     text-align: center;
-    line-height: 35px;
+    line-height: 30px;
     margin-right: 3px;
     margin-bottom: 5px;
 }
