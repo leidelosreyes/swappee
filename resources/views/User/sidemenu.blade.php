@@ -31,9 +31,6 @@
                     <a href="#sidemenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check" style="font-size: 1rem;"></i><span style="margin-left: .7rem;"> Accepted Item </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
                         <ul class="collapse list-unstyled" id="sidemenu1">
                             <div class="pl-2">
-                                 <li>
-                                        <a href=""class="a-color"><i class="fas fa-people-carry"></i>Pick Up</a>
-                                </li>
                                 <li>
                                         <a href="{{route('for_meetup_item.show')}}"class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
                                 </li>
@@ -44,7 +41,23 @@
                                 <hr>
                             
                         </ul>   
-               </li>                
+               </li>
+               <li>    
+                    <a href="#sidemenu1-toReceive" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-truck"></i> To Receive<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                        <ul class="collapse list-unstyled" id="sidemenu1-toReceive">
+                            <div class="pl-2">
+
+                                <li>
+                                        <a href="#"class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
+                                </li>
+                                <li>
+                                        <a href="#"class="a-color"><i class="fas fa-shipping-fast"></i> Delivery</a>                     
+                                </li>
+                            </div>
+                                <hr>
+                            
+                        </ul>   
+               </li>                        
                     <li> 
                        <a href="{{route('user.edit_profile')}}"class="a-color"><i class="fas fa-pencil-alt"></i><span style="margin-left:.5rem;"> Edit Profile</span> </a> 
                       
@@ -57,7 +70,10 @@
                 <a href="{{route('user.won_view')}}"class="a-color"><i class="fas fa-trophy"></i> Auction Won Items <span style="float:right;">()</span></a> 
                 </li>
                 <li>
-                <a href="{{route('show.message')}}"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">()</span></a> 
+                <a href="{{route('show.message')}}"class="a-color"><i class="far fa-comment-alt"></i> Messages <span style="float:right;">({{$messages->count()}})</span></a> 
+                </li>
+                <li>
+                <a href="{{route('show.sent_item')}}"class="a-color"><i class="fas fa-paper-plane"></i> Sent Item <span style="float:right;"></span></a> 
                 </li>
                 <li>
                     <a href="{{route('show.offers')}}"class="a-color"><i class="fas fa-hand-holding-heart"></i> Offered <span style="float:right;">({{$offer->count()}})</span></a> 

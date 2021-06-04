@@ -14,7 +14,7 @@
                         </span>
                                           
                         <div class="media-body text-white">
-                                <a href="http://127.0.0.1:8000/user/profile" style="color:whitesmoke;"><h4 class="mb-1 font-18" style="color:whitesmoke;margin-top:2rem;">{{Auth::user()->name}}</h4></a>
+                                <a href="{{route('user.profile')}}" style="color:whitesmoke;"><h4 class="mb-1 font-18" style="color:whitesmoke;margin-top:2rem;">{{Auth::user()->name}}</h4></a>
                                 <p class="mb-0" style="color:whitesmoke;"><i class="far fa-clock" style="color:green;"></i>Joined {{Auth::user()->created_at->diffForHumans()}}</p>
                                 <!-- <p class="mb-0" style="color:whitesmoke;"><span>Active 0 minutes ago</span></p> -->
                                
@@ -75,6 +75,7 @@
                      
                      <div class="col-sm-8 mt-2" style="text-align: center;">
                      <hr class="mt-0 mb-0" style="background-color:whitesmoke;">
+                     <!-- <div class="col-sm-6" style="text-align: center;">
                      <div class="row">
                         <div class="col-sm-6" style="padding-top:.3rem;">
                             <div class="media-body text-white">
@@ -92,7 +93,7 @@
                             </div>
                         </div>
                     </div>
-                     </div>
+                     </div> -->
                 </div>
 			</div>
 		</div>

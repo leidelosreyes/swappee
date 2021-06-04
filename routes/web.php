@@ -118,8 +118,12 @@ Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 
 Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
 //-----------------------------------Message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
-Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message');
+Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message.reply');
 Route::get('/message/show',[App\Http\Controllers\MessageController::class, 'show_message'])->name('show.message');
+Route::get('/message/show_sent_item',[App\Http\Controllers\MessageController::class, 'show_sent_item'])->name('show.sent_item');
+Route::delete('/message/delete/{id}',[App\Http\Controllers\MessageController::class, 'delete_message'])->name('delete.message');
+Route::get('/messages/show/{id}',[App\Http\Controllers\MessageController::class, 'show_sender_message'])->name('show-sender.message');
+Route::get('/messages/reply/{id}',[App\Http\Controllers\MessageController::class, 'show_reply_message'])->name('show-reply.message');
 
 //--------------------------------------Categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');

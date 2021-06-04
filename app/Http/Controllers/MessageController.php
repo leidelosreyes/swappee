@@ -21,19 +21,49 @@ class MessageController extends Controller
     {
         // $messagesside = Message::where('receiver_id',Auth::id())->get();
 
-    // $messages_side = Message::where('receiver_id',Auth::id())->get();
+     $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
        
-     $notifications = Offer::where('receiver_id',Auth::id())->get();
-     $reply = Message::where('id',$messages->id)
-      ->where('sender_id',Auth::id())
-     ->where('reply',1)
-      ->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+     $reply = Message::where('sender_id',Auth::id())
+        ->where('reply',1)
+         ->get();
+    //   ->get();
       $offer = Offer::where('sender_id',Auth::id())->get();
     
      
     // dd($reply);
-     return view('messages.message',compact('messages','notifications','reply','offer'));
+     return view('messages.message',compact('messages','notifications','offer','reply'));
     
+    }
+    public function show_sender_message($id){
+        $message_sender = Message::findOrFail($id);
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+        $reply = Message::where('sender_id',Auth::id())
+        ->where('reply',1)
+         ->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
+        return view('messages.show',compact('message_sender','notifications','offer','messages','reply'));
+    }
+    public function show_sent_item(){
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+         $reply = Message::where('sender_id',Auth::id())
+         ->where('reply',1)
+          ->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
+        return view('messages.sent_item',compact('reply','notifications','offer','messages'));
+    }
+    public function show_reply_message($id){
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+        $reply = Message::where('sender_id',Auth::id())
+        ->where('reply',1)
+         ->find($id);
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
+        return view('messages.show_sent_item',compact('notifications','offer','messages','reply'));
     }
 
     public function store(Request $request )
@@ -53,7 +83,7 @@ class MessageController extends Controller
     
         ]);
  
-        return redirect('home')->with('success','Your Message successfully sent');
+        return redirect()->back()->with('success','Your Message successfully sent');
     }
     public function store_reply(Request $request )
     {
@@ -73,5 +103,10 @@ class MessageController extends Controller
         ]);
  
         return redirect()->back()->with('success','Your Message successfully sent');
+    }
+
+    public function delete_message($id){
+        $message = Message::find($id)->delete();
+        return redirect()->back()->with('success','Your Message successfully Deleted');
     }
 }
