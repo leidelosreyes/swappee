@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Offer;
 use Mail;
-use App\Models\Message;
+use App\Models\{Message,Receiveitem};
 use App\Models\User;
 use Auth;
 
@@ -19,14 +19,14 @@ class OfferController extends Controller
    public function create($post,$post_id)
    {
       
-      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       return view('offers.create',compact('post','notifications','post_id'));
 
    }
    public function show_offers()
    {
     $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+    $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
     
     return view('User.offer', compact('offer','messages','notifications'));
@@ -101,9 +101,13 @@ class OfferController extends Controller
       $message->from('swappee6@gmail.com','Swappee');
       });
 
-
+         
          $offer = Offer::findOrFail($id)->update([
             'is_accepted' => 1
+         ]);
+         $offer_id = Offer::find($id);
+         $to_recieve = Receiveitem::create([
+            'offer_id' => $offer_id->id
          ]);
    //-------------------------- for sending notifications -------------------------//
          return redirect()->back()->with('success','Offer succesfully accepted'); 
@@ -115,7 +119,7 @@ class OfferController extends Controller
       ->where('receiver_id',Auth::id())
       ->simplepaginate(1);
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
-      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
       return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery'));
    }
@@ -125,7 +129,7 @@ class OfferController extends Controller
       ->where('receiver_id',Auth::id())
       ->simplepaginate(1);
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
-      $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
       return view('accepted_item.meetup_item', compact('offer','messages','notifications','delivery'));
    }

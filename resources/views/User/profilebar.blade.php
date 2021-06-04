@@ -69,26 +69,7 @@
                         </div>
                      </div>
                      <div class="col-sm-6" style="text-align: center;">
-                     <div class="row">
-                        <div class="col-4 pr-0" style="padding-top:1rem;padding-left:4px;">
-                            <div class="media-body text-white">
-                                <p class="mb-1" style="color:whitesmoke; font-size: .7rem;"><i class="fas fa-envelope" style="color:whitesmoke; font-size: .7rem;"></i> {{Auth::user()->name}}</p>
-                                <p class="mb-0" style="color:whitesmoke; font-size: .7rem;text-align: left;margin-left: .4rem;"><i class="far fa-chart-bar" style="color:red; font-size: .7rem;"></i> 16.k</p>                                                                      
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="media-body text-white" style="padding-top:1rem;">
-                                <p class="mb-1" style="color:whitesmoke; font-size: .7rem;"><i class="fas fa-crown" style="color:rgb(255,215,0); font-size: .7rem;"></i> 16.k</p>
-                                <p class="mb-0" style="color:whitesmoke; font-size: .7rem;"><i class="fas fa-coins" style="color:#FFA62F; font-size: .7rem;"></i> 16.k</p>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="media-body text-white" style="padding-top:1rem;">
-                            <p class="mb-0" style="color:whitesmoke;font-size: .7rem;"><i class="fas fa-sync" style="color:#708090;font-size: .7rem;"></i><span style="color:whitesmoke; margin-left: 3px;font-size: .7rem;"></span> 16.k</p>
-                            <p class="mb-0" style="color:whitesmoke;font-size: .7rem;x`"><i class="fas fa-gavel" style="color:brown;font-size: .7rem;"></i><span style="color:whitesmoke; margin-left: 3px;font-size: .7rem;"></span> 16.k</p>                          
-                            </div>
-                        </div>
-                    </div>
+                     
                      </div>
                 </div>
 			</div>
@@ -96,7 +77,3 @@
 </div>
 </div>
 <!-- end -->
-
-
-
-
