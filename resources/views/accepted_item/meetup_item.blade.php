@@ -8,7 +8,8 @@
                             @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
-        <section class="products-section col-xl-9 mb-4">
+        <section class="col-xl-9 mb-4">
+        <div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
              <!-- side modal for mobile view -->
             
              <!-- end side modal -->  
@@ -90,7 +91,7 @@
                 </div>
                  @endforeach
                 <!-- end notification card -->
-        
+                </div>
                     <!-- end notifiacation card -->
         </section>    
     </div>

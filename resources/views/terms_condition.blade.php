@@ -2,117 +2,52 @@
 @section('content')
 
 <div class="container">
-    <h2 class="tittle1">Terms & Condition</h2>
+    <h2 class="tittle1 mt-5">Terms & Condition</h2>
         <hr>
         <br>
-        <p>Welcome to Swappee!</p>
+        <p style="font-size: xx-large; text-align: center;">Welcome to <span style="color: #FE980F;">Swappee!</span> </p>
         <br>
-        <p>These terms and conditions outline the rules and regulations for the use of Swappee's Website, located at Swappee.com.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">
+          These terms and conditions ("Agreement") set forth the general terms and conditions of your use of the swappee.online website ("Website" or "Service") and any of its related products and services (collectively, "Services"). This Agreement is legally binding between you ("User", "you" or "your") and this Website operator ("Operator", "we", "us" or "our"). By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. If you are entering into this Agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case the terms "User", "you" or "your" shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this Agreement, you must not accept this Agreement and may not access and use the Website and Services. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Website and Services. This terms and conditions policy was created with the help of the terms and conditions generator at https://www.websitepolicies.com/terms-and-conditions-generator.
+        </p>
         <br>
-        <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Swappee if you do not agree to take all of the terms and conditions stated on this page.</p>
+        <hr>
+        <h2 class="mb-0">Accounts and membership</h2>       
         <br>
-        <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">If you create an account on the Website, you are responsible for maintaining the security of your account and you are fully responsible for all activities that occur under the account and any other actions taken in connection with it. We may monitor and review new accounts before you may sign in and start using the Services. Providing false contact information of any kind may result in the termination of your account. You must immediately notify us of any unauthorized uses of your account or any other breaches of security. We will not be liable for any acts or omissions by you, including any damages of any kind incurred as a result of such acts or omissions. We may suspend, disable, or delete your account (or any part thereof) if we determine that you have violated any provision of this Agreement or that your conduct or content would tend to damage our reputation and goodwill. If we delete your account for the foregoing reasons, you may not re-register for our Services. We may block your email address and Internet protocol address to prevent further registration.</p>
         <br>
-        <h2>Cookies</h2>
+       
         <br>
-        <p>We employ the use of cookies. By accessing Swappee, you agreed to use cookies in agreement with the Swappee's Privacy Policy.</p>
+        <h2 class="mb-0">Links to other resources</h2>
         <br>
-        <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">Although the Website and Services may link to other resources (such as websites, mobile applications, etc.), we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation with any linked resource, unless specifically stated herein. We are not responsible for examining or evaluating, and we do not warrant the offerings of, any businesses or individuals or the content of their resources. We do not assume any responsibility or liability for the actions, products, services, and content of any other third parties. You should carefully review the legal statements and other conditions of use of any resource which you access through a link on the Website and Services. Your linking to any other off-site resources is at your own risk.</p>
         <br>
-        <h2>License</h2>
+        <h2 class="mb-0">Prohibited uses</h2>
         <br>
-        <p>Unless otherwise stated, Swappee and/or its licensors own the intellectual property rights for all material on Swappee. All intellectual property rights are reserved. You may access this from Swappee for your own personal use subjected to restrictions set in these terms and conditions.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">In addition to other terms as set forth in the Agreement, you are prohibited from using the Website and Services or Content: (a) for any unlawful purpose; (b) to solicit others to perform or participate in any unlawful acts; (c) to violate any international, federal, provincial or state regulations, rules, laws, or local ordinances; (d) to infringe upon or violate our intellectual property rights or the intellectual property rights of others; (e) to harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate based on gender, sexual orientation, religion, ethnicity, race, age, national origin, or disability; (f) to submit false or misleading information; (g) to upload or transmit viruses or any other type of malicious code that will or may be used in any way that will affect the functionality or operation of the Website and Services, third party products and services, or the Internet; (h) to spam, phish, pharm, pretext, spider, crawl, or scrape; (i) for any obscene or immoral purpose; or (j) to interfere with or circumvent the security features of the Website and Services, third party products and services, or the Internet. We reserve the right to terminate your use of the Website and Services for violating any of the prohibited uses.</p>
         <br>
-        <p>You must not:</p>
+        <h2 class="mb-0">Intellectual property rights</h2>
         <br>
-        <li>Republish material from Swappee</li>
-        <li>Sell, rent or sub-license material from Swappee</li>
-        <li>Reproduce, duplicate or copy material from Swappee</li>
-        <li>Redistribute content from Swappee</li>
+        <p style="font-size: 15px;color: gray;text-align: justify;">"Intellectual Property Rights" means all present and future rights conferred by statute, common law or equity in or in relation to any copyright and related rights, trademarks, designs, patents, inventions, goodwill and the right to sue for passing off, rights to inventions, rights to use, and all other intellectual property rights, in each case whether registered or unregistered and including all applications and rights to apply for and be granted, rights to claim priority from, such rights and all similar or equivalent rights or forms of protection and any other results of intellectual activity which subsist or will subsist now or in the future in any part of the world. This Agreement does not transfer to you any intellectual property owned by the Operator or third parties, and all rights, titles, and interests in and to such property will remain (as between the parties) solely with the Operator. All trademarks, service marks, graphics and logos used in connection with the Website and Services, are trademarks or registered trademarks of the Operator or its licensors. Other trademarks, service marks, graphics and logos used in connection with the Website and Services may be the trademarks of other third parties. Your use of the Website and Services grants you no right or license to reproduce or otherwise use any of the Operator or third party trademarks.</p>
         <br>
-        <p>This Agreement shall begin on the date hereof. Our Terms and Conditions were created with the help of the Terms And Conditions Generator and the Privacy Policy Generator.</p>
+        <h2 class="mb-0">Indemnification</h2>
         <br>
-        <p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Swappee does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Swappee,its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Swappee shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
-
-Swappee reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">You agree to indemnify and hold the Operator and its affiliates, directors, officers, employees, agents, suppliers and licensors harmless from and against any liabilities, losses, damages or costs, including reasonable attorneys' fees, incurred in connection with or arising from any third party allegations, claims, actions, disputes, or demands asserted against any of them as a result of or relating to your Content, your use of the Website and Services or any willful misconduct on your part.</p>
         <br>
-        <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
-        <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;</li>
-        <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy</li>
-        <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</li>
+        <h2 class="mb-0">Changes and amendments</h2>
         <br>
-        <p>You hereby grant Swappee a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">We reserve the right to modify this Agreement or its terms relating to the Website and Services at any time, effective upon posting of an updated version of this Agreement on the Website. When we do, we will send you an email to notify you. Continued use of the Website and Services after any such changes shall constitute your consent to such changes.</p>
         <br>
-        <h2>Hyperlinking to our Content</h2>
+        <h2 class="mb-0">Acceptance of these terms</h2>
         <br>
-        <p>The following organizations may link to our Website without prior written approval:</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">You acknowledge that you have read this Agreement and agree to all its terms and conditions. By accessing and using the Website and Services you agree to be bound by this Agreement. If you do not agree to abide by the terms of this Agreement, you are not authorized to access or use the Website and Services.</p>
         <br>
-        <li>Government agencies;</li>
-        <li>Search engines;</li>
-        <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</li>
-        <li>System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</li>
+        <h2 class="mb-0">Contacting us</h2>
         <br>
-        <p>These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.</p>
+        <p style="font-size: 15px;color: gray;text-align: justify;">If you would like to contact us to understand more about this Agreement or wish to contact us concerning any matter relating to it, you may send an email to swappee6@gmail.com.</p>
         <br>
-        <p>We may consider and approve other link requests from the following types of organizations:</p>
-        <br>
-        <li>commonly-known consumer and/or business information sources;</li>
-        <li>dot.com community sites;</li>
-        <li>associations or other groups representing charities;</li>
-        <li>online directory distributors;</li>
-        <li>internet portals;</li>
-        <li>accounting, law and consulting firms; and</li>
-        <li>educational institutions and trade associations.</li>
-        <br>
-        <p>We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Swappee; and (d) the link is in the context of general resource information.</p>
-        <br>
-        <p>These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.</p>
-        <br>
-        <p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Swappee. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p>
-        <br>
-        <p>Approved organizations may hyperlink to our Website as follows:</p>
-        <br>
-        <li>By use of our corporate name; or</li>
-        <li>By use of the uniform resource locator being linked to; or</li>
-        <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
-        <br>
-        <p>No use of Swappee's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
-        <br>
-        <h2>iFrames</h2>
-        <br>
-        <p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>
-        <br>
-        <h2>Content Liability</h2>
-        <br>
-        <p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
-        <br>
-        <h2>Your Privacy</h2>
-        <br>
-        <p>Please read Privacy Policy</p>
-        <br>
-        <h2>Reservation of Rights</h2>
-        <br>
-        <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
-        <br>
-        <h2>Removal of links from our website</h2>
-        <br>
-        <p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
-        <br>
-        <p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
-        <br>
-        <h2>Disclaimer</h2>
-        <br>
-        <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p>
-        <br>
-        <li>limit or exclude our or your liability for death or personal injury;</li>
-        <li>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
-        <li>limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
-        <li>exclude any of our or your liabilities that may not be excluded under applicable law.</li>
-        <br>
-        <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.
-
-As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
-        <br>
+        <p style="font-size: 15px;color: gray;text-align: justify;">This document was last updated on May 30, 2021.</p>
+        <hr>
 </div>
 
 
