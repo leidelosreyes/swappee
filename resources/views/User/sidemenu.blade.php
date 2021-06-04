@@ -11,7 +11,11 @@
                 </li> 
                 <li>
                     <a href="{{route('user.profile_public_view')}}"class="a-color"><i class="fas fa-globe-asia"></i> <span style="margin-left: .6rem;"> Public Profile </span></a>  
-                </li>       
+                </li> 
+                <li> 
+                       <a href="{{route('user.edit_profile')}}"class="a-color"><i class="fas fa-pencil-alt"></i><span style="margin-left:.5rem;"> Edit Profile</span> </a> 
+                      
+                    </li>      
                 <li>    
                     <a href="#sidemenu" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i><span style="margin-left: .4rem;"> My Items</span><i class="fas fa-chevron-right" style="float:right"></i></a> 
                         <ul class="collapse list-unstyled" id="sidemenu">
@@ -28,7 +32,7 @@
                         </ul>   
                </li>
                <li>    
-                    <a href="#sidemenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check" style="font-size: 1rem;"></i><span style="margin-left: .7rem;"> Accepted Item </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
+                    <a href="#sidemenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check" style="font-size: 1rem;"></i><span style="margin-left: .8rem;"> Accepted Item </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
                         <ul class="collapse list-unstyled" id="sidemenu1">
                             <div class="pl-2">
                                 <li>
@@ -43,7 +47,7 @@
                         </ul>   
                </li>
                <li>    
-                    <a href="#sidemenu1-toReceive" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-truck"></i> To Receive<i class="fas fa-chevron-right" style="float:right"></i></a> 
+                    <a href="#sidemenu1-toReceive" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-truck"></i><span style="margin-left: .4rem;"> To Receive </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
                         <ul class="collapse list-unstyled" id="sidemenu1-toReceive">
                             <div class="pl-2">
 
@@ -58,10 +62,7 @@
                             
                         </ul>   
                </li>                        
-                    <li> 
-                       <a href="{{route('user.edit_profile')}}"class="a-color"><i class="fas fa-pencil-alt"></i><span style="margin-left:.5rem;"> Edit Profile</span> </a> 
-                      
-                    </li>
+                   
                 <!-- <li>
                     <a href="{{route('show.notifications')}}"class="a-color badge1" data-badge="2"><i class="far fa-bell"></i> Notifications</a> 
                 </li> -->
