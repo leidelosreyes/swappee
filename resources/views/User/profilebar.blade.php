@@ -14,7 +14,7 @@
                         </span>
                                           
                         <div class="media-body text-white">
-                                <a href="http://127.0.0.1:8000/user/profile" style="color:whitesmoke;"><h4 class="mb-1 font-18" style="color:whitesmoke;margin-top:2rem;">{{Auth::user()->name}}</h4></a>
+                                <a href="{{route('user.profile')}}" style="color:whitesmoke;"><h4 class="mb-1 font-18" style="color:whitesmoke;margin-top:2rem;">{{Auth::user()->name}}</h4></a>
                                 <p class="mb-0" style="color:whitesmoke;"><i class="far fa-clock" style="color:green;"></i>Joined {{Auth::user()->created_at->diffForHumans()}}</p>
                                 <!-- <p class="mb-0" style="color:whitesmoke;"><span>Active 0 minutes ago</span></p> -->
                                
@@ -63,7 +63,7 @@
                         </span>
                                           
                         <div class="media-body text-white">
-                                <a href="http://127.0.0.1:8000/user/profile" style="color:gray;"><h4 class="mt-4 mb-1 font-18" style="color:whitesmoke;">{{Auth::user()->name}}</h4></a>
+                                <a href="{{route('user.profile')}}" style="color:gray;"><h4 class="mt-4 mb-1 font-18" style="color:whitesmoke;">{{Auth::user()->name}}</h4></a>
                                 <p class="mb-0" style="color:whitesmoke;"><i class="far fa-clock" style="color:green;"></i> Joined 2 days ago</p>
                                               <!-- <p class="text-light mb-0"><i class="far fa-envelope" style="color:white"></i> joelpogitalaga@gmail.com</p> -->                          
                         </div>

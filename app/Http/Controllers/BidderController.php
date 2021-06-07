@@ -156,4 +156,15 @@ class BidderController extends Controller
     {
         //
     }
+
+    public function test(){
+        $datenow = date('Y-m-d');
+        if( $datenow  == $auction->end_date)
+        {
+            $max_amount = bidder::max('amount');
+            $winners = bidder::where('amount',$max_amount)->update([
+                'winners' => 1
+            ]);
+        }
+    }
 }

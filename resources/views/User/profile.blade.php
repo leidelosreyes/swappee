@@ -15,12 +15,7 @@
      </div>  
  
         <!-- product section -->
-         
-        <section class="col-xl-9 mb-4">
-        <div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
-         <!-- side modal for mobile view -->
-       
-         <!-- end side modal -->    
+        <section class="col-xl-9 mb-4">    
              
          <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
                                @if ($message = Session::get('success'))
@@ -33,7 +28,7 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h2>For Swap</h2> 
+                                <h2 class="header-title mb-3 mt-4">For Swap</h2> 
                         <!-- web view -->
 
                         <div class="d-none d-lg-block">
@@ -106,8 +101,7 @@
             </div>
          </div>
         </div>
-</div>
-</div>
+
 
 
 <!-- end col -->

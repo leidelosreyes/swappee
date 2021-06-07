@@ -19,7 +19,7 @@
                                     </div>
                                     @endif                 
                     <!-- notifiacation card -->
-                    <h4 class="header-title mb-3 mt-4">Items for Meetup</h4> 
+                    <h2 class="header-title mb-3 mt-4">Items for Meetup</h2> 
                            <!-- notification card -->
             @forelse($delivery as $notification)
                         @empty

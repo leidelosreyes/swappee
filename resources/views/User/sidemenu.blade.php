@@ -10,7 +10,7 @@
                     <a href="{{route('home')}}"class="a-color"><i class="fas fa-home"></i> <span style="margin-left: .5rem;">Home</span> </a>  
                 </li> 
                 <li>
-                    <a href="{{route('user.profile_public_view')}}"class="a-color"><i class="fas fa-globe-asia"></i> <span style="margin-left: .6rem;"> Public Profile </span></a>  
+                    <a href="{{route('public_profile_posts.show',Auth::id())}}" class="a-color"><i class="fas fa-globe-asia"></i> <span style="margin-left: .6rem;"> Public Profile </span></a>  
                 </li> 
                 <li> 
                        <a href="{{route('user.edit_profile')}}"class="a-color"><i class="fas fa-pencil-alt"></i><span style="margin-left:.5rem;"> Edit Profile</span> </a> 
