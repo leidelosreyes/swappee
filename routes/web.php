@@ -166,3 +166,10 @@ Route::prefix('public_profile')->group(function (){
   Route::get('/sub_category/{sub_category}/{id}',[App\Http\Controllers\ProfileController::class, 'filter_by_sub_category'])->name('public_profile_sub.filter');
 });
 
+//----------------------------------------------------- points ------------------------------------------------//
+
+Route::prefix('points')->group(function ()
+{ 
+   Route::get('/view',[App\Http\Controllers\PointsController::class, 'get_points'])->name('points.show');
+
+});
