@@ -22,8 +22,8 @@ class ProfileController extends Controller
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
-    $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-    $points = Auth::user()->points->amount;
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+    $points = Point::where('user_id',Auth::id())->firstOrFail();
     return view('User.profile', compact('posts','messages','notifications','offer','points'));
    }
    public function auction_index()
