@@ -23,7 +23,7 @@ class ProfileController extends Controller
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-    $points = Point::where('user_id',Auth::id())->first();
+    $points = Auth::user()->points->amount;
     return view('User.profile', compact('posts','messages','notifications','offer','points'));
    }
    public function auction_index()
