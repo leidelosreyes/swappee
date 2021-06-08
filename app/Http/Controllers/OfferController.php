@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Models\Offer;
 use Mail;
-use App\Models\{Message,Receiveitem};
-use App\Models\User;
+use App\Models\{Post,User,Offer,Message,Categories,Sub_categorie,auction,ActivityLog,Point,Receiveitem};
 use Auth;
 
 class OfferController extends Controller
@@ -146,6 +143,41 @@ class OfferController extends Controller
 
          return redirect()->back()->with('success','Meet Up information Succesfully sent');
 
+      }
+
+      public function edit($id){
+         $offers = Offer::findOrFail($id);
+         if($offers->is_accepted = true){
+            return redirect()->back()->with('error','Your Offer is already accepted editing your offer is prohibited');
+         }
+         $messages = Message::where('receiver_id',Auth::id())->get();
+          $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+         $offer = Offer::where('sender_id',Auth::id())->get();
+         $sub_categories = Sub_categorie::all();
+         $categories = Categories::all();
+        return view('offers.edit_user',compact('offers','messages','categories','notifications','sub_categories','offer'));
+      }
+
+      public function delete($id){
+         $offers = Offer::findOrFail($id);
+         if($offers->is_accepted = true){
+            return redirect()->back()->with('error','Your Offer is already accepted deleting your offer is prohibited');
+         }
+         if($offers->delete()){
+            $action = 'Delete Offers';
+            ActivityLog::store_log($action);
+            return redirect()->back()->with('success','Offer Successfully Deleted');
+         }
+   
+      }
+      public function delete_notification($id){
+         $offers = Offer::findOrFail($id);
+         if($offers->delete()){
+            $action = 'Delete Notifications';
+            ActivityLog::store_log($action);
+            return redirect()->back()->with('success','Notification Successfully Deleted');
+         }
+   
       }
 
    

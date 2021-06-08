@@ -201,7 +201,7 @@ class AdminController extends Controller
             return view('admins.admin.archive.admin_disposed',compact('admins'));
         }
         if($deleted == 'offers_deleted'){
-            $offer = Offers::onlyTrashed()->simplepaginate(20);
+            $offers = Offer::onlyTrashed()->simplepaginate(20);
             return view('admins.admin.archive.offer',compact('offers'));
         }
         if($deleted == 'message'){

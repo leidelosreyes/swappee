@@ -80,6 +80,11 @@ class BidderController extends Controller
             'auction_id' => 'required'
         ]);
         $auction = auction::find($request->auction_id);
+        if($request->amount > Auth::user()->points->amount)
+        {
+            return redirect()->back()
+            ->with('error','Not enought points');
+        }
         if($auction->bidding_start_price > $request->amount)
         {
             return redirect()->back()

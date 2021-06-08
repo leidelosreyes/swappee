@@ -1,6 +1,6 @@
            
               
-                                  <form action="/offers" method ="post" enctype="multipart/form-data">
+                        <form action="/offers" method ="post" enctype="multipart/form-data">
                                    @csrf
                             <div class="form-group row">
                                       <input type="hidden"

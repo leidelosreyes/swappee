@@ -105,6 +105,9 @@ Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 's
 Route::post('/user/accept/{id}',[App\Http\Controllers\OfferController::class, 'accept_offer'])->name('accept.offer');
 Route::get('/user/show/delivery',[App\Http\Controllers\OfferController::class, 'show_for_delivery'])->name('for_delivery_item.show');
 Route::get('/user/show/meetup',[App\Http\Controllers\OfferController::class, 'show_for_meetup'])->name('for_meetup_item.show');
+Route::get('/offers/edit/{id}',[App\Http\Controllers\OfferController::class, 'edit'])->name('offer.edit');
+Route::post('/offers/delete/{id}',[App\Http\Controllers\OfferController::class, 'delete'])->name('offer.delete');
+Route::post('/notification/delete/{id}',[App\Http\Controllers\OfferController::class, 'delete_notification'])->name('notification.delete');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');

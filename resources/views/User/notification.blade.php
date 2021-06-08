@@ -59,7 +59,7 @@
                                         <button class="form-control btn btn-outline-warning btn-sm mb-2">Accept</button>
                                         {!!Form::close() !!}
                                         <button class="form-control btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#notification-modal{{$notification->id}}"type="button">More Details</button>
-                                        {!! Form::open(['route' => ['posts.delete', $notification->id], 'method' => 'delete']) !!}
+                                        {!! Form::open(['route' => ['notification.delete', $notification->id], 'method' => 'post']) !!}
                                         @csrf
                                         <button class="form-control btn-sm mt-2" style="height:30px;" >Delete</button>
                                         {!!Form::close() !!}
