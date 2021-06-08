@@ -82,7 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(ActivityLog::class);
     }
     public function points(){
-        return $this->hasOne(Point::class);
+        return $this->hasMany(Point::class);
     }
     
     
