@@ -24,9 +24,8 @@ class ProfileController extends Controller
     $offer = Offer::where('sender_id',Auth::id())->get();
      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     // $points = DB::table('points')->Where('user_id',Auth::id())->first();
-    $points = Point::find(Auth::id())->first();
-    $amount  = $points->amount;
-    return view('User.profile', compact('posts','messages','notifications','offer','amount'));
+    $points = Point::findorFail(Auth::id())->first();
+    return view('User.profile', compact('posts','messages','notifications','offer','points'));
    }
    public function auction_index()
    {
