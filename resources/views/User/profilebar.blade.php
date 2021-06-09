@@ -31,7 +31,7 @@
                         <div class="col-sm">
                             <div class="media-body text-white" style="padding-top:1.5rem;">
                            
-                                <p class="mb-0" style="color:whitesmoke;"><i class="fas fa-coins" ></i><span style="color:whitesmoke; margin-left: 3px;"> Points:</span><span style="font-weight: 700;">{{Auth::user()->points->amount}}</span></p>
+                                <p class="mb-0" style="color:whitesmoke;"><i class="fas fa-coins" ></i><span style="color:whitesmoke; margin-left: 3px;"> Points:</span><span style="font-weight: 700;">{{$points->amount}}</span></p>
                              
                             </div>
                         </div>
