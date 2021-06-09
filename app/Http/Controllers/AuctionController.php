@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\auction;
 use Auth;
 use Carbon\Carbon;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,ActivityLog};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,ActivityLog,Point};
 
 class AuctionController extends Controller
 {

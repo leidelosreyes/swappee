@@ -6,11 +6,11 @@
         @include('User.profilebar')
         <!-- end row -->
         <div class="row">
-            <div class="col-xl-3">
-
+              <div class="col-xl-3 d-none d-lg-block">
                 <!-- side menu -->
                  @include('User.sidemenu')
                 <!--  end side menu -->
+                
             </div>  
             <div class="col-xl-9" >      
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)"> 

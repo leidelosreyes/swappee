@@ -191,7 +191,9 @@ class ProfileController extends Controller
     $posts = Post::where('user_id',$id)->simplepaginate(10);
     $points = Point::where('user_id',$id)->first();
     $sub_categories = Sub_categorie::all();
-    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','messages','offer'));
    }
 
    public function filter_by_category($category,$id){
