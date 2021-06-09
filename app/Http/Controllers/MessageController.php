@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\Offer;
 use App\Models\User;
-use App\Models\Message;
+use App\Models\{Message,Point};
 use Auth;
 
 class MessageController extends Controller
@@ -32,7 +32,8 @@ class MessageController extends Controller
     
      
     // dd($reply);
-     return view('messages.message',compact('messages','notifications','offer','reply'));
+    $points = Point::findorFail(Auth::id())->first();
+     return view('messages.message',compact('messages','notifications','offer','reply','points'));
     
     }
     public function show_sender_message($id){
@@ -42,9 +43,9 @@ class MessageController extends Controller
         ->where('reply',1)
          ->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $offer = Offer::where('sender_id',Auth::id())->get();
+        $points = Point::findorFail(Auth::id())->first();
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
-        return view('messages.show',compact('message_sender','notifications','offer','messages','reply'));
+        return view('messages.show',compact('message_sender','notifications','offer','messages','reply','points'));
     }
     public function show_sent_item(){
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
@@ -53,7 +54,8 @@ class MessageController extends Controller
           ->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
-        return view('messages.sent_item',compact('reply','notifications','offer','messages'));
+        $points = Point::findorFail(Auth::id())->first();
+        return view('messages.sent_item',compact('reply','notifications','offer','messages','points'));
     }
     public function show_reply_message($id){
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
@@ -61,9 +63,9 @@ class MessageController extends Controller
         ->where('reply',1)
          ->find($id);
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $offer = Offer::where('sender_id',Auth::id())->get();
+        $points = Point::findorFail(Auth::id())->first();
         $messages = Message::where('receiver_id',Auth::id())->simplepaginate();
-        return view('messages.show_sent_item',compact('notifications','offer','messages','reply'));
+        return view('messages.show_sent_item',compact('notifications','offer','messages','reply','points'));
     }
 
     public function store(Request $request )

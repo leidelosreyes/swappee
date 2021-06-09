@@ -25,6 +25,12 @@
                 <h2>Messages</h2>
                 <hr>  
                            <!-- START OF MEESAGE    -->
+                @forelse($messages as $message)
+                @empty
+                    <div class="alert alert-danger mt-4">
+                        <p></i> No Message Found </p>
+                    </div>
+                @endforelse
                 @foreach($messages as $message)
                 <div class="card-box mb-0 p-2"> 
                 

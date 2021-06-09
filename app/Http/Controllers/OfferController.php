@@ -25,8 +25,8 @@ class OfferController extends Controller
     $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $messages = Message::where('receiver_id',Auth::id())->get();
-    
-    return view('User.offer', compact('offer','messages','notifications'));
+    $points = Point::findorFail(Auth::id())->first();
+    return view('User.offer', compact('offer','messages','notifications','points'));
    
    }
    public function show_notifications()
@@ -34,7 +34,8 @@ class OfferController extends Controller
      $notifications = Offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
      $messages = Message::where('receiver_id',Auth::id())->get();
      $offer = Offer::where('sender_id',Auth::id())->get();
-    return view('User.notification',compact('notifications','messages','offer'));
+     $points = Point::findorFail(Auth::id())->first();
+    return view('User.notification',compact('notifications','messages','offer','points'));
    
    }
    public function store(Request $request )
@@ -118,7 +119,8 @@ class OfferController extends Controller
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
       $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
-      return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery'));
+      $points = Point::findorFail(Auth::id())->first();
+      return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery','points'));
    }
    public function show_for_meetup(){
       $delivery = Offer::where('delivery_method','Meet Up')
@@ -128,7 +130,8 @@ class OfferController extends Controller
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
       $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
-      return view('accepted_item.meetup_item', compact('offer','messages','notifications','delivery'));
+      $points = Point::findorFail(Auth::id())->first();
+      return view('accepted_item.meetup_item', compact('offer','messages','notifications','delivery','points'));
    }
       public function send_info_meetup(Request $request){
          $receiver_name = 'leo dela cruz';
@@ -155,7 +158,8 @@ class OfferController extends Controller
          $offer = Offer::where('sender_id',Auth::id())->get();
          $sub_categories = Sub_categorie::all();
          $categories = Categories::all();
-        return view('offers.edit_user',compact('offers','messages','categories','notifications','sub_categories','offer'));
+         $points = Point::findorFail(Auth::id())->first();
+        return view('offers.edit_user',compact('offers','messages','categories','notifications','sub_categories','offer','points'));
       }
 
       public function delete($id){

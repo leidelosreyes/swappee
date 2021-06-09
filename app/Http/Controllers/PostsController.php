@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Categories;
 use App\Models\Sub_categorie;
-use App\Models\{ActivityLog,Offer,Profile};
+use App\Models\{ActivityLog,Offer,Profile,Point};
 use Carbon\Carbon;
 use Auth;
 
@@ -28,7 +28,8 @@ class PostsController extends Controller
         $sub_categories = Sub_categorie::all();
         $offer = Offer::where('sender_id',Auth::id())->get();
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-        return view('posts.create',compact('messages','categories','sub_categories','offer','notifications'));
+        $points = Point::findorFail(Auth::id())->first();
+        return view('posts.create',compact('messages','categories','sub_categories','offer','notifications','points'));
     }
 
 
