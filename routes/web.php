@@ -40,8 +40,10 @@ Auth::routes(['verify' => true]);
     
     Route::prefix('swap')->group(function (){
       Route::get('/admin/show', [App\Http\Controllers\AdminController::class, 'show_swap'])->name('show_swap.admin');
+      Route::get('/admin/show_post_details/{id}',[App\Http\Controllers\AdminController::class,'post_details'])->name('post_details.admin');
       Route::post('/admin/approve/{id}',[App\Http\Controllers\AdminController::class, 'post_approval'])->name('post_approval.admin');
       Route::post('/admin/delete/{id}',[App\Http\Controllers\AdminController::class, 'delete_swap'])->name('delete_swap.admin');
+      Route::post('/admin/update/{id}',[App\Http\Controllers\AdminController::class, 'edit_post'])->name('edit_post.admin');
     });
 //--------------------------------------------------Admin Archiving---------------------------------------------------------------------//
     Route::prefix('deleted')->group(function(){
@@ -161,3 +163,6 @@ Route::prefix('public_profile')->group(function (){
   Route::get('/sub_category/{sub_category}/{id}',[App\Http\Controllers\ProfileController::class, 'filter_by_sub_category'])->name('public_profile_sub.filter');
 });
 
+//-----------------------------------------------------Admin Search-----------------------------------
+
+// Route::get('admin_search',[App\Http\Controllers\AdminController::class, 'search_admin'])->name('admin.search');
