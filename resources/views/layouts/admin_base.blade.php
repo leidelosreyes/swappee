@@ -307,6 +307,29 @@
 @yield('content')
 <script src="{{asset('js/location.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?input=Philippines&types=geocode&key=AIzaSyBJCSjFGcsFkG5Zy7k3Ph6ArHv6EoWSxpk&libraries=places&callback=initAutocomplete"async defer></script>
-
+<script src="https://cdn.tiny.cloud/1/d5z57kxjuvf3qb1pxqwp575nkn5dp86srz52ip6w742ozfjo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+      tinymce.init({
+        selector:'#description',
+         plugins: 'lists',
+         toolbar: 'bullist',
+         plugins: 'paste',
+         height: 400,
+         branding: false,
+         width: "100%"
+        
+      })
+      tinymce.init({
+        selector:'#message',
+         plugins: 'lists',
+         toolbar: 'bullist',
+         plugins: 'paste',
+         branding: false,
+         height: 200,
+         width: "100%"
+        
+      })
+      
+</script>
 </body>
 </html>
