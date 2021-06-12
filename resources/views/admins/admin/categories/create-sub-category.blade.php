@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card">
       <div class="card-body">
-      <h4 class="header-title mb-3 mt-4">Create Categories</h4>   
+      <h4 class="header-title mb-3 mt-4">Create Sub-Category</h4>   
       <form action="/sub_categories" method="post" enctype="multipart/form-data">
             @csrf
                       <div class="form__div">

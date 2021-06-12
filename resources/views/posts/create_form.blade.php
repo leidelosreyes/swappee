@@ -12,7 +12,8 @@
                                         class="form__input form-control @error('product_name') is-invalid @enderror"
                                         value="{{old('product_name')}}"
                                         autocomplete="product_name" autofocus
-                                        placeholder=" ">
+                                        placeholder=" "
+                                        onkeypress="return event.keyCode != 13;">
                                         <label for="" class="form__label">Product Name <label style="color:red;">*</label></label>
                                         @error('product_name')
                                                 <span class="invalid-feedback" role="alert ">
@@ -29,6 +30,7 @@
                                         class="form__input form-control  @error('price') is-invalid @enderror"
                                         value="{{old('price')}}"
                                         autocomplete="price" autofocus
+                                        onkeypress="return event.keyCode != 13;"
                                         >
                                         <label for="" class="form__label">Price <label style="color:red;">*</label></label>
                                          @error('price')
@@ -47,6 +49,7 @@
                                         class="form-control form__input @error('wishitem') is-invalid @enderror"
                                         value="{{old('wishitem')}}"
                                         autocomplete="wishitem" autofocus
+                                        onkeypress="return event.keyCode != 13;"
                                         >
                                         <label for="" class="form__label">Wish to Swap <label style="color:red;">*</label></label>
                                         @error('wishitem')
@@ -63,7 +66,9 @@
                                       class="form-control form__input @error('category_id') is-invalid @enderror"
                                       value="{{old('category_id')}}"
                                       autocomplete="category_id" autofocus
-                                      style="height: 60px;">
+                                      style="height: 60px;"
+                                      
+                                      >
                                       @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
@@ -124,6 +129,7 @@
                                          class="form-control form__input @error('location') is-invalid @enderror"
                                          value="{{old('location')}}"
                                          autocomplete="location" autofocus
+                                         onkeypress="return event.keyCode != 13;"
                                         >
                                         <label for="" class="form__label">Location <label style="color:red;">*</label></label>
                                         @error('location')

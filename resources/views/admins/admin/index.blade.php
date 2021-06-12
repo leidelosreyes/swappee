@@ -29,7 +29,7 @@
                     <div class="col">
                       <h3 style="font-size:1.2rem;padding-left: 1.2rem;">Users</h3>
                       <hr class="mt-0 mb-2" style="border: 1px solid lightgray;">
-                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">0</span>
+                      <span style="font-size: 1.2rem;padding-left: 2.3rem;"></span>
                     </div>
                   </div>
                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
