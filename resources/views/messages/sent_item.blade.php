@@ -6,13 +6,12 @@
         @include('User.profilebar')
         <!-- end row -->
         <div class="row">
-                <div class="col-xl-3 d-none d-lg-block">
-                
-                <!-- side menu-->                   
-                        @include('User.sidemenu')
-                <!-- end side menu-->
-                
-        </div>  
+        <div class="col-xl-3 d-none d-lg-block">
+
+                <!-- side menu -->
+                 @include('User.sidemenu')
+                <!--  end side menu -->
+            </div>  
             <div class="col-xl-9" >      
                 <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)"> 
                 
@@ -22,28 +21,28 @@
                     </div>
                     @endif
 
-                <h2>Messages</h2>
+                <h2>Sent Items</h2>
                 <hr>  
                            <!-- START OF MEESAGE    -->
-                @forelse($messages as $message)
+                           @forelse($messages as $message)
                 @empty
                     <div class="alert alert-danger mt-4">
-                        <p></i> No Message Found </p>
+                        <p></i> Nothings Found </p>
                     </div>
                 @endforelse
-                @foreach($messages as $message)
+                @foreach($reply as $message)
                 <div class="card-box mb-0 p-2"> 
                 
                     <div class="row">
                         <div class="col col-lg-1">
-                        <img src = "{{$message->m_sender->avatar}}" style="height:1.8rem; width:1.8rem;" alt="" class="thumb-lg rounded-circle">
+                        <img src = "{{$message->m_receiver->avatar}}" style="height:1.8rem; width:1.8rem;" alt="" class="thumb-lg rounded-circle">
                         </div>
                         <div class="col col-lg-2 pr-0">
-                        <span style="color: #aaa;">{{$message->m_sender->name}}</span>
+                        <span style="color: #aaa;">{{$message->m_receiver->name}}</span>
                         </div>
                         <div class="col pr-0" style="height:30px; overflow:hidden;">
                         <p class="email-summary">
-                        <a href="{{route('show-sender.message',$message->id)}}">
+                        <a href="{{route('show-reply.message',$message->id)}}">
                         {!! $message->message !!}
                         </a>
                         </div>

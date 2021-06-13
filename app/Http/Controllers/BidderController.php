@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bidder,auction,Offer,Message,User};
+use App\Models\{bidder,auction,Offer,Message,User,Point};
 use Auth;
 use Mail;
 use Carbon\Carbon;
@@ -80,6 +80,11 @@ class BidderController extends Controller
             'auction_id' => 'required'
         ]);
         $auction = auction::find($request->auction_id);
+        if($request->amount > Auth::user()->points->amount)
+        {
+            return redirect()->back()
+            ->with('error','Not enought points');
+        }
         if($auction->bidding_start_price > $request->amount)
         {
             return redirect()->back()
@@ -120,7 +125,8 @@ class BidderController extends Controller
         $offer = Offer::where('sender_id',Auth::id())->get();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         $winners = bidder::where('user_id',Auth::id())->Where('winners',1)->simplepaginate(20);
-        return view('bidding.winner',compact('winners','messages','offer','notifications'));
+        $points = Point::findorFail(Auth::id())->first();
+        return view('bidding.winner',compact('winners','messages','offer','notifications','points'));
     }
 
     /**
@@ -155,5 +161,16 @@ class BidderController extends Controller
     public function destroy(bidder $bidder)
     {
         //
+    }
+
+    public function test(){
+        $datenow = date('Y-m-d');
+        if( $datenow  == $auction->end_date)
+        {
+            $max_amount = bidder::max('amount');
+            $winners = bidder::where('amount',$max_amount)->update([
+                'winners' => 1
+            ]);
+        }
     }
 }

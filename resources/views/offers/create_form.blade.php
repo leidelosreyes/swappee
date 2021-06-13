@@ -1,6 +1,6 @@
            
               
-                                  <form action="/offers" method ="post" enctype="multipart/form-data">
+                        <form action="/offers" method ="post" enctype="multipart/form-data">
                                    @csrf
                             <div class="form-group row">
                                       <input type="hidden"
@@ -189,7 +189,9 @@
                                                         
                                                         
                                                     </div>
-                                                    <img src="" id="preview" class="img-thumbnail" style="width:100%; border:none;">
+                                                    <div style="text-align:center;">
+                                                    <img src="" id="preview" class="img-thumbnail" style="width:30%; border:none;">
+                                                    </div>
                                                 </div>
                                             </div>
                                               @error('image')

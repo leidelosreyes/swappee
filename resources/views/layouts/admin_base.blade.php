@@ -200,7 +200,7 @@
                                                                             <a href="#"class="a-color"></i>Messages</a>                     
                                                                     </li>
                                                                     <li>
-                                                                            <a href="#"class="a-color"></i> Offers</a>                     
+                                                                            <a href="{{route('archive.admin','offers_deleted')}}"class="a-color"></i> Offers</a>                     
                                                                     </li>
                                                                     <li>
                                                                             <a href="{{route('archive.admin','posts_deleted')}}"class="a-color"></i>Swap Item</a>                     
@@ -221,7 +221,7 @@
                                                         </span>
                                                         </a> 
                                                     </li>
-                                                    <a href="#"class="a-color"><i class="fas fa-edit"></i> Activity Log <span style="float:right;">
+                                                    <a href=""class="a-color"><i class="fas fa-edit"></i> Activity Log <span style="float:right;">
                                                     </span>
                                                     </a> 
                                                     </li>

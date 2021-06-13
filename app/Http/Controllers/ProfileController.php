@@ -22,8 +22,9 @@ class ProfileController extends Controller
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
-    $points = Point::where('user_id',Auth::id())->first();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+    // $points = DB::table('points')->Where('user_id',Auth::id())->first();
+    $points = Point::findorFail(Auth::id())->first();
     return view('User.profile', compact('posts','messages','notifications','offer','points'));
    }
    public function auction_index()
@@ -34,9 +35,10 @@ class ProfileController extends Controller
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $auctions = auction::where('user_id',Auth::id())->simplepaginate(20);
-    return view('auctions.profile_view', compact('posts','messages','notifications','offer','auctions'));
+    $points = Point::findorFail(Auth::id())->first();
+    return view('auctions.profile_view', compact('posts','messages','notifications','offer','auctions','points'));
    }
    public function index_public_view()
    {
@@ -44,7 +46,7 @@ class ProfileController extends Controller
     // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
     //     eloquent orm
     // $categories = Categories::all();
-    // $notifications = Offer::where('receiver_id',Auth::id())->get();
+    //  $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     // $offer = Offer::where('sender_id',Auth::id())->get();
     // $posts = Post::where('user_id',Auth::id())->paginate(10);
     // $messages = Message::where('receiver_id',Auth::id())->get();
@@ -66,10 +68,11 @@ class ProfileController extends Controller
    
        $users = User::where('id',$id)->first();
         $categories = Categories::all();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $points = Point::where('user_id',$id)->first();
         $sub_categories = Sub_categorie::all();
-        return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+        $points = Point::findorFail(Auth::id())->first();
+        return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','points'));
        
    }
   
@@ -78,9 +81,9 @@ class ProfileController extends Controller
 
         $search = request()->query('search');
         $messages = Message::where('receiver_id',Auth::id())->get();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        
+        $points = Point::findorFail(Auth::id())->first();
         if($search!="")
         {   $posts = Post::where('product_name','like', '%'.$search.'%')
             ->where('user_id',Auth::id())->paginate(10);
@@ -92,24 +95,25 @@ class ProfileController extends Controller
             $posts = Post::paginate(10);
         }
     
-        return view('User.profile',compact('posts','messages','notifications','offer'));
+        return view('User.profile',compact('posts','messages','notifications','offer','points'));
         
     }
    
    public function auth_item_show(Post $post)
    {
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
        return view('posts.auth_view',compact('post','notifications'));
    }
    public function edit_auth_user_post($posts)
    {
           $posts = Post::find($posts);
+          $points = Point::findorFail(Auth::id())->first();
           $messages = Message::where('receiver_id',Auth::id())->get();
-          $notifications = Offer::where('receiver_id',Auth::id())->get();
+           $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
           $offer = Offer::where('sender_id',Auth::id())->get();
           $sub_categories = Sub_categorie::all();
           $categories = Categories::all();
-         return view('posts.edit_user_post',compact('posts','messages','categories','notifications','sub_categories','offer'));
+         return view('posts.edit_user_post',compact('posts','messages','categories','notifications','sub_categories','offer','points'));
    }
    public function update_auth_user_post(Request $request ,post $posts )
    {
@@ -144,9 +148,10 @@ class ProfileController extends Controller
     $id = Auth::id();
     $user = User::findOrFail($id);
     $messages = Message::where('receiver_id',Auth::id())->get();
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
-    return view('User.edit_profile',compact('user','messages','notifications','offer'));
+    $points = Point::findorFail(Auth::id())->first();
+    return view('User.edit_profile',compact('user','messages','notifications','offer','points'));
 
    }
    public function update_profile(Request $request){
@@ -182,11 +187,13 @@ class ProfileController extends Controller
     return redirect(404);
     }
     $categories = Categories::all();
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $posts = Post::where('user_id',$id)->simplepaginate(10);
     $points = Point::where('user_id',$id)->first();
     $sub_categories = Sub_categorie::all();
-    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','messages','offer'));
    }
 
    public function filter_by_category($category,$id){
@@ -196,7 +203,7 @@ class ProfileController extends Controller
     ->simplepaginate(20);
     $categories = Categories::all();
     $sub_categories = Sub_categorie::all();
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $points = Point::where('user_id',$id)->first();
     return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
    }
@@ -208,7 +215,7 @@ class ProfileController extends Controller
     ->simplepaginate(20);
     $categories = Categories::all();
     $sub_categories = Sub_categorie::all();
-    $notifications = Offer::where('receiver_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $points = Point::where('user_id',$id)->first();
     return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
    }

@@ -8,7 +8,8 @@
                             @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
-        <section class="products-section col-xl-9 mb-4">
+        <section class="col-xl-9 mb-4">
+        <div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
           <!-- side modal for mobile view -->
           
          <!-- end side modal --> 
@@ -18,7 +19,7 @@
                                     </div>
                                     @endif                 
                     <!-- edit form -->
-                    <h4 class="header-title mb-3 mt-4">Edit Profile</h4>   
+                    <h2>Edit Profile</h2>   
                     <form action="{{route('user.update_profile')}}" method ="post" enctype="multipart/form-data">
                           @csrf
                           <div class="form__div">
@@ -120,7 +121,7 @@
 
 
 
-
+            </div>
                     <!-- end edit form -->
         </section>    
     </div>

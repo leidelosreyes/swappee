@@ -23,8 +23,6 @@ Route::get('/user/index', function () {
 
 
 
-
-
 //  Route::get('/terms_condition', function () {
 //     return view('terms_condition');
 // });
@@ -109,6 +107,9 @@ Route::get('/user/notification',[App\Http\Controllers\OfferController::class, 's
 Route::post('/user/accept/{id}',[App\Http\Controllers\OfferController::class, 'accept_offer'])->name('accept.offer');
 Route::get('/user/show/delivery',[App\Http\Controllers\OfferController::class, 'show_for_delivery'])->name('for_delivery_item.show');
 Route::get('/user/show/meetup',[App\Http\Controllers\OfferController::class, 'show_for_meetup'])->name('for_meetup_item.show');
+Route::get('/offers/edit/{id}',[App\Http\Controllers\OfferController::class, 'edit'])->name('offer.edit');
+Route::post('/offers/delete/{id}',[App\Http\Controllers\OfferController::class, 'delete'])->name('offer.delete');
+Route::post('/notification/delete/{id}',[App\Http\Controllers\OfferController::class, 'delete_notification'])->name('notification.delete');
 //-------------------------------- User ---------------------------------
 Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');
@@ -120,8 +121,12 @@ Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 
 Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
 //-----------------------------------Message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
-Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message');
+Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message.reply');
 Route::get('/message/show',[App\Http\Controllers\MessageController::class, 'show_message'])->name('show.message');
+Route::get('/message/show_sent_item',[App\Http\Controllers\MessageController::class, 'show_sent_item'])->name('show.sent_item');
+Route::delete('/message/delete/{id}',[App\Http\Controllers\MessageController::class, 'delete_message'])->name('delete.message');
+Route::get('/messages/show/{id}',[App\Http\Controllers\MessageController::class, 'show_sender_message'])->name('show-sender.message');
+Route::get('/messages/reply/{id}',[App\Http\Controllers\MessageController::class, 'show_reply_message'])->name('show-reply.message');
 
 //--------------------------------------Categories--------------------------------------
 Route::post('/categories',[App\Http\Controllers\CategoriesController::class, 'store'])->name('categories.store');
@@ -166,3 +171,10 @@ Route::prefix('public_profile')->group(function (){
 //-----------------------------------------------------Admin Search-----------------------------------
 
 // Route::get('admin_search',[App\Http\Controllers\AdminController::class, 'search_admin'])->name('admin.search');
+//----------------------------------------------------- points ------------------------------------------------//
+
+Route::prefix('points')->group(function ()
+{ 
+   Route::get('/view',[App\Http\Controllers\PointsController::class, 'get_points'])->name('points.show');
+
+});

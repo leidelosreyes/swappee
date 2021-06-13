@@ -175,7 +175,9 @@
                                                         
                                                         
                                                     </div>
-                                                    <img src="" id="preview" class="img-thumbnail" style="width:100%; border:none;">
+                                                    <div style="text-align:center;">
+                                                    <img src="" id="preview" class="img-thumbnail" style="width:50%; border:none;">
+                                                    </div>
                                                 </div>
                                             </div>
                                   

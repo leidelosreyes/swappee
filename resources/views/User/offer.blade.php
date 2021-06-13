@@ -8,14 +8,20 @@
                             @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
-        <section class="products-section col-xl-9 mb-4">
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-success mt-4">
-                                        <p>{{$message}}</p>
-                                    </div>
-                                    @endif                 
+        <section class="col-xl-9 mb-4">
+        <div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
+                              @if ($message = Session::get('success'))
+                                <div class="alert alert-success mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif
+                                @if ($message = Session::get('error'))
+                                <div class="alert alert-danger mt-4">
+                                     <p>{{$message}}</p>
+                                </div>
+                                @endif                     
         <!-- offer card -->
-                    <h4 class="header-title mb-3 mt-4">My offers</h4> 
+                    <h2>My offers</h2> 
                     <form class="d-flex"  action="{{route('search')}}" method="GET">
 						<input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your offers" aria-label="Search">
    					</form>
@@ -38,28 +44,38 @@
                                             <p class="text-justify text-truncate para mb-0"> <h4 class="mr-1" style="color:#FFB52E;">PHP {{number_format($offers->price)}}</h4></p>
                                         
                                         <div class="d-flex flex-row">
+                                
                                             <div class="ratings mr-2">
-                                            
-                                            @if(empty($offers->receiver->avatar))
-                                            Receiver Name <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/> </i><span class="bg-pink"></i><span class="bg-pink"><b>{{$offers->receiver->name}}</b></span>
+                                            @if($offers->is_accepted == true)
+                                            <i class="far fa-thumbs-up" style="color:blue;"></i> <span class="bg-blue">Accepted </span>
                                             @else
-                                            Receiver Name <img src="{{$offers->receiver->avatar}}" class="card-avatar"/> </i><span class="bg-pink"></i><span class="bg-pink"><b>{{$offers->receiver->name}}</b></span>
+                                            <i class="fas fa-history" style="color:red;"></i> <span class="bg-pink">Pending</span>
                                             @endif
+                                            <i class="far fa-clock" style="color:green"></i> {{$offers->created_at->diffForHumans()}}
+                                        
                                          
-                                            
-                                           
                                             </div>
                                         </div>
+                                          
+                                        @if(empty($offers->receiver->avatar))
+                                            To: <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/> </i><span class="bg-pink"></i><span class="bg-pink"><b>{{$offers->receiver->name}}</b></span>
+                                            @else
+                                            To: <img src="{{$offers->receiver->avatar}}" class="card-avatar"/> </i><span class="bg-pink"></i><span class="bg-pink"><b>{{$offers->receiver->name}}</b></span>
+                                            @endif
+                                         
                                     </div>
                                     <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                         <div class="d-flex flex-row align-items-center">
                                             <h4 class="justify-content-center">Actions</h4>
                                         </div>
                                     
-                                        <div class="d-flex flex-column mt-2">
-                                        <a href="" class="btn btn-primary btn-sm mb-2" type="button">Cancel</a>
-                                        <a href="" class="btn btn-primary btn-sm mb-2" type="button">Edit</a>
-                                        <a href="" class="btn btn-primary btn-sm" type="button">Delete</a>
+                                        
+                                        <div class="d-flex flex-column mt-4">
+                                        <a href="{{route('offer.edit',$offers->id)}}" class="btn btn-outline-warning btn-sm mb-1" type="button">Edit</a>
+                                        {!! Form::open(['route' => ['offer.delete', $offers->id], 'method' => 'post']) !!}
+                                        @csrf
+                                        <button class="delete form-control btn-sm mt-2" style="height:30px;" >Delete</button>
+                                        {!!Form::close() !!}
                                         </div>
                                     </div>
                                 </div>                
@@ -70,6 +86,7 @@
                        
                 </div>
                  @endforeach
+                 </div>
                     <!-- end offer card -->
         </section>    
     </div>

@@ -75,7 +75,7 @@ class CategoriesController extends Controller
         $posts = Post::where('category_id',$category_id)
         ->paginate(20);
         $sub_categories = Sub_categorie::all();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
@@ -86,7 +86,7 @@ class CategoriesController extends Controller
         $auctions = auction::where('category_id',$category_id)
         ->paginate(20);
         $sub_categories = Sub_categorie::all();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
@@ -99,7 +99,7 @@ class CategoriesController extends Controller
         $min_val = 1;
         $posts = Post::whereBetween('price',[$min_val,$price])
         ->paginate(20);
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
@@ -112,7 +112,7 @@ class CategoriesController extends Controller
         $min_val = 1;
         $auctions = auction::whereBetween('estimated_price',[$min_val,$price])
         ->paginate(20);
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));
@@ -123,7 +123,7 @@ class CategoriesController extends Controller
         $posts = Post::where('sub_category_id',$sub_category_id)
         ->paginate(20);
         $sub_categories = Sub_categorie::all();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('home',compact('posts','categories','sub_categories','notifications','messages','offer'));
@@ -134,7 +134,7 @@ class CategoriesController extends Controller
         $auctions = auction::where('sub_category_id',$sub_category_id)
         ->paginate(20);
         $sub_categories = Sub_categorie::all();
-        $notifications = Offer::where('receiver_id',Auth::id())->get();
+      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer'));

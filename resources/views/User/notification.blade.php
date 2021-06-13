@@ -8,17 +8,16 @@
                             @include('User.sidemenu')
                     <!-- end side menu-->              
         </div>  
-        <section class="products-section col-xl-9 mb-4">
-             <!-- side modal for mobile view -->
-            
-             <!-- end side modal -->  
+        <section class="col-xl-9 mb-4">    
+             
+             <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">  
                                 @if ($message = Session::get('success'))
                                     <div class="alert alert-success mt-4">
                                         <p>{{$message}}</p>
                                     </div>
                                     @endif                 
                     <!-- notifiacation card -->
-                    <h4 class="header-title mb-3 mt-4">My Notifications</h4> 
+                    <h2 class="header-title mb-3 mt-4">My Notifications</h2> 
                            <!-- notification card -->
             @forelse($notifications as $notification)
                         @empty
@@ -60,7 +59,7 @@
                                         <button class="form-control btn btn-outline-warning btn-sm mb-2">Accept</button>
                                         {!!Form::close() !!}
                                         <button class="form-control btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#notification-modal{{$notification->id}}"type="button">More Details</button>
-                                        {!! Form::open(['route' => ['posts.delete', $notification->id], 'method' => 'delete']) !!}
+                                        {!! Form::open(['route' => ['notification.delete', $notification->id], 'method' => 'post']) !!}
                                         @csrf
                                         <button class="form-control btn-sm mt-2" style="height:30px;" >Delete</button>
                                         {!!Form::close() !!}
@@ -74,9 +73,8 @@
                        
                 </div>
                  @endforeach
+                </div>
                 <!-- end notification card -->
-        
-                    <!-- end notifiacation card -->
         </section>    
     </div>
 </div>
