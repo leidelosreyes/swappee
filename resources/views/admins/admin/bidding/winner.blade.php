@@ -12,6 +12,9 @@
         </div>
         @endif
     <div class="card">
+    <div class="card-header">
+                                  <p>Winners</p>
+                                </div>
         <div class="card-body">
             <table class="table table-hover">
             <thead>

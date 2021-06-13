@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction,ActivityLog,Profile};
+use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction,ActivityLog,Profile,Point};
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Auth;
@@ -17,26 +17,31 @@ class AdminController extends Controller
     }
     
     public function index()
-    {
-        return view('admins.admin.index');
+    {   
+        $users = User::where('usertype',null)->get();
+        $winners = Bidder::where('winners',1)->get();
+        $swaps = Post::get();
+        $bidders = bidder::get();
+        $points = Point::get();
+        return view('admins.admin.index',compact('users','winners','swaps','bidders','points'));
     }
 
     public function show_admin($params)
     {
         if($params == 1){
-            $admins = User::where('usertype','admin')->get();
+            $admins = User::where('usertype','admin')->simplepaginate(10);
             return view('admins.admin.show',compact('admins'));
         }
         if($params == 2){
-            $admins = User::where('usertype','post-moderator-admin')->get();
+            $admins = User::where('usertype','post-moderator-admin')->simplepaginate(10);
             return view('admins.admin.show',compact('admins'));
         }
         if($params == 3){
-            $admins = User::where('usertype','content-manager-admin')->get();
+            $admins = User::where('usertype','content-manager-admin')->simplepaginate(10);
             return view('admins.admin.show',compact('admins'));
         }
         if($params == 4){
-            $admins = User::where('usertype','user-manager-admin')->get();
+            $admins = User::where('usertype','user-manager-admin')->simplepaginate(10);
             return view('admins.admin.show',compact('admins'));
         }
       
@@ -101,13 +106,13 @@ class AdminController extends Controller
     public function show_swap(){
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
-             $swap = Post::all();
-            return view('admins.admin.swap.show',compact('swap'));
+             $swaps = Post::simplepaginate(1);
+            return view('admins.admin.swap.show',compact('swaps'));
         }
         if(Auth::user()->usertype == 'admin')
         {
-             $swap = Post::all();
-            return view('admins.admin.swap.show',compact('swap'));
+             $swaps = Post::simplepaginate(1);
+            return view('admins.admin.swap.show',compact('swaps'));
         }
         return redirect()->back()->with('error','You are not authorized');
         
@@ -115,15 +120,15 @@ class AdminController extends Controller
     public function show_auction(){
         if(Auth::user()->usertype == 'admin')
         {
-            $auction = Auction::all();
+            $auctions = Auction::simplepaginate(10);
            
-            return view('admins.admin.auction.show',compact('auction'));
+            return view('admins.admin.auction.show',compact('auctions'));
         }
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
-            $auction = auction::all();
+            $auctions = auction::simplepaginate(10);
           
-            return view('admins.admin.auction.show',compact('auction'));
+            return view('admins.admin.auction.show',compact('auctions'));
         }
 
         return redirect()->back()->with('error','You are not authorized');
@@ -133,25 +138,25 @@ class AdminController extends Controller
       if($params == "verified"){
         if(Auth::user()->usertype == 'admin')
         {
-            $user = User::where('usertype',null)->where('email_verified_at','!=',null)->get();
-             return view('admins.admin.users.show',compact('user')); 
+            $users = User::where('usertype',null)->where('email_verified_at','!=',null)->simplepaginate(10);
+             return view('admins.admin.users.show',compact('users')); 
         }
         if(Auth::user()->usertype == 'user-manager-admin')
         {
-            $user = User::where('usertype',null)->where('email_verified_at','!=',null)->get();
-            return view('admins.admin.users.show',compact('user')); 
+            $users = User::where('usertype',null)->where('email_verified_at','!=',null)->simplepaginate(10);
+            return view('admins.admin.users.show',compact('users')); 
         }
       }
       if($params == "not-verified"){
         if(Auth::user()->usertype == 'admin')
         {
-            $user = User::where('usertype',null)->where('email_verified_at',null)->get();
-            return view('admins.admin.users.show',compact('user'));  
+            $users = User::where('usertype',null)->where('email_verified_at',null)->simplepaginate(10);
+            return view('admins.admin.users.show',compact('users'));  
         }
         if(Auth::user()->usertype == 'user-manager-admin')
         {
-            $user = User::where('usertype',null)->where('email_verified_at',null)->get();
-            return view('admins.admin.users.show',compact('user')); 
+            $users = User::where('usertype',null)->where('email_verified_at',null)->simplepaginate(10);
+            return view('admins.admin.users.show',compact('users')); 
         }
       }
         
@@ -319,5 +324,70 @@ class AdminController extends Controller
           ]);
         return redirect('admin')->with('success','Admin Successfully updated');
     }
+    public function show_activity_logs(){
+        $logs = ActivityLog::orderBy('created_at','desc')->simplepaginate(10);
+        return view('admins.admin.activity_log',compact('logs'));
+    }
+    public function search_activity(Request $request){
+        if($request->search!="")
+        {   $logs = ActivityLog::where('action' , 'like' , '%' .$request->search. '%')
+        ->simplepaginate(20);
+        $logs->appends(['search' => $request->search]);
+        }
+        else
+        {
+            $logs = ActivityLog::simplepaginate(10);
+        }
+        return view('admins.admin.activity_log',compact('logs'));
+    }
+    public function search_post(Request $request){
+        if($request->search!="")
+        {   $swaps= Post::where('product_name' , 'like' , '%' .$request->search. '%')
+        ->simplepaginate(20);
+        $swap->appends(['search' => $request->search]);
+        }
+        else
+        {
+            $swaps = Post::simplepaginate(10);
+        }
+        return view('admins.admin.swap.show',compact('swaps'));
+    }
+    public function search_auction(Request $request){
+        if($request->search!="")
+        {   $swaps= auction::where('product_name' , 'like' , '%' .$request->search. '%')
+        ->simplepaginate(20);
+        $swap->appends(['search' => $request->search]);
+        }
+        else
+        {
+            $swaps = auction::simplepaginate(10);
+        }
+        return view('admins.admin.swap.show',compact('swaps'));
+    }
+    public function search_user(Request $request){
+        if($request->search!="")
+        {   $users= User::where('name' , 'like' , '%' .$request->search. '%')
+        ->simplepaginate(20);
+        $users->appends(['search' => $request->search]);
+        }
+        else
+        {
+            $users = User::simplepaginate(10);
+        }
+        return view('admins.admin.swap.show',compact('users'));
+    }
+    public function search_admin(Request $request){
+        if($request->search!="")
+        {   $admins= User::where('name' , 'like' , '%' .$request->search. '%')
+        ->simplepaginate(20);
+        $admins->appends(['search' => $request->search]);
+        }
+        else
+        {
+            $admins = User::simplepaginate(10);
+        }
+        return view('admins.admin.show',compact('admins'));
+    }
+   
    
 }

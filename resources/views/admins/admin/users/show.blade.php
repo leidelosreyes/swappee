@@ -2,7 +2,19 @@
 @section('content')
 <div class="container">
     <div class="card">
+           <div class="card-header">
+                                  <p>Users</p>
+                                </div>
+                                <div class="col-xl-12 mt-4">
+                  <form class="d-flex"  action="{{route('users_admin.search')}}" method="GET">
+                <input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+                </form>
+              </button>
+        </div>
         <div class="card-body">
+
         @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
                                      <p>{{$message}}</p>
@@ -13,7 +25,6 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h4 class="header-title mb-3 mt-4">Users</h4> 
            <table class="table table-hover">
                     <thead>
                         <tr>
@@ -27,7 +38,7 @@
                 <tbody>
                 
                     <tr>
-                    @foreach($user as $user)
+                    @foreach($users as $user)
                     
                     <td> <p class="mt-2">{{$user->name}}</p> </td>
                     <td> <p class="mt-2">{{$user->email}}</p> </td>
@@ -46,6 +57,9 @@
                 
                 </tbody>
           </table>
+        </div>
+        <div class="mt-4 mb-4 container">
+           {{$users->links()}}
         </div>
     </div>
 </div>
