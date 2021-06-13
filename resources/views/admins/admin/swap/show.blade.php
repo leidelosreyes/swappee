@@ -3,6 +3,20 @@
 
 <div class="container">
     <div class="card">
+    <div class="card-header">
+                                  <p>Swap</p>
+                                </div>
+    <div class="col-xl-12 mt-4">
+                  <form class="d-flex"  action="{{route('posts_admin.search')}}" method="GET">
+                <input type="search" name="search" class="form-control searchTerm" placeholder="What are you looking for?">
+                <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+                </form>
+              </button>
+        </div>
+
+      
+
         <div class="card-body">
         @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
@@ -14,28 +28,29 @@
                                      <p>{{$message}}</p>
                                 </div>
                                 @endif
-                                <h4 class="header-title mb-3 mt-4">For Swap</h4> 
+                               
                                 <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Username</th>
-                                      <th scope="col">Item Name</th>
-                                      <th scope="col">Item Price</th>
-                                      <th scope="col">User Address</th>
-                                      <th scope="col" style="padding-left:30px">Item Approval</th>
-                                      <th scope="col" style="padding-left:30px;">Item Status</th>
-                                      <th scope="col" style="padding-left:25px;">Actions</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                  
-                                    <tr>
-                  @foreach($swap as $swap)
-                                      <td> <p class="mt-2">{{$swap->user->name}}</p> </td>
-                                      <td> <p class="mt-2">{{$swap->product_name}}</p> </td>
-                                      <td> <p class="mt-2">{{$swap->price}}</p> </td>
-                                      <td> <p class="mt-2">{{$swap->location}}</p> </td>
-                                      <td>
+
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Item Price</th>
+      <th scope="col">User Address</th>
+      <th scope="col" style="padding-left:30px">Item Approval</th>
+      <th scope="col" style="padding-left:30px;">Item Status</th>
+      <th scope="col" style="padding-left:25px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+    @foreach($swaps as $swap)
+      <td> <p class="mt-2">{{$swap->user->name}}</p> </td>
+      <td> <p class="mt-2">{{$swap->product_name}}</p> </td>
+      <td> <p class="mt-2">{{$swap->price}}</p> </td>
+      <td> <p class="mt-2">{{$swap->location}}</p> </td>
+      <td>
                                         {!! Form::open(['route' => ['post_approval.admin', $swap->id], 'method' => 'post']) !!}
                                         @if($swap->approved == false)
                                             @php
@@ -65,32 +80,35 @@
                           @php
                             $approval = "secondary"
                           @endphp
-                          <span class="badge badge-pill badge-{{$approval}}"><i class="fas fa-history">Pending</i></span>
+                          <span class="badge badge-pill badge-{{$approval}}"><i class="fas fa-history"></i> Pending</span>
                       @endif
                       </td>
-                        <td>
-                          <div class="d-flex">
-                          
-                          <a href="show_post_details/{{$swap->id}}" ><i class="far fa-eye" style="color: #57585a; margin-right:5px;padding-right:10px"></i>
-                          <a href="#" style="margin-right:5px;padding-right:10px" data-toggle="modal" data-target="#edit{{$swap->id}}"><i class="fas fa-edit"></i></a>
-                          {!! Form::open(['route' => ['delete_swap.admin', $swap->id], 'method' => 'post']) !!}
-                            <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">
-                              <i class="fas fa-trash-alt" style="color:red;"></i>
-                            </button>     
-                          {!!Form::close() !!}  
-                        </div>
-                      </td>
-                  </tr>
-                  @endforeach
-                <tr>              
-            </tbody>
-        </table>
+      <td>
+                                    <div class="d-flex">
+                                    <a href="show_post_details/{{$swap->id}}" ><i class="far fa-eye" style="color: #57585a; margin-right:5px;padding-right:10px"></i>
+                                   <a href="#" style="margin-right:5px;padding-right:10px" data-toggle="modal" data-target="#edit{{$swap->id}}"><i class="fas fa-edit"></i></a>
+                                   
+                                    {!! Form::open(['route' => ['delete_swap.admin', $swap->id], 'method' => 'post']) !!}
+                                      <button class="delete" style="border:none;background:none;outline:none !important;outline:0px;">
+                                      <i class="fas fa-trash-alt" style="color:red;"></i>
+                                      </button>     
+                                    {!!Form::close() !!}
+                                
+    </tr>
+    @endforeach
+    <tr>
+ 
+  </tbody>
+</table>
+        </div>
+        <div class="mt-4 mb-4 container">
+           {{$swaps->links()}}
+        </div>
     </div>
-  </div>
-</div>
 
 
-@foreach($swap_details as $posts)
+
+    @foreach($swaps as $posts)
 <div class="modal fade " id="edit{{$posts->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-m">
     <div class="modal-content">
@@ -241,7 +259,7 @@
                                                     <strong style="color:red;" >{{$message}}</strong>
                                                 </span>
                                         @enderror
-                                      
+               
                                     </div>
                                     <label  for="image" style="margin-bottom:0;">Product Description <label style="color:red;">*</label></label>
                                     <textarea 
@@ -251,22 +269,21 @@
                                             value="{{old('description')}}"
                                             autocomplete="description" autofocus
                                             >
-                                            {!!$posts->description!!}
+                                            {{$posts->description}}
                                             </textarea>
                                             @error('description')
                                                 <span class="invalid-feedback" role="alert ">
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
                                             @enderror      
-    
+
                          <button type="sumbit" class="btn btn-primary mt-4 mb-4 form-control"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button> 
 </form>
 <!--End Form--->
       </div>
-    </div>
   </div>
 </div>
- @endforeach
-
+</div>
+@endforeach
 
 @endsection

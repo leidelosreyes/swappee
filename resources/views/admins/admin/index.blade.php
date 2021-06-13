@@ -29,7 +29,7 @@
                     <div class="col">
                       <h3 style="font-size:1.2rem;padding-left: 1.2rem;">Users</h3>
                       <hr class="mt-0 mb-2" style="border: 1px solid lightgray;">
-                      <span style="font-size: 1.2rem;padding-left: 2.3rem;"></span>
+                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">{{$users->count()}}</span>
                     </div>
                   </div>
                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
@@ -49,7 +49,7 @@
                     <div class="col">
                       <h3 style="font-size:1.2rem;padding-left: 1.2rem;">Winners</h3>
                       <hr class="mt-0 mb-2" style="border: 1px solid lightgray;">
-                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">0</span>
+                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">{{$winners->count()}}</span>
                     </div>
                   </div>
               </div>
@@ -66,9 +66,9 @@
                       <span style="background-color: purple;border-radius: 50%;width: 70px;height: 70px;display: flex;justify-content: center;align-items: center;"><i class="fas fa-sync-alt" style="font-size: 2rem;color: white;height: auto;"></i></span>
                     </div>
                     <div class="col">
-                      <h3 style="font-size:1.2rem;padding-left: .3rem;">Auctioners</h3>
+                      <h3 style="font-size:1.2rem;padding-left: .3rem;">Swap Post</h3>
                       <hr class="mt-0 mb-2" style="border: 1px solid lightgray;">
-                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">0</span>
+                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">{{$swaps->count()}}</span>
                     </div>
                   </div>
               </div>
@@ -87,7 +87,7 @@
                     <div class="col">
                       <h3 style="font-size:1.2rem;padding-left: 1.2rem;">Bidders</h3>
                       <hr class="mt-0 mb-2" style="border: 1px solid lightgray;">
-                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">0</span>
+                      <span style="font-size: 1.2rem;padding-left: 2.3rem;">{{$bidders->count()}}</span>
                     </div>
                   </div>
               </div>
@@ -104,71 +104,75 @@
   <div class="row">
     <div class="col-md-8">
       <div class="card">
+      <div class="card-header">
+      <p>Users</p>
+                                </div>
         <div class="card-body">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Admin</li>
-            </ol>
-          </nav>
-          <!-- -->
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
+        <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Verified At</th>
+                           
+                        </tr>
+                    </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
+                
+                    <tr>
+                    @foreach($users as $user)
+                    <th scope="row">  @if(empty($users->avatar))
+                    <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+                      @else
+                    <img src="{{$users->avatar}}" class="card-avatar"/>
+                    @endif</th>
+                    <td> <p class="mt-2">{{$user->name}}</p> </td>
+                    <td> <p class="mt-2">{{$user->email}}</p> </td>
+                    <td> <p class="mt-2">{{$user->created_at}}</p> </td>
+                    <td> <p class="mt-2">{{$user->email_verified_at}}</p> </td>
+                   
+                    
+                    </tr>
+                    @endforeach
+                    <tr>
+                
                 </tbody>
-    </table>
+          </table>
             </div>
           </div>
         </div>
       
       
-  <div class="col pl-0">
+  <div class="col">
           <div class="card">
-            <div class="card-body" style="padding-bottom:.5rem">
-            <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Winners</li>
-            </ol>
-          </nav>
+          <div class="card-header">
+                <p>Leader Boards</p>
+                                </div>
+            <div class="card-body">
+  
     <table class="table">
       <thead>
         <tr>
-          <th class="pl-4" scope="col">#</th>
+        <th scope="col">Image</th>
           <th scope="col">Name</th>
-          <th scope="col">Bids</th>
+          <th scope="col">Points</th>
         </tr>
       </thead>
       <tbody>
+      @foreach($points as $point)
         <tr>
-          <th scope="row"><img src="{{asset('/image/pogi.jpg')}}" style="height:1.8rem; width:1.8rem;" alt="" class="thumb-lg rounded-circle"></th>
-          <td>Mark</td>
-          <td>Otto</td>
+        <th scope="row">  @if(empty($point->user->avatar))
+                    <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
+                      @else
+                    <img src="{{$point->user->avatar}}" class="card-avatar"/>
+                    @endif</th>
+          <td>{{$point->user->name}}</td>
+          <td>{{$point->amount}}</td>
           
         </tr>
-        <tr>
-          <th scope="row"><img src="{{asset('/image/pogi.jpg')}}" style="height:1.8rem; width:1.8rem;" alt="" class="thumb-lg rounded-circle"></th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-         
-        </tr>
+      @endforeach
       </tbody>
     </table>          
         </div>
@@ -279,7 +283,7 @@
         <div class="card-body">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">Admin</li>
+              <li class="breadcrumb-item active" aria-current="page">Leader Bords</li>
             </ol>
           </nav>
           <!-- -->

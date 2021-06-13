@@ -178,3 +178,12 @@ Route::prefix('points')->group(function ()
    Route::get('/view',[App\Http\Controllers\PointsController::class, 'get_points'])->name('points.show');
 
 });
+
+//----------------------------------------------------- Activity Logs ------------------------------------------------//
+
+Route::get('/admin/activity_logs',[App\Http\Controllers\AdminController::class, 'show_activity_logs'])->name('activity_logs.admin');
+Route::get('/search/admin_activity',[App\Http\Controllers\AdminController::class,'search_activity'])->name('search_activity');
+Route::get('/search/posts_admin',[App\Http\Controllers\AdminController::class,'search_post'])->name('posts_admin.search');
+Route::get('/search/auction_admin',[App\Http\Controllers\AdminController::class,'search_auction'])->name('auction_admin.search');
+Route::get('/search/user_admin',[App\Http\Controllers\AdminController::class,'search_user'])->name('users_admin.search');
+Route::get('/search/admins',[App\Http\Controllers\AdminController::class,'search_admin'])->name('admins_admin.search');

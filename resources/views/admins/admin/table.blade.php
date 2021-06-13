@@ -10,9 +10,9 @@
     </tr>
   </thead>
 <tbody>
-  
+@foreach($admins as $admin)
   <tr>
-    @foreach($admins as $admin)
+  
      
       <td> <p class="mt-2">{{$admin->name}}</p> </td>
       <td> <p class="mt-2">{{$admin->email}}</p> </td>
@@ -30,9 +30,15 @@
           </div>
         </td>
   </tr>
+  @endforeach
 </tbody>
 </table>
-@endforeach
+</div>
+        <div class="mt-4 mb-4 container">
+           {{$admins->links()}}
+        </div>
+
+
 
 
 

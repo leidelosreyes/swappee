@@ -2,6 +2,9 @@
 @section('content')
 <div class="container">
     <div class="card">
+    <div class="card-header">
+                                  <p>Bidders</p>
+                                </div>
         <div class="card-body">
             <table class="table table-hover">
             <thead>

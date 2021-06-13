@@ -90,7 +90,9 @@
                                       <!-- side menu -->
                                            
                                                 <ul  style="list-style-type:none;"> 
-                                              
+                                                <li>
+                    <a href="{{route('admin')}}"class="a-color"><i class="fas fa-home"></i> <span style="margin-left: .5rem;">Home</span> </a>  
+                </li> 
                                                 <li>    
                                                         <a href="#homeSubmenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-user pr-2"></i>Administrator<i class="fas fa-chevron-right" style="float:right"></i></a> 
                                                             <ul class="collapse list-unstyled" id="homeSubmenu1">
@@ -221,7 +223,7 @@
                                                         </span>
                                                         </a> 
                                                     </li>
-                                                    <a href=""class="a-color"><i class="fas fa-edit"></i> Activity Log <span style="float:right;">
+                                                    <a href="/admin/activity_logs"class="a-color"><i class="fas fa-edit"></i> Activity Log <span style="float:right;">
                                                     </span>
                                                     </a> 
                                                     </li>
