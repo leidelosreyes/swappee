@@ -23,6 +23,20 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script src="{{asset('js/jquery.js')}}"></script>
     
+    
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
   
 </head>
 <body>
@@ -36,4 +50,6 @@
 @include('layouts.footer')
 @include('home-script.script-file')
 </body>
+
+
 </html>

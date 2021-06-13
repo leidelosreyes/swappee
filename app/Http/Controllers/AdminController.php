@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\{User,Offer,Post,Categories,Sub_categorie,Message,bidder,auction,ActivityLog,Profile,Point};
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -107,12 +108,15 @@ class AdminController extends Controller
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
              $swaps = Post::simplepaginate(1);
-            return view('admins.admin.swap.show',compact('swaps'));
+             $sub_categorie = Sub_categorie::all();
+             return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
         }
         if(Auth::user()->usertype == 'admin')
         {
              $swaps = Post::simplepaginate(1);
-            return view('admins.admin.swap.show',compact('swaps'));
+             $categories = Categories::all();
+             $sub_categorie = Sub_categorie::all();
+            return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
         }
         return redirect()->back()->with('error','You are not authorized');
         
@@ -388,6 +392,37 @@ class AdminController extends Controller
         }
         return view('admins.admin.show',compact('admins'));
     }
+    public function post_details($id){
+        $posts = Post::findOrfail($id);
+        return view('admins.admin.swap.show_details',compact('posts'));
+    }
+    public function edit_post(Request $request,$id){
+        if(Auth::user()->usertype != 'admin')
+        {
+            return redirect()->back()->with('error','You are not authorized to Update Administrator');
+        }
+        $edit = Post::where('id',$id)->update([
+            'product_name'      => $request->product_name,
+            'description'       => $request->description,
+            'location'          => $request->location,
+            'wishitem'          => $request->wishitem,
+            'price'             => $request->price,
+            'delivery_method'   => $request->delivery_method,
+            
+        ]);
+        return redirect()->back()->with('success','Item updated successfully');
+    }
+    // public function search_admin($admin_id){
+    //     $search = $request->query('search_admin');
+    //     if($search!=""){
+    //         $admin = Users::where('name','like','%'.$search.'%')
+    //         ->where('user_id',$admin_id)->paginate(10);
+    //         $admin->appends(['search_admin'=>$search]);
+    //     }else{
+    //         $admin = Users::where('user_id',$admin_id)->simplepaginate(20);
+    //     }
+    //     return view('admins.admin.show',compact('admins'));
+    // }
    
    
 }

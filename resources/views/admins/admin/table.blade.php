@@ -43,13 +43,12 @@
 
 
 <!-- Modal -->
-
-@foreach($admins as $admin_modal)
+@foreach($admins as $admin)
 <div class="modal fade " id="edit{{$admin->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-m">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ucfirst($admin_modal->usertype)}} credentials</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{ucfirst($admin->usertype)}} credentials</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -57,7 +56,7 @@
       <div class="modal-body">
       
         <!--Update Form-->
-        <form action="{{route('update.admin',$admin_modal->id)}}" method ="post" enctype="multipart/form-data">
+        <form action="{{route('update.admin',$admin->id)}}" method ="post" enctype="multipart/form-data">
         @csrf
         <div class="form__div">
                                           <input type="text" 
@@ -65,7 +64,7 @@
                                           name="name"
                                           style="height:60px;"
                                           class="form__input form-control @error('name') is-invalid @enderror"
-                                          value="{{$admin_modal->name}}"
+                                          value="{{$admin->name}}"
                                           autocomplete="name" autofocus
                                           placeholder="">
                                           <label for="" class="form__label">Edit name <label style="color:red;">*</label></label>
@@ -82,7 +81,7 @@
                                           name="email"
                                           style="height:60px;"
                                           class="form__input form-control @error('email') is-invalid @enderror"
-                                          value="{{$admin_modal->email}}"
+                                          value="{{$admin->email}}"
                                           autocomplete="email" autofocus
                                           placeholder="">
                                           <label for="" class="form__label">Edit E-mail <label style="color:red;">*</label></label>
@@ -98,7 +97,7 @@
                                       id="usertype"
                                       name="usertype"
                                       class="form-control form__input @error('usertype') is-invalid @enderror"
-                                      value="{{$admin_modal->usertype}}"
+                                      value="{{$admin->usertype}}"
                                       autocomplete="usertype" autofocus 
                                       style="height: 60px;">
                                     
@@ -121,7 +120,7 @@
                                           name="address"
                                           style="height:60px;"
                                           class="form__input form-control @error('address') is-invalid @enderror"
-                                          value="{{$admin_modal->profile->address}}"
+                                          value="{{$admin->profile->address}}"
                                           autocomplete="email" autofocus
                                           placeholder="">
                                           <label for="" class="form__label">Edit Address <label style="color:red;">*</label></label>
@@ -138,7 +137,7 @@
                                           name="cellphone_no"
                                           style="height:60px;"
                                           class="form__input form-control @error('cellphone_no') is-invalid @enderror"
-                                          value="{{$admin_modal->profile->cellphone_no}}"
+                                          value="{{$admin->profile->cellphone_no}}"
                                           autocomplete="email" autofocus
                                           placeholder=""
                                           
@@ -159,24 +158,7 @@
 </div>
  @endforeach
 
-
-
-
-
-<!--Modal-->
 <!-- Modal -->
-
-
-
-
-
-
-
-
-
-
-
-
 @foreach($admins as $admin)
 <div class="modal fade" id="view{{$admin->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
