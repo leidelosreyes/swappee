@@ -12155,7 +12155,6 @@ h2 {
     width: 32%;
 }
 
-<<<<<<< HEAD
 .footer-distributed .footer-center i {
     background-color: #33383b;
     color: #ffffff;
@@ -12172,38 +12171,18 @@ h2 {
 .footer-distributed .footer-center i.fa-envelope {
     font-size: 17px;
     line-height: 38px;
-=======
-.footer-distributed .footer-center i{
-  background-color: #33383b;
-  color: #ffffff;
-  font-size: 12px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 30px;
-  margin: 10px 15px;
-  vertical-align: middle;
-}
-
-.footer-distributed .footer-center i.fa-envelope{
-    font-size: 12px;
->>>>>>> 5784e8e62c697070792bb157080fb5172db0be28
 }
 
 .footer-distributed .footer-center p {
     display: inline-block;
     color: #ffffff;
-<<<<<<< HEAD
     font-weight: 400;
     vertical-align: middle;
     margin: 0;
-=======
     font-weight:400;
     vertical-align: middle;
     margin:0;
     font-size: .9rem;
->>>>>>> 5784e8e62c697070792bb157080fb5172db0be28
 }
 
 .footer-distributed .footer-center p span {
@@ -12240,11 +12219,8 @@ h2 {
 
 .footer-distributed .footer-company-about {
     line-height: 20px;
-<<<<<<< HEAD
     color: #92999f;
-=======
     color:  #ffffff;
->>>>>>> 5784e8e62c697070792bb157080fb5172db0be28
     font-size: 13px;
     font-weight: normal;
     margin: 0;
@@ -12268,13 +12244,10 @@ h2 {
     height: 30px;
     cursor: pointer;
     /* background-color:  #33383b; */
-<<<<<<< HEAD
     border-radius: 100%;
     font-size: 20px;
-=======
     border-radius:100%;
     font-size: 15px;
->>>>>>> 5784e8e62c697070792bb157080fb5172db0be28
     background-color: white;
     text-align: center;
     line-height: 30px;
