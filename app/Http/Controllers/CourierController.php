@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{bidder,auction,Offer,Message,User};
+use App\Models\{bidder,auction,Offer,Message,User,Point};
 use Auth;
 use Mail;
 use App\Models\Profile;
@@ -185,7 +185,8 @@ class CourierController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->get();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        return view('courier.place_order',compact('courier','messages','notifications','offer'));
+        $points = Point::findorFail(Auth::id())->first();
+        return view('courier.place_order',compact('courier','messages','notifications','offer','points'));
     }
 
      public function place_order_swap(Request $request){
@@ -224,6 +225,7 @@ class CourierController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->get();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        return view('courier.order_list',compact('courier','messages','notifications','offer'));
+        $points = Point::findorFail(Auth::id())->first();
+        return view('courier.order_list',compact('courier','messages','notifications','offer','points'));
      }
 }

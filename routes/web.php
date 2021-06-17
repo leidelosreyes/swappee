@@ -119,6 +119,8 @@ Route::get('/search/search_public_view/{id}', [App\Http\Controllers\ProfileContr
 Route::get('/user/show/won_item',[App\Http\Controllers\BidderController::class, 'show'])->name('user.won_view');
 Route::get('/user/edit_profile',[App\Http\Controllers\ProfileController::class, 'edit_profile'])->name('user.edit_profile');
 Route::post('/user/update',[App\Http\Controllers\ProfileController::class, 'update_profile'])->name('user.update_profile');
+Route::get('/user/leaderboards',[App\Http\Controllers\ProfileController::class, 'leaderboards'])->name('leaderboards');
+
 //-----------------------------------Message-------------------------------------
 Route::post('/message',[App\Http\Controllers\MessageController::class, 'store'])->name('message');
 Route::post('/message_reply',[App\Http\Controllers\MessageController::class, 'store_reply'])->name('message.reply');

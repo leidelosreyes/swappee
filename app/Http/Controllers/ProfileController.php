@@ -72,7 +72,9 @@ class ProfileController extends Controller
         $points = Point::where('user_id',$id)->first();
         $sub_categories = Sub_categorie::all();
         $points = Point::findorFail(Auth::id())->first();
-        return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','points'));
+        $messages = Message::where('receiver_id',Auth::id())->get();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','points','messages','offer'));
        
    }
   
@@ -205,7 +207,9 @@ class ProfileController extends Controller
     $sub_categories = Sub_categorie::all();
      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $points = Point::where('user_id',$id)->first();
-    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','messages','offer'));
    }
 
    public function filter_by_sub_category($sub_category,$id){
@@ -217,6 +221,17 @@ class ProfileController extends Controller
     $sub_categories = Sub_categorie::all();
      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $points = Point::where('user_id',$id)->first();
-    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories'));
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+    return view('User.profile_public_view', compact('posts','categories','notifications','users','points','sub_categories','messages','offer'));
+   }
+
+   public function leaderboards(){
+    $messages = Message::where('receiver_id',Auth::id())->get();
+    $offer = Offer::where('sender_id',Auth::id())->get();
+     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+    $points = Point::findorFail(Auth::id())->first();
+    $leaderboards = Point::orderby('amount','desc')->simplepaginate(10);
+    return view('User.leaderboards', compact('messages','notifications','offer','points','leaderboards'));
    }
 }

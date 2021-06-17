@@ -23,7 +23,7 @@ class AdminController extends Controller
         $winners = Bidder::where('winners',1)->get();
         $swaps = Post::get();
         $bidders = bidder::get();
-        $points = Point::get();
+        $points = Point::orderby('amount','desc')->get();
         return view('admins.admin.index',compact('users','winners','swaps','bidders','points'));
     }
 

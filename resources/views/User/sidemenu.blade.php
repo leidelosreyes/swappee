@@ -17,8 +17,8 @@
                       
                     </li>      
                 <li>    
-                    <a href="#sidemenu" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i><span style="margin-left: .4rem;"> My Items</span><i class="fas fa-chevron-right" style="float:right"></i></a> 
-                        <ul class="collapse list-unstyled" id="sidemenu">
+                    <a href="#sidemenu-new" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fa fa-box-open"></i><span style="margin-left: .4rem;"> My Items</span><i class="fas fa-chevron-right" style="float:right"></i></a> 
+                        <ul class="collapse list-unstyled" id="sidemenu-new">
                             <div class="pl-2">
                                  <li>
                                         <a href="{{route('user.profile')}}"class="a-color"><i class="fa fa-sync"></i> Swap </a>
@@ -32,8 +32,8 @@
                         </ul>   
                </li>
                <li>    
-                    <a href="#sidemenu1" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check" style="font-size: 1rem;"></i><span style="margin-left: .8rem;"> Accepted Item </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
-                        <ul class="collapse list-unstyled" id="sidemenu1">
+                    <a href="#sidemenu1-new" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-clipboard-check" style="font-size: 1rem;"></i><span style="margin-left: .8rem;"> Accepted Item </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
+                        <ul class="collapse list-unstyled" id="sidemenu1-new">
                             <div class="pl-2">
                                 <li>
                                         <a href="{{route('for_meetup_item.show')}}"class="a-color"><i class="far fa-handshake"></i> Meet Up</a>                     
@@ -47,8 +47,8 @@
                         </ul>   
                </li>
                <li>    
-                    <a href="#sidemenu1-toReceive" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-truck"></i><span style="margin-left: .4rem;"> To Receive </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
-                        <ul class="collapse list-unstyled" id="sidemenu1-toReceive">
+                    <a href="#sidemenu1-toReceive-new" data-toggle="collapse"aria-expanded="false" class="a-color"><i class="fas fa-truck"></i><span style="margin-left: .4rem;"> To Receive </span><i class="fas fa-chevron-right" style="float:right"></i></a> 
+                        <ul class="collapse list-unstyled" id="sidemenu1-toReceive-new">
                             <div class="pl-2">
 
                                 <li>
@@ -82,6 +82,9 @@
 
 
                 <hr>
+                    <li>
+                        <a href="{{route('leaderboards')}}"class="a-color"><i class="fas fa-chess"></i> Leaderboards </a> 
+                    </li>
                 <li>
                     <a href=""class="a-color"><i class="fas fa-list-ol"></i> Order List </a> 
                 </li>

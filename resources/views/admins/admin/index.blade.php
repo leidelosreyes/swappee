@@ -123,10 +123,11 @@
                 
                     <tr>
                     @foreach($users as $user)
-                    <th scope="row">  @if(empty($users->avatar))
+                    <th scope="row">  
+                      @if(empty($user->avatar))
                     <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
                       @else
-                    <img src="{{$users->avatar}}" class="card-avatar"/>
+                    <img src="{{$user->avatar}}" class="card-avatar"/>
                     @endif</th>
                     <td> <p class="mt-2">{{$user->name}}</p> </td>
                     <td> <p class="mt-2">{{$user->email}}</p> </td>
