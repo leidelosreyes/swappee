@@ -78,7 +78,7 @@
                             <span class="badge badge-pill badge-{{$approval}}"><i class="fa fa-check" aria-hidden="true">Approved</i></span>
                           @else
                           @php
-                            $approval = "secondary"
+                            $approval = "danger"
                           @endphp
                           <span class="badge badge-pill badge-{{$approval}}"><i class="fas fa-history"></i> Pending</span>
                       @endif
