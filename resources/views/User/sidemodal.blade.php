@@ -97,6 +97,9 @@
 
 
                 <hr>
+                    <li>
+                        <a href="{{route('leaderboards')}}"class="a-color"><i class="fas fa-chess"></i> Leaderboards </a> 
+                    </li>
                 <li>
                     <a href=""class="a-color"><i class="fas fa-list-ol"></i> Order List </a> 
                 </li>
