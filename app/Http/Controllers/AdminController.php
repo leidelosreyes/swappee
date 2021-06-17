@@ -107,13 +107,13 @@ class AdminController extends Controller
     public function show_swap(){
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
-             $swaps = Post::simplepaginate(1);
+             $swaps = Post::simplepaginate(10);
              $sub_categorie = Sub_categorie::all();
              return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
         }
         if(Auth::user()->usertype == 'admin')
         {
-             $swaps = Post::simplepaginate(1);
+             $swaps = Post::simplepaginate(10);
              $categories = Categories::all();
              $sub_categorie = Sub_categorie::all();
             return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
