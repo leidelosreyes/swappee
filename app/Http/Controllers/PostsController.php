@@ -45,7 +45,7 @@ class PostsController extends Controller
                 'category_id' => 'required',
                 'sub_category_id' => 'required',
                 'delivery_method' => 'required',       
-                'image' => 'required|max:8192|image'
+                'image' => 'required|max:500000|image'
 
         ]);
 
