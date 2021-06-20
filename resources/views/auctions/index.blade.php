@@ -159,12 +159,12 @@
                           <!-- web view -->
                           <div class="d-none d-lg-block">
                               <img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                              object-fit: contain;" alt="" />
                           </div>
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
                             <img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
-                              object-fit: cover;" alt="" />
+                              object-fit: scale-down;" alt="" />
                           </div>		
                            <!-- end mobile veiw -->
                               

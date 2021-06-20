@@ -126,7 +126,7 @@
                       	   <!-- web view -->
                            <div class="d-none d-lg-block">
                           <a href="{{route('posts.show',$post->id)}}"><img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
-                              object-fit: cover;"/></a>
+                              object-fit: contain;"/></a>
                           </div>
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
