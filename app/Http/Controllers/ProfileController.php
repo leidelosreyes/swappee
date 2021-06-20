@@ -31,9 +31,9 @@ class ProfileController extends Controller
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
-     $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+    $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $auctions = auction::where('user_id',Auth::id())->simplepaginate(20);
-    $point = DB::table('points')->Where('user_id',Auth::id())->first();
+    $points = DB::table('points')->Where('user_id',Auth::id())->first();
     return view('auctions.profile_view', compact('posts','messages','notifications','offer','auctions','points'));
    }
    public function index_public_view()

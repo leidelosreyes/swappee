@@ -24,7 +24,7 @@ class AuctionController extends Controller
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-      $points = Point::Where('user_id',Auth::id())->first();
+        $points = Point::Where('user_id',Auth::id())->first();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer','points'));
     }
 
@@ -36,7 +36,7 @@ class AuctionController extends Controller
         $sub_categories = Sub_categorie::all();
         $offer = Offer::where('sender_id',Auth::id())->get();
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-      $points = Point::Where('user_id',Auth::id())->first();
+        $points = Point::Where('user_id',Auth::id())->first();
         return view('auctions.create',compact('messages','categories','sub_categories','offer','notifications','points'));
     }
 
@@ -93,6 +93,44 @@ class AuctionController extends Controller
            $bidders = bidder::where('auction_id',$auction->id)->orderBy('amount','desc')->get();
            return view('auctions.view',compact('auction','more_posts','notifications','messages','offer','bidders'));
         
+    }
+    public function edit($id){
+        $auctions = auction::find($id);
+        if($auctions->approved == true){
+            return redirect()->back()->with("error",'Your post has been reviewed and verified by the admin ! Changing information is prohibited');
+        }
+        $messages = Message::where('receiver_id',Auth::id())->simplepaginate(15);
+        $categories = Categories::all();
+        $sub_categories = Sub_categorie::all();
+        $offer = Offer::where('sender_id',Auth::id())->get();
+        $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+        $points = Point::Where('user_id',Auth::id())->first();
+        return view('auctions.edit',compact('messages','categories','sub_categories','offer','notifications','points','auctions'));
+
+    }
+    public function update(Request $request,$id){
+        $request->validate([
+            'product_name'        => 'required',
+            'estimated_price'     => 'required|string|min:2|max:6',
+            'bidding_start_price' => 'required|string|min:2|max:6',
+            'description'         => 'required',
+            'end_date'            => 'required|date|after_or_equal:date',
+            'category_id'         => 'required',
+            'sub_category_id'     => 'required',
+            'image'               => 'required|max:8192|image'
+        ]);
+        $imagePath = $request->image->store('uploads','public');
+        $auctions = auction::find($id)->update([
+            'product_name'         => $request->product_name,
+            'estimated_price'      => $request->estimated_price,
+            'bidding_start_price'  => $request->bidding_start_price,
+            'description'          => $request->description,
+            'end_date'             => $request->end_date,
+            'category_id'          => $request->category_id,
+            'sub_category_id'      => $request->sub_category_id,
+            'image'                => $imagePath
+        ]);
+        return redirect()->route('user.auction_view')->with('success','Auction Post Updated Successfully');
     }
     public function delete($id){
         $item_name = auction::findOrFail($id);

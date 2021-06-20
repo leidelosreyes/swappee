@@ -27,9 +27,9 @@
                                 @endif
                                 @if ($message = Session::get('error'))
                                 <div class="alert alert-danger mt-4">
-                                     <p>{{$message}}</p>
+                                     <p><i class="fas fa-info-circle"  style="color:red;"></i> {{$message}}</p>
                                 </div>
-                                @endif
+                                @endif      
                                 <h2>Auctions</h2> 
                            
                            <!-- web view -->
@@ -86,7 +86,7 @@
                                         </div>
                                     
                                         <div class="d-flex flex-column mt-2">
-                                        <a href="{{route('posts.edit',$post->id)}}" class="btn btn-outline-warning btn-sm mb-2" type="button">Edit</a>
+                                        <a href="{{route('auctions.edit',$post->id)}}" class="btn btn-outline-warning btn-sm mb-2" type="button">Edit</a>
                                         <button  data-toggle="modal" data-target="#{{$post->id}}" class="btn btn-outline-warning btn-sm" >Details</button>
                                         {!! Form::open(['route' => ['auctions.delete', $post->id], 'method' => 'delete']) !!}
                                         <button class="delete form-control btn-sm mt-2" style="height:30px;" >Delete</button>

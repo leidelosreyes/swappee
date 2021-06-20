@@ -77,12 +77,12 @@
 
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
-                                     <p>{{$message}}</p>
+                                <p> <i class="fas fa-check-circle" style="color:green;"></i> {{$message}}</p>
                                 </div>
                                 @endif
                                 @if ($message = Session::get('error'))
                                 <div class="alert alert-danger mt-4">
-                                     <p>{{$message}}</p>
+                                     <p><i class="fas fa-exclamation-circle" style="color:red;"></i>{{$message}}</p>
                                 </div>
                                 @endif
           @forelse($posts as $post)

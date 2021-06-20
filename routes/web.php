@@ -93,11 +93,15 @@ Route::get('/posts/{post}/edit_user_post',[App\Http\Controllers\ProfileControlle
 Route::put('/posts/{id}',[App\Http\Controllers\ProfileController::class,'update_auth_user_post'])->name('posts.update');
 Route::delete('/posts/{posts}',[App\Http\Controllers\ProfileController::class,'destroy_auth_user_post'])->name('posts.delete');
 //--------------------------------Auction item---------------------------------
-Route::get('/auctions/create',[App\Http\Controllers\AuctionController::class, 'create'])->name('auctions.create');
-Route::post('/auctions/store',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions.store');
-Route::get('/auctions/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
-Route::get('/auctions/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
-Route::delete('/auctions/{id}',[App\Http\Controllers\AuctionController::class, 'delete'])->name('auctions.delete');
+Route::prefix('auctions')->group(function (){
+  Route::get('/create',[App\Http\Controllers\AuctionController::class, 'create'])->name('auctions.create');
+  Route::post('/store',[App\Http\Controllers\AuctionController::class, 'store'])->name('auctions.store');
+  Route::get('/index',[App\Http\Controllers\AuctionController::class, 'index'])->name('auctions.index');
+  Route::get('/show/{auction}',[App\Http\Controllers\AuctionController::class, 'show'])->name('auctions.show');
+  Route::get('/edit/{id}',[App\Http\Controllers\AuctionController::class, 'edit'])->name('auctions.edit');
+  Route::post('/update/{id}',[App\Http\Controllers\AuctionController::class, 'update'])->name('auctions.update');
+  Route::delete('/delete/{id}',[App\Http\Controllers\AuctionController::class, 'delete'])->name('auctions.delete');
+});
 Route::get('/search/auction', [App\Http\Controllers\AuctionController::class, 'search'])->name('auctions.search');
 //------------------------------------Offer----------------------------------------
 Route::get('/offers/create/{post}/{post_id}',[App\Http\Controllers\OfferController::class, 'create'])->name('offers.create');
