@@ -104,17 +104,21 @@ class ProfileController extends Controller
    public function edit_auth_user_post($posts)
    {
           $posts = Post::find($posts);
-      $points = Point::Where('user_id',Auth::id())->first(); 
+          if($posts->approved == 1){
+              return redirect()->back()->with("error",'Your post has been reviewed and verified by the admin ! Changing information is prohibited');
+          }
+         
+          $points = Point::Where('user_id',Auth::id())->first(); 
           $messages = Message::where('receiver_id',Auth::id())->get();
-           $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
+          $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
           $offer = Offer::where('sender_id',Auth::id())->get();
           $sub_categories = Sub_categorie::all();
           $categories = Categories::all();
          return view('posts.edit_user_post',compact('posts','messages','categories','notifications','sub_categories','offer','points'));
    }
-   public function update_auth_user_post(Request $request ,post $posts )
+   public function update_auth_user_post(Request $request ,$id )
    {
-    $data = request()->validate([
+    $request->validate([
         'product_name' => 'required',
         'description' => 'required',
         'location' => 'required',
@@ -122,9 +126,21 @@ class ProfileController extends Controller
         'price' => 'required|string|min:2|max:8',
         'category_id' => 'required',
         'sub_category_id' => 'required',
-        'delivery_method' => 'required'    
+        'delivery_method' => 'required',
+        'image' => 'required|max:8192|image' 
     ]);
-      $posts->update($request->all());
+      $imagePath = $request->image->store('uploads','public');
+      $posts = Post::find($id)->update([
+                      'product_name'   =>$request->product_name,
+                      'description'    =>$request->description,
+                      'location'       =>$request->location,
+                      'wishitem'       =>$request->wishitem,
+                      'price'          =>$request->price,
+                      'category_id'    =>$request->category_id,
+                      'sub_category_id'=>$request->sub_category_id,
+                      'delivery_method'=>$request->delivery_method,
+                      'image'          =>$imagePath
+    ]);
       $action = "Updated an item {$request->product_name}";
       $activitylog = ActivityLog::store_log($action);
       return redirect()->route('user.profile')

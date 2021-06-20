@@ -1,4 +1,4 @@
-<form method="post" action="/posts/{{$posts->id}}" >
+<form method="post" action="/posts/{{$posts->id}}"  enctype="multipart/form-data">
         @csrf
         @method('PUT')   
        
@@ -152,7 +152,37 @@
                                                 <span class="invalid-feedback" role="alert ">
                                                     <strong style="color:red;">{{$message}}</strong>
                                                 </span>
-                                            @enderror      
+                                            @enderror        <label class="mt-4" for="image" style="margin-bottom:0;">Image <label style="color:red;">*</label></label>
+                                        <div class="card mt-0">
+                                                <div class="card-body pt-0">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                          
+                                                             <input type="file" name="image" class="file" accept="image/*" style="visibility: hidden;position: absolute;">
+                                                           <div class="input-group my-3">
+                                                             <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
+                                                             <div class="input-group-append">
+                                                              <button type="button" class="browse btn btn-primary" style="background-color: #FFB52E;border:none;">Browse...</button>
+                                                             </div>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                    <div style="text-align:center;">
+                                                    <img src="" id="preview" class="img-thumbnail" style="width:50%; border:none;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                  
+                                              @error('image')
+                                                  
+                                                          <p style="color:red;">{{$message}}</p>
+                                                    
+                                              @enderror  
+
     
                          <button type="sumbit" class="btn btn-primary mt-4 mb-4 form-control"style="background-color:#FFB52E;border:none;"> <i class="fas fa-save"></i> Save</button> 
 </form>

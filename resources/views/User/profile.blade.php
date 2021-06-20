@@ -20,19 +20,19 @@
          <div class="card-box"class="border"style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">   
                                @if ($message = Session::get('success'))
                                 <div class="alert alert-success mt-4">
-                                     <p>{{$message}}</p>
+                                <p> <i class="fas fa-check-circle" style="color:green;"></i> {{$message}}</p>
                                 </div>
                                 @endif
                                 @if ($message = Session::get('error'))
-                                <div class="alert alert-danger mt-4">
-                                     <p>{{$message}}</p>
+                                <div class="alert alert-info mt-4">
+                                     <p><i class="fas fa-info-circle"  style="color:blue;"></i> {{$message}}</p>
                                 </div>
                                 @endif
                                 <h2 class="header-title mb-3 mt-4">For Swap</h2> 
                         <!-- web view -->
 
                         <div class="d-none d-lg-block">
-                            <a class="btn btn-primary float-right" href="{{route('posts.create')}}" style="background-color:#FFB52E; border:none;">Add Product</a>        
+                            <a class="btn btn-primary float-right" href="{{route('posts.create')}}" style="background-color:#FFB52E; border:none;">Add Item</a>        
                         <form class="d-flex mb-2 mt-2"  action="{{route('search.profile_product')}}" method="GET">
                         <input class="form-control mr-sm-2 search_box_category" type="search" name="search" placeholder="Search your items" aria-label="Search">
                         </form>
@@ -52,8 +52,8 @@
        <!-- product card -->
        @forelse($posts as $post)
             @empty
-                <div class="alert alert-danger mt-4">
-                    <p><i class="fas fa-exclamation-triangle" style="color:red;"></i> No Items Found </p>
+            <div class="alert alert-info mt-4">
+                    <p><i class="fas fa-info-circle"  style="color:blue;"></i> No Items Found ? click the add item to create your  post </p>
                 </div>
         @endforelse
                 @foreach($posts as $post)

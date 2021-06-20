@@ -44,8 +44,7 @@ class PostsController extends Controller
                 'price' => 'required|string|min:2|max:6',
                 'category_id' => 'required',
                 'sub_category_id' => 'required',
-                'delivery_method' => 'required',
-                
+                'delivery_method' => 'required',       
                 'image' => 'required|max:8192|image'
 
         ]);

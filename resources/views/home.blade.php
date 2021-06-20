@@ -126,12 +126,12 @@
                       	   <!-- web view -->
                            <div class="d-none d-lg-block">
                           <a href="{{route('posts.show',$post->id)}}"><img src="/storage/{{$post->image}}"  style=" height:12rem; width: 100%;
-                              object-fit: cover;" alt="" /></a>
+                              object-fit: cover;"/></a>
                           </div>
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
                           <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
-                              object-fit: cover;" alt="" /></a>
+                              object-fit: scale-down;"  class="swap-trans-image" alt="" /></a>
                           </div>		
                            <!-- end mobile veiw -->
                               
