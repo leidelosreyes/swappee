@@ -61,7 +61,7 @@
                               <!-- mobile view -->
                           <div class="d-sm-block d-md-none">
                           <a href="/posts/{{$post->id}}"><img src="/storage/{{$post->image}}"  style=" height:7rem; width: 100%;
-                              object-fit: cover;" alt="" /></a>
+                              object-fit: scale-down;" alt="" /></a>
                           </div>		
                            <!-- end mobile veiw -->
                               

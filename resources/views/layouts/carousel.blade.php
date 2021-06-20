@@ -74,7 +74,7 @@
       <div class="carousel-item active">    
               <img class="carousel-image" style="height:250px; width:100%; " src="{{asset('image/delivery-c-new.jpg')}}" alt="First slide">
               <div class="carousel-caption d-md-block">  
-              <p style="color: #ffffff;font-size: 16px;font-weight: 300;font-family: 'Roboto', sans-serif;margin-top: 15px;">Swapping will make you fell better. </p>
+              <p style="color: #ffffff;font-size: 16px;font-weight: 300;font-family: 'Roboto', sans-serif;margin-top: 15px;">Swapping will make you feel better. </p>
         </div>
       </div>
       <div class="carousel-item ">
