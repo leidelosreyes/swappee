@@ -18,7 +18,7 @@ class AdminController extends Controller
     }
     
     public function index()
-    {   
+    {   // admin  show details
         $users = User::where('usertype',null)->get();
         $winners = Bidder::where('winners',1)->get();
         $swaps = Post::get();
@@ -329,7 +329,7 @@ class AdminController extends Controller
         return redirect('admin')->with('success','Admin Successfully updated');
     }
     public function show_activity_logs(){
-        $logs = ActivityLog::orderBy('created_at','desc')->simplepaginate(10);
+        $logs = ActivityLog::orderBy('created_at','desc')->simplePaginate(10);
         return view('admins.admin.activity_log',compact('logs'));
     }
     public function search_activity(Request $request){

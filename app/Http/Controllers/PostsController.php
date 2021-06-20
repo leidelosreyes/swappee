@@ -87,7 +87,6 @@ class PostsController extends Controller
         //         return redirect()->route('home')
         //       ->with('error','Please go to your profile and provide contact no');
         //     }
-           
            if($post->user_id == Auth::id())
            {
             $action = "Failed Swap-Trying to swap own item";
@@ -99,7 +98,8 @@ class PostsController extends Controller
            $messages = Message::where('receiver_id',Auth::id())->get();
            $offer = Offer::where('sender_id',Auth::id())->get();
            $more_posts = Post::where('approved',1)->where('user_id',$post->user_id)->simplepaginate(20);
-           return view('posts.view',compact('post','more_posts','notifications','messages','offer'));
+           $post_id = $post->id;
+           return view('posts.view',compact('post','more_posts','notifications','messages','offer','post_id'));
         
     }
 

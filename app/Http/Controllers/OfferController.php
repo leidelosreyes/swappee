@@ -15,7 +15,6 @@ class OfferController extends Controller
     }
    public function create($post,$post_id)
    {
-      
       $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       return view('offers.create',compact('post','notifications','post_id'));
 
@@ -40,7 +39,7 @@ class OfferController extends Controller
    }
    public function store(Request $request )
    {
-      
+  
          $data = request()->validate
        ([
         'product_name' => 'required',

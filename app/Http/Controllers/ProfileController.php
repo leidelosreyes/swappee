@@ -14,18 +14,14 @@ class ProfileController extends Controller
     {
         $this->middleware(['auth']);
     }
-   public function index()
+   public function new_index()
    {
-    //    query builder
-    // $posts = DB::table('posts')->where('user_id', auth()->id())->get();
-    //     eloquent orm
     $posts = post::where('user_id',Auth::id())->simplepaginate(20);
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-    // $points = DB::table('points')->Where('user_id',Auth::id())->first();
-    $points = Point::findorFail(Auth::id())->first();
-    return view('User.profile', compact('posts','messages','notifications','offer','points'));
+    $points = DB::table('points')->Where('user_id',Auth::id())->first();
+     return view('User.profile', compact('posts','messages','notifications','offer','points'));
    }
    public function auction_index()
    {
@@ -138,13 +134,14 @@ class ProfileController extends Controller
    }
    public function destroy_auth_user_post($posts)
    {
-         
+         // delete product //
          $posts = Post::find($posts);
          $action = "Deleted an item {$posts->product_name}";
          $activitylog = ActivityLog::store_log($action);
          $posts->delete();
          return redirect()->route('user.profile')
             ->with('success','Product deleted successfully');
+
    }
    public function edit_profile(){
     $id = Auth::id();
@@ -227,6 +224,7 @@ class ProfileController extends Controller
    }
 
    public function leaderboards(){
+       // show leader boards //
     $messages = Message::where('receiver_id',Auth::id())->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();

@@ -111,7 +111,7 @@ Route::get('/offers/edit/{id}',[App\Http\Controllers\OfferController::class, 'ed
 Route::post('/offers/delete/{id}',[App\Http\Controllers\OfferController::class, 'delete'])->name('offer.delete');
 Route::post('/notification/delete/{id}',[App\Http\Controllers\OfferController::class, 'delete_notification'])->name('notification.delete');
 //-------------------------------- User ---------------------------------
-Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'index'])->name('user.profile');
+Route::get('/user/profile',[App\Http\Controllers\ProfileController::class,'new_index'])->name('user.profile');
 Route::get('/user/auctions/profile_view',[App\Http\Controllers\ProfileController::class,'auction_index'])->name('user.auction_view');
 Route::get('/user/profile_public_view',[App\Http\Controllers\ProfileController::class,'index_public_view'])->name('user.profile_public_view');
 Route::get('/search/profile_product', [App\Http\Controllers\ProfileController::class, 'search'])->name('search.profile_product');

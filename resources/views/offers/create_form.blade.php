@@ -19,7 +19,7 @@
 
                             </div>
                             <div class="form-group row">
-                                      <input type="hidden"
+                                      <input type="text"
                                       placeholder="Enter r id" 
                                       id="post_id"
                                       name="post_id"
@@ -32,7 +32,6 @@
                                               <strong style="color:red;">{{$message}}</strong>
                                           </span>
                                       @enderror
-
                             </div>
                             <div class="form__div">
                                         <input type="text" 
