@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{bidder,auction,Offer,Message,User,Point};
+use App\Models\{bidder,auction,Offer,Message,User,Point,Profile};
 use Auth;
 use Mail;
 use Carbon\Carbon;
@@ -126,7 +126,8 @@ class BidderController extends Controller
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         $winners = bidder::where('user_id',Auth::id())->Where('winners',1)->simplepaginate(20);
         $points = Point::findorFail(Auth::id())->first();
-        return view('bidding.winner',compact('winners','messages','offer','notifications','points'));
+        $user = Profile::find(Auth::id());
+        return view('bidding.winner',compact('winners','messages','offer','notifications','points','user'));
     }
 
     /**

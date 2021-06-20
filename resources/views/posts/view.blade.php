@@ -466,7 +466,7 @@
                                          placeholder=" "
                                          style="height:60px;"
                                          class="form-control form__input @error('location') is-invalid @enderror"
-                                         value="{{Auth::user()->profile->address}}"
+                                         value="{{$user->address}}"
                                          autocomplete="location" autofocus
                                         >
                                         <label for="" class="form__label" style="background:none;">Location <label style="color:red;">*</label></label>

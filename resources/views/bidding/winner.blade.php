@@ -118,7 +118,7 @@
                                         style="height:60px;"
                                         placeholder=" "
                                         class="form__input form-control  @error('drop_off_location') is-invalid @enderror"
-                                        value="{{Auth::user()->profile->address}}"
+                                        value="{{$user->address}}"
                                         autocomplete="drop_off_location" autofocus
                                         >
                                         <label for="" class="form__label">Your Drop off Address</label></label>

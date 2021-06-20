@@ -98,7 +98,8 @@ class PostsController extends Controller
            $offer = Offer::where('sender_id',Auth::id())->get();
            $more_posts = Post::where('approved',1)->where('user_id',$post->user_id)->simplepaginate(20);
            $post_id = $post->id;
-           return view('posts.view',compact('post','more_posts','notifications','messages','offer','post_id'));
+           $user = Profile::find(Auth::id());
+           return view('posts.view',compact('post','more_posts','notifications','messages','offer','post_id','user'));
         
     }
 
