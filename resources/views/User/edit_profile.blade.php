@@ -39,38 +39,6 @@
                                         @enderror
                             </div>
                             <div class="form__div">
-                                        <input type="email" 
-                                        id="email"
-                                        name="email"
-                                        style="height:60px;"
-                                        class="form__input form-control @error('email') is-invalid @enderror"
-                                        value="{{$user->email}}"
-                                        autocomplete="email" autofocus
-                                        placeholder=" ">
-                                        <label for="" class="form__label">Enter Email <label style="color:red;">*</label></label>
-                                        @error('email')
-                                                <span class="invalid-feedback" role="alert ">
-                                                    <strong style="color:red;">{{$message}}</strong>
-                                                </span>
-                                        @enderror
-                            </div>
-                            <div class="form__div">
-                                        <input type="number" 
-                                        id="cellphone_no"
-                                        name="cellphone_no"
-                                        style="height:60px;"
-                                        class="form__input form-control @error('cellphone_no') is-invalid @enderror"
-                                        value="{{$user->profile->cellphone_no}}"
-                                        autocomplete="cellphone_no" autofocus
-                                        placeholder=" ">
-                                        <label for="" class="form__label">Enter cellphone_no <label style="color:red;">*</label></label>
-                                        @error('cellphone_no')
-                                                <span class="invalid-feedback" role="alert ">
-                                                    <strong style="color:red;">{{$message}}</strong>
-                                                </span>
-                                        @enderror
-                            </div>
-                            <div class="form__div">
                                         <input type="text" 
                                         id="location"
                                         name="address"

@@ -160,11 +160,11 @@ class ProfileController extends Controller
    }
    public function edit_profile(){
     $id = Auth::id();
-    $user = User::findOrFail($id);
+    $user = User::find($id);
     $messages = Message::where('receiver_id',Auth::id())->get();
      $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
     $offer = Offer::where('sender_id',Auth::id())->get();
-$points = Point::Where('user_id',Auth::id())->first(); 
+    $points = Point::Where('user_id',Auth::id())->first(); 
     return view('User.edit_profile',compact('user','messages','notifications','offer','points'));
 
    }

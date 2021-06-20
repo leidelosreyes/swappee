@@ -136,7 +136,7 @@
                                         style="height:60px;"
                                         placeholder=" "
                                         class="form__input form-control  @error('contact_number') is-invalid @enderror"
-                                        value="{{Auth::user()->profile->cellphone_no}}"
+                                        value="{{$user->cellphone_no}}"
                                         autocomplete="contact_number" autofocus
                                         >
                                         <label for="" class="form__label">Contact Number</label></label>
