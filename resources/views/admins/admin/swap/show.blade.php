@@ -75,12 +75,12 @@
                            @php
                             $approval = "success"
                           @endphp
-                            <span><i class="fa fa-check" aria-hidden="true">Approved</i></span>
+                            <span style="color:#66cc00"><i class="fa fa-check" aria-hidden="true">Approved</i></span>
                           @else
                           @php
                             $approval = "danger"
                           @endphp
-                          <span><i class="fas fa-history"></i> Pending</span>
+                          <span style="color:red;"><i class="fas fa-history"></i> Pending</span>
                       @endif
                       </td>
       <td>

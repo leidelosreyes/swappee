@@ -107,13 +107,16 @@ class AdminController extends Controller
     public function show_swap(){
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
-             $swaps = Post::simplepaginate(10);
+            $swaps = Post::latest('updated_at','desc')
+            ->orderBy('created_at', 'desc')->simplepaginate(10);
              $sub_categorie = Sub_categorie::all();
+             $categories = Categories::all();
              return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
         }
         if(Auth::user()->usertype == 'admin')
         {
-             $swaps = Post::simplepaginate(10);
+             $swaps = Post::latest('updated_at','desc')
+             ->orderBy('created_at', 'desc')->simplepaginate(10);
              $categories = Categories::all();
              $sub_categorie = Sub_categorie::all();
             return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
@@ -124,13 +127,15 @@ class AdminController extends Controller
     public function show_auction(){
         if(Auth::user()->usertype == 'admin')
         {
-            $auctions = Auction::simplepaginate(10);
+            $auctions = Auction::latest('updated_at','desc')
+            ->orderBy('created_at', 'desc')->simplepaginate(10);
            
             return view('admins.admin.auction.show',compact('auctions'));
         }
         if(Auth::user()->usertype == 'post-moderator-admin')
         {
-            $auctions = auction::simplepaginate(10);
+            $auctions = auction::latest('updated_at','desc')
+            ->orderBy('created_at', 'desc')->simplepaginate(10);
           
             return view('admins.admin.auction.show',compact('auctions'));
         }
@@ -258,7 +263,7 @@ class AdminController extends Controller
         $body_message = "Your Post  For Auction has been approved and reviewed by Swappee Ph" ;
         $data = array('name'=>$user_name, "body" => $body_message);
         Mail::send('messages.mail', $data, function($message) use($user_email) {
-        $message->to($user_email)->subject('Post Approval');
+        $message->to($user_email)->subject('Auction Approval');
         $message->from('swappee6@gmail.com','Swappee');
         });
         $action = "Approved Auction Item: {$item_name->product_name}";
@@ -348,25 +353,29 @@ class AdminController extends Controller
         if($request->search!="")
         {   $swaps= Post::where('product_name' , 'like' , '%' .$request->search. '%')
         ->simplepaginate(20);
-        $swap->appends(['search' => $request->search]);
+        $swaps->appends(['search' => $request->search]);
         }
         else
         {
             $swaps = Post::simplepaginate(10);
         }
-        return view('admins.admin.swap.show',compact('swaps'));
+        $categories = Categories::all();
+        $sub_categorie = Sub_categorie::all();
+       return view('admins.admin.swap.show',compact('swaps','categories','sub_categorie'));
     }
     public function search_auction(Request $request){
         if($request->search!="")
-        {   $swaps= auction::where('product_name' , 'like' , '%' .$request->search. '%')
+        {   $auctions= auction::where('product_name' , 'like' , '%' .$request->search. '%')
         ->simplepaginate(20);
-        $swap->appends(['search' => $request->search]);
+        $auctions->appends(['search' => $request->search]);
         }
         else
         {
-            $swaps = auction::simplepaginate(10);
+            $auctions = auction::simplepaginate(10);
         }
-        return view('admins.admin.swap.show',compact('swaps'));
+        $categories = Categories::all();
+        $sub_categorie = Sub_categorie::all();
+       return view('admins.admin.auction.show',compact('auctions','categories','sub_categorie'));
     }
     public function search_user(Request $request){
         if($request->search!="")

@@ -162,7 +162,7 @@
                                                     <div class="row">
                                                         <div class="col">
                                                           
-                                                             <input type="file"name="image" class="file"accept="image/*"  style="visibility: hidden;position: absolute;">
+                                                             <input type="file"name="image" class="file"accept="image/*" capture style="visibility: hidden;position: absolute;">
                                                            <div class="input-group my-3">
                                                              <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
                                                              <div class="input-group-append">
