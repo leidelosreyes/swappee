@@ -57,7 +57,9 @@ class HomeController extends Controller
         }
         else
         {
-            $posts = post::simplepaginate(20);
+            $posts = Post::where('approved',1)->latest('updated_at','desc')
+          ->orderBy('created_at', 'desc')
+          ->simplepaginate(20);
         }
         $categories = Categories::all();
         $sub_categories = sub_categorie::all();
