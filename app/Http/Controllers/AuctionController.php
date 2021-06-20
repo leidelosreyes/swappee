@@ -24,7 +24,7 @@ class AuctionController extends Controller
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $points = Point::findorFail(Auth::id())->first();
+      $points = Point::Where('user_id',Auth::id())->first();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer','points'));
     }
 
@@ -36,7 +36,7 @@ class AuctionController extends Controller
         $sub_categories = Sub_categorie::all();
         $offer = Offer::where('sender_id',Auth::id())->get();
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-        $points = Point::findorFail(Auth::id())->first();
+      $points = Point::Where('user_id',Auth::id())->first();
         return view('auctions.create',compact('messages','categories','sub_categories','offer','notifications','points'));
     }
 
@@ -124,7 +124,7 @@ class AuctionController extends Controller
         $notifications = offer::where('receiver_id',Auth::id())->get();
         $messages = Message::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $points = Point::findorFail(Auth::id())->first();
+      $points = Point::Where('user_id',Auth::id())->first();
         return view('auctions.index',compact('auctions','categories','sub_categories','notifications','messages','offer','points'));
         
     }

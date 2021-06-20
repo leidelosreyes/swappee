@@ -28,7 +28,7 @@ class PostsController extends Controller
         $sub_categories = Sub_categorie::all();
         $offer = Offer::where('sender_id',Auth::id())->get();
         $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
-        $points = Point::findorFail(Auth::id())->first();
+        $points = Point::Where('user_id',Auth::id())->first();
         return view('posts.create',compact('messages','categories','sub_categories','offer','notifications','points'));
     }
 
