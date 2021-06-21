@@ -60,10 +60,49 @@
            
               
           </div>
+
+          
         </div>
       </div>
     </div>
+
+
+
+
+
+<div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            
+                <div class="card-body">
+                    <div class="row" style="justify-content: flex-end;">  
+                        <div class="col-2" style="padding-left: 0;padding-right: 0;">
+                            <a href="{{ route('policy') }}" style="text-decoration:none;font-weight: bold;color: #757575;">Privacy</a>
+                        </div>
+                        <div class="col-2" style="padding-left: 0;padding-right: 0;">
+                            <a href="{{ route('terms_condition') }}" style="text-decoration:none;font-weight: bold;color: #757575;">Terms</a>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>    
+      </div>
+    </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
 
 @endsection
 
