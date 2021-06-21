@@ -133,8 +133,9 @@ class OfferController extends Controller
       return view('accepted_item.meetup_item', compact('offer','messages','notifications','delivery','points'));
    }
       public function send_info_meetup(Request $request){
-         $receiver_name = 'leo dela cruz';
-         $user_email = 'leidelosreyes060296@gmail.com';
+         $user = User::find($request->sender_id);
+         $receiver_name = $user->name;
+         $user_email = $user->email;
          $sender_name = Auth::user()->name;
          $body_message = "{$sender_name} Send to you a meetup information Date : {$request->end_date} \n Location : {$request->meetup_location}\n Available Time : {$request->meetup_time}\n Contact number : {$request->contact_no}";
          $data = array('name'=>$receiver_name, "body" => $body_message);

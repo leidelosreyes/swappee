@@ -185,7 +185,7 @@ class CourierController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->get();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $points = Point::findorFail(Auth::id())->first();
+        $points = Point::Where('user_id',Auth::id())->first(); 
         return view('courier.place_order',compact('courier','messages','notifications','offer','points'));
     }
 
@@ -225,7 +225,7 @@ class CourierController extends Controller
         $messages = Message::where('receiver_id',Auth::id())->get();
         $notifications = Offer::where('receiver_id',Auth::id())->get();
         $offer = Offer::where('sender_id',Auth::id())->get();
-        $points = Point::findorFail(Auth::id())->first();
+           $points = Point::Where('user_id',Auth::id())->first(); 
         return view('courier.order_list',compact('courier','messages','notifications','offer','points'));
      }
 }
