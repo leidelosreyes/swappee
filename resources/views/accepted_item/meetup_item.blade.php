@@ -117,8 +117,7 @@
                 <form action="{{route('meet_up.send_info')}}" method="post">
 					@csrf
                     <h2>Meet-Up</h2>
-                     <input type="
-                     hidden"
+                     <input type="hidden"
                      id="sender_id"
                      name="sender_id"
                      value="{{$deliver->sender_id}}"

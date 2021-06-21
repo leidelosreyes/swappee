@@ -107,7 +107,6 @@
 								<!-- web view	 -->
 								<div class="d-none d-lg-block">
 									<h1>{{$post->product_name}}</h1>
-                  {{$post->id}}
 								</div>
 								 <!-- mobile view -->
 								<div class="d-sm-block d-md-none">
