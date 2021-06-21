@@ -33,11 +33,11 @@
          
                  	
 <div class="container ">
+<div class="card-box"class="border" style="box-shadow: 0 0px 10px 0 rgb(44 44 45 / 7%)">
   <div class="row">
 
         @foreach ($posts as $post) 
-        <div class="col-6 col-md-4 col-lg-3 b-col mt-4">
-
+        <div class="col-6 col-md-4 col-lg-3 b-col mt-4 card-box">
                   <div class="d-flex product-details ">
                   @if(empty($post->user->avatar))
                   <img src="{{asset('image/user_icon.png')}}" class="card-avatar"/>
@@ -87,6 +87,7 @@
                   </div>
                   @endforeach
          </div>
+    </div>
 </div>
 <div class="container mt-4 text-center">
   {{$posts->links()}}
