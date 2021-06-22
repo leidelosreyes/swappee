@@ -74,7 +74,7 @@ class PostsController extends Controller
         
           
     }
-    public function show(post $post)
+    public function show($id)
     {
         // <-- validation to user for swapping -->
         //  $address = auth()->user()->profile->address;
@@ -86,7 +86,7 @@ class PostsController extends Controller
         //         return redirect()->route('home')
         //       ->with('error','Please go to your profile and provide contact no');
         //     }
-
+            $post = Post::find($id);
            if($post->user_id == Auth::id())
            {
             $action = "Failed Swap-Trying to swap own item";
