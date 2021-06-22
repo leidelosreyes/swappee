@@ -115,10 +115,12 @@ class OfferController extends Controller
       ->where('is_accepted',1)
       ->where('receiver_id',Auth::id())
       ->simplepaginate(1);
+
+      dd($delivery);
       $offer = Offer::where('sender_id',Auth::id())->simplepaginate(20);
       $notifications = offer::where('receiver_id',Auth::id())->where('is_accepted',0)->get();
       $messages = Message::where('receiver_id',Auth::id())->get();
-  $points = Point::Where('user_id',Auth::id())->first();
+      $points = Point::Where('user_id',Auth::id())->first();
       return view('accepted_item.delivery_item', compact('offer','messages','notifications','delivery','points'));
    }
    public function show_for_meetup(){
