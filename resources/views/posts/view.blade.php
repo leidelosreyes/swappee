@@ -394,6 +394,11 @@
                                         @enderror
                                       
                                     </div>
+                                    @if($post->delivery_method == "Meet Up")
+                                    {{$post->location}}
+                                    @else
+                                    {{$user->address}}
+                                    @endif
                                    @if($post->delivery_method=="Meet Up")
                                     <div class="form__div">
                                       <select id="inputState" 
