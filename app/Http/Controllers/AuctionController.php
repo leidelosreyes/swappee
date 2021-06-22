@@ -91,7 +91,8 @@ class AuctionController extends Controller
            $messages = Message::where('receiver_id',Auth::id())->get();
            $offer = Offer::where('sender_id',Auth::id())->get();
            $bidders = bidder::where('auction_id',$auction->id)->orderBy('amount','desc')->get();
-           return view('auctions.view',compact('auction','more_posts','notifications','messages','offer','bidders'));
+           $points = Point::Where('user_id',Auth::id())->first();
+           return view('auctions.view',compact('auction','more_posts','notifications','messages','offer','bidders','points'));
         
     }
     public function edit($id){
