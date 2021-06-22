@@ -435,7 +435,8 @@
                                         @enderror
                                       
                                     </div>
-                                    @elseif($post->delivery_method=="Delivery")
+                                    @endif
+                                    @if($post->delivery_method=="Delivery")
                                     <div class="form__div">
                                       <select id="inputState" 
                                       readonly
