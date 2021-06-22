@@ -394,7 +394,25 @@
                                         @enderror
                                       
                                     </div>
-                                   @if($post->delivery_method=="Meet Up")
+                                    <input type="hidden" name="delivery_method" value="{{$post->delivery_method}}">
+                                    <div class="form__div">
+                                        <input type="text"
+                                         id="location"
+                                         name="location"
+                                         placeholder=" "
+                                         style="height:60px;"
+                                         class="form-control form__input @error('location') is-invalid @enderror"
+                                         autocomplete="location" autofocus
+                                        >
+                                        <label for="" class="form__label" style="background:none;">Location <label style="color:red;">*</label></label>
+                                        @error('location')
+                                                <span class="invalid-feedback" role="alert ">
+                                                    <strong style="color:red;" >{{$message}}</strong>
+                                                </span>
+                                        @enderror
+                                      
+                                    </div>
+                                   <!-- @if($post->delivery_method=="Meet Up")
                                     <div class="form__div">
                                       <select id="inputState" 
                                       readonly
@@ -477,7 +495,7 @@
                                         @enderror
                                       
                                     </div>
-                                    @endif
+                                    @endif -->
                                     <label  for="image" style="margin-bottom:0;">Product Description <label style="color:red;">*</label></label>
                                         <textarea 
                                                 id="description"
