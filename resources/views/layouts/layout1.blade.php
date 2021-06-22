@@ -48,9 +48,9 @@
                     @else
 					             <a href="{{ route('login') }}" class="nav-item nav-link navfonts" style="color: #57585a;"> Login |</a>
             </li>
-                        @if (Route::has('register'))
+                        <!-- @if (Route::has('register'))
                       <a href="{{ route('register') }}" class="nav-item nav-link navfonts"style="color: #57585a;">Register</a>
-                        @endif
+                        @endif -->
                     @endauth
                 
                
