@@ -77,10 +77,9 @@ class AuctionController extends Controller
         
           
     }
-    public function show(Auction $auction)
-    {
-        // <-- validation to user for bidding -->
-       
+    public function show($id)
+
+    {       $auction = auction::find($id);
            if($auction->user_id == Auth::id())
            {
             return redirect()->route('auctions.index')

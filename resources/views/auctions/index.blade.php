@@ -177,7 +177,7 @@
                                   <div class="product-price" style="font-size:.75rem;padding-top:4px;">₱ {{number_format($post->estimated_price)}}</div>
                                   <div class="product-links">
                                    
-                                    <a href="/auctions/{{$post->id}}"> <p style="font-size:.75rem;">bid</p></a>
+                                    <a href="{{route('auctions.show',$post->id)}}"> <p style="font-size:.75rem;">bid</p></a>
                                   </div>
                                 </div>
                               </div>                    
