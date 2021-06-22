@@ -86,6 +86,7 @@ class PostsController extends Controller
         //         return redirect()->route('home')
         //       ->with('error','Please go to your profile and provide contact no');
         //     }
+
            if($post->user_id == Auth::id())
            {
             $action = "Failed Swap-Trying to swap own item";
